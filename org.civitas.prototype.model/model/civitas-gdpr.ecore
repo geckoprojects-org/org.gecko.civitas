@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cgdpr" nsURI="https://civitas.org/gdpr/1.0.0" nsPrefix="gdpr">
+  <eClassifiers xsi:type="ecore:EClass" name="GDPRRegister">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="registerId" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//GDPRElement" containment="true" eKeys="#//GDPRElement/elementId"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GDPRElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="elementId" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="#//GDPRAttribute" containment="true" eKeys="#//GDPRAttribute/attributeId"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelClasses" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GDPRAttribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributeId" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature"/>
+  </eClassifiers>
+</ecore:EPackage>

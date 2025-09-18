@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<base:Asset
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:base="https://civitas.org/base/1.0.0"
+    xsi:schemaLocation="https://civitas.org/base/1.0.0 ../model/civitas-base.ecore"
+    assetId="sensorTemp01"
+    name="Temperatur Sensor 01"
+    description="">
+  <operator
+      href="Hausmeister-Schmidt.xmi#pschmi01"/>
+</base:Asset>

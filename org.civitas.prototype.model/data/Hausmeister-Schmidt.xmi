@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<base:AssetOperator xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:base="https://civitas.org/base/1.0.0" xsi:schemaLocation="https://civitas.org/base/1.0.0 ../model/civitas-base.ecore" personId="pschmi01" firstName="Peter" lastName="Schmidt" operatorId="jena-north-pschmidt">
+  <contacts value="p.schmidt@ksj.de"/>
+  <contacts type="PHONE" value="0171-12345678"/>
+  <assets href="DemoAsset.xmi#sensorTemp01"/>
+</base:AssetOperator>
