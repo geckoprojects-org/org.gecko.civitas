@@ -24,6 +24,7 @@ header:
     - '**/*.bnd'
     - '**/*.bndrun'
     - '**/*.xml'
+	- '**/*.xmi'
     - '**/*.yml'
     - '**/*.yaml'
     - '**/*.json'
