@@ -310,6 +310,8 @@ public class GLTPackageImpl extends EPackageImpl implements GLTPackage {
 		createVersionAnnotations();
 		// http://www.eclipse.org/emf/2002/GenModel
 		createGenModelAnnotations();
+		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
+		createExtendedMetaDataAnnotations();
 	}
 
 	/**
@@ -340,7 +342,7 @@ public class GLTPackageImpl extends EPackageImpl implements GLTPackage {
 		  (this,
 		   source,
 		   new String[] {
-			   "complianceLevel", null,
+			   "complianceLevel", "17.0",
 			   "oSGiCompatible", "true",
 			   "basePackage", "org.civitas.glt.model",
 			   "resource", "XMI"
@@ -350,6 +352,28 @@ public class GLTPackageImpl extends EPackageImpl implements GLTPackage {
 		   source,
 		   new String[] {
 			   "documentation", "Street + house number, separated with a space"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createExtendedMetaDataAnnotations() {
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
+		addAnnotation
+		  (getContact_BuildingId(),
+		   source,
+		   new String[] {
+			   "name", "building_id"
+		   });
+		addAnnotation
+		  (getContact_PhoneNumber(),
+		   source,
+		   new String[] {
+			   "name", "phonenumber"
 		   });
 	}
 

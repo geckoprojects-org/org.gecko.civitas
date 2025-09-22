@@ -249,7 +249,7 @@ public class UnitsPackageImpl extends EPackageImpl implements UnitsPackage {
 		  (this,
 		   source,
 		   new String[] {
-			   "complianceLevel", null,
+			   "complianceLevel", "17.0",
 			   "oSGiCompatible", "true",
 			   "basePackage", "org.civitas.units.model",
 			   "resource", "XMI"

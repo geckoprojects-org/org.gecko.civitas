@@ -5,7 +5,7 @@
     <details key="value" value="1.0"/>
   </eAnnotations>
   <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-    <details key="complianceLevel"/>
+    <details key="complianceLevel" value="17.0"/>
     <details key="oSGiCompatible" value="true"/>
     <details key="basePackage" value="org.civitas.units.model"/>
     <details key="resource" value="XMI"/>

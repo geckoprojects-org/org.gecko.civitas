@@ -37,6 +37,7 @@ public interface Contact extends EObject {
 	 * @see #setBuildingId(Integer)
 	 * @see org.civitas.glt.model.glt.GLTPackage#getContact_BuildingId()
 	 * @model required="true"
+	 *        extendedMetaData="name='building_id'"
 	 * @generated
 	 */
 	Integer getBuildingId();
@@ -146,7 +147,7 @@ public interface Contact extends EObject {
 	 * @return the value of the '<em>Phone Number</em>' attribute.
 	 * @see #setPhoneNumber(String)
 	 * @see org.civitas.glt.model.glt.GLTPackage#getContact_PhoneNumber()
-	 * @model
+	 * @model extendedMetaData="name='phonenumber'"
 	 * @generated
 	 */
 	String getPhoneNumber();

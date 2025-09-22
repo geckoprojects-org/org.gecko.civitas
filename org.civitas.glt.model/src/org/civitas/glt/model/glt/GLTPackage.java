@@ -25,7 +25,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @see org.civitas.glt.model.glt.GLTFactory
  * @model kind="package"
  *        annotation="Version value='1.0'"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel complianceLevel='null' oSGiCompatible='true' basePackage='org.civitas.glt.model' resource='XMI'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel complianceLevel='17.0' oSGiCompatible='true' basePackage='org.civitas.glt.model' resource='XMI'"
  * @generated
  */
 @ProviderType
