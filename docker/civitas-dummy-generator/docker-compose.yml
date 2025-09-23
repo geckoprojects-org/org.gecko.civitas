@@ -111,22 +111,9 @@ volumes:
 
 configs:
   mosquitto:
-    content: |
-      persistence true
-      persistence_location /mosquitto/data/
-      log_dest file /mosquitto/log/mosquitto.log
-      listener 1883
-      allow_anonymous true
-      listener 9001
-      protocol websockets
-      allow_anonymous true
+    file: ./mosquitto.conf
   minio:
-    content: |
-      #!/bin/sh
-      until /usr/bin/mc alias set myminio http://minio:9000 minio minio123; do sleep 1; done &&
-      /usr/bin/mc mb myminio/dummy-data || true
-      /usr/bin/mc anonymous set download myminio/dummy-data
-      /usr/bin/mc anonymous set upload myminio/dummy-data
+    file: ./minio-setup.sh
   postgres:
     content: |
       CREATE DATABASE usecase212_assets;
