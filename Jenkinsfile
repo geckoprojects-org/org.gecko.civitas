@@ -69,7 +69,7 @@ pipeline  {
                             cloud: 'docker',
                             tagsString: 'devel.data-in-motion.biz:6000/civitas/meter:latest',
                             pushOnSuccess: true,
-                            pushCredentialsId: 'dim-nexus']),
+                            pushCredentialsId: 'dim-nexus'])
 
                 step([$class: 'DockerBuilderPublisher',
                       dockerFileDirectory: 'docker/glt',
@@ -80,7 +80,5 @@ pipeline  {
 
             }
         }
-
     }
-
 }
