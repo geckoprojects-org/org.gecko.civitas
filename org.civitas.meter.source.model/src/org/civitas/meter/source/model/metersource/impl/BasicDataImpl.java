@@ -32,9 +32,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link org.civitas.meter.source.model.metersource.impl.BasicDataImpl#getPlantId <em>Plant Id</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.impl.BasicDataImpl#getAddress <em>Address</em>}</li>
  *   <li>{@link org.civitas.meter.source.model.metersource.impl.BasicDataImpl#getNet <em>Net</em>}</li>
  *   <li>{@link org.civitas.meter.source.model.metersource.impl.BasicDataImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.impl.BasicDataImpl#getCity <em>City</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.impl.BasicDataImpl#getZip <em>Zip</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.impl.BasicDataImpl#getStreet <em>Street</em>}</li>
  * </ul>
  *
  * @generated
@@ -59,26 +61,6 @@ public class BasicDataImpl extends MinimalEObjectImpl.Container implements Basic
 	 * @ordered
 	 */
 	protected String plantId = PLANT_ID_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getAddress() <em>Address</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAddress()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ADDRESS_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getAddress() <em>Address</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAddress()
-	 * @generated
-	 * @ordered
-	 */
-	protected String address = ADDRESS_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getNet() <em>Net</em>}' attribute.
@@ -121,6 +103,66 @@ public class BasicDataImpl extends MinimalEObjectImpl.Container implements Basic
 	protected String type = TYPE_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getCity() <em>City</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCity()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CITY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCity() <em>City</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCity()
+	 * @generated
+	 * @ordered
+	 */
+	protected String city = CITY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getZip() <em>Zip</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getZip()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ZIP_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getZip() <em>Zip</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getZip()
+	 * @generated
+	 * @ordered
+	 */
+	protected String zip = ZIP_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getStreet() <em>Street</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStreet()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String STREET_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getStreet() <em>Street</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStreet()
+	 * @generated
+	 * @ordered
+	 */
+	protected String street = STREET_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -160,29 +202,6 @@ public class BasicDataImpl extends MinimalEObjectImpl.Container implements Basic
 		plantId = newPlantId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.BASIC_DATA__PLANT_ID, oldPlantId, plantId));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getAddress() {
-		return address;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setAddress(String newAddress) {
-		String oldAddress = address;
-		address = newAddress;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.BASIC_DATA__ADDRESS, oldAddress, address));
 	}
 
 	/**
@@ -237,16 +256,89 @@ public class BasicDataImpl extends MinimalEObjectImpl.Container implements Basic
 	 * @generated
 	 */
 	@Override
+	public String getCity() {
+		return city;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCity(String newCity) {
+		String oldCity = city;
+		city = newCity;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.BASIC_DATA__CITY, oldCity, city));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getZip() {
+		return zip;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setZip(String newZip) {
+		String oldZip = zip;
+		zip = newZip;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.BASIC_DATA__ZIP, oldZip, zip));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getStreet() {
+		return street;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setStreet(String newStreet) {
+		String oldStreet = street;
+		street = newStreet;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.BASIC_DATA__STREET, oldStreet, street));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case MeterSourcePackage.BASIC_DATA__PLANT_ID:
 				return getPlantId();
-			case MeterSourcePackage.BASIC_DATA__ADDRESS:
-				return getAddress();
 			case MeterSourcePackage.BASIC_DATA__NET:
 				return getNet();
 			case MeterSourcePackage.BASIC_DATA__TYPE:
 				return getType();
+			case MeterSourcePackage.BASIC_DATA__CITY:
+				return getCity();
+			case MeterSourcePackage.BASIC_DATA__ZIP:
+				return getZip();
+			case MeterSourcePackage.BASIC_DATA__STREET:
+				return getStreet();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -262,14 +354,20 @@ public class BasicDataImpl extends MinimalEObjectImpl.Container implements Basic
 			case MeterSourcePackage.BASIC_DATA__PLANT_ID:
 				setPlantId((String)newValue);
 				return;
-			case MeterSourcePackage.BASIC_DATA__ADDRESS:
-				setAddress((String)newValue);
-				return;
 			case MeterSourcePackage.BASIC_DATA__NET:
 				setNet((Integer)newValue);
 				return;
 			case MeterSourcePackage.BASIC_DATA__TYPE:
 				setType((String)newValue);
+				return;
+			case MeterSourcePackage.BASIC_DATA__CITY:
+				setCity((String)newValue);
+				return;
+			case MeterSourcePackage.BASIC_DATA__ZIP:
+				setZip((String)newValue);
+				return;
+			case MeterSourcePackage.BASIC_DATA__STREET:
+				setStreet((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -286,14 +384,20 @@ public class BasicDataImpl extends MinimalEObjectImpl.Container implements Basic
 			case MeterSourcePackage.BASIC_DATA__PLANT_ID:
 				setPlantId(PLANT_ID_EDEFAULT);
 				return;
-			case MeterSourcePackage.BASIC_DATA__ADDRESS:
-				setAddress(ADDRESS_EDEFAULT);
-				return;
 			case MeterSourcePackage.BASIC_DATA__NET:
 				setNet(NET_EDEFAULT);
 				return;
 			case MeterSourcePackage.BASIC_DATA__TYPE:
 				setType(TYPE_EDEFAULT);
+				return;
+			case MeterSourcePackage.BASIC_DATA__CITY:
+				setCity(CITY_EDEFAULT);
+				return;
+			case MeterSourcePackage.BASIC_DATA__ZIP:
+				setZip(ZIP_EDEFAULT);
+				return;
+			case MeterSourcePackage.BASIC_DATA__STREET:
+				setStreet(STREET_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -309,12 +413,16 @@ public class BasicDataImpl extends MinimalEObjectImpl.Container implements Basic
 		switch (featureID) {
 			case MeterSourcePackage.BASIC_DATA__PLANT_ID:
 				return PLANT_ID_EDEFAULT == null ? plantId != null : !PLANT_ID_EDEFAULT.equals(plantId);
-			case MeterSourcePackage.BASIC_DATA__ADDRESS:
-				return ADDRESS_EDEFAULT == null ? address != null : !ADDRESS_EDEFAULT.equals(address);
 			case MeterSourcePackage.BASIC_DATA__NET:
 				return NET_EDEFAULT == null ? net != null : !NET_EDEFAULT.equals(net);
 			case MeterSourcePackage.BASIC_DATA__TYPE:
 				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+			case MeterSourcePackage.BASIC_DATA__CITY:
+				return CITY_EDEFAULT == null ? city != null : !CITY_EDEFAULT.equals(city);
+			case MeterSourcePackage.BASIC_DATA__ZIP:
+				return ZIP_EDEFAULT == null ? zip != null : !ZIP_EDEFAULT.equals(zip);
+			case MeterSourcePackage.BASIC_DATA__STREET:
+				return STREET_EDEFAULT == null ? street != null : !STREET_EDEFAULT.equals(street);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -331,12 +439,16 @@ public class BasicDataImpl extends MinimalEObjectImpl.Container implements Basic
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (plantId: ");
 		result.append(plantId);
-		result.append(", address: ");
-		result.append(address);
 		result.append(", net: ");
 		result.append(net);
 		result.append(", type: ");
 		result.append(type);
+		result.append(", city: ");
+		result.append(city);
+		result.append(", zip: ");
+		result.append(zip);
+		result.append(", street: ");
+		result.append(street);
 		result.append(')');
 		return result.toString();
 	}

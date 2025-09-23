@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.civitas.csv.reader.api.CSVReaderService;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -25,14 +26,20 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.eclipse.fennec.codec.csv.resource.CSVResourceFactory;
 
-@Component(immediate = true, name = "CSVReader", service = CSVReader.class)
-public class CSVReader {
+@Component(immediate = true, name = "CSVReader", service = CSVReaderService.class)
+public class CSVReader implements CSVReaderService{
 
 	@Reference
 	CSVResourceFactory resourceFactory;
 
 	private static final Logger LOGGER = Logger.getLogger(CSVReader.class.getName());
 
+	
+	/* 
+	 * (non-Javadoc)
+	 * @see org.civitas.csv.reader.api.CSVReaderService#loadEObjectsFromCSV(java.lang.String, org.eclipse.emf.ecore.EClass)
+	 */
+	@Override
 	public List<EObject> loadEObjectsFromCSV(String csvFilePath, EClass rootObject) {
 		Map<String, Object> properties = new HashMap<>();
 		properties.put(CodecResourceOptions.CODEC_ROOT_OBJECT, rootObject);

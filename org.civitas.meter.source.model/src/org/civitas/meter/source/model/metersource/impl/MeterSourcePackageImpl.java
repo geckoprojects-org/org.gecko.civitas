@@ -160,7 +160,7 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getBasicData_Address() {
+	public EAttribute getBasicData_Net() {
 		return (EAttribute)basicDataEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -170,7 +170,7 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getBasicData_Net() {
+	public EAttribute getBasicData_Type() {
 		return (EAttribute)basicDataEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -180,8 +180,28 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getBasicData_Type() {
+	public EAttribute getBasicData_City() {
 		return (EAttribute)basicDataEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getBasicData_Zip() {
+		return (EAttribute)basicDataEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getBasicData_Street() {
+		return (EAttribute)basicDataEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -355,9 +375,11 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 		// Create classes and their features
 		basicDataEClass = createEClass(BASIC_DATA);
 		createEAttribute(basicDataEClass, BASIC_DATA__PLANT_ID);
-		createEAttribute(basicDataEClass, BASIC_DATA__ADDRESS);
 		createEAttribute(basicDataEClass, BASIC_DATA__NET);
 		createEAttribute(basicDataEClass, BASIC_DATA__TYPE);
+		createEAttribute(basicDataEClass, BASIC_DATA__CITY);
+		createEAttribute(basicDataEClass, BASIC_DATA__ZIP);
+		createEAttribute(basicDataEClass, BASIC_DATA__STREET);
 
 		operatingDataEClass = createEClass(OPERATING_DATA);
 		createEAttribute(operatingDataEClass, OPERATING_DATA__ID);
@@ -413,9 +435,11 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 		// Initialize classes, features, and operations; add parameters
 		initEClass(basicDataEClass, BasicData.class, "BasicData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBasicData_PlantId(), ecorePackage.getEString(), "plantId", null, 1, 1, BasicData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBasicData_Address(), ecorePackage.getEString(), "address", null, 0, 1, BasicData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBasicData_Net(), ecorePackage.getEIntegerObject(), "net", null, 0, 1, BasicData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBasicData_Type(), ecorePackage.getEString(), "type", null, 0, 1, BasicData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBasicData_City(), ecorePackage.getEString(), "city", null, 0, 1, BasicData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBasicData_Zip(), ecorePackage.getEString(), "zip", null, 0, 1, BasicData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBasicData_Street(), ecorePackage.getEString(), "street", null, 0, 1, BasicData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operatingDataEClass, OperatingData.class, "OperatingData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOperatingData_Id(), ecorePackage.getEInt(), "id", null, 1, 1, OperatingData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -537,6 +561,12 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 		   source,
 		   new String[] {
 			   "name", "plant_id"
+		   });
+		addAnnotation
+		  (getOperatingData_OperatingHours(),
+		   source,
+		   new String[] {
+			   "name", "operating_hours"
 		   });
 		addAnnotation
 		  (getMeter_PlantId(),

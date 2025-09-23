@@ -31,9 +31,11 @@ import org.osgi.annotation.versioning.ProviderType;
  * </p>
  * <ul>
  *   <li>{@link org.civitas.meter.source.model.metersource.BasicData#getPlantId <em>Plant Id</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.BasicData#getAddress <em>Address</em>}</li>
  *   <li>{@link org.civitas.meter.source.model.metersource.BasicData#getNet <em>Net</em>}</li>
  *   <li>{@link org.civitas.meter.source.model.metersource.BasicData#getType <em>Type</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.BasicData#getCity <em>City</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.BasicData#getZip <em>Zip</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.BasicData#getStreet <em>Street</em>}</li>
  * </ul>
  *
  * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getBasicData()
@@ -64,28 +66,6 @@ public interface BasicData extends EObject {
 	 * @generated
 	 */
 	void setPlantId(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Address</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Address</em>' attribute.
-	 * @see #setAddress(String)
-	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getBasicData_Address()
-	 * @model
-	 * @generated
-	 */
-	String getAddress();
-
-	/**
-	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.BasicData#getAddress <em>Address</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Address</em>' attribute.
-	 * @see #getAddress()
-	 * @generated
-	 */
-	void setAddress(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Net</b></em>' attribute.
@@ -130,5 +110,71 @@ public interface BasicData extends EObject {
 	 * @generated
 	 */
 	void setType(String value);
+
+	/**
+	 * Returns the value of the '<em><b>City</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>City</em>' attribute.
+	 * @see #setCity(String)
+	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getBasicData_City()
+	 * @model
+	 * @generated
+	 */
+	String getCity();
+
+	/**
+	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.BasicData#getCity <em>City</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>City</em>' attribute.
+	 * @see #getCity()
+	 * @generated
+	 */
+	void setCity(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Zip</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Zip</em>' attribute.
+	 * @see #setZip(String)
+	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getBasicData_Zip()
+	 * @model
+	 * @generated
+	 */
+	String getZip();
+
+	/**
+	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.BasicData#getZip <em>Zip</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Zip</em>' attribute.
+	 * @see #getZip()
+	 * @generated
+	 */
+	void setZip(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Street</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Street</em>' attribute.
+	 * @see #setStreet(String)
+	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getBasicData_Street()
+	 * @model
+	 * @generated
+	 */
+	String getStreet();
+
+	/**
+	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.BasicData#getStreet <em>Street</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Street</em>' attribute.
+	 * @see #getStreet()
+	 * @generated
+	 */
+	void setStreet(String value);
 
 } // BasicData

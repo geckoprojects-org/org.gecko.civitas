@@ -11,9 +11,11 @@
       disposableProviderFactory="true" ecorePackage="meter-source.ecore#/">
     <genClasses ecoreClass="meter-source.ecore#//BasicData">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//BasicData/plantId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//BasicData/address"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//BasicData/net"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//BasicData/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//BasicData/city"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//BasicData/zip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//BasicData/street"/>
     </genClasses>
     <genClasses ecoreClass="meter-source.ecore#//OperatingData">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//OperatingData/id"/>

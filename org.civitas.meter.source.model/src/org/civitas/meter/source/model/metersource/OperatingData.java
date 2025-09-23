@@ -99,6 +99,7 @@ public interface OperatingData extends EObject {
 	 * @see #setOperatingHours(Integer)
 	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getOperatingData_OperatingHours()
 	 * @model dataType="org.civitas.units.model.units.Hours"
+	 *        extendedMetaData="name='operating_hours'"
 	 * @generated
 	 */
 	Integer getOperatingHours();

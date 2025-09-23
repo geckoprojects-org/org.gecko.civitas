@@ -94,22 +94,13 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	int BASIC_DATA__PLANT_ID = 0;
 
 	/**
-	 * The feature id for the '<em><b>Address</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BASIC_DATA__ADDRESS = 1;
-
-	/**
 	 * The feature id for the '<em><b>Net</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BASIC_DATA__NET = 2;
+	int BASIC_DATA__NET = 1;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -118,7 +109,34 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BASIC_DATA__TYPE = 3;
+	int BASIC_DATA__TYPE = 2;
+
+	/**
+	 * The feature id for the '<em><b>City</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_DATA__CITY = 3;
+
+	/**
+	 * The feature id for the '<em><b>Zip</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_DATA__ZIP = 4;
+
+	/**
+	 * The feature id for the '<em><b>Street</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_DATA__STREET = 5;
 
 	/**
 	 * The number of structural features of the '<em>Basic Data</em>' class.
@@ -127,7 +145,7 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BASIC_DATA_FEATURE_COUNT = 4;
+	int BASIC_DATA_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Basic Data</em>' class.
@@ -363,17 +381,6 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getBasicData_PlantId();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.BasicData#getAddress <em>Address</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Address</em>'.
-	 * @see org.civitas.meter.source.model.metersource.BasicData#getAddress()
-	 * @see #getBasicData()
-	 * @generated
-	 */
-	EAttribute getBasicData_Address();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.BasicData#getNet <em>Net</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -394,6 +401,39 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EAttribute getBasicData_Type();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.BasicData#getCity <em>City</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>City</em>'.
+	 * @see org.civitas.meter.source.model.metersource.BasicData#getCity()
+	 * @see #getBasicData()
+	 * @generated
+	 */
+	EAttribute getBasicData_City();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.BasicData#getZip <em>Zip</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Zip</em>'.
+	 * @see org.civitas.meter.source.model.metersource.BasicData#getZip()
+	 * @see #getBasicData()
+	 * @generated
+	 */
+	EAttribute getBasicData_Zip();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.BasicData#getStreet <em>Street</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Street</em>'.
+	 * @see org.civitas.meter.source.model.metersource.BasicData#getStreet()
+	 * @see #getBasicData()
+	 * @generated
+	 */
+	EAttribute getBasicData_Street();
 
 	/**
 	 * Returns the meta object for class '{@link org.civitas.meter.source.model.metersource.OperatingData <em>Operating Data</em>}'.
@@ -587,14 +627,6 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute BASIC_DATA__PLANT_ID = eINSTANCE.getBasicData_PlantId();
 
 		/**
-		 * The meta object literal for the '<em><b>Address</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BASIC_DATA__ADDRESS = eINSTANCE.getBasicData_Address();
-
-		/**
 		 * The meta object literal for the '<em><b>Net</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -609,6 +641,30 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute BASIC_DATA__TYPE = eINSTANCE.getBasicData_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>City</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BASIC_DATA__CITY = eINSTANCE.getBasicData_City();
+
+		/**
+		 * The meta object literal for the '<em><b>Zip</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BASIC_DATA__ZIP = eINSTANCE.getBasicData_Zip();
+
+		/**
+		 * The meta object literal for the '<em><b>Street</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BASIC_DATA__STREET = eINSTANCE.getBasicData_Street();
 
 		/**
 		 * The meta object literal for the '{@link org.civitas.meter.source.model.metersource.impl.OperatingDataImpl <em>Operating Data</em>}' class.
