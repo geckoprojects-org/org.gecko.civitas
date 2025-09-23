@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012 - 2025 Data In Motion and others.&#xA;All rights reserved. &#xA;&#xA;This program and the accompanying materials are made&#xA;available under the terms of the Eclipse Public License 2.0&#xA;which is available at https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;&#xA;Contributors:&#xA;    Data In Motion - initial API and implementation"
     modelDirectory="/org.civitas.prototype.model/src" modelPluginID="org.civitas.prototype.model"
     modelName="civitas-alarm" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0" suppressGenModelAnnotations="false"
@@ -7,6 +8,76 @@
   <foreignModel>civitas-alarm.ecore</foreignModel>
   <genPackages prefix="CIVAlarm" basePackage="org.civitas.prototype.model" resource="XMI"
       disposableProviderFactory="true" ecorePackage="civitas-alarm.ecore#/">
-    <genClasses ecoreClass="civitas-alarm.ecore#//Example"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="civitas-alarm.ecore#//SeverityType">
+      <genEnumLiterals ecoreEnumLiteral="civitas-alarm.ecore#//SeverityType/INFO"/>
+      <genEnumLiterals ecoreEnumLiteral="civitas-alarm.ecore#//SeverityType/WARNING"/>
+      <genEnumLiterals ecoreEnumLiteral="civitas-alarm.ecore#//SeverityType/SEVERE"/>
+      <genEnumLiterals ecoreEnumLiteral="civitas-alarm.ecore#//SeverityType/CRITICAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="civitas-alarm.ecore#//NotificationType">
+      <genEnumLiterals ecoreEnumLiteral="civitas-alarm.ecore#//NotificationType/EMAIL"/>
+      <genEnumLiterals ecoreEnumLiteral="civitas-alarm.ecore#//NotificationType/PHONE"/>
+      <genEnumLiterals ecoreEnumLiteral="civitas-alarm.ecore#//NotificationType/SMS"/>
+      <genEnumLiterals ecoreEnumLiteral="civitas-alarm.ecore#//NotificationType/PUSH"/>
+      <genEnumLiterals ecoreEnumLiteral="civitas-alarm.ecore#//NotificationType/POLICE"/>
+      <genEnumLiterals ecoreEnumLiteral="civitas-alarm.ecore#//NotificationType/FIREDEPT"/>
+      <genEnumLiterals ecoreEnumLiteral="civitas-alarm.ecore#//NotificationType/MEDEMERGENCY"/>
+    </genEnums>
+    <genClasses ecoreClass="civitas-alarm.ecore#//Alarm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-alarm.ecore#//Alarm/alarmId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-alarm.ecore#//Alarm/occurance"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-alarm.ecore#//Alarm/alarmation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference civitas-alarm.ecore#//Alarm/assets"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-alarm.ecore#//Alarm/severity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference civitas-alarm.ecore#//Alarm/scope"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-alarm.ecore#//Alarm/notificationType"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Cbase" ecorePackage="civitas-base.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="civitas-base.ecore#//ContactType">
+      <genEnumLiterals ecoreEnumLiteral="civitas-base.ecore#//ContactType/EMAIL"/>
+      <genEnumLiterals ecoreEnumLiteral="civitas-base.ecore#//ContactType/PHONE"/>
+      <genEnumLiterals ecoreEnumLiteral="civitas-base.ecore#//ContactType/PUSH"/>
+    </genEnums>
+    <genClasses ecoreClass="civitas-base.ecore#//Asset">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//Asset/assetId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//Asset/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//Asset/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference civitas-base.ecore#//Asset/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference civitas-base.ecore#//Asset/locations"/>
+    </genClasses>
+    <genClasses ecoreClass="civitas-base.ecore#//Person">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//Person/personId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//Person/firstName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//Person/lastName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference civitas-base.ecore#//Person/contacts"/>
+    </genClasses>
+    <genClasses ecoreClass="civitas-base.ecore#//Contact">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//Contact/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//Contact/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//Contact/note"/>
+    </genClasses>
+    <genClasses ecoreClass="civitas-base.ecore#//AssetOperator">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference civitas-base.ecore#//AssetOperator/assets"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//AssetOperator/operatorId"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="civitas-base.ecore#//Location">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//Location/locationId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//Location/name"/>
+    </genClasses>
+    <genClasses ecoreClass="civitas-base.ecore#//AddressLocation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//AddressLocation/street"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//AddressLocation/zip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//AddressLocation/town"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//AddressLocation/district"/>
+    </genClasses>
+    <genClasses ecoreClass="civitas-base.ecore#//GeoLocation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//GeoLocation/latitude"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//GeoLocation/longitude"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-base.ecore#//GeoLocation/elevation"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="civitas-base.ecore#//AssetScope">
+      <genOperations ecoreOperation="civitas-base.ecore#//AssetScope/getScopeName"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
