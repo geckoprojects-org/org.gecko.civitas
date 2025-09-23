@@ -1,0 +1,14 @@
+org.geckoprojects.emf:org.gecko.emf.osgi.bnd.library.workspace:6.2.0
+org.geckoprojects.emf:org.gecko.emf.osgi.example.model.basic:6.2.0
+org.geckoprojects.emf.utils:org.gecko.emf.util.jakartars.bnd.library.workspace:2.3.0
+org.geckoprojects.emf.persistence:org.gecko.emf.repository.bnd.library.workspace:6.2.0-SNAPSHOT
+org.geckoprojects.search:org.gecko.emf.search.bnd.project.library:1.2.0
+org.geckoprojects.search:org.gecko.search.bnd.library:1.4.0
+org.geckoprojects.utils:org.gecko.util.bnd.library.workspace:1.0.0
+org.geckoprojects.qvto:org.eclipse.fennec.qvt.bnd.library.workspace:2.1.0-SNAPSHOT
+org.geckoprojects.messaging:org.gecko.adapter.messaging.bnd.library.workspace:1.1.1
+org.eclipse.osgi-technology.rest:org.eclipse.osgitech.rest.bnd.library:1.2.3
+org.geckoprojects.bnd:org.gecko.bnd.dimc.library:2.0.0
+org.geckoprojects.bnd:org.gecko.bnd.jacoco.library:2.0.0
+org.geckoprojects.bnd:org.gecko.bnd.osgitest.library:2.0.0
+org.geckoprojects.emf.model:org.gecko.emf.models.library:1.0.1-SNAPSHOT

@@ -1,0 +1,76 @@
+{
+    "deduplicationId": "9b6adf14-125c-4c9d-bb7a-6db979fb0b73",
+    "time": "2025-07-08T15:42:59.764929602+00:00",
+    "deviceInfo": {
+        "tenantId": "52f14cd4-c6f1-4fbd-8f87-4025e1d49242",
+        "tenantName": "Jena",
+        "applicationId": "b186270e-812c-40c2-bb03-a06ffb640f03",
+        "applicationName": "KSJ_Stadtbaumpflege",
+        "deviceProfileId": "93f37439-1425-4a5f-a7e7-7eb4b75f1936",
+        "deviceProfileName": "TEKTELIC KIWI Agriculture Sensor",
+        "deviceName": "2001064843",
+        "devEui": "647fda00000142e6",
+        "tags": {
+        }
+    },
+    "devAddr": "0054e94b",
+    "adr": true,
+    "dr": 0,
+    "fCnt": 43178,
+    "fPort": 10,
+    "confirmed": false,
+    "data": "BQQCvgYEAdwJZQAA",
+    "object": {
+        "soil_water_tension1": 63.0048,
+        "soil_moisture_raw2": 476.0,
+        "soil_moisture_raw1": 702.0,
+        "soil_water_tension2": 104.69359999999999,
+        "ambient_light": 0.0
+    },
+    "rxInfo": [
+        {
+            "gatewayId": "ac1f09fffe01662d",
+            "uplinkId": 41510,
+            "rssi": -123,
+            "snr": -9.5,
+            "channel": 2,
+            "rfChain": 1,
+            "location": {
+                "latitude": 50.943428471454034,
+                "longitude": 11.605188846588137
+            },
+            "context": "0894zA==",
+            "metadata": {
+                "region_common_name": "EU868",
+                "region_name": "eu868"
+            }
+        },
+        {
+            "gatewayId": "fcc23dfffe2ea641",
+            "uplinkId": 48338,
+            "rssi": -115,
+            "snr": -12.2,
+            "channel": 2,
+            "rfChain": 1,
+            "location": {
+                "latitude": 50.932005871988125,
+                "longitude": 11.591793894767763
+            },
+            "context": "sAxYfA==",
+            "metadata": {
+                "region_common_name": "EU868",
+                "region_name": "eu868"
+            }
+        }
+    ],
+    "txInfo": {
+        "frequency": 868500000,
+        "modulation": {
+            "lora": {
+                "bandwidth": 125000,
+                "spreadingFactor": 12,
+                "codeRate": "CR_4_5"
+            }
+        }
+    }
+}

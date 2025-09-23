@@ -1,0 +1,21 @@
+-library: enable-emf
+-buildpath: \
+	org.osgi.service.cm,\
+	org.osgi.service.component.annotations,\
+	org.osgi.service.metatype.annotations,\
+	org.osgi.util.function,\
+	org.osgi.util.promise,\
+	org.eclipse.sensinact.gateway.core.api,\
+	org.eclipse.sensinact.gateway.southbound.mqtt.mqtt-client,\
+	org.osgi.framework,\
+	org.osgi.service.component,\
+	org.osgi.util.tracker,\
+	org.eclipse.fennec.codec.constants
+
+# Export the generic MQTT EMF device factory packages
+Export-Package: \
+	org.eclipse.sensinact.southbound.mqtt.emf.devicefactory
+
+Bundle-Name: Eclipse sensiNact Southbound MQTT EMF Device Factory
+Bundle-Description: Generic MQTT-to-sensiNact EMF integration following the specification
+Bundle-Version: 1.0.0.SNAPSHOT

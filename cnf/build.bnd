@@ -8,7 +8,8 @@
 	geckoJacoco,\
 	geckoEMF,\
 	fennecCamel,\
-	geckoEMFUtil
+	geckoEMFUtil,\
+    geckoMessaging
 
 # Needed because we enabled library 'gecko-dimc'
 # Activate baselining
@@ -16,13 +17,14 @@ dimcBaselining: true
 github-project: org.gecko.civitas
 base-version: 1.0.0
 mavenCentral: false
+sensinact.version: 0.0.2-SNAPSHOT
 
 # Maven Central Group-Id
 # For Geckoprojects the groupid must start with org.geckoprojects
 -groupid: org.geckoprojects.civitas
 
-javac.source: 17
-javac.target: 17
+javac.source: 21
+javac.target: 21
 
 -require-bnd "(version>=7.1.0)"
 
@@ -48,3 +50,29 @@ javac.target: 17
 		name = Temp; \
 		pretty = true; \
 		local = ${build}/cache/temp
+		
+-plugin.sensinact: \
+    aQute.bnd.repository.maven.provider.MavenBndRepository;\
+        releaseUrl          = "https://repo.maven.apache.org/maven2/";\
+        snapshotUrl         = "https://repo.eclipse.org/content/groups/sensinact/";\
+        index               = "${.}/sensinact.maven";\
+        readOnly            = true;\
+        poll_time           = -1;\
+        name='SensiNact SDK'		
+
+-plugin.nexus: \
+    aQute.bnd.repository.maven.provider.MavenBndRepository;\
+        releaseUrl          = "https://devel.data-in-motion.biz/nexus/repository/dim-release/, https://repo.maven.apache.org/maven2/";\
+        snapshotUrl         = "https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/";\
+        index               = "${.}/nexus.maven";\
+        readOnly            = true;\
+        poll_time           = -1;\
+        name                = 'DIM Nexus'		
+        
+-plugin.osgi: \
+    aQute.bnd.repository.maven.provider.MavenBndRepository;\
+        releaseUrl          = "https://repo.maven.apache.org/maven2/";\
+        index               = "${.}/osgi.maven";\
+        readOnly            = true;\
+        poll_time           = -1;\
+        name='OSGi Deps'

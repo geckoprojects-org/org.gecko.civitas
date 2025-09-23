@@ -1,0 +1,694 @@
+[INFO] Running Gecko EMF Codegen Version 6.1.3
+[INFO] Output configured: src
+[INFO] Output result: N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src
+[INFO] genmodelLocation: null
+[INFO] Running for genmodel model/chirpstack.genmodel in N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model
+[INFO] Setting up ResourceUriHandler:
+[INFO]     bsn: org.eclipse.sensinact.southbound.chripstack.model
+[INFO]     base: N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model
+[INFO]     projectDirName: org.eclipse.sensinact.southbound.chripstack.model
+[INFO]     basePath: null
+[INFO]     buildPath:
+[INFO]       Container: C:/Users/ungei/.m2/repository/org/osgi/org.osgi.annotation.bundle/1.0.0/org.osgi.annotation.bundle-1.0.0.jar
+[INFO]       Container: C:/Users/ungei/.m2/repository/org/osgi/org.osgi.annotation.versioning/1.1.2/org.osgi.annotation.versioning-1.1.2.jar
+[INFO]       Container: C:/Users/ungei/.m2/repository/org/eclipse/emf/org.eclipse.emf.ecore/2.35.0/org.eclipse.emf.ecore-2.35.0.jar
+[INFO]         |->: model/Ecore.genmodel - model/Ecore.genmodel
+[INFO]         |->: model/ExtendedMetaData.ecore - model/ExtendedMetaData.ecore
+[INFO]         |->: model/XMLNamespace.ecore - model/XMLNamespace.ecore
+[INFO]         |->: model/XMLType.ecore - model/XMLType.ecore
+[INFO]         |->: model/XMLType.genmodel - model/XMLType.genmodel
+[INFO]         |->: model/XMLNamespace.genmodel - model/XMLNamespace.genmodel
+[INFO]         |->: model/Ecore.ecore - model/Ecore.ecore
+[INFO]         |->: model/DateConversionDelegateAnnotation.ecore - model/DateConversionDelegateAnnotation.ecore
+[INFO]         |->: model/EcoreAnnotation.ecore - model/EcoreAnnotation.ecore
+[INFO]       Container: C:/Users/ungei/.m2/repository/org/osgi/org.osgi.service.condition/1.0.0/org.osgi.service.condition-1.0.0.jar
+[INFO]       Container: C:/Users/ungei/.m2/repository/org/eclipse/emf/org.eclipse.emf.common/2.29.0/org.eclipse.emf.common-2.29.0.jar
+[INFO]       Container: C:/Users/ungei/.m2/repository/org/osgi/org.osgi.service.component.annotations/1.4.0/org.osgi.service.component.annotations-1.4.0.jar
+[INFO]       Container: C:/Users/ungei/.m2/repository/org/eclipse/emf/org.eclipse.emf.ecore.xmi/2.36.0/org.eclipse.emf.ecore.xmi-2.36.0.jar
+[INFO]       Container: C:/Users/ungei/.m2/repository/org/geckoprojects/emf/org.gecko.emf.osgi.api/6.1.3/org.gecko.emf.osgi.api-6.1.3.jar
+[INFO]       Container: C:/Users/ungei/.m2/repository/org/osgi/org.osgi.service.component.annotations/1.5.1/org.osgi.service.component.annotations-1.5.1.jar
+[INFO]       Container: C:/Users/ungei/.m2/repository/org/osgi/org.osgi.service.metatype.annotations/1.4.0/org.osgi.service.metatype.annotations-1.4.0.jar
+[INFO]       Container: C:/Users/ungei/.m2/repository/org/osgi/org.osgi.annotation.versioning/1.0.0/org.osgi.annotation.versioning-1.0.0.jar
+[INFO]       Container: C:/Users/ungei/.m2/repository/org/osgi/org.osgi.framework/1.10.0/org.osgi.framework-1.10.0.jar
+[INFO]       Container: C:/Users/ungei/.m2/repository/org/osgi/org.osgi.annotation.bundle/2.0.0/org.osgi.annotation.bundle-2.0.0.jar
+[INFO] Loading resource://org.eclipse.sensinact.southbound.chripstack.model/model/chirpstack.genmodel
+[INFO] Asked to handle resource://org.eclipse.sensinact.southbound.chripstack.model/model/chirpstack.genmodel
+[INFO] Asked to handle resource://org.eclipse.sensinact.southbound.chripstack.model/model/chirpstack.genmodel
+[INFO] Asked to open InputStream for resource://org.eclipse.sensinact.southbound.chripstack.model/model/chirpstack.genmodel
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/model/chirpstack.genmodel
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] Configuring Jet
+[INFO] Setting modelDirectory/org.eclipse.sensinact.southbound.chripstack.model/src
+[INFO] Creating BNDGeneratorAdapterFactory
+[INFO] Starting generator run
+[INFO] Creating GeckoGenModelGeneratorAdapter
+[INFO] Creating GeckoGenPackageGeneratorAdapter
+[INFO] Creating GeckoGenClassGeneratorAdapter
+[INFO] subtask Generating code
+[INFO] internaly worked 0.07142857142857142 on null
+[INFO] internaly worked 0.07142857142857142 on null
+[INFO] internaly worked 0.8571428571428572 on null
+[INFO] subtask 
+[INFO] subtask Generating Code for ChirpstackPackage
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle resource://org.eclipse.sensinact.southbound.chripstack.model/model/chirpstack.ecore
+[INFO] Asked to handle resource://org.eclipse.sensinact.southbound.chripstack.model/model/chirpstack.ecore
+[INFO] Asked to open InputStream for resource://org.eclipse.sensinact.southbound.chripstack.model/model/chirpstack.ecore
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/model/chirpstack.ecore
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Generating package interface info for package 'org.eclipse.sensinact.southbound.model.chirpstack.ChirpstackPackage'
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackPackage.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\ChirpstackPackage.java
+[INFO] subtask Generating Java class org.eclipse.sensinact.southbound.model.chirpstack.impl.ChirpstackPackageImpl
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackPackageImpl.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\impl\ChirpstackPackageImpl.java
+[INFO] subtask Generating factory interface info for package 'org.eclipse.sensinact.southbound.model.chirpstack.ChirpstackFactory'
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackFactory.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\ChirpstackFactory.java
+[INFO] subtask Generating Java class org.eclipse.sensinact.southbound.model.chirpstack.impl.ChirpstackFactoryImpl
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackFactoryImpl.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\impl\ChirpstackFactoryImpl.java
+[INFO] subtask Generating Java class org.eclipse.sensinact.southbound.model.chirpstack.util.ChirpstackSwitch
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackSwitch.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\util\ChirpstackSwitch.java
+[INFO] subtask Generating Java class org.eclipse.sensinact.southbound.model.chirpstack.util.ChirpstackAdapterFactory
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/ChirpstackAdapterFactory.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\util\ChirpstackAdapterFactory.java
+[INFO] subtask Generating EPackageConfigurator for package 'chirpstack'
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackEPackageConfigurator.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\configuration\ChirpstackEPackageConfigurator.java
+[INFO] subtask Generating OSGi configuration component for package 'chirpstack'
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/configuration/ChirpstackConfigurationComponent.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\configuration\ChirpstackConfigurationComponent.java
+[INFO] subtask Generating package info for package 'chirpstack'
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/package-info.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\package-info.java
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/package-info.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\impl\package-info.java
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] toPlatformResourceURI: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] toPlatformResourceURI esult: /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/util/package-info.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\util\package-info.java
+[INFO] subtask Generating Message
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] subtask Generating Java interface org.eclipse.sensinact.southbound.model.chirpstack.ChirpstackMessage
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackMessage.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackMessage.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackMessage.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackMessage.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackMessage.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackMessage.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackMessage.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackMessage.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackMessage.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/ChirpstackMessage.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\ChirpstackMessage.java
+[INFO] subtask Generating Java class org.eclipse.sensinact.southbound.model.chirpstack.impl.ChirpstackMessageImpl
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackMessageImpl.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackMessageImpl.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackMessageImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackMessageImpl.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackMessageImpl.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackMessageImpl.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackMessageImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackMessageImpl.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackMessageImpl.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ChirpstackMessageImpl.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\impl\ChirpstackMessageImpl.java
+[INFO] subtask Generating Device Info
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] subtask Generating Java interface org.eclipse.sensinact.southbound.model.chirpstack.DeviceInfo
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/DeviceInfo.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/DeviceInfo.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/DeviceInfo.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/DeviceInfo.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/DeviceInfo.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/DeviceInfo.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/DeviceInfo.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/DeviceInfo.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/DeviceInfo.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/DeviceInfo.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\DeviceInfo.java
+[INFO] subtask Generating Java class org.eclipse.sensinact.southbound.model.chirpstack.impl.DeviceInfoImpl
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/DeviceInfoImpl.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/DeviceInfoImpl.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/DeviceInfoImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/DeviceInfoImpl.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/DeviceInfoImpl.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/DeviceInfoImpl.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/DeviceInfoImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/DeviceInfoImpl.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/DeviceInfoImpl.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/DeviceInfoImpl.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\impl\DeviceInfoImpl.java
+[INFO] subtask Generating String To String Map
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] subtask Generating Java class org.eclipse.sensinact.southbound.model.chirpstack.impl.StringToStringMapImpl
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/StringToStringMapImpl.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/StringToStringMapImpl.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/StringToStringMapImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/StringToStringMapImpl.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/StringToStringMapImpl.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/StringToStringMapImpl.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/StringToStringMapImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/StringToStringMapImpl.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/StringToStringMapImpl.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/StringToStringMapImpl.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\impl\StringToStringMapImpl.java
+[INFO] subtask Generating Sensor Data
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] subtask Generating Java interface org.eclipse.sensinact.southbound.model.chirpstack.SensorData
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/SensorData.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/SensorData.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/SensorData.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/SensorData.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/SensorData.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/SensorData.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/SensorData.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/SensorData.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/SensorData.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/SensorData.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\SensorData.java
+[INFO] subtask Generating Java class org.eclipse.sensinact.southbound.model.chirpstack.impl.SensorDataImpl
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/SensorDataImpl.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/SensorDataImpl.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/SensorDataImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/SensorDataImpl.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/SensorDataImpl.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/SensorDataImpl.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/SensorDataImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/SensorDataImpl.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/SensorDataImpl.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/SensorDataImpl.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\impl\SensorDataImpl.java
+[INFO] subtask Generating Rx Info
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] subtask Generating Java interface org.eclipse.sensinact.southbound.model.chirpstack.RxInfo
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/RxInfo.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/RxInfo.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/RxInfo.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/RxInfo.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/RxInfo.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/RxInfo.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/RxInfo.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/RxInfo.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/RxInfo.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/RxInfo.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\RxInfo.java
+[INFO] subtask Generating Java class org.eclipse.sensinact.southbound.model.chirpstack.impl.RxInfoImpl
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/RxInfoImpl.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/RxInfoImpl.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/RxInfoImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/RxInfoImpl.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/RxInfoImpl.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/RxInfoImpl.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/RxInfoImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/RxInfoImpl.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/RxInfoImpl.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/RxInfoImpl.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\impl\RxInfoImpl.java
+[INFO] subtask Generating Location
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] subtask Generating Java interface org.eclipse.sensinact.southbound.model.chirpstack.Location
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Location.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Location.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Location.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Location.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Location.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Location.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Location.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Location.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Location.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Location.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\Location.java
+[INFO] subtask Generating Java class org.eclipse.sensinact.southbound.model.chirpstack.impl.LocationImpl
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LocationImpl.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LocationImpl.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LocationImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LocationImpl.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LocationImpl.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LocationImpl.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LocationImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LocationImpl.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LocationImpl.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LocationImpl.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\impl\LocationImpl.java
+[INFO] subtask Generating Metadata
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] subtask Generating Java interface org.eclipse.sensinact.southbound.model.chirpstack.Metadata
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Metadata.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Metadata.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Metadata.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Metadata.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Metadata.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Metadata.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Metadata.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Metadata.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Metadata.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Metadata.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\Metadata.java
+[INFO] subtask Generating Java class org.eclipse.sensinact.southbound.model.chirpstack.impl.MetadataImpl
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/MetadataImpl.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/MetadataImpl.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/MetadataImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/MetadataImpl.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/MetadataImpl.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/MetadataImpl.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/MetadataImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/MetadataImpl.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/MetadataImpl.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/MetadataImpl.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\impl\MetadataImpl.java
+[INFO] subtask Generating Tx Info
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] subtask Generating Java interface org.eclipse.sensinact.southbound.model.chirpstack.TxInfo
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/TxInfo.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/TxInfo.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/TxInfo.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/TxInfo.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/TxInfo.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/TxInfo.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/TxInfo.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/TxInfo.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/TxInfo.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/TxInfo.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\TxInfo.java
+[INFO] subtask Generating Java class org.eclipse.sensinact.southbound.model.chirpstack.impl.TxInfoImpl
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/TxInfoImpl.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/TxInfoImpl.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/TxInfoImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/TxInfoImpl.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/TxInfoImpl.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/TxInfoImpl.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/TxInfoImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/TxInfoImpl.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/TxInfoImpl.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/TxInfoImpl.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\impl\TxInfoImpl.java
+[INFO] subtask Generating Modulation
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] subtask Generating Java interface org.eclipse.sensinact.southbound.model.chirpstack.Modulation
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Modulation.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Modulation.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Modulation.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Modulation.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Modulation.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Modulation.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Modulation.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Modulation.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Modulation.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/Modulation.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\Modulation.java
+[INFO] subtask Generating Java class org.eclipse.sensinact.southbound.model.chirpstack.impl.ModulationImpl
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ModulationImpl.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ModulationImpl.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ModulationImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ModulationImpl.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ModulationImpl.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ModulationImpl.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ModulationImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ModulationImpl.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ModulationImpl.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/ModulationImpl.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\impl\ModulationImpl.java
+[INFO] subtask Generating Lora Modulation
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] subtask Generating Java interface org.eclipse.sensinact.southbound.model.chirpstack.LoraModulation
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/LoraModulation.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/LoraModulation.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/LoraModulation.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/LoraModulation.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/LoraModulation.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/LoraModulation.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/LoraModulation.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/LoraModulation.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/LoraModulation.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/LoraModulation.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\LoraModulation.java
+[INFO] subtask Generating Java class org.eclipse.sensinact.southbound.model.chirpstack.impl.LoraModulationImpl
+[INFO] subtask Generating /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LoraModulationImpl.java
+[INFO] internaly worked 1.0 on null
+[INFO] subtask 
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LoraModulationImpl.java
+[INFO] Asked if exists platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LoraModulationImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LoraModulationImpl.java
+[INFO] Asked to open InputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LoraModulationImpl.java
+[INFO] sanatized uri resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LoraModulationImpl.java
+[INFO] bsn according to URI org.eclipse.sensinact.southbound.chripstack.model
+[INFO] The bsn segment part fits to: org.eclipse.sensinact.southbound.chripstack.model
+[INFO] subtask Preparing new /org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LoraModulationImpl.java
+[INFO] Asked to handle platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LoraModulationImpl.java
+[INFO] Asked to open OutputStream for platform:/resource/org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LoraModulationImpl.java
+[INFO] Sanatized resource://org.eclipse.sensinact.southbound.chripstack.model/src/org/eclipse/sensinact/southbound/model/chirpstack/impl/LoraModulationImpl.java
+[INFO] Opening file N:\git\civitas\org.gecko.civitas\org.eclipse.sensinact.southbound.chripstack.model\src\org\eclipse\sensinact\southbound\model\chirpstack\impl\LoraModulationImpl.java
+[INFO] Generating code - org.eclipse.emf.codegen.ecore
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common
+[INFO]   OK - org.eclipse.emf.common

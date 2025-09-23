@@ -1,0 +1,15 @@
+org.geckoprojects.codec.j3:org.eclipse.fennec.codec:jar:1.0.0-SNAPSHOT
+org.geckoprojects.codec.j3:org.eclipse.fennec.codec.constants:jar:1.0.0-SNAPSHOT
+org.geckoprojects.codec.j3:org.eclipse.fennec.codec.info:jar:1.0.0-SNAPSHOT
+org.geckoprojects.codec.j3:org.eclipse.fennec.codec.info.model:jar:1.0.0-SNAPSHOT
+org.geckoprojects.codec.j3:org.eclipse.fennec.codec.json:jar:1.0.0-SNAPSHOT
+org.geckoprojects.codec.j3:org.eclipse.fennec.codec.mongo:jar:1.0.0-SNAPSHOT
+
+tools.jackson.core:jackson-core:3.0.0-rc6
+tools.jackson.core:jackson-databind:3.0.0-rc6
+tools.jackson.dataformat:jackson-dataformat-properties:3.0.0-rc6
+tools.jackson.dataformat:jackson-dataformat-yaml:3.0.0-rc6
+com.fasterxml.jackson.core:jackson-annotations:2.19.2
+
+de.undercouch:bson4jackson:2.13.1
+org.yaml:snakeyaml:2.0

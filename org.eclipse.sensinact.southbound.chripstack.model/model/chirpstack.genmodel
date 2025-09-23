@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.jena.chirpstack.model/src" modelPluginID="de.jena.chirpstack.model"
+    modelName="Chirpstack" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true" oSGiCompatible="true">
+  <foreignModel>chirpstack.ecore</foreignModel>
+  <genPackages prefix="Chirpstack" basePackage="org.eclipse.sensinact.southbound.model"
+      disposableProviderFactory="true" ecorePackage="chirpstack.ecore#/">
+    <genClasses ecoreClass="chirpstack.ecore#//ChirpstackMessage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//ChirpstackMessage/deduplicationId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//ChirpstackMessage/time"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chirpstack.ecore#//ChirpstackMessage/deviceInfo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//ChirpstackMessage/devAddr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//ChirpstackMessage/adr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//ChirpstackMessage/dr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//ChirpstackMessage/fCnt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//ChirpstackMessage/fPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//ChirpstackMessage/confirmed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//ChirpstackMessage/data"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chirpstack.ecore#//ChirpstackMessage/object"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chirpstack.ecore#//ChirpstackMessage/rxInfo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chirpstack.ecore#//ChirpstackMessage/txInfo"/>
+    </genClasses>
+    <genClasses ecoreClass="chirpstack.ecore#//DeviceInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//DeviceInfo/tenantId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//DeviceInfo/tenantName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//DeviceInfo/applicationId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//DeviceInfo/applicationName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//DeviceInfo/deviceProfileId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//DeviceInfo/deviceProfileName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//DeviceInfo/deviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//DeviceInfo/devEui"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chirpstack.ecore#//DeviceInfo/tags"/>
+    </genClasses>
+    <genClasses ecoreClass="chirpstack.ecore#//StringToStringMap">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//StringToStringMap/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//StringToStringMap/value"/>
+    </genClasses>
+    <genClasses ecoreClass="chirpstack.ecore#//SensorData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//SensorData/soil_water_tension1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//SensorData/soil_moisture_raw2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//SensorData/soil_moisture_raw1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//SensorData/soil_water_tension2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//SensorData/ambient_light"/>
+    </genClasses>
+    <genClasses ecoreClass="chirpstack.ecore#//RxInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//RxInfo/gatewayId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//RxInfo/uplinkId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//RxInfo/rssi"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//RxInfo/snr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//RxInfo/channel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//RxInfo/rfChain"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chirpstack.ecore#//RxInfo/location"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//RxInfo/context"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chirpstack.ecore#//RxInfo/metadata"/>
+    </genClasses>
+    <genClasses ecoreClass="chirpstack.ecore#//Location">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//Location/latitude"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//Location/longitude"/>
+    </genClasses>
+    <genClasses ecoreClass="chirpstack.ecore#//Metadata">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//Metadata/region_common_name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//Metadata/region_name"/>
+    </genClasses>
+    <genClasses ecoreClass="chirpstack.ecore#//TxInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//TxInfo/frequency"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chirpstack.ecore#//TxInfo/modulation"/>
+    </genClasses>
+    <genClasses ecoreClass="chirpstack.ecore#//Modulation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chirpstack.ecore#//Modulation/lora"/>
+    </genClasses>
+    <genClasses ecoreClass="chirpstack.ecore#//LoraModulation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//LoraModulation/bandwidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//LoraModulation/spreadingFactor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chirpstack.ecore#//LoraModulation/codeRate"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

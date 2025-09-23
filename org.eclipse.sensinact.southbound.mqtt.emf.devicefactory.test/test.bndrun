@@ -1,0 +1,13 @@
+-library: enableOSGi-Test
+
+-runrequires: \
+	bnd.identity;id='org.eclipse.sensinact.southbound.mqtt.emf.devicefactory.test',\
+	bnd.identity;id='org.eclipse.sensinact.southbound.mqtt.emf.devicefactory'
+	
+-runbundles.test: \
+	org.eclipse.sensinact.southbound.mqtt.emf.devicefactory.test;version=snapshot
+
+-runfw: org.apache.felix.framework
+
+-runee: JavaSE-21
+
