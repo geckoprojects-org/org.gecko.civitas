@@ -1,0 +1,8 @@
+-library: enable-emf
+
+-buildpath: \
+	org.apache.commons.commons-csv,\
+	org.eclipse.fennec.codec.constants,\
+	org.eclipse.fennec.codec.csv
+
+
