@@ -1,0 +1,9 @@
+services:
+
+    civitas-meter:
+        image: devel.data-in-motion.biz:6000/civitas/meter:latest
+        ports:
+            - "8080:8080"
+
+
+

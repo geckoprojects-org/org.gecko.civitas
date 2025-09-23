@@ -109,8 +109,12 @@ org.osgi:osgi.core:7.0.0
 org.osgi:osgi.core:8.0.0
 org.osgi:osgi.cmpn:7.0.0
 
-org.slf4j:slf4j-simple:1.7.36
-org.slf4j:slf4j-api:1.7.36
+
+#log
+org.slf4j:slf4j-api:2.0.11
+org.slf4j:jul-to-slf4j:2.0.11                                                                                                                                          
+ch.qos.logback:logback-core:1.5.3
+ch.qos.logback:logback-classic:1.5.3
 
 org.geckoprojects.bnd:org.gecko.bnd.dimc.library:2.0.1
 org.geckoprojects.bnd:org.gecko.bnd.jacoco.library:2.0.1
