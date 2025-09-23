@@ -90,7 +90,7 @@ public class CSVReaderTest {
 		}
 		assertNotNull(csvReader);
 
-		List<EObject> results = csvReader.loadEObjectsFromCSV(System.getProperty("data")+"basic_data_2025_09_23_11:45.csv", MeterSourcePackage.eINSTANCE.getBasicData());
+		List<EObject> results = csvReader.loadEObjectsFromCSV(System.getProperty("data")+"basic_data_2025_09_23_11_45.csv", MeterSourcePackage.eINSTANCE.getBasicData());
 		assertThat(results).hasSize(20);
 		for(EObject result : results) {
 			BasicData basicData = (BasicData) result;
@@ -128,7 +128,7 @@ public class CSVReaderTest {
 		}
 		assertNotNull(csvReader);
 		
-		List<EObject> results = csvReader.loadEObjectsFromCSV(System.getProperty("data")+"operating_data_2025_09_23_12:23.csv", MeterSourcePackage.eINSTANCE.getOperatingData());
+		List<EObject> results = csvReader.loadEObjectsFromCSV(System.getProperty("data")+"operating_data_2025_09_23_12_23.csv", MeterSourcePackage.eINSTANCE.getOperatingData());
 		assertThat(results).hasSize(20);
 		for(EObject result : results) {
 			OperatingData basicData = (OperatingData) result;
