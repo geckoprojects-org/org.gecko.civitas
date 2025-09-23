@@ -202,13 +202,31 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	int METER = 2;
 
 	/**
+	 * The feature id for the '<em><b>Plant Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METER__PLANT_ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METER__ID = 1;
+
+	/**
 	 * The number of structural features of the '<em>Meter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int METER_FEATURE_COUNT = 0;
+	int METER_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Meter</em>' class.
@@ -230,13 +248,49 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	int READING = 3;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READING__ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Meter Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READING__METER_ID = 1;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READING__VALUE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READING__TIMESTAMP = 3;
+
+	/**
 	 * The number of structural features of the '<em>Reading</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int READING_FEATURE_COUNT = 0;
+	int READING_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Reading</em>' class.
@@ -395,6 +449,28 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getMeter();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.Meter#getPlantId <em>Plant Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Plant Id</em>'.
+	 * @see org.civitas.meter.source.model.metersource.Meter#getPlantId()
+	 * @see #getMeter()
+	 * @generated
+	 */
+	EAttribute getMeter_PlantId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.Meter#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.civitas.meter.source.model.metersource.Meter#getId()
+	 * @see #getMeter()
+	 * @generated
+	 */
+	EAttribute getMeter_Id();
+
+	/**
 	 * Returns the meta object for class '{@link org.civitas.meter.source.model.metersource.Reading <em>Reading</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -403,6 +479,50 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EClass getReading();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.Reading#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.civitas.meter.source.model.metersource.Reading#getId()
+	 * @see #getReading()
+	 * @generated
+	 */
+	EAttribute getReading_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.Reading#getMeterId <em>Meter Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Meter Id</em>'.
+	 * @see org.civitas.meter.source.model.metersource.Reading#getMeterId()
+	 * @see #getReading()
+	 * @generated
+	 */
+	EAttribute getReading_MeterId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.Reading#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.civitas.meter.source.model.metersource.Reading#getValue()
+	 * @see #getReading()
+	 * @generated
+	 */
+	EAttribute getReading_Value();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.Reading#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see org.civitas.meter.source.model.metersource.Reading#getTimestamp()
+	 * @see #getReading()
+	 * @generated
+	 */
+	EAttribute getReading_Timestamp();
 
 	/**
 	 * Returns the meta object for class '{@link org.civitas.meter.source.model.metersource.Customer <em>Customer</em>}'.
@@ -532,6 +652,22 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 		EClass METER = eINSTANCE.getMeter();
 
 		/**
+		 * The meta object literal for the '<em><b>Plant Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute METER__PLANT_ID = eINSTANCE.getMeter_PlantId();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute METER__ID = eINSTANCE.getMeter_Id();
+
+		/**
 		 * The meta object literal for the '{@link org.civitas.meter.source.model.metersource.impl.ReadingImpl <em>Reading</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -540,6 +676,38 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EClass READING = eINSTANCE.getReading();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute READING__ID = eINSTANCE.getReading_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Meter Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute READING__METER_ID = eINSTANCE.getReading_MeterId();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute READING__VALUE = eINSTANCE.getReading_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute READING__TIMESTAMP = eINSTANCE.getReading_Timestamp();
 
 		/**
 		 * The meta object literal for the '{@link org.civitas.meter.source.model.metersource.impl.CustomerImpl <em>Customer</em>}' class.

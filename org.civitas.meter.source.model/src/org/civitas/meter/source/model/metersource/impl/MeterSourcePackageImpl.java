@@ -239,8 +239,68 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 	 * @generated
 	 */
 	@Override
+	public EAttribute getMeter_PlantId() {
+		return (EAttribute)meterEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMeter_Id() {
+		return (EAttribute)meterEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getReading() {
 		return readingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getReading_Id() {
+		return (EAttribute)readingEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getReading_MeterId() {
+		return (EAttribute)readingEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getReading_Value() {
+		return (EAttribute)readingEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getReading_Timestamp() {
+		return (EAttribute)readingEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -295,8 +355,14 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 		createEAttribute(operatingDataEClass, OPERATING_DATA__STARTS);
 
 		meterEClass = createEClass(METER);
+		createEAttribute(meterEClass, METER__PLANT_ID);
+		createEAttribute(meterEClass, METER__ID);
 
 		readingEClass = createEClass(READING);
+		createEAttribute(readingEClass, READING__ID);
+		createEAttribute(readingEClass, READING__METER_ID);
+		createEAttribute(readingEClass, READING__VALUE);
+		createEAttribute(readingEClass, READING__TIMESTAMP);
 
 		customerEClass = createEClass(CUSTOMER);
 	}
@@ -341,14 +407,20 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 		initEAttribute(getBasicData_Type(), ecorePackage.getEString(), "type", null, 0, 1, BasicData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operatingDataEClass, OperatingData.class, "OperatingData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOperatingData_Id(), ecorePackage.getEString(), "id", null, 1, 1, OperatingData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperatingData_Id(), ecorePackage.getEInt(), "id", null, 1, 1, OperatingData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperatingData_PlantId(), ecorePackage.getEString(), "plantId", null, 0, 1, OperatingData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperatingData_OperatingHours(), theUnitsPackage.getHours(), "operatingHours", null, 0, 1, OperatingData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperatingData_Starts(), theUnitsPackage.getEInstant(), "starts", null, 0, 1, OperatingData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(meterEClass, Meter.class, "Meter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMeter_PlantId(), ecorePackage.getEString(), "plantId", null, 0, 1, Meter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMeter_Id(), ecorePackage.getEInt(), "id", null, 1, 1, Meter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(readingEClass, Reading.class, "Reading", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getReading_Id(), ecorePackage.getEInt(), "id", null, 1, 1, Reading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReading_MeterId(), ecorePackage.getEString(), "meterId", null, 0, 1, Reading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReading_Value(), ecorePackage.getEInt(), "value", null, 0, 1, Reading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReading_Timestamp(), theUnitsPackage.getEInstant(), "timestamp", null, 0, 1, Reading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customerEClass, Customer.class, "Customer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -416,6 +488,18 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 			   "documentation", "This is a reference to the plantId of the BasicData but without the prefix \"p\"."
 		   });
 		addAnnotation
+		  (getMeter_PlantId(),
+		   source,
+		   new String[] {
+			   "documentation", "This is a reference to the plantId of the BasicData but without the prefix \"p\"."
+		   });
+		addAnnotation
+		  (getReading_MeterId(),
+		   source,
+		   new String[] {
+			   "documentation", "This is a reference to the meterId"
+		   });
+		addAnnotation
 		  (customerEClass,
 		   source,
 		   new String[] {
@@ -442,6 +526,18 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 		   source,
 		   new String[] {
 			   "name", "plant_id"
+		   });
+		addAnnotation
+		  (getMeter_PlantId(),
+		   source,
+		   new String[] {
+			   "name", "plant_id"
+		   });
+		addAnnotation
+		  (getReading_MeterId(),
+		   source,
+		   new String[] {
+			   "name", "meter_id"
 		   });
 	}
 

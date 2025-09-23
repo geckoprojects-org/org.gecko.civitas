@@ -20,8 +20,16 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//OperatingData/operatingHours"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//OperatingData/starts"/>
     </genClasses>
-    <genClasses ecoreClass="meter-source.ecore#//Meter"/>
-    <genClasses ecoreClass="meter-source.ecore#//Reading"/>
+    <genClasses ecoreClass="meter-source.ecore#//Meter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//Meter/plantId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//Meter/id"/>
+    </genClasses>
+    <genClasses ecoreClass="meter-source.ecore#//Reading">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//Reading/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//Reading/meterId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//Reading/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//Reading/timestamp"/>
+    </genClasses>
     <genClasses ecoreClass="meter-source.ecore#//Customer"/>
   </genPackages>
 </genmodel:GenModel>

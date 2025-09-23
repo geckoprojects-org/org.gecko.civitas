@@ -39,7 +39,7 @@ public class OperatingDataImpl extends MinimalEObjectImpl.Container implements O
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ID_EDEFAULT = null;
+	protected static final int ID_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -49,7 +49,7 @@ public class OperatingDataImpl extends MinimalEObjectImpl.Container implements O
 	 * @generated
 	 * @ordered
 	 */
-	protected String id = ID_EDEFAULT;
+	protected int id = ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPlantId() <em>Plant Id</em>}' attribute.
@@ -136,7 +136,7 @@ public class OperatingDataImpl extends MinimalEObjectImpl.Container implements O
 	 * @generated
 	 */
 	@Override
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -146,8 +146,8 @@ public class OperatingDataImpl extends MinimalEObjectImpl.Container implements O
 	 * @generated
 	 */
 	@Override
-	public void setId(String newId) {
-		String oldId = id;
+	public void setId(int newId) {
+		int oldId = id;
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.OPERATING_DATA__ID, oldId, id));
@@ -251,7 +251,7 @@ public class OperatingDataImpl extends MinimalEObjectImpl.Container implements O
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case MeterSourcePackage.OPERATING_DATA__ID:
-				setId((String)newValue);
+				setId((Integer)newValue);
 				return;
 			case MeterSourcePackage.OPERATING_DATA__PLANT_ID:
 				setPlantId((String)newValue);
@@ -299,7 +299,7 @@ public class OperatingDataImpl extends MinimalEObjectImpl.Container implements O
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case MeterSourcePackage.OPERATING_DATA__ID:
-				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+				return id != ID_EDEFAULT;
 			case MeterSourcePackage.OPERATING_DATA__PLANT_ID:
 				return PLANT_ID_EDEFAULT == null ? plantId != null : !PLANT_ID_EDEFAULT.equals(plantId);
 			case MeterSourcePackage.OPERATING_DATA__OPERATING_HOURS:
