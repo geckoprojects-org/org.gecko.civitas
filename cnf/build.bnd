@@ -48,3 +48,11 @@ javac.target: 17
 		name = Temp; \
 		pretty = true; \
 		local = ${build}/cache/temp
+		
+-workingset:  \
+  model;member=${filter;${p};.*\.model*}, \
+  glt;member=${filter;${p};.*\.glt\.*},\
+  meter;member=${filter;${p};.*\.meter\.*},\
+  test;member=${filter;${p};.*\.*test*},\
+  runtime;member=${filter;${p};.*\.runtime\.*}
+		
