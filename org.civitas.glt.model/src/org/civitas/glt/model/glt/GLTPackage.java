@@ -16,6 +16,7 @@ package org.civitas.glt.model.glt;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 
 import org.gecko.emf.osgi.annotation.provide.EPackage;
 
@@ -121,13 +122,22 @@ public interface GLTPackage extends org.eclipse.emf.ecore.EPackage {
 	int BUILDING__STREET = 3;
 
 	/**
+	 * The feature id for the '<em><b>Contacts</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILDING__CONTACTS = 4;
+
+	/**
 	 * The number of structural features of the '<em>Building</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUILDING_FEATURE_COUNT = 4;
+	int BUILDING_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Building</em>' class.
@@ -276,6 +286,17 @@ public interface GLTPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getBuilding_Street();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.civitas.glt.model.glt.Building#getContacts <em>Contacts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Contacts</em>'.
+	 * @see org.civitas.glt.model.glt.Building#getContacts()
+	 * @see #getBuilding()
+	 * @generated
+	 */
+	EReference getBuilding_Contacts();
+
+	/**
 	 * Returns the meta object for class '{@link org.civitas.glt.model.glt.Contact <em>Contact</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -415,6 +436,14 @@ public interface GLTPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute BUILDING__STREET = eINSTANCE.getBuilding_Street();
+
+		/**
+		 * The meta object literal for the '<em><b>Contacts</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BUILDING__CONTACTS = eINSTANCE.getBuilding_Contacts();
 
 		/**
 		 * The meta object literal for the '{@link org.civitas.glt.model.glt.impl.ContactImpl <em>Contact</em>}' class.

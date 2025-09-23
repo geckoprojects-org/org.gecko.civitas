@@ -13,6 +13,8 @@
  */
 package org.civitas.glt.model.glt;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -30,6 +32,7 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link org.civitas.glt.model.glt.Building#getCity <em>City</em>}</li>
  *   <li>{@link org.civitas.glt.model.glt.Building#getZip <em>Zip</em>}</li>
  *   <li>{@link org.civitas.glt.model.glt.Building#getStreet <em>Street</em>}</li>
+ *   <li>{@link org.civitas.glt.model.glt.Building#getContacts <em>Contacts</em>}</li>
  * </ul>
  *
  * @see org.civitas.glt.model.glt.GLTPackage#getBuilding()
@@ -128,5 +131,17 @@ public interface Building extends EObject {
 	 * @generated
 	 */
 	void setStreet(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Contacts</b></em>' containment reference list.
+	 * The list contents are of type {@link org.civitas.glt.model.glt.Contact}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Contacts</em>' containment reference list.
+	 * @see org.civitas.glt.model.glt.GLTPackage#getBuilding_Contacts()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Contact> getContacts();
 
 } // Building

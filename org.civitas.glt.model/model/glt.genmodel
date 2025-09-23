@@ -13,6 +13,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute glt.ecore#//Building/city"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute glt.ecore#//Building/zip"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute glt.ecore#//Building/street"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference glt.ecore#//Building/contacts"/>
     </genClasses>
     <genClasses ecoreClass="glt.ecore#//Contact">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute glt.ecore#//Contact/buildingId"/>

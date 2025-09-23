@@ -21,6 +21,7 @@ import org.civitas.glt.model.glt.GLTPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -161,6 +162,16 @@ public class GLTPackageImpl extends EPackageImpl implements GLTPackage {
 	 * @generated
 	 */
 	@Override
+	public EReference getBuilding_Contacts() {
+		return (EReference)buildingEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getContact() {
 		return contactEClass;
 	}
@@ -259,6 +270,7 @@ public class GLTPackageImpl extends EPackageImpl implements GLTPackage {
 		createEAttribute(buildingEClass, BUILDING__CITY);
 		createEAttribute(buildingEClass, BUILDING__ZIP);
 		createEAttribute(buildingEClass, BUILDING__STREET);
+		createEReference(buildingEClass, BUILDING__CONTACTS);
 
 		contactEClass = createEClass(CONTACT);
 		createEAttribute(contactEClass, CONTACT__BUILDING_ID);
@@ -304,6 +316,7 @@ public class GLTPackageImpl extends EPackageImpl implements GLTPackage {
 		initEAttribute(getBuilding_City(), ecorePackage.getEString(), "city", null, 0, 1, Building.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBuilding_Zip(), ecorePackage.getEInt(), "zip", null, 0, 1, Building.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBuilding_Street(), ecorePackage.getEString(), "street", null, 0, 1, Building.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBuilding_Contacts(), this.getContact(), null, "contacts", null, 0, -1, Building.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(contactEClass, Contact.class, "Contact", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContact_BuildingId(), ecorePackage.getEIntegerObject(), "buildingId", null, 1, 1, Contact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
