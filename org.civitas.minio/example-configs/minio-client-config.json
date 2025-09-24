@@ -1,0 +1,11 @@
+{
+  ":configurator:resource-version": 1,
+  ":configurator:symbolic-name": "org.civitas.minio.client.config",
+  ":configurator:version": "1.0.0",
+
+  "MinIOClient~default": {
+    "endpoint": "http://localhost:9000",
+    "accessKey": "minioadmin",
+    "secretKey": "minioadmin"
+  }
+}

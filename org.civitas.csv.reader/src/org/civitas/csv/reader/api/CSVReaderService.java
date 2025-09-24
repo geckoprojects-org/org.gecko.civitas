@@ -13,6 +13,7 @@
  */
 package org.civitas.csv.reader.api;
 
+import java.io.InputStream;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -28,5 +29,7 @@ import org.osgi.annotation.versioning.ProviderType;
 public interface CSVReaderService {
 	
 	List<EObject> loadEObjectsFromCSV(String csvFilePath, EClass rootObject);
+
+  List<EObject> loadEObjects(InputStream in, EClass rootObject);
 
 }

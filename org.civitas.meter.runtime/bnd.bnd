@@ -2,7 +2,8 @@
 	org.osgi.annotation.versioning,\
 	org.osgi.annotation.bundle,\
 	org.apache.felix.cm.json,\
-	org.gecko.emf.osgi.component
+	org.gecko.emf.osgi.component,\
+	org.apache.felix.configadmin
 	
 Bundle-Version: 1.0.0.SNAPSHOT
 

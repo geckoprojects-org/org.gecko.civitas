@@ -1,0 +1,19 @@
+{
+  ":configurator:resource-version": 1,
+  ":configurator:symbolic-name": "org.civitas.minio.client.config",
+  ":configurator:version": "1.0.0",
+
+  "MinIOClient~default": {
+    "id": "minio",
+    "endpoint": "http://localhost:9000",
+    "accessKey": "minio",
+    "secretKey": "minio123"
+  },
+  
+  "MinIOCSVDownloadService~meterdata": {
+    "bucketname": "dummy-data",
+    "cron": "0 */5 * * * *",
+    "client.target": "(id=minio)",
+    "eClassUri": "https://civitas.org/meter/source/1.0.0#//OperatingData"
+  }
+}

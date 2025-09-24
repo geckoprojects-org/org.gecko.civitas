@@ -1,0 +1,19 @@
+{
+  ":configurator:resource-version": 1,
+  ":configurator:symbolic-name": "org.civitas.minio.csv.download.config",
+  ":configurator:version": "1.0.0",
+
+  "MinIOCSVDownloadService~meter-data": {
+    "bucketname": "meter-csv-data",
+    "cron": "0 */5 * * * *",
+    "client.target": "(service.pid=MinIOClient~default)",
+    "eClassUri": "Meter"
+  },
+
+  "MinIOCSVDownloadService~sensor-data": {
+    "bucketname": "sensor-csv-data",
+    "cron": "0 */10 * * * *",
+    "client.target": "(service.pid=MinIOClient~default)",
+    "eClassUri": "SensorReading"
+  }
+}

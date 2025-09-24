@@ -1,8 +1,11 @@
 package org.civitas.csv.reader;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.commons.csv.CSVFormat;
@@ -34,41 +38,73 @@ public class CSVReader implements CSVReaderService{
 
 	private static final Logger LOGGER = Logger.getLogger(CSVReader.class.getName());
 
-	
 	/* 
 	 * (non-Javadoc)
 	 * @see org.civitas.csv.reader.api.CSVReaderService#loadEObjectsFromCSV(java.lang.String, org.eclipse.emf.ecore.EClass)
 	 */
 	@Override
 	public List<EObject> loadEObjectsFromCSV(String csvFilePath, EClass rootObject) {
-		Map<String, Object> properties = new HashMap<>();
-		properties.put(CodecResourceOptions.CODEC_ROOT_OBJECT, rootObject);
-		List<String> csvRowStringList = getCSVRowStringList(csvFilePath);
-		List<EObject> results = new ArrayList<>(csvRowStringList.size());
-		for(String row : csvRowStringList) {
-			Resource resource = resourceFactory.createResource(URI.createURI(UUID.randomUUID().toString()+".csv"));			
-			try {
-				resource.load(new ByteArrayInputStream(row.getBytes()), properties);
-				if(!resource.getContents().isEmpty()) {
-					if(!resource.getContents().get(0).eClass().getInstanceClassName().equals(rootObject.getInstanceClassName())) {
-						LOGGER.warning(String.format("Root Object loaded from CSVResource is not of type %s but of type %s", rootObject.getInstanceClass(), resource.getContents().get(0).eClass().getInstanceClassName()));
-					} else {
-						results.add(resource.getContents().get(0));
-					}					
-				} else {
-					LOGGER.warning(String.format("No content in loaded CSVResource for row %s in file %s", row, csvFilePath));
-				}
-			} catch (IOException e) {
-				LOGGER.severe(String.format("IOExeption while loading CSV row into EObject from file %s", csvFilePath));
-				e.printStackTrace();
-			}
-		}
-		return results;
+	  List<String> csvRowStringList = getCSVRowStringList(csvFilePath);
+	  return read(rootObject, csvRowStringList);
+	}
+
+	private List<EObject> read(EClass rootObject, List<String> csvRowStringList) {
+    Map<String, Object> properties = new HashMap<>();
+	  properties.put(CodecResourceOptions.CODEC_ROOT_OBJECT, rootObject);
+	  List<EObject> results = new ArrayList<>(csvRowStringList.size());
+	  for(String row : csvRowStringList) {
+	    Resource resource = resourceFactory.createResource(URI.createURI(UUID.randomUUID().toString()+".csv"));			
+	    try {
+	      resource.load(new ByteArrayInputStream(row.getBytes()), properties);
+	      if(!resource.getContents().isEmpty()) {
+	        if(!resource.getContents().get(0).eClass().getInstanceClassName().equals(rootObject.getInstanceClassName())) {
+	          LOGGER.warning(String.format("Root Object loaded from CSVResource is not of type %s but of type %s", rootObject.getInstanceClass(), resource.getContents().get(0).eClass().getInstanceClassName()));
+	        } else {
+	          results.add(resource.getContents().get(0));
+	        }					
+	      } else {
+	        LOGGER.warning(String.format("No content in loaded CSVResource for row %s", row));
+	      }
+	    } catch (IOException e) {
+	      LOGGER.severe("IOExeption while loading CSV row into EObject");
+	      e.printStackTrace();
+	    }
+	  }
+	  return results;
+  }
+
+  /* 
+   * (non-Javadoc)
+   * @see org.civitas.csv.reader.api.CSVReaderService#loadEObjects(java.io.InputStream, org.eclipse.emf.ecore.EClass)
+   */
+  @Override
+	public List<EObject> loadEObjects(InputStream in, EClass rootObject) {
+	  List<String> csvRowStringList = getCSVRowStringList(in);
+    return read(rootObject, csvRowStringList);
 	}
 
 	private List<String> getCSVRowStringList(String csvFilePath) {
-		try (Reader reader = new FileReader(csvFilePath);
-				CSVParser csvParser = CSVParser.parse(reader, CSVFormat.DEFAULT.builder().setHeader().get());) {
+	  try(Reader reader = new FileReader(csvFilePath);){
+	    return getCSVRowStringList(reader);
+    } catch (IOException e) {
+      LOGGER.log(Level.SEVERE, String.format("Error reading CSV file %s: ", csvFilePath), e);
+      e.printStackTrace();
+      return Collections.emptyList();
+    }
+	}
+
+	private List<String> getCSVRowStringList(InputStream in) {
+	  try(Reader reader = new InputStreamReader(in);){
+	    return getCSVRowStringList(reader);
+	  } catch (IOException e) {
+	    LOGGER.severe(String.format("IOExeption reading InputStream"));
+	    e.printStackTrace();
+	    return Collections.emptyList();
+	  }
+	}
+	
+	private List<String> getCSVRowStringList(Reader reader) {
+		try (CSVParser csvParser = CSVParser.parse(reader, CSVFormat.DEFAULT.builder().setHeader().get());) {
 
 			List<String> csvRowStringList = new LinkedList<>();
 
@@ -88,8 +124,7 @@ public class CSVReader implements CSVReaderService{
 			}
 			return csvRowStringList;
 		} catch (IOException e) {
-			LOGGER.severe(String.format("IOExeption while parsing CSV file %s", csvFilePath));
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, String.format("Error parsing csv: %s", e.getMessage()), e);
 			return Collections.emptyList();
 		}
 	}

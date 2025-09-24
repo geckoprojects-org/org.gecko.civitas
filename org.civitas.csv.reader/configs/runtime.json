@@ -1,0 +1,12 @@
+{
+	":configurator:resource-version": 1,
+	":configurator:symbolicname": "org.civitas.csv.reader",
+	":configurator:version": "1.0.0",
+
+	"DefaultObjectMapperConfigurator~csv": {
+		"type": "csv",
+		"codecFactoryConfigurator.target": "(type=csv)"
+	},
+	"DefaultCodecModuleConfigurator~csv": {
+  }
+}

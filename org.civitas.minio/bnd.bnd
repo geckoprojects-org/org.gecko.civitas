@@ -1,0 +1,12 @@
+-library: enable-emf
+
+-buildpath: \
+	io.minio,\
+	slf4j.api,\
+	org.eclipse.osgi-technology.scheduler.basic,\
+	org.eclipse.osgi-technology.scheduler.api,\
+	org.civitas.csv.reader;version=snapshot,\
+	org.osgi.service.cm,\
+	com.squareup.okhttp3:okhttp,\
+	com.fasterxml.jackson.core:jackson-databind,\
+	com.fasterxml.jackson.core:jackson-core
