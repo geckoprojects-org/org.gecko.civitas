@@ -79,4 +79,13 @@
       <details key="documentation" value="This is another way of storing the plants, used for remote meters."/>
     </eAnnotations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Plant">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operatingData" upperBound="-1"
+        eType="#//OperatingData"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pant" eType="#//Plant"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="meter" upperBound="-1"
+        eType="#//Meter"/>
+  </eClassifiers>
 </ecore:EPackage>
