@@ -2,4 +2,5 @@
 
 -buildpath: \
 	org.osgi.service.typedevent,\
-	org.gecko.emf.repository.api
+	org.gecko.emf.repository.api,\
+	org.eclipse.fennec.qvt.api
