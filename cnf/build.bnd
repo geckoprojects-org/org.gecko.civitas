@@ -9,7 +9,8 @@
 	geckoEMF,\
 	fennecCamel,\
 	geckoEMFUtil,\
-	geckoMessaging
+	geckoMessaging,\
+	geckoEMFRepository
 
 # Needed because we enabled library 'gecko-dimc'
 # Activate baselining
