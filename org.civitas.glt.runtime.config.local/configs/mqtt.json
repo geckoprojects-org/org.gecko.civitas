@@ -3,9 +3,7 @@
 
 	"MQTTService~full":
 	{
-		"brokerUrl" : "tcp://datainmotion.de:1883",
-		"username" : "demo",
-		".password" : "1234",
+		"brokerUrl" : "tcp://localhost:1883",
 		"id" : "full",
 		"maxInflight" : 1000
 	}

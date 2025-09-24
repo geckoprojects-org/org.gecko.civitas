@@ -1,2 +1,5 @@
 -library: enable-emf
--buildpath: org.apache.aries.typedevent.bus
+
+-buildpath: \
+	org.osgi.service.typedevent,\
+	org.gecko.emf.repository.api
