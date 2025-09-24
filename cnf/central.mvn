@@ -47,6 +47,7 @@ org.apache.felix:org.apache.felix.inventory:2.0.0
 org.apache.felix:org.apache.felix.log:1.3.0
 
 org.apache.aries.typedevent:org.apache.aries.typedevent.bus:1.0.1
+org.apache.aries.component-dsl:org.apache.aries.component-dsl.component-dsl:1.2.2
 
 org.eclipse.platform:org.eclipse.core.contenttype:3.9.400
 org.eclipse.platform:org.eclipse.core.expressions:3.9.400
