@@ -11,19 +11,27 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package org.civitas.glt.mqtt.sender.api;
+package org.civitas.glt.sensor.validation.api;
 
-import org.civitas.prototype.model.calarm.SimpleAlarm;
-import org.osgi.annotation.versioning.ProviderType;
+import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
 /**
  * 
  * @author ilenia
  * @since Sep 24, 2025
  */
-@ProviderType
-public interface AlarmSenderService {
+@ObjectClassDefinition
+public @interface ValidationServiceConfig {
 	
-	void sendAlarm(SimpleAlarm alarm);
+	String validationType() default "";
+	
+	double threshold() default -9999.;
 
+	double minThreshold() default -9999.;
+	
+	double maxThreshold() default -9999.;
+	
+	String severityType() default "WARNING";
+	
+	String notificationType() default "PHONE";
 }

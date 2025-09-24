@@ -11,8 +11,9 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package org.civitas.glt.mqtt.sender.api;
+package org.civitas.glt.sensor.validation.api;
 
+import org.civitas.glt.sensor.model.sensor.SensorReading;
 import org.civitas.prototype.model.calarm.SimpleAlarm;
 import org.osgi.annotation.versioning.ProviderType;
 
@@ -22,8 +23,8 @@ import org.osgi.annotation.versioning.ProviderType;
  * @since Sep 24, 2025
  */
 @ProviderType
-public interface AlarmSenderService {
+public interface ValidationService {
 	
-	void sendAlarm(SimpleAlarm alarm);
+	SimpleAlarm validate(SensorReading sensorReading);
 
 }

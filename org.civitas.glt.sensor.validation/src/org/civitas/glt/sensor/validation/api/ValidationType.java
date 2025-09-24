@@ -11,19 +11,25 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package org.civitas.glt.mqtt.sender.api;
-
-import org.civitas.prototype.model.calarm.SimpleAlarm;
-import org.osgi.annotation.versioning.ProviderType;
+package org.civitas.glt.sensor.validation.api;
 
 /**
  * 
  * @author ilenia
  * @since Sep 24, 2025
  */
-@ProviderType
-public interface AlarmSenderService {
+public enum ValidationType {
 	
-	void sendAlarm(SimpleAlarm alarm);
+	ABOVE_THRESHOLD, 
+	
+	ABOVE_OR_EQUAL_THRESHOLD,
+	
+	BELOW_THRESHOLD,
+	
+	BELOW_OR_EQUAL_THRESHOLD,
+	
+	WITHIN_RANGE,
+	
+	OUTSIDE_RANGE;
 
 }

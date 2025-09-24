@@ -1,0 +1,7 @@
+-library: enable-emf
+
+
+-buildpath: \
+	org.civitas.glt.sensor.model;version=snapshot,\
+	org.civitas.prototype.model;version=snapshot,\
+	org.osgi.service.cm
