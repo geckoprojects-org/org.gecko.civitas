@@ -1,0 +1,8 @@
+-library: enable-emf
+
+-buildpath: \
+	org.gecko.osgi.messaging,\
+	org.civitas.prototype.model;version=snapshot,\
+	org.gecko.emf.json,\
+	org.civitas.glt.model;version=snapshot,\
+	org.civitas.glt.sensor.model;version=snapshot

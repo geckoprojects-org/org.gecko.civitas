@@ -8,7 +8,8 @@
 	geckoJacoco,\
 	geckoEMF,\
 	fennecCamel,\
-	geckoEMFUtil
+	geckoEMFUtil,\
+	geckoMessaging
 
 # Needed because we enabled library 'gecko-dimc'
 # Activate baselining

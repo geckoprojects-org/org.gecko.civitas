@@ -4,7 +4,8 @@
     modelDirectory="/org.civitas.prototype.model/src" modelPluginID="org.civitas.prototype.model"
     modelName="civitas-alarm" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0" suppressGenModelAnnotations="false"
-    copyrightFields="false" operationReflection="true" importOrganizing="true" oSGiCompatible="true">
+    copyrightFields="false" usedGenPackages="../../org.civitas.glt.sensor.model/model/building_sensor.genmodel#//sensor ../../org.civitas.glt.model/model/glt.genmodel#//glt ../../org.civitas.units.model/model/units.genmodel#//units"
+    operationReflection="true" importOrganizing="true" oSGiCompatible="true">
   <foreignModel>civitas-alarm.ecore</foreignModel>
   <genPackages prefix="CIVAlarm" basePackage="org.civitas.prototype.model" resource="XMI"
       disposableProviderFactory="true" ecorePackage="civitas-alarm.ecore#/">
@@ -31,6 +32,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-alarm.ecore#//Alarm/severity"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference civitas-alarm.ecore#//Alarm/scope"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-alarm.ecore#//Alarm/notificationType"/>
+    </genClasses>
+    <genClasses ecoreClass="civitas-alarm.ecore#//SimpleAlarm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-alarm.ecore#//SimpleAlarm/alarmId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-alarm.ecore#//SimpleAlarm/severity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-alarm.ecore#//SimpleAlarm/notificationType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference civitas-alarm.ecore#//SimpleAlarm/alarmReceiver"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference civitas-alarm.ecore#//SimpleAlarm/alarmTriggerEvent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-alarm.ecore#//SimpleAlarm/massage"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Cbase" ecorePackage="civitas-base.ecore#/">
