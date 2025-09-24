@@ -10,10 +10,37 @@
     "secretKey": "minio123"
   },
   
+  "MinIOCSVDownloadService~operatingdata": {
+    "bucketname": "dummy-data",
+    "cron": "0 */5 * * * *",
+    "client.target": "(id=minio)",
+    "eClassUri": "https://civitas.org/meter/source/1.0.0#//OperatingData",
+    "eventTopic" : "meterusecase/operating_source"
+  },
   "MinIOCSVDownloadService~meterdata": {
     "bucketname": "dummy-data",
     "cron": "0 */5 * * * *",
     "client.target": "(id=minio)",
-    "eClassUri": "https://civitas.org/meter/source/1.0.0#//OperatingData"
+    "eClassUri": "https://civitas.org/meter/source/1.0.0#//Meter",
+    "eventTopic" : "meterusecase/meter_source"
+  },
+  "EMFAttacherHandler~operating": {
+    "eventTopyic" : "meterusecase/operating_source",
+    "repo.target" : "(id=inmem)",
+    "incomming.eclassuri" : "https://civitas.org/meter/source/1.0.0#//OperatingData",
+    "target.eclassuri" : "https://civitas.org/meter/source/1.0.0#//Plant",
+    "foreignKeyFeature.uri" : "https://civitas.org/meter/source/1.0.0#//OperatingData/plantId",
+    "target.reference.uri" : "https://civitas.org/meter/source/1.0.0#//Plant/operatingData",
+    "forwardTopic" : "meterusecase/Plant_source"
+  },
+  "QVTHandler~plant": {
+    "eventTopyic" : "meterusecase/Plant_source",
+    "trafo.target" : "(id=plantQVT)",
+    "eclassuri" : "https://civitas.org/meter/source/1.0.0#//Plant",
+    "forwardTopic" : "meterusecase/Plant_target"
+  },
+  "JPADataSink~Plant": {
+    "eventTopyic" : "meterusecase/Plant_target",
+    "repo.target" : "(id=postgres)"
   }
 }

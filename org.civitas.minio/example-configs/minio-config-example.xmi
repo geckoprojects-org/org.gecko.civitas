@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<minioconfig:MinIOConfigurationRoot xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:minioconfig="https://civitas.org/minio/config/1.0.0"
+    name="Civitas MinIO Configuration"
+    version="1.0.0">
+
+  <!-- MinIO Client Configurations -->
+  <clientConfigurations configurationId="minio-client-default"
+                        endpoint="http://localhost:9000"
+                        accessKey="minioadmin"
+                        secretKey="minioadmin"/>
+
+  <clientConfigurations configurationId="minio-client-production"
+                        endpoint="https://minio.production.civitas.org:9000"
+                        accessKey="civitas_prod_user"
+                        secretKey="prod_secure_password"/>
+
+  <!-- CSV Download Service Configurations -->
+  <downloadServiceConfigurations configurationId="meter-data-processor"
+                                bucketname="meter-csv-data"
+                                cron="0 */5 * * * *"
+                                clientTarget="(service.pid=MinIOClient~default)"
+                                eClassUri="https://civitas.org/meter/source/1.0.0#//Meter"
+                                eventTopic="org/civitas/meter/data/parsed"
+                                enabled="true"/>
+
+  <downloadServiceConfigurations configurationId="sensor-data-processor"
+                                bucketname="sensor-csv-data"
+                                cron="0 */10 * * * *"
+                                clientTarget="(service.pid=MinIOClient~default)"
+                                eClassUri="https://civitas.org/glt/sensor/1.0.0#//SensorReading"
+                                eventTopic="org/civitas/sensor/data/parsed"
+                                enabled="true"/>
+
+  <downloadServiceConfigurations configurationId="building-data-processor"
+                                bucketname="building-csv-data"
+                                cron="0 0 */2 * * *"
+                                clientTarget="(service.pid=MinIOClient~production)"
+                                eClassUri="https://civitas.org/glt/1.0.0#//Building"
+                                eventTopic="org/civitas/glt/building/data/parsed"
+                                enabled="false"/>
+</minioconfig:MinIOConfigurationRoot>

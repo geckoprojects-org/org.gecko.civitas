@@ -31,6 +31,7 @@ Configures the MinIOCSVDownloadService that processes CSV files from MinIO bucke
 - **cron**: Cron expression for scheduling file checks (format: seconds minutes hours day month dayOfWeek)
 - **client.target**: OSGi filter to target the specific MinIOClient instance
 - **eClassUri**: URI/name of the EClass to use for parsing CSV data
+- **eventTopic**: Event topic to publish parsed EObjects to (default: `org/civitas/minio/csv/parsed`)
 
 ### Cron Expression Examples:
 - `"0 */5 * * * *"` - Every 5 minutes
@@ -47,7 +48,8 @@ Configures the MinIOCSVDownloadService that processes CSV files from MinIO bucke
     "bucketname": "meter-csv-data",
     "cron": "0 */5 * * * *",
     "client.target": "(service.pid=MinIOClient~default)",
-    "eClassUri": "Meter"
+    "eClassUri": "https://civitas.org/meter/source/1.0.0#//Meter",
+    "eventTopic": "org/civitas/meter/data/parsed"
   }
 }
 ```
@@ -59,10 +61,50 @@ Configures the MinIOCSVDownloadService that processes CSV files from MinIO bucke
     "bucketname": "sensor-csv-data",
     "cron": "0 */10 * * * *",
     "client.target": "(service.pid=MinIOClient~default)",
-    "eClassUri": "SensorReading"
+    "eClassUri": "https://civitas.org/meter/source/1.0.0#//SensorReading",
+    "eventTopic": "org/civitas/sensor/data/parsed"
   }
 }
 ```
+
+## Asynchronous Processing
+
+The MinIOCSVDownloadService performs initial file processing asynchronously during activation to avoid blocking the OSGi startup process. The service:
+
+1. **Immediate Activation**: Extracts the EClass and starts the scheduler immediately
+2. **Async Initial Processing**: Uses OSGi Promises to process existing files in the background
+3. **Non-blocking Startup**: OSGi container startup continues without waiting for initial CSV processing
+4. **Logging**: Success/failure of initial processing is logged but doesn't affect service activation
+
+## Event Handling
+
+The service uses OSGi TypedEventAdmin to publish parsed EObjects to configurable event topics. Each successfully parsed EObject is sent as a typed event.
+
+### Creating Event Handlers
+
+To receive the events, create a component that implements `TypedEventHandler<EObject>`:
+
+```java
+@Component
+@EventTopics("org/civitas/meter/data/parsed")
+public class MeterDataEventHandler implements TypedEventHandler<EObject> {
+
+    @Override
+    public void notify(String topic, EObject event) {
+        if (event.eClass().getName().equals("Meter")) {
+            // Process meter data
+            logger.info("Received meter data: {}", event);
+        }
+    }
+}
+```
+
+### Event Topic Conventions
+
+Recommended topic naming patterns:
+- `org/civitas/meter/data/parsed` - For meter data
+- `org/civitas/sensor/data/parsed` - For sensor readings
+- `org/civitas/glt/data/parsed` - For GLT building data
 
 ## Deployment
 
@@ -72,10 +114,48 @@ Configures the MinIOCSVDownloadService that processes CSV files from MinIO bucke
 
 ## EClass URIs
 
-Make sure the `eClassUri` values match the actual EClass names in your EMF model packages:
-- For meter source model: `"Meter"`, `"Customer"`, `"Reading"`, etc.
-- For sensor model: `"SensorReading"`, etc.
-- For GLT model: `"Building"`, `"Contact"`, etc.
+Make sure the `eClassUri` values match the actual EClass URI in your EMF model packages:
+- For meter source model: `"https://civitas.org/meter/source/1.0.0#//Meter"`, `"https://civitas.org/meter/source/1.0.0#//Customer"`, `"https://civitas.org/meter/source/1.0.0#//Reading"`, etc.
+
+## Ecore Configuration Model
+
+The MinIO configurations are also modeled using Eclipse Modeling Framework (EMF) Ecore. This provides:
+
+- **Type Safety**: Structured configuration objects with validation
+- **Code Generation**: Java classes generated from the Ecore model
+- **XMI Support**: Configuration data can be stored in XMI format
+- **Integration**: Easy integration with EMF-based tools and frameworks
+
+### Model Structure
+
+The Ecore model (`model/minio-config.ecore`) defines:
+
+- **MinIOClientConfig**: Client connection settings (endpoint, credentials)
+- **MinIOCSVDownloadServiceConfig**: Download service configuration
+- **MinIOConfigurationRoot**: Container for multiple configurations
+- **ScheduleFrequency**: Enum with predefined cron expressions
+
+### Example XMI Configuration
+
+```xml
+<minioconfig:MinIOConfigurationRoot>
+  <clientConfigurations configurationId="minio-client-default"
+                        endpoint="http://localhost:9000"
+                        accessKey="minioadmin"
+                        secretKey="minioadmin"/>
+
+  <downloadServiceConfigurations configurationId="meter-data-processor"
+                                bucketname="meter-csv-data"
+                                eClassUri="https://civitas.org/meter/source/1.0.0#//Meter"
+                                eventTopic="org/civitas/meter/data/parsed"/>
+</minioconfig:MinIOConfigurationRoot>
+```
+
+### Code Generation
+
+To generate Java classes from the Ecore model:
+1. Uncomment the `-generate` instruction in `bnd.bnd`
+2. Run the build to generate model classes in `src/`
 
 ## MinIO Setup
 

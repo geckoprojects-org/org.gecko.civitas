@@ -37,6 +37,8 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
+import org.osgi.service.typedevent.TypedEventBus;
+import org.osgi.util.promise.PromiseFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,6 +69,9 @@ public class MinIOCSVDownloadService {
 
       @AttributeDefinition(name = "EClassUri", description = "The URI of the EClass to expect")
       String eClassUri();
+
+      @AttributeDefinition(name = "Event Topic", description = "The topic to publish parsed EObjects to")
+      String eventTopic() default "org/civitas/meter/data/parsed";
     }
     
     @Reference(name="client")
@@ -75,8 +80,9 @@ public class MinIOCSVDownloadService {
     @Reference
     CSVReaderService reader;
 
-    
-    
+    @Reference
+    TypedEventBus typedEventBus;
+
     @Reference(target = "(" + EMFNamespaces.EMF_MODEL_NSURI +"=https://civitas.org/meter/source/1.0.0)")
     EPackage ePackage;
     
@@ -88,11 +94,20 @@ public class MinIOCSVDownloadService {
             // Extract the required EClass from the injected EPackage
             this.targetEClass = extractEClassFromPackage(config.eClassUri());
 
-            // Process initial files
-            processFilesInBucket();
-
             // Start scheduler for periodic checking
-            startScheduler();
+//            startScheduler();
+
+            // Process initial files asynchronously using Promise to avoid blocking startup
+            new PromiseFactory(Executors.newSingleThreadExecutor()).submit(() -> {
+                logger.info("Starting initial CSV file processing for bucket: {}", config.bucketname());
+                try {
+                    processFilesInBucket();
+                    logger.info("Initial CSV file processing completed successfully for bucket: {}", config.bucketname());
+                } catch (Exception e) {
+                    logger.error("Initial CSV file processing failed for bucket: {}", config.bucketname(), e);
+                }
+                return null;
+            }).then(o -> { startScheduler(); return null; });
 
         } catch (Exception e) {
             logger.error("Error during activation", e);
@@ -149,7 +164,7 @@ public class MinIOCSVDownloadService {
             List<EObject> parsedObjects = reader.loadEObjects(inputStream, targetEClass);
 
             // Print out the parsed EObjects (as specified in the requirement)
-            printParsedEObjects(fileName, parsedObjects);
+            sendAhead(fileName, parsedObjects);
 
             // Store the parsed filename in the visited list
             visitedFiles.add(fileName);
@@ -161,13 +176,21 @@ public class MinIOCSVDownloadService {
         }
     }
 
-    private void printParsedEObjects(String fileName, List<EObject> objects) {
-        logger.info("=== Parsed objects from file: {} ===", fileName);
+    private void sendAhead(String fileName, List<EObject> objects) {
+        String eventTopic = config.eventTopic();
+
         for (int i = 0; i < objects.size(); i++) {
             EObject obj = objects.get(i);
-            logger.info("Object {}: Type={}, toString={}", i + 1, obj.eClass().getName(), obj.toString());
+
+            // Send each EObject to the configured event topic
+            try {
+                typedEventBus.deliver(eventTopic, obj);
+            } catch (Exception e) {
+                logger.error("Failed to send EObject to event bus", e);
+            }
         }
         logger.info("=== End of parsed objects from file: {} ===", fileName);
+        logger.info("Sent {} objects to event topic: {}", objects.size(), eventTopic);
     }
 
     private void startScheduler() {

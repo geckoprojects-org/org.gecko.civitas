@@ -7,13 +7,14 @@
     "bucketname": "meter-csv-data",
     "cron": "0 */5 * * * *",
     "client.target": "(service.pid=MinIOClient~default)",
-    "eClassUri": "Meter"
+    "eClassUri": "https://civitas.org/meter/source/1.0.0#//Meter",
+    "eventTopic": "org/civitas/meter/data/parsed"
   },
-
   "MinIOCSVDownloadService~sensor-data": {
     "bucketname": "sensor-csv-data",
     "cron": "0 */10 * * * *",
     "client.target": "(service.pid=MinIOClient~default)",
-    "eClassUri": "SensorReading"
+    "eClassUri": "https://civitas.org/meter/source/1.0.0#//SensorReading",
+    "eventTopic": "org/civitas/sensor/data/parsed"
   }
 }

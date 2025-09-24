@@ -1,5 +1,11 @@
 -library: enable-emf
 
+-workingset: meter
+
+# Uncomment to generate Java classes from Ecore model
+#-generate: \
+#    model/minio-config.genmodel;output=src;generateEdit=false;generateEditor=false
+
 -buildpath: \
 	io.minio,\
 	slf4j.api,\
@@ -8,5 +14,7 @@
 	org.civitas.csv.reader;version=snapshot,\
 	org.osgi.service.cm,\
 	com.squareup.okhttp3:okhttp,\
+	org.osgi.service.typedevent,\
 	com.fasterxml.jackson.core:jackson-databind,\
-	com.fasterxml.jackson.core:jackson-core
+	com.fasterxml.jackson.core:jackson-core,\
+	org.osgi.util.promise
