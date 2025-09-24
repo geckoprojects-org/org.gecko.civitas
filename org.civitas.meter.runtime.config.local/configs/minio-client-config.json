@@ -39,7 +39,7 @@
     "eclassuri" : "https://civitas.org/meter/source/1.0.0#//Plant",
     "forwardTopic" : "meterusecase/Plant_target"
   },
-  "JPADataSink~Plant": {
+  "EMFRepositoryDataSink~Plant": {
     "eventTopyic" : "meterusecase/Plant_target",
     "repo.target" : "(id=postgres)"
   }
