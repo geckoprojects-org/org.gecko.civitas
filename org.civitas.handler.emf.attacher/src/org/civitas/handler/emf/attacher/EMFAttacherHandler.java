@@ -50,7 +50,7 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 	@interface Config{
 		
 		@AttributeDefinition(name = "Event Topic", description = "The topic this handler is listening to")
-		String event_topic();
+		String[] event_topic();
 		
 		@AttributeDefinition(name = "Repo Target", description = "The EMF Repository target")
 		String repo_target();
@@ -68,7 +68,7 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 		String target_reference_uri(); // Plant_meters
 		
 		@AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the updated target EObject")
-		String[] forward_topics();
+		String[] forward_topic();
 	}
 	
 	private static final Logger LOGGER = Logger.getLogger(EMFAttacherHandler.class.getName());
@@ -152,7 +152,7 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 		repository.save(targetEObject);
 		final EObject forwadObject = targetEObject;
 		// create Copy of target EObject and send via Typed Eventadmin
-		Arrays.asList(config.forward_topics()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(forwadObject)));
+		Arrays.asList(config.forward_topic()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(forwadObject)));
 	}
 
 	

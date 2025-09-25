@@ -59,7 +59,7 @@ public class QVTHandler implements TypedEventHandler<EObject> {
 		String trafo_id();
 
 		@AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the transformed target EObject")
-		String[] forward_topics();
+		String[] forward_topic();
 	}
 
 	@Reference
@@ -97,7 +97,7 @@ public class QVTHandler implements TypedEventHandler<EObject> {
 			Diagnostic diagnostic = Diagnostician.INSTANCE.validate(event);
 			if (diagnostic.getSeverity() == Diagnostic.OK && trafo != null) {
 				EObject result = trafo.doTransformation(event);
-				Arrays.asList(config.forward_topics()).forEach(t -> bus.deliver((String) t, result));
+				Arrays.asList(config.forward_topic()).forEach(t -> bus.deliver((String) t, result));
 			}
 		}
 	}

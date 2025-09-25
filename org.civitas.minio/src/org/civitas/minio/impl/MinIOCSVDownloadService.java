@@ -73,7 +73,7 @@ public class MinIOCSVDownloadService {
       String eClassUri();
 
       @AttributeDefinition(name = "The Forward Topcis", description = "The topic to publish parsed EObjects to")
-      String[] forward_topics() default "org/civitas/meter/data/parsed";
+      String[] forward_topic() default "org/civitas/meter/data/parsed";
     }
     
     @Reference(name="client")
@@ -176,7 +176,7 @@ public class MinIOCSVDownloadService {
     }
 
     private void sendAhead(String fileName, List<EObject> objects) {
-        List<Object> topics = Arrays.asList(config.forward_topics());
+        List<Object> topics = Arrays.asList(config.forward_topic());
 	for (int i = 0; i < objects.size(); i++) {
             EObject obj = objects.get(i);
 
