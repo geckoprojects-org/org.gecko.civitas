@@ -1,0 +1,87 @@
+{
+	":configurator:resource-version": 1,
+	":configurator:symbolicname": "org.civitas.meter.jpa",
+	":configurator:version": "0.0.0",
+	"fennec.jpa.EORMMappingService~metersource": {
+		"fennec.jpa.eorm.mappingName": "metersource",
+		"fennec.jpa.eorm.eClasses": ["Plant", "Meter", "Reading"],
+		"fennec.jpa.eorm.model.target": "(emf.name=metersource)"
+	},
+	"org.eclipse.daanse.jdbc.datasource.postgresql.impl.DataSourceService~manualMeter": {
+		"name": "manualMeter",
+		".password": "postgres",
+		"user": "postgres",
+		"dbname": "usecase206_manual_meters",
+		"ports": 5432,
+		"host": "localhost"
+	},
+	"fennec.jpa.EMPersistenceUnit~manualMeter": {
+		"fennec.jpa.dataSource.target": "(name=manualMeter)",
+		"fennec.jpa.mapping.target": "(fennec.jpa.eorm.mapping=metersource)",
+		"fennec.jpa.persistenceUnitName": "manualMeter"
+	},
+	"fennec.jpa.JPARepository~manualMeter": {
+		"repo_id": "manualMeter",
+		"base_uri": "manualMeter",
+		"entityManager.target": "(osgi.unit.name=manualMeter)"
+	},
+	"org.eclipse.daanse.jdbc.datasource.postgresql.impl.DataSourceService~remoteMeter": {
+		"name": "remoteMeter",
+		".password": "postgres",
+		"user": "postgres",
+		"dbname": "usecase206_remote_meters",
+		"ports": 5432,
+		"host": "localhost"
+	},
+	"fennec.jpa.EMPersistenceUnit~remoteMeter": {
+		"fennec.jpa.dataSource.target": "(name=remoteMeter)",
+		"fennec.jpa.mapping.target": "(fennec.jpa.eorm.mapping=metersource)",
+		"fennec.jpa.persistenceUnitName": "remoteMeter"
+	},
+	"fennec.jpa.JPARepository~remoteMeter": {
+		"repo_id": "remoteMeter",
+		"base_uri": "remoteMeter",
+		"entityManager.target": "(osgi.unit.name=remoteMeter)"
+	},
+	"org.eclipse.daanse.jdbc.datasource.postgresql.impl.DataSourceService~manualReading": {
+		"name": "manualReading",
+		".password": "postgres",
+		"user": "postgres",
+		"dbname": "usecase206_manual_readings",
+		"ports": 5432,
+		"host": "localhost"
+	},
+	"fennec.jpa.EMPersistenceUnit~manualReading": {
+		"fennec.jpa.dataSource.target": "(name=manualReading)",
+		"fennec.jpa.mapping.target": "(fennec.jpa.eorm.mapping=metersource)",
+		"fennec.jpa.persistenceUnitName": "manualReading"
+	},
+	"fennec.jpa.JPARepository~manualReading": {
+		"repo_id": "manualReading",
+		"base_uri": "manualReading",
+		"entityManager.target": "(osgi.unit.name=manualReading)"
+	},
+	"fennec.jpa.EORMMappingService~glt": {
+		"fennec.jpa.eorm.mappingName": "glt",
+		"fennec.jpa.eorm.eClasses": ["Building", "Contact"],
+		"fennec.jpa.eorm.model.target": "(emf.name=glt)"
+	},	
+	"org.eclipse.daanse.jdbc.datasource.postgresql.impl.DataSourceService~assets": {
+		"name": "assets",
+		".password": "postgres",
+		"user": "postgres",
+		"dbname": "usecase212_assets",
+		"ports": 5432,
+		"host": "localhost"
+	},
+	"fennec.jpa.EMPersistenceUnit~assets": {
+		"fennec.jpa.dataSource.target": "(name=assets)",
+		"fennec.jpa.mapping.target": "(fennec.jpa.eorm.mapping=glt)",
+		"fennec.jpa.persistenceUnitName": "assets"
+	},
+	"fennec.jpa.JPARepository~assets": {
+		"repo_id": "assets",
+		"base_uri": "assets",
+		"entityManager.target": "(osgi.unit.name=assets)"
+	}
+}
