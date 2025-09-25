@@ -47,6 +47,7 @@ header:
     - '**/*.aird'
     - '**/*.basic'
     - '**/.classpath'
+    - '**/*.sha'
     - 'LICENSE'
     - 'Jenkinsfile'
     - 'NOTICE'
