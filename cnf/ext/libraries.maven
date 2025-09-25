@@ -10,6 +10,8 @@ org.geckoprojects.emf.utils:org.gecko.emf.util.jakartars.bnd.library.workspace:2
 
 org.geckoprojects.camel:org.eclipse.fennec.camel.workspace.library:1.0.0-SNAPSHOT
 org.geckoprojects.qvto:org.eclipse.fennec.qvt.bnd.library.workspace:2.1.0-SNAPSHOT
-org.geckoprojects.bnd:org.gecko.bnd.osgitest.library:2.0.1
-org.geckoprojects.bnd:org.gecko.bnd.dimc.library:2.0.1
+
+org.geckoprojects.bnd:org.gecko.bnd.dimc.library:2.1.0-SNAPSHOT
+org.geckoprojects.bnd:org.gecko.bnd.jacoco.library:2.1.0-SNAPSHOT
+org.geckoprojects.bnd:org.gecko.bnd.osgitest.library:2.1.0-SNAPSHOT
 
