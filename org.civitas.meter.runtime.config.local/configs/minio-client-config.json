@@ -34,7 +34,7 @@
     "forwardTopic" : "meterusecase/Plant_source"
   },
   "QVTHandler~plant": {
-    "eventTopyic" : "meterusecase/Plant_source",
+    "eventTopic" : "meterusecase/Plant_source",
     "trafo.target" : "(id=plantQVT)",
     "eclassuri" : "https://civitas.org/meter/source/1.0.0#//Plant",
     "forwardTopic" : "meterusecase/Plant_target"
