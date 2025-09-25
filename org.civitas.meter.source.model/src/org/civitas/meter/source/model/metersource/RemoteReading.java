@@ -21,39 +21,39 @@ import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Reading</b></em>'.
+ * A representation of the model object '<em><b>Remote Reading</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.civitas.meter.source.model.metersource.Reading#getId <em>Id</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.Reading#getMeterId <em>Meter Id</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.Reading#getValue <em>Value</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.Reading#getTimestamp <em>Timestamp</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.RemoteReading#getId <em>Id</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.RemoteReading#getMeterId <em>Meter Id</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.RemoteReading#getValue <em>Value</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.RemoteReading#getTimestamp <em>Timestamp</em>}</li>
  * </ul>
  *
- * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getReading()
+ * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getRemoteReading()
  * @model
  * @generated
  */
 @ProviderType
-public interface Reading extends EObject {
+public interface RemoteReading extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(int)
-	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getReading_Id()
+	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getRemoteReading_Id()
 	 * @model id="true" required="true"
 	 * @generated
 	 */
 	int getId();
 
 	/**
-	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.Reading#getId <em>Id</em>}' attribute.
+	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.RemoteReading#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
@@ -71,14 +71,14 @@ public interface Reading extends EObject {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Meter Id</em>' attribute.
 	 * @see #setMeterId(String)
-	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getReading_MeterId()
+	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getRemoteReading_MeterId()
 	 * @model extendedMetaData="name='meter_id'"
 	 * @generated
 	 */
 	String getMeterId();
 
 	/**
-	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.Reading#getMeterId <em>Meter Id</em>}' attribute.
+	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.RemoteReading#getMeterId <em>Meter Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Meter Id</em>' attribute.
@@ -93,14 +93,14 @@ public interface Reading extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(int)
-	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getReading_Value()
+	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getRemoteReading_Value()
 	 * @model
 	 * @generated
 	 */
 	int getValue();
 
 	/**
-	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.Reading#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.RemoteReading#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
@@ -115,14 +115,14 @@ public interface Reading extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Timestamp</em>' attribute.
 	 * @see #setTimestamp(Date)
-	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getReading_Timestamp()
+	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getRemoteReading_Timestamp()
 	 * @model
 	 * @generated
 	 */
 	Date getTimestamp();
 
 	/**
-	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.Reading#getTimestamp <em>Timestamp</em>}' attribute.
+	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.RemoteReading#getTimestamp <em>Timestamp</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Timestamp</em>' attribute.
@@ -131,4 +131,4 @@ public interface Reading extends EObject {
 	 */
 	void setTimestamp(Date value);
 
-} // Reading
+} // RemoteReading

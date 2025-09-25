@@ -40,5 +40,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//Plant/id"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-source.ecore#//Plant/meter"/>
     </genClasses>
+    <genClasses ecoreClass="meter-source.ecore#//RemoteReading">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//RemoteReading/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//RemoteReading/meterId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//RemoteReading/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//RemoteReading/timestamp"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

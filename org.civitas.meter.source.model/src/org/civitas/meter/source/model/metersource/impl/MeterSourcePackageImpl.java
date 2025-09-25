@@ -21,6 +21,7 @@ import org.civitas.meter.source.model.metersource.MeterSourcePackage;
 import org.civitas.meter.source.model.metersource.OperatingData;
 import org.civitas.meter.source.model.metersource.Plant;
 import org.civitas.meter.source.model.metersource.Reading;
+import org.civitas.meter.source.model.metersource.RemoteReading;
 
 import org.civitas.units.model.units.UnitsPackage;
 
@@ -79,6 +80,13 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 	 * @generated
 	 */
 	private EClass plantEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass remoteReadingEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -409,6 +417,56 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 	 * @generated
 	 */
 	@Override
+	public EClass getRemoteReading() {
+		return remoteReadingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getRemoteReading_Id() {
+		return (EAttribute)remoteReadingEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getRemoteReading_MeterId() {
+		return (EAttribute)remoteReadingEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getRemoteReading_Value() {
+		return (EAttribute)remoteReadingEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getRemoteReading_Timestamp() {
+		return (EAttribute)remoteReadingEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public MeterSourceFactory getMeterSourceFactory() {
 		return (MeterSourceFactory)getEFactoryInstance();
 	}
@@ -463,6 +521,12 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 		createEReference(plantEClass, PLANT__BASIC_DATA);
 		createEAttribute(plantEClass, PLANT__ID);
 		createEReference(plantEClass, PLANT__METER);
+
+		remoteReadingEClass = createEClass(REMOTE_READING);
+		createEAttribute(remoteReadingEClass, REMOTE_READING__ID);
+		createEAttribute(remoteReadingEClass, REMOTE_READING__METER_ID);
+		createEAttribute(remoteReadingEClass, REMOTE_READING__VALUE);
+		createEAttribute(remoteReadingEClass, REMOTE_READING__TIMESTAMP);
 	}
 
 	/**
@@ -520,7 +584,7 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 		initEAttribute(getReading_Id(), ecorePackage.getEInt(), "id", null, 1, 1, Reading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getReading_MeterId(), ecorePackage.getEString(), "meterId", null, 0, 1, Reading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getReading_Value(), ecorePackage.getEInt(), "value", null, 0, 1, Reading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getReading_Timestamp(), theUnitsPackage.getEInstant(), "timestamp", null, 0, 1, Reading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReading_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, Reading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customerEClass, Customer.class, "Customer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -529,6 +593,12 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 		initEReference(getPlant_BasicData(), this.getBasicData(), null, "basicData", null, 1, 1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlant_Id(), ecorePackage.getEString(), "id", null, 0, 1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlant_Meter(), this.getMeter(), null, "meter", null, 0, -1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(remoteReadingEClass, RemoteReading.class, "RemoteReading", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRemoteReading_Id(), ecorePackage.getEInt(), "id", null, 1, 1, RemoteReading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRemoteReading_MeterId(), ecorePackage.getEString(), "meterId", null, 0, 1, RemoteReading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRemoteReading_Value(), ecorePackage.getEInt(), "value", null, 0, 1, RemoteReading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRemoteReading_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, RemoteReading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -611,6 +681,12 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 		   new String[] {
 			   "documentation", "This is another way of storing the plants, used for remote meters."
 		   });
+		addAnnotation
+		  (getRemoteReading_MeterId(),
+		   source,
+		   new String[] {
+			   "documentation", "This is a reference to the meterId"
+		   });
 	}
 
 	/**
@@ -647,6 +723,12 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 		   });
 		addAnnotation
 		  (getReading_MeterId(),
+		   source,
+		   new String[] {
+			   "name", "meter_id"
+		   });
+		addAnnotation
+		  (getRemoteReading_MeterId(),
 		   source,
 		   new String[] {
 			   "name", "meter_id"

@@ -423,6 +423,70 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	 */
 	int PLANT_OPERATION_COUNT = 0;
 
+	/**
+	 * The meta object id for the '{@link org.civitas.meter.source.model.metersource.impl.RemoteReadingImpl <em>Remote Reading</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.civitas.meter.source.model.metersource.impl.RemoteReadingImpl
+	 * @see org.civitas.meter.source.model.metersource.impl.MeterSourcePackageImpl#getRemoteReading()
+	 * @generated
+	 */
+	int REMOTE_READING = 6;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOTE_READING__ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Meter Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOTE_READING__METER_ID = 1;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOTE_READING__VALUE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOTE_READING__TIMESTAMP = 3;
+
+	/**
+	 * The number of structural features of the '<em>Remote Reading</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOTE_READING_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Remote Reading</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOTE_READING_OPERATION_COUNT = 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link org.civitas.meter.source.model.metersource.BasicData <em>Basic Data</em>}'.
@@ -705,6 +769,60 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	EReference getPlant_Meter();
 
 	/**
+	 * Returns the meta object for class '{@link org.civitas.meter.source.model.metersource.RemoteReading <em>Remote Reading</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Remote Reading</em>'.
+	 * @see org.civitas.meter.source.model.metersource.RemoteReading
+	 * @generated
+	 */
+	EClass getRemoteReading();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.RemoteReading#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.civitas.meter.source.model.metersource.RemoteReading#getId()
+	 * @see #getRemoteReading()
+	 * @generated
+	 */
+	EAttribute getRemoteReading_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.RemoteReading#getMeterId <em>Meter Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Meter Id</em>'.
+	 * @see org.civitas.meter.source.model.metersource.RemoteReading#getMeterId()
+	 * @see #getRemoteReading()
+	 * @generated
+	 */
+	EAttribute getRemoteReading_MeterId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.RemoteReading#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.civitas.meter.source.model.metersource.RemoteReading#getValue()
+	 * @see #getRemoteReading()
+	 * @generated
+	 */
+	EAttribute getRemoteReading_Value();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.RemoteReading#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see org.civitas.meter.source.model.metersource.RemoteReading#getTimestamp()
+	 * @see #getRemoteReading()
+	 * @generated
+	 */
+	EAttribute getRemoteReading_Timestamp();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -946,6 +1064,48 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EReference PLANT__METER = eINSTANCE.getPlant_Meter();
+
+		/**
+		 * The meta object literal for the '{@link org.civitas.meter.source.model.metersource.impl.RemoteReadingImpl <em>Remote Reading</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.civitas.meter.source.model.metersource.impl.RemoteReadingImpl
+		 * @see org.civitas.meter.source.model.metersource.impl.MeterSourcePackageImpl#getRemoteReading()
+		 * @generated
+		 */
+		EClass REMOTE_READING = eINSTANCE.getRemoteReading();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REMOTE_READING__ID = eINSTANCE.getRemoteReading_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Meter Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REMOTE_READING__METER_ID = eINSTANCE.getRemoteReading_MeterId();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REMOTE_READING__VALUE = eINSTANCE.getRemoteReading_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REMOTE_READING__TIMESTAMP = eINSTANCE.getRemoteReading_Timestamp();
 
 	}
 

@@ -73,6 +73,7 @@ public class MeterSourceFactoryImpl extends EFactoryImpl implements MeterSourceF
 			case MeterSourcePackage.READING: return createReading();
 			case MeterSourcePackage.CUSTOMER: return createCustomer();
 			case MeterSourcePackage.PLANT: return createPlant();
+			case MeterSourcePackage.REMOTE_READING: return createRemoteReading();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -142,6 +143,17 @@ public class MeterSourceFactoryImpl extends EFactoryImpl implements MeterSourceF
 	public Plant createPlant() {
 		PlantImpl plant = new PlantImpl();
 		return plant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public RemoteReading createRemoteReading() {
+		RemoteReadingImpl remoteReading = new RemoteReadingImpl();
+		return remoteReading;
 	}
 
 	/**

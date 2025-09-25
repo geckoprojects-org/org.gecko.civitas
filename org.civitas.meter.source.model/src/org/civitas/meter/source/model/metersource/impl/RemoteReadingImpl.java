@@ -16,7 +16,7 @@ package org.civitas.meter.source.model.metersource.impl;
 import java.util.Date;
 
 import org.civitas.meter.source.model.metersource.MeterSourcePackage;
-import org.civitas.meter.source.model.metersource.Reading;
+import org.civitas.meter.source.model.metersource.RemoteReading;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -27,21 +27,21 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Reading</b></em>'.
+ * An implementation of the model object '<em><b>Remote Reading</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.civitas.meter.source.model.metersource.impl.ReadingImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.impl.ReadingImpl#getMeterId <em>Meter Id</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.impl.ReadingImpl#getValue <em>Value</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.impl.ReadingImpl#getTimestamp <em>Timestamp</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.impl.RemoteReadingImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.impl.RemoteReadingImpl#getMeterId <em>Meter Id</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.impl.RemoteReadingImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.impl.RemoteReadingImpl#getTimestamp <em>Timestamp</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading {
+public class RemoteReadingImpl extends MinimalEObjectImpl.Container implements RemoteReading {
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -127,7 +127,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ReadingImpl() {
+	protected RemoteReadingImpl() {
 		super();
 	}
 
@@ -138,7 +138,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return MeterSourcePackage.Literals.READING;
+		return MeterSourcePackage.Literals.REMOTE_READING;
 	}
 
 	/**
@@ -161,7 +161,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 		int oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.READING__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.REMOTE_READING__ID, oldId, id));
 	}
 
 	/**
@@ -184,7 +184,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 		String oldMeterId = meterId;
 		meterId = newMeterId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.READING__METER_ID, oldMeterId, meterId));
+			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.REMOTE_READING__METER_ID, oldMeterId, meterId));
 	}
 
 	/**
@@ -207,7 +207,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 		int oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.READING__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.REMOTE_READING__VALUE, oldValue, value));
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 		Date oldTimestamp = timestamp;
 		timestamp = newTimestamp;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.READING__TIMESTAMP, oldTimestamp, timestamp));
+			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.REMOTE_READING__TIMESTAMP, oldTimestamp, timestamp));
 	}
 
 	/**
@@ -241,13 +241,13 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MeterSourcePackage.READING__ID:
+			case MeterSourcePackage.REMOTE_READING__ID:
 				return getId();
-			case MeterSourcePackage.READING__METER_ID:
+			case MeterSourcePackage.REMOTE_READING__METER_ID:
 				return getMeterId();
-			case MeterSourcePackage.READING__VALUE:
+			case MeterSourcePackage.REMOTE_READING__VALUE:
 				return getValue();
-			case MeterSourcePackage.READING__TIMESTAMP:
+			case MeterSourcePackage.REMOTE_READING__TIMESTAMP:
 				return getTimestamp();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -261,16 +261,16 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MeterSourcePackage.READING__ID:
+			case MeterSourcePackage.REMOTE_READING__ID:
 				setId((Integer)newValue);
 				return;
-			case MeterSourcePackage.READING__METER_ID:
+			case MeterSourcePackage.REMOTE_READING__METER_ID:
 				setMeterId((String)newValue);
 				return;
-			case MeterSourcePackage.READING__VALUE:
+			case MeterSourcePackage.REMOTE_READING__VALUE:
 				setValue((Integer)newValue);
 				return;
-			case MeterSourcePackage.READING__TIMESTAMP:
+			case MeterSourcePackage.REMOTE_READING__TIMESTAMP:
 				setTimestamp((Date)newValue);
 				return;
 		}
@@ -285,16 +285,16 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MeterSourcePackage.READING__ID:
+			case MeterSourcePackage.REMOTE_READING__ID:
 				setId(ID_EDEFAULT);
 				return;
-			case MeterSourcePackage.READING__METER_ID:
+			case MeterSourcePackage.REMOTE_READING__METER_ID:
 				setMeterId(METER_ID_EDEFAULT);
 				return;
-			case MeterSourcePackage.READING__VALUE:
+			case MeterSourcePackage.REMOTE_READING__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
-			case MeterSourcePackage.READING__TIMESTAMP:
+			case MeterSourcePackage.REMOTE_READING__TIMESTAMP:
 				setTimestamp(TIMESTAMP_EDEFAULT);
 				return;
 		}
@@ -309,13 +309,13 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MeterSourcePackage.READING__ID:
+			case MeterSourcePackage.REMOTE_READING__ID:
 				return id != ID_EDEFAULT;
-			case MeterSourcePackage.READING__METER_ID:
+			case MeterSourcePackage.REMOTE_READING__METER_ID:
 				return METER_ID_EDEFAULT == null ? meterId != null : !METER_ID_EDEFAULT.equals(meterId);
-			case MeterSourcePackage.READING__VALUE:
+			case MeterSourcePackage.REMOTE_READING__VALUE:
 				return value != VALUE_EDEFAULT;
-			case MeterSourcePackage.READING__TIMESTAMP:
+			case MeterSourcePackage.REMOTE_READING__TIMESTAMP:
 				return TIMESTAMP_EDEFAULT == null ? timestamp != null : !TIMESTAMP_EDEFAULT.equals(timestamp);
 		}
 		return super.eIsSet(featureID);
@@ -343,4 +343,4 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 		return result.toString();
 	}
 
-} //ReadingImpl
+} //RemoteReadingImpl
