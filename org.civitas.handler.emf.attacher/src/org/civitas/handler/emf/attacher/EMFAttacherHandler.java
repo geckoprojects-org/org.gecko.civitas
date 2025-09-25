@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -27,12 +28,12 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.typedevent.TypedEventBus;
-import org.osgi.service.typedevent.TypedEventConstants;
-import org.osgi.service.typedevent.TypedEventHandler;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
+import org.osgi.service.typedevent.TypedEventBus;
+import org.osgi.service.typedevent.TypedEventConstants;
+import org.osgi.service.typedevent.TypedEventHandler;
 
 /**
  * 
@@ -116,8 +117,14 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 			return;
 		}
 		
-		EStructuralFeature foreignKeyFeature = (EStructuralFeature) foreignKeyObject;		
-		EObject targetEObject = repository.getEObject((EClass) target, eObject.eGet(foreignKeyFeature), null);
+		EStructuralFeature foreignKeyFeature = (EStructuralFeature) foreignKeyObject;
+		EObject targetEObject = null; 
+		if(foreignKeyFeature instanceof EAttribute) {
+			target = repository.getEObject((EClass) target, eObject.eGet(foreignKeyFeature), null);
+		} else {
+			EObject root = (EObject) eObject.eGet(foreignKeyFeature);
+			target = repository.getEObject((EClass) target, EcoreUtil.getID(root), null);
+		}
 		
 		// create target object if null and attach eObject (copy) to it
 		if(targetEObject == null) {
