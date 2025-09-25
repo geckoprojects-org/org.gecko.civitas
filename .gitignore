@@ -3,6 +3,10 @@
 /target/
 .metadata
 /build/
+/documents/build/
+/docker/build/
+/docker/glt/build/
+/docker/meter/build/
 /release/
 /build/
 /local/
