@@ -95,7 +95,7 @@ public class QVTHandler implements TypedEventHandler<EObject> {
 	public void notify(String topic, EObject event) {
 		if (config.eclassuri().equals(EcoreUtil.getURI(event).toString())) {
 			Diagnostic diagnostic = Diagnostician.INSTANCE.validate(event);
-			if (diagnostic.getSeverity() != Diagnostic.OK && trafo != null) {
+			if (diagnostic.getSeverity() == Diagnostic.OK && trafo != null) {
 				EObject result = trafo.doTransformation(event);
 				Arrays.asList(config.forward_topics()).forEach(t -> bus.deliver((String) t, result));
 			}

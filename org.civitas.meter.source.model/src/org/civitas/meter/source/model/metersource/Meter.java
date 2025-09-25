@@ -66,12 +66,12 @@ public interface Meter extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
-	 * @see #setId(int)
+	 * @see #setId(String)
 	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getMeter_Id()
 	 * @model id="true" required="true"
 	 * @generated
 	 */
-	int getId();
+	String getId();
 
 	/**
 	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.Meter#getId <em>Id</em>}' attribute.
@@ -81,6 +81,6 @@ public interface Meter extends EObject {
 	 * @see #getId()
 	 * @generated
 	 */
-	void setId(int value);
+	void setId(String value);
 
 } // Meter
