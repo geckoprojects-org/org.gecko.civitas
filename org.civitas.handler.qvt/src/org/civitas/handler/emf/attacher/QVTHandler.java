@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.fennec.qvt.osgi.api.ModelTransformationConstants;
 import org.eclipse.fennec.qvt.osgi.api.ModelTransformator;
 import org.osgi.framework.BundleContext;
@@ -29,6 +30,9 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.metatype.annotations.AttributeDefinition;
+import org.osgi.service.metatype.annotations.Designate;
+import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.osgi.service.typedevent.TypedEventBus;
 import org.osgi.service.typedevent.TypedEventConstants;
 import org.osgi.service.typedevent.TypedEventHandler;
@@ -38,16 +42,22 @@ import org.osgi.service.typedevent.TypedEventHandler;
  * @author grune
  * @since Sep 24, 2025
  */
-@Component(name = "QVTHandler", property = {TypedEventConstants.TYPED_EVENT_TOPICS+"=*"}, 
-configurationPid = "QVTHandler", configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(name = "QVTHandler", property = { TypedEventConstants.TYPED_EVENT_TOPICS
+		+ "=*" }, configurationPid = "QVTHandler", configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Designate(ocd = QVTHandler.Config.class)
 public class QVTHandler implements TypedEventHandler<EObject> {
 	private static final Logger LOGGER = Logger.getLogger(QVTHandler.class.getName());
 
+	@ObjectClassDefinition(name = "EObject QVT handler configuration")
 	@interface Config {
+
+		@AttributeDefinition(name = "EClass URI", description = "The URI of the source eobject")
 		String eclassuri(); // http:,....#//Meter
 
+		@AttributeDefinition(name = "QVT ID", description = "ID of the QVT transformation")
 		String trafo_id();
 
+		@AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the transformed target EObject")
 		String forward_topic();
 	}
 
@@ -66,7 +76,7 @@ public class QVTHandler implements TypedEventHandler<EObject> {
 			ServiceReference<?> ref = event.getServiceReference();
 			switch (type) {
 			case ServiceEvent.REGISTERED, ServiceEvent.MODIFIED:
-				if(ctx.getService(ref) instanceof ModelTransformator t) {
+				if (ctx.getService(ref) instanceof ModelTransformator t) {
 					trafo = t;
 				}
 				break;
@@ -74,7 +84,7 @@ public class QVTHandler implements TypedEventHandler<EObject> {
 				trafo = null;
 				break;
 			default:
-				LOGGER.log(Level.SEVERE, "Unexpected value for service event type: " + type);
+				LOGGER.log(Level.SEVERE, "Unexpected value for service event type: {0}", type);
 			}
 
 		}, "(" + ModelTransformationConstants.TRANSFORMATOR_ID + "=" + config.trafo_id() + ")");
@@ -82,13 +92,13 @@ public class QVTHandler implements TypedEventHandler<EObject> {
 
 	@Override
 	public void notify(String topic, EObject event) {
-//		check eclassuri
-		Diagnostic diagnostic = Diagnostician.INSTANCE.validate(event);
-		if (diagnostic.getSeverity() != Diagnostic.OK && trafo != null) {
-			EObject result = trafo.doTransformation(event);
-			bus.deliver(config.forward_topic(), result);
+		if (config.eclassuri().equals(EcoreUtil.getURI(event).toString())) {
+			Diagnostic diagnostic = Diagnostician.INSTANCE.validate(event);
+			if (diagnostic.getSeverity() != Diagnostic.OK && trafo != null) {
+				EObject result = trafo.doTransformation(event);
+				bus.deliver(config.forward_topic(), result);
+			}
 		}
-
 	}
 
 }
