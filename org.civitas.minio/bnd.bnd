@@ -22,3 +22,5 @@ Require-Capability: \
     osgi.extender;\
         filter:="(osgi.extender=emf.model)";\
         models:List<String>="/model"
+
+-workingset: handler

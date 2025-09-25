@@ -12,3 +12,5 @@
 	org.gecko.emf.repository.api,\
 	org.eclipse.fennec.qvt.api,\
 	org.osgi.service.metatype.annotations
+	
+-workingset: handler

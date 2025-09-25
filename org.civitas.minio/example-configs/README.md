@@ -151,6 +151,23 @@ The Ecore model (`model/minio-config.ecore`) defines:
 </minioconfig:MinIOConfigurationRoot>
 ```
 
+### Configuration Properties Mapping
+
+The Ecore model includes Extended Metadata annotations that document OSGi Configuration Admin property mapping. Note that properties with underscore characters in annotation attributes are automatically converted to dots in OSGi Configuration Admin.
+
+| Ecore Attribute | Annotation Attribute | OSGi Config Property | Conversion | Description |
+|-----------------|---------------------|---------------------|------------|-------------|
+| `bucketname` | `bucketname` | `bucketname` | No | MinIO bucket to monitor |
+| `cron` | `cron` | `cron` | No | Cron expression for scheduling |
+| `eClassUri` | `eClassUri` | `eClassUri` | No | EClass URI for CSV parsing |
+| `eventTopic` | `eventTopic` | `eventTopic` | No | Event topic for publishing |
+| `clientTarget` | `client_target` | `client.target` | Yes | OSGi filter for MinIO client |
+
+**Extended Metadata Annotations**: The Ecore model uses Extended Metadata annotations to document this mapping:
+- `osgi.config.property`: The actual OSGi Configuration Admin property name
+- `osgi.annotation.attribute`: The annotation attribute name in the code
+- Properties that don't require conversion (like `bucketname`) map directly without underscore-to-dot transformation
+
 ### Code Generation
 
 To generate Java classes from the Ecore model:
