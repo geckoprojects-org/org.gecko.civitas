@@ -1,0 +1,15 @@
+-library: enable-emf
+
+-workingset: handler
+
+-buildpath: \
+    org.osgi.service.typedevent,\
+    org.gecko.emf.repository.api,\
+    org.osgi.service.metatype.annotations
+
+-includeresource: model=model
+
+Require-Capability: \
+    osgi.extender;\
+        filter:="(osgi.extender=emf.model)";\
+        models:List<String>="/model"

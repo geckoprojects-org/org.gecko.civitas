@@ -21,32 +21,31 @@ import org.osgi.annotation.versioning.ProviderType;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Plant</b></em>'.
+ * A representation of the model object '<em><b>Intermediate Plant</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.civitas.meter.source.model.metersource.Plant#getOperatingData <em>Operating Data</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.Plant#getBasicData <em>Basic Data</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.Plant#getId <em>Id</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.Plant#getMeter <em>Meter</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getOperatingData <em>Operating Data</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getBasicData <em>Basic Data</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getId <em>Id</em>}</li>
  * </ul>
  *
- * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getPlant()
+ * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getIntermediatePlant()
  * @model
  * @generated
  */
 @ProviderType
-public interface Plant extends EObject {
+public interface IntermediatePlant extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Operating Data</b></em>' reference list.
 	 * The list contents are of type {@link org.civitas.meter.source.model.metersource.OperatingData}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Operating Data</em>' reference list.
-	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getPlant_OperatingData()
+	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getIntermediatePlant_OperatingData()
 	 * @model
 	 * @generated
 	 */
@@ -58,14 +57,14 @@ public interface Plant extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Basic Data</em>' reference.
 	 * @see #setBasicData(BasicData)
-	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getPlant_BasicData()
+	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getIntermediatePlant_BasicData()
 	 * @model required="true"
 	 * @generated
 	 */
 	BasicData getBasicData();
 
 	/**
-	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.Plant#getBasicData <em>Basic Data</em>}' reference.
+	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getBasicData <em>Basic Data</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Basic Data</em>' reference.
@@ -80,14 +79,14 @@ public interface Plant extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
-	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getPlant_Id()
+	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getIntermediatePlant_Id()
 	 * @model id="true"
 	 * @generated
 	 */
 	String getId();
 
 	/**
-	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.Plant#getId <em>Id</em>}' attribute.
+	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
@@ -96,16 +95,4 @@ public interface Plant extends EObject {
 	 */
 	void setId(String value);
 
-	/**
-	 * Returns the value of the '<em><b>Meter</b></em>' reference list.
-	 * The list contents are of type {@link org.civitas.meter.source.model.metersource.Meter}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Meter</em>' reference list.
-	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getPlant_Meter()
-	 * @model
-	 * @generated
-	 */
-	EList<Meter> getMeter();
-
-} // Plant
+} // IntermediatePlant

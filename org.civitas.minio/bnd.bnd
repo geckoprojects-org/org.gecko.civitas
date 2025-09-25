@@ -2,10 +2,6 @@
 
 -workingset: meter
 
-# Uncomment to generate Java classes from Ecore model
-#-generate: \
-#    model/minio-config.genmodel;output=src;generateEdit=false;generateEditor=false
-
 -buildpath: \
 	io.minio,\
 	slf4j.api,\
@@ -18,4 +14,13 @@
 	com.fasterxml.jackson.core:jackson-databind,\
 	com.fasterxml.jackson.core:jackson-core,\
 	org.osgi.util.promise,\
-	org.osgi.service.metatype.annotations
+    org.osgi.service.metatype.annotations
+	
+-includeresource: model=model
+
+Require-Capability: \
+    osgi.extender;\
+        filter:="(osgi.extender=emf.model)";\
+        models:List<String>="/model"
+
+-workingset: handler

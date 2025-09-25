@@ -15,11 +15,12 @@ package org.civitas.meter.source.model.metersource.impl;
 
 import org.civitas.meter.source.model.metersource.BasicData;
 import org.civitas.meter.source.model.metersource.Customer;
+import org.civitas.meter.source.model.metersource.IntermediateMeteringPoint;
+import org.civitas.meter.source.model.metersource.IntermediatePlant;
 import org.civitas.meter.source.model.metersource.Meter;
 import org.civitas.meter.source.model.metersource.MeterSourceFactory;
 import org.civitas.meter.source.model.metersource.MeterSourcePackage;
 import org.civitas.meter.source.model.metersource.OperatingData;
-import org.civitas.meter.source.model.metersource.Plant;
 import org.civitas.meter.source.model.metersource.Reading;
 import org.civitas.meter.source.model.metersource.RemoteReading;
 
@@ -79,7 +80,14 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass plantEClass = null;
+	private EClass intermediatePlantEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass intermediateMeteringPointEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -367,8 +375,8 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 	 * @generated
 	 */
 	@Override
-	public EClass getPlant() {
-		return plantEClass;
+	public EClass getIntermediatePlant() {
+		return intermediatePlantEClass;
 	}
 
 	/**
@@ -377,8 +385,8 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 	 * @generated
 	 */
 	@Override
-	public EReference getPlant_OperatingData() {
-		return (EReference)plantEClass.getEStructuralFeatures().get(0);
+	public EReference getIntermediatePlant_OperatingData() {
+		return (EReference)intermediatePlantEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -387,8 +395,8 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 	 * @generated
 	 */
 	@Override
-	public EReference getPlant_BasicData() {
-		return (EReference)plantEClass.getEStructuralFeatures().get(1);
+	public EReference getIntermediatePlant_BasicData() {
+		return (EReference)intermediatePlantEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -397,8 +405,8 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getPlant_Id() {
-		return (EAttribute)plantEClass.getEStructuralFeatures().get(2);
+	public EAttribute getIntermediatePlant_Id() {
+		return (EAttribute)intermediatePlantEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -407,8 +415,38 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 	 * @generated
 	 */
 	@Override
-	public EReference getPlant_Meter() {
-		return (EReference)plantEClass.getEStructuralFeatures().get(3);
+	public EClass getIntermediateMeteringPoint() {
+		return intermediateMeteringPointEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIntermediateMeteringPoint_MeterId() {
+		return (EAttribute)intermediateMeteringPointEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIntermediateMeteringPoint_PlantId() {
+		return (EAttribute)intermediateMeteringPointEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIntermediateMeteringPoint_Readings() {
+		return (EReference)intermediateMeteringPointEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -516,11 +554,15 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 
 		customerEClass = createEClass(CUSTOMER);
 
-		plantEClass = createEClass(PLANT);
-		createEReference(plantEClass, PLANT__OPERATING_DATA);
-		createEReference(plantEClass, PLANT__BASIC_DATA);
-		createEAttribute(plantEClass, PLANT__ID);
-		createEReference(plantEClass, PLANT__METER);
+		intermediatePlantEClass = createEClass(INTERMEDIATE_PLANT);
+		createEReference(intermediatePlantEClass, INTERMEDIATE_PLANT__OPERATING_DATA);
+		createEReference(intermediatePlantEClass, INTERMEDIATE_PLANT__BASIC_DATA);
+		createEAttribute(intermediatePlantEClass, INTERMEDIATE_PLANT__ID);
+
+		intermediateMeteringPointEClass = createEClass(INTERMEDIATE_METERING_POINT);
+		createEAttribute(intermediateMeteringPointEClass, INTERMEDIATE_METERING_POINT__METER_ID);
+		createEAttribute(intermediateMeteringPointEClass, INTERMEDIATE_METERING_POINT__PLANT_ID);
+		createEReference(intermediateMeteringPointEClass, INTERMEDIATE_METERING_POINT__READINGS);
 
 		remoteReadingEClass = createEClass(REMOTE_READING);
 		createEAttribute(remoteReadingEClass, REMOTE_READING__ID);
@@ -578,21 +620,25 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 
 		initEClass(meterEClass, Meter.class, "Meter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMeter_PlantId(), ecorePackage.getEString(), "plantId", null, 0, 1, Meter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMeter_Id(), ecorePackage.getEInt(), "id", null, 1, 1, Meter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMeter_Id(), ecorePackage.getEString(), "id", null, 1, 1, Meter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(readingEClass, Reading.class, "Reading", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getReading_Id(), ecorePackage.getEInt(), "id", null, 1, 1, Reading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReading_Id(), ecorePackage.getEString(), "id", null, 1, 1, Reading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getReading_MeterId(), ecorePackage.getEString(), "meterId", null, 0, 1, Reading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getReading_Value(), ecorePackage.getEInt(), "value", null, 0, 1, Reading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReading_Value(), theUnitsPackage.getKilowattHours(), "value", null, 0, 1, Reading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getReading_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, Reading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customerEClass, Customer.class, "Customer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(plantEClass, Plant.class, "Plant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPlant_OperatingData(), this.getOperatingData(), null, "operatingData", null, 0, -1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPlant_BasicData(), this.getBasicData(), null, "basicData", null, 1, 1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlant_Id(), ecorePackage.getEString(), "id", null, 0, 1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPlant_Meter(), this.getMeter(), null, "meter", null, 0, -1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(intermediatePlantEClass, IntermediatePlant.class, "IntermediatePlant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getIntermediatePlant_OperatingData(), this.getOperatingData(), null, "operatingData", null, 0, -1, IntermediatePlant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIntermediatePlant_BasicData(), this.getBasicData(), null, "basicData", null, 1, 1, IntermediatePlant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIntermediatePlant_Id(), ecorePackage.getEString(), "id", null, 0, 1, IntermediatePlant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(intermediateMeteringPointEClass, IntermediateMeteringPoint.class, "IntermediateMeteringPoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIntermediateMeteringPoint_MeterId(), ecorePackage.getEString(), "meterId", null, 0, 1, IntermediateMeteringPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIntermediateMeteringPoint_PlantId(), ecorePackage.getEString(), "plantId", null, 0, 1, IntermediateMeteringPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIntermediateMeteringPoint_Readings(), this.getReading(), null, "readings", null, 0, -1, IntermediateMeteringPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(remoteReadingEClass, RemoteReading.class, "RemoteReading", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRemoteReading_Id(), ecorePackage.getEInt(), "id", null, 1, 1, RemoteReading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

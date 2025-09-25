@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.gecko.emf.osgi.constants.EMFNamespaces;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -93,9 +94,6 @@ public class MinIOCSVDownloadService {
         try {
             // Extract the required EClass from the injected EPackage
             this.targetEClass = extractEClassFromPackage(config.eClassUri());
-
-            // Start scheduler for periodic checking
-//            startScheduler();
 
             // Process initial files asynchronously using Promise to avoid blocking startup
             new PromiseFactory(Executors.newSingleThreadExecutor()).submit(() -> {

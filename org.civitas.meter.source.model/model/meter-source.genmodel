@@ -34,11 +34,15 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//Reading/timestamp"/>
     </genClasses>
     <genClasses ecoreClass="meter-source.ecore#//Customer"/>
-    <genClasses ecoreClass="meter-source.ecore#//Plant">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-source.ecore#//Plant/operatingData"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-source.ecore#//Plant/basicData"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//Plant/id"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-source.ecore#//Plant/meter"/>
+    <genClasses ecoreClass="meter-source.ecore#//IntermediatePlant">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-source.ecore#//IntermediatePlant/operatingData"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-source.ecore#//IntermediatePlant/basicData"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//IntermediatePlant/id"/>
+    </genClasses>
+    <genClasses ecoreClass="meter-source.ecore#//IntermediateMeteringPoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//IntermediateMeteringPoint/meterId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//IntermediateMeteringPoint/plantId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-source.ecore#//IntermediateMeteringPoint/readings"/>
     </genClasses>
     <genClasses ecoreClass="meter-source.ecore#//RemoteReading">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//RemoteReading/id"/>

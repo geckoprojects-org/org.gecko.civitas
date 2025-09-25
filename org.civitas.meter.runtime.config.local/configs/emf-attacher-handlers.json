@@ -3,32 +3,42 @@
   
 	"EMFAttacherHandler~BasicData": 
   	{
-  	 	"eventTopic" : "meterusecase/basic_source",
-	    "repository.target": "(repo_id=civitas)",
+  	 	"event.topic" : "meterusecase/basicdata_wo_prefix_source",
+	    "repository.target": "(repo_id=inmem)",
 		"incomming.eclassuri" : "https://civitas.org/meter/source/1.0.0#//BasicData",
-		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//Plant",
+		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
 		"foreignKeyFeature.uri": "https://civitas.org/meter/source/1.0.0#//BasicData_plantId",
-		"target.reference.uri": "https://civitas.org/meter/source/1.0.0#//Plant_basicData",
+		"target.reference.uri": "https://civitas.org/meter/source/1.0.0#//IntermediatePlant_basicData",
 		"forwardTopic": "civitas/meter/plant"
 	},
 	"EMFAttacherHandler~OperatingData":
 	{
-		"eventTopic" : "meterusecase/operating_source",
-		"repository.target": "(repo_id=civitas)",
+		"event.topic" : "meterusecase/operating_source",
+		"repository.target": "(repo_id=inmem)",
 		"incomming.eclassuri" : "https://civitas.org/meter/source/1.0.0#//OperatingData",
-		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//Plant",
+		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
 		"foreignKeyFeature.uri": "https://civitas.org/meter/source/1.0.0#//OperatingData_plantId",
-		"target.reference.uri": "https://civitas.org/meter/source/1.0.0#//Plant_operatingData",
+		"target.reference.uri": "https://civitas.org/meter/source/1.0.0#//IntermediatePlant_operatingData",
 		"forwardTopic": "civitas/meter/plant"
+	},
+	"EMFAttacherHandler~MeterReading":
+	{
+		"event.topic" : "meterusecase/meterReading_source",
+		"repository.target": "(repo_id=inmem)",
+		"incomming.eclassuri" : "https://civitas.org/meter/source/1.0.0#//Reading",
+		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
+		"foreignKeyFeature.uri": "https://civitas.org/meter/source/1.0.0#//Reading_meterId",
+		"target.reference.uri": "https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint_readings",
+		"forwardTopic": "meterusecase/IntermediateMeteringPoint_target"
 	},
 	"EMFAttacherHandler~Meter":
 	{
-		"eventTopic" : "meterusecase/meter_source",
-		"repository.target": "(repo_id=civitas)",
+		"event.topic" : "meterusecase/meter_source",
+		"repository.target": "(repo_id=inmem)",
 		"incomming.eclassuri" : "https://civitas.org/meter/source/1.0.0#//Meter",
-		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//Plant",
+		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
 		"foreignKeyFeature.uri": "https://civitas.org/meter/source/1.0.0#//Meter_plantId",
-		"target.reference.uri": "https://civitas.org/meter/source/1.0.0#//Plant_meter",
+		"target.reference.uri": "https://civitas.org/meter/source/1.0.0#//IntermediatePlant_meter",
 		"forwardTopic": "civitas/meter/plant"
 	}
 }

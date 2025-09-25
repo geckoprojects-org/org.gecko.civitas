@@ -107,9 +107,15 @@ public class MeterSourceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case MeterSourcePackage.PLANT: {
-				Plant plant = (Plant)theEObject;
-				T result = casePlant(plant);
+			case MeterSourcePackage.INTERMEDIATE_PLANT: {
+				IntermediatePlant intermediatePlant = (IntermediatePlant)theEObject;
+				T result = caseIntermediatePlant(intermediatePlant);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MeterSourcePackage.INTERMEDIATE_METERING_POINT: {
+				IntermediateMeteringPoint intermediateMeteringPoint = (IntermediateMeteringPoint)theEObject;
+				T result = caseIntermediateMeteringPoint(intermediateMeteringPoint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -199,17 +205,32 @@ public class MeterSourceSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Plant</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Intermediate Plant</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Plant</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Intermediate Plant</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePlant(Plant object) {
+	public T caseIntermediatePlant(IntermediatePlant object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Intermediate Metering Point</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Intermediate Metering Point</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIntermediateMeteringPoint(IntermediateMeteringPoint object) {
 		return null;
 	}
 

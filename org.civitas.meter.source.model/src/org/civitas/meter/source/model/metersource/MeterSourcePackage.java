@@ -360,14 +360,14 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	int CUSTOMER_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.civitas.meter.source.model.metersource.impl.PlantImpl <em>Plant</em>}' class.
+	 * The meta object id for the '{@link org.civitas.meter.source.model.metersource.impl.IntermediatePlantImpl <em>Intermediate Plant</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.civitas.meter.source.model.metersource.impl.PlantImpl
-	 * @see org.civitas.meter.source.model.metersource.impl.MeterSourcePackageImpl#getPlant()
+	 * @see org.civitas.meter.source.model.metersource.impl.IntermediatePlantImpl
+	 * @see org.civitas.meter.source.model.metersource.impl.MeterSourcePackageImpl#getIntermediatePlant()
 	 * @generated
 	 */
-	int PLANT = 5;
+	int INTERMEDIATE_PLANT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Operating Data</b></em>' reference list.
@@ -376,7 +376,7 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLANT__OPERATING_DATA = 0;
+	int INTERMEDIATE_PLANT__OPERATING_DATA = 0;
 
 	/**
 	 * The feature id for the '<em><b>Basic Data</b></em>' reference.
@@ -385,7 +385,7 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLANT__BASIC_DATA = 1;
+	int INTERMEDIATE_PLANT__BASIC_DATA = 1;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -394,34 +394,80 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLANT__ID = 2;
+	int INTERMEDIATE_PLANT__ID = 2;
 
 	/**
-	 * The feature id for the '<em><b>Meter</b></em>' reference list.
+	 * The number of structural features of the '<em>Intermediate Plant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLANT__METER = 3;
+	int INTERMEDIATE_PLANT_FEATURE_COUNT = 3;
 
 	/**
-	 * The number of structural features of the '<em>Plant</em>' class.
+	 * The number of operations of the '<em>Intermediate Plant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLANT_FEATURE_COUNT = 4;
+	int INTERMEDIATE_PLANT_OPERATION_COUNT = 0;
 
 	/**
-	 * The number of operations of the '<em>Plant</em>' class.
+	 * The meta object id for the '{@link org.civitas.meter.source.model.metersource.impl.IntermediateMeteringPointImpl <em>Intermediate Metering Point</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.civitas.meter.source.model.metersource.impl.IntermediateMeteringPointImpl
+	 * @see org.civitas.meter.source.model.metersource.impl.MeterSourcePackageImpl#getIntermediateMeteringPoint()
+	 * @generated
+	 */
+	int INTERMEDIATE_METERING_POINT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Meter Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLANT_OPERATION_COUNT = 0;
+	int INTERMEDIATE_METERING_POINT__METER_ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Plant Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERMEDIATE_METERING_POINT__PLANT_ID = 1;
+
+	/**
+	 * The feature id for the '<em><b>Readings</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERMEDIATE_METERING_POINT__READINGS = 2;
+
+	/**
+	 * The number of structural features of the '<em>Intermediate Metering Point</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERMEDIATE_METERING_POINT_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Intermediate Metering Point</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERMEDIATE_METERING_POINT_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.civitas.meter.source.model.metersource.impl.RemoteReadingImpl <em>Remote Reading</em>}' class.
@@ -431,7 +477,7 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	 * @see org.civitas.meter.source.model.metersource.impl.MeterSourcePackageImpl#getRemoteReading()
 	 * @generated
 	 */
-	int REMOTE_READING = 6;
+	int REMOTE_READING = 7;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -715,58 +761,90 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getCustomer();
 
 	/**
-	 * Returns the meta object for class '{@link org.civitas.meter.source.model.metersource.Plant <em>Plant</em>}'.
+	 * Returns the meta object for class '{@link org.civitas.meter.source.model.metersource.IntermediatePlant <em>Intermediate Plant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Plant</em>'.
-	 * @see org.civitas.meter.source.model.metersource.Plant
+	 * @return the meta object for class '<em>Intermediate Plant</em>'.
+	 * @see org.civitas.meter.source.model.metersource.IntermediatePlant
 	 * @generated
 	 */
-	EClass getPlant();
+	EClass getIntermediatePlant();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.civitas.meter.source.model.metersource.Plant#getOperatingData <em>Operating Data</em>}'.
+	 * Returns the meta object for the reference list '{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getOperatingData <em>Operating Data</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Operating Data</em>'.
-	 * @see org.civitas.meter.source.model.metersource.Plant#getOperatingData()
-	 * @see #getPlant()
+	 * @see org.civitas.meter.source.model.metersource.IntermediatePlant#getOperatingData()
+	 * @see #getIntermediatePlant()
 	 * @generated
 	 */
-	EReference getPlant_OperatingData();
+	EReference getIntermediatePlant_OperatingData();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.civitas.meter.source.model.metersource.Plant#getBasicData <em>Basic Data</em>}'.
+	 * Returns the meta object for the reference '{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getBasicData <em>Basic Data</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Basic Data</em>'.
-	 * @see org.civitas.meter.source.model.metersource.Plant#getBasicData()
-	 * @see #getPlant()
+	 * @see org.civitas.meter.source.model.metersource.IntermediatePlant#getBasicData()
+	 * @see #getIntermediatePlant()
 	 * @generated
 	 */
-	EReference getPlant_BasicData();
+	EReference getIntermediatePlant_BasicData();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.Plant#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see org.civitas.meter.source.model.metersource.Plant#getId()
-	 * @see #getPlant()
+	 * @see org.civitas.meter.source.model.metersource.IntermediatePlant#getId()
+	 * @see #getIntermediatePlant()
 	 * @generated
 	 */
-	EAttribute getPlant_Id();
+	EAttribute getIntermediatePlant_Id();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.civitas.meter.source.model.metersource.Plant#getMeter <em>Meter</em>}'.
+	 * Returns the meta object for class '{@link org.civitas.meter.source.model.metersource.IntermediateMeteringPoint <em>Intermediate Metering Point</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Meter</em>'.
-	 * @see org.civitas.meter.source.model.metersource.Plant#getMeter()
-	 * @see #getPlant()
+	 * @return the meta object for class '<em>Intermediate Metering Point</em>'.
+	 * @see org.civitas.meter.source.model.metersource.IntermediateMeteringPoint
 	 * @generated
 	 */
-	EReference getPlant_Meter();
+	EClass getIntermediateMeteringPoint();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.IntermediateMeteringPoint#getMeterId <em>Meter Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Meter Id</em>'.
+	 * @see org.civitas.meter.source.model.metersource.IntermediateMeteringPoint#getMeterId()
+	 * @see #getIntermediateMeteringPoint()
+	 * @generated
+	 */
+	EAttribute getIntermediateMeteringPoint_MeterId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.IntermediateMeteringPoint#getPlantId <em>Plant Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Plant Id</em>'.
+	 * @see org.civitas.meter.source.model.metersource.IntermediateMeteringPoint#getPlantId()
+	 * @see #getIntermediateMeteringPoint()
+	 * @generated
+	 */
+	EAttribute getIntermediateMeteringPoint_PlantId();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.civitas.meter.source.model.metersource.IntermediateMeteringPoint#getReadings <em>Readings</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Readings</em>'.
+	 * @see org.civitas.meter.source.model.metersource.IntermediateMeteringPoint#getReadings()
+	 * @see #getIntermediateMeteringPoint()
+	 * @generated
+	 */
+	EReference getIntermediateMeteringPoint_Readings();
 
 	/**
 	 * Returns the meta object for class '{@link org.civitas.meter.source.model.metersource.RemoteReading <em>Remote Reading</em>}'.
@@ -1024,14 +1102,14 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 		EClass CUSTOMER = eINSTANCE.getCustomer();
 
 		/**
-		 * The meta object literal for the '{@link org.civitas.meter.source.model.metersource.impl.PlantImpl <em>Plant</em>}' class.
+		 * The meta object literal for the '{@link org.civitas.meter.source.model.metersource.impl.IntermediatePlantImpl <em>Intermediate Plant</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.civitas.meter.source.model.metersource.impl.PlantImpl
-		 * @see org.civitas.meter.source.model.metersource.impl.MeterSourcePackageImpl#getPlant()
+		 * @see org.civitas.meter.source.model.metersource.impl.IntermediatePlantImpl
+		 * @see org.civitas.meter.source.model.metersource.impl.MeterSourcePackageImpl#getIntermediatePlant()
 		 * @generated
 		 */
-		EClass PLANT = eINSTANCE.getPlant();
+		EClass INTERMEDIATE_PLANT = eINSTANCE.getIntermediatePlant();
 
 		/**
 		 * The meta object literal for the '<em><b>Operating Data</b></em>' reference list feature.
@@ -1039,7 +1117,7 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PLANT__OPERATING_DATA = eINSTANCE.getPlant_OperatingData();
+		EReference INTERMEDIATE_PLANT__OPERATING_DATA = eINSTANCE.getIntermediatePlant_OperatingData();
 
 		/**
 		 * The meta object literal for the '<em><b>Basic Data</b></em>' reference feature.
@@ -1047,7 +1125,7 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PLANT__BASIC_DATA = eINSTANCE.getPlant_BasicData();
+		EReference INTERMEDIATE_PLANT__BASIC_DATA = eINSTANCE.getIntermediatePlant_BasicData();
 
 		/**
 		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
@@ -1055,15 +1133,41 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PLANT__ID = eINSTANCE.getPlant_Id();
+		EAttribute INTERMEDIATE_PLANT__ID = eINSTANCE.getIntermediatePlant_Id();
 
 		/**
-		 * The meta object literal for the '<em><b>Meter</b></em>' reference list feature.
+		 * The meta object literal for the '{@link org.civitas.meter.source.model.metersource.impl.IntermediateMeteringPointImpl <em>Intermediate Metering Point</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.civitas.meter.source.model.metersource.impl.IntermediateMeteringPointImpl
+		 * @see org.civitas.meter.source.model.metersource.impl.MeterSourcePackageImpl#getIntermediateMeteringPoint()
+		 * @generated
+		 */
+		EClass INTERMEDIATE_METERING_POINT = eINSTANCE.getIntermediateMeteringPoint();
+
+		/**
+		 * The meta object literal for the '<em><b>Meter Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PLANT__METER = eINSTANCE.getPlant_Meter();
+		EAttribute INTERMEDIATE_METERING_POINT__METER_ID = eINSTANCE.getIntermediateMeteringPoint_MeterId();
+
+		/**
+		 * The meta object literal for the '<em><b>Plant Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INTERMEDIATE_METERING_POINT__PLANT_ID = eINSTANCE.getIntermediateMeteringPoint_PlantId();
+
+		/**
+		 * The meta object literal for the '<em><b>Readings</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERMEDIATE_METERING_POINT__READINGS = eINSTANCE.getIntermediateMeteringPoint_Readings();
 
 		/**
 		 * The meta object literal for the '{@link org.civitas.meter.source.model.metersource.impl.RemoteReadingImpl <em>Remote Reading</em>}' class.

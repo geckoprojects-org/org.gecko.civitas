@@ -3,3 +3,6 @@
 -buildpath: \
 	org.osgi.service.typedevent,\
 	slf4j.api
+	
+    
+-workingset: handler	

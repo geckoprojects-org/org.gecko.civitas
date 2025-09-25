@@ -99,8 +99,12 @@ public class MeterSourceAdapterFactory extends AdapterFactoryImpl {
 				return createCustomerAdapter();
 			}
 			@Override
-			public Adapter casePlant(Plant object) {
-				return createPlantAdapter();
+			public Adapter caseIntermediatePlant(IntermediatePlant object) {
+				return createIntermediatePlantAdapter();
+			}
+			@Override
+			public Adapter caseIntermediateMeteringPoint(IntermediateMeteringPoint object) {
+				return createIntermediateMeteringPointAdapter();
 			}
 			@Override
 			public Adapter caseRemoteReading(RemoteReading object) {
@@ -197,16 +201,30 @@ public class MeterSourceAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.civitas.meter.source.model.metersource.Plant <em>Plant</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.civitas.meter.source.model.metersource.IntermediatePlant <em>Intermediate Plant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.civitas.meter.source.model.metersource.Plant
+	 * @see org.civitas.meter.source.model.metersource.IntermediatePlant
 	 * @generated
 	 */
-	public Adapter createPlantAdapter() {
+	public Adapter createIntermediatePlantAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.civitas.meter.source.model.metersource.IntermediateMeteringPoint <em>Intermediate Metering Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.civitas.meter.source.model.metersource.IntermediateMeteringPoint
+	 * @generated
+	 */
+	public Adapter createIntermediateMeteringPointAdapter() {
 		return null;
 	}
 

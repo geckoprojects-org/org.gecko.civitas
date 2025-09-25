@@ -27,9 +27,9 @@ import org.osgi.annotation.versioning.ProviderType;
  */
 @ProviderType
 public interface CSVReaderService {
-	
+
 	List<EObject> loadEObjectsFromCSV(String csvFilePath, EClass rootObject);
 
-  List<EObject> loadEObjects(InputStream in, EClass rootObject);
+	List<EObject> loadEObjects(InputStream in, EClass rootObject);
 
 }

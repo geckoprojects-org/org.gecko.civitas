@@ -9,7 +9,6 @@
     "accessKey": "minio",
     "secretKey": "minio123"
   },
-  
   "MinIOCSVDownloadService~operatingdata": {
     "bucketname": "dummy-data",
     "cron": "0 */5 * * * *",
@@ -17,21 +16,43 @@
     "eClassUri": "https://civitas.org/meter/source/1.0.0#//OperatingData",
     "eventTopic" : "meterusecase/operating_source"
   },
-  "MinIOCSVDownloadService~meterdata": {
+  "MinIOCSVDownloadService~basicdata": {
     "bucketname": "dummy-data",
     "cron": "0 */5 * * * *",
     "client.target": "(id=minio)",
-    "eClassUri": "https://civitas.org/meter/source/1.0.0#//Meter",
-    "eventTopic" : "meterusecase/meter_source"
+    "eClassUri": "https://civitas.org/meter/source/1.0.0#//BasicaData",
+    "eventTopic" : "meterusecase/basicdata_source"
   },
-  "QVTHandler~plant": {
-    "eventTopyic" : "meterusecase/Plant_source",
-    "trafo.target" : "(id=plantQVT)",
-    "eclassuri" : "https://civitas.org/meter/source/1.0.0#//Plant",
+  "QVTHandler~basicdata": {
+    "eventTopic" : "meterusecase/basicdata_source",
+    "trafo.target" : "(id=basicDataQVT)",
+    "eclassuri" : "https://civitas.org/meter/source/1.0.0#//BasicData",
+    "forwardTopic" : "meterusecase/basicdata_wo_prefix_source"
+  },
+  "QVTHandler~intPlantToPlant": {
+    "eventTopic" : "meterusecase/Plant_source",
+    "trafo.target" : "(id=intPlantToPlantQVT)",
+    "eclassuri" : "https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
     "forwardTopic" : "meterusecase/Plant_target"
+  },
+  "QVTHandler~intMeteringPointToPlant": {
+    "eventTopyic" : "meterusecase/IntermediateMeteringPoint_target",
+    "trafo.target" : "(id=intMeteringPointToPlantQVT)",
+    "eclassuri" : "https://civitas.org/meter/target/1.0.0#//Plant",
+    "forwardTopic" : "meterusecase/Plant_target"
+  },
+  "QVTHandler~intermediatePlantToIntermediateMeteringPoint": {
+    "eventTopyic" : "meterusecase/Plant_target",
+    "trafo.target" : "(id=intermediatePlantToIntermediateMeteringPointQVT)",
+    "eclassuri" : "https://civitas.org/meter/target/1.0.0#//IntermediatePlant",
+    "forwardTopic" : "meterusecase/IntermediateMeteringPoint_target"
+  },
+  "EMFRepositoryDataSink~IntermediateMeteringPoint": {
+    "eventTopyic" : "meterusecase/IntermediateMeteringPoint_target",
+    "repo.target" : "(repo_id=inmem)"
   },
   "EMFRepositoryDataSink~Plant": {
     "eventTopyic" : "meterusecase/Plant_target",
-    "repo.target" : "(id=postgres)"
+    "repo.target" : "(repo_id=postgres)"
   }
 }

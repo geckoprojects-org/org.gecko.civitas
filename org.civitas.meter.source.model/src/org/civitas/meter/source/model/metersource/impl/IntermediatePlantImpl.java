@@ -16,10 +16,9 @@ package org.civitas.meter.source.model.metersource.impl;
 import java.util.Collection;
 
 import org.civitas.meter.source.model.metersource.BasicData;
-import org.civitas.meter.source.model.metersource.Meter;
+import org.civitas.meter.source.model.metersource.IntermediatePlant;
 import org.civitas.meter.source.model.metersource.MeterSourcePackage;
 import org.civitas.meter.source.model.metersource.OperatingData;
-import org.civitas.meter.source.model.metersource.Plant;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -35,21 +34,20 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Plant</b></em>'.
+ * An implementation of the model object '<em><b>Intermediate Plant</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.civitas.meter.source.model.metersource.impl.PlantImpl#getOperatingData <em>Operating Data</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.impl.PlantImpl#getBasicData <em>Basic Data</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.impl.PlantImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.impl.PlantImpl#getMeter <em>Meter</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.impl.IntermediatePlantImpl#getOperatingData <em>Operating Data</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.impl.IntermediatePlantImpl#getBasicData <em>Basic Data</em>}</li>
+ *   <li>{@link org.civitas.meter.source.model.metersource.impl.IntermediatePlantImpl#getId <em>Id</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
+public class IntermediatePlantImpl extends MinimalEObjectImpl.Container implements IntermediatePlant {
 	/**
 	 * The cached value of the '{@link #getOperatingData() <em>Operating Data</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -91,21 +89,11 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getMeter() <em>Meter</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMeter()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Meter> meter;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PlantImpl() {
+	protected IntermediatePlantImpl() {
 		super();
 	}
 
@@ -116,7 +104,7 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return MeterSourcePackage.Literals.PLANT;
+		return MeterSourcePackage.Literals.INTERMEDIATE_PLANT;
 	}
 
 	/**
@@ -127,7 +115,7 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 	@Override
 	public EList<OperatingData> getOperatingData() {
 		if (operatingData == null) {
-			operatingData = new EObjectResolvingEList<OperatingData>(OperatingData.class, this, MeterSourcePackage.PLANT__OPERATING_DATA);
+			operatingData = new EObjectResolvingEList<OperatingData>(OperatingData.class, this, MeterSourcePackage.INTERMEDIATE_PLANT__OPERATING_DATA);
 		}
 		return operatingData;
 	}
@@ -144,7 +132,7 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 			basicData = (BasicData)eResolveProxy(oldBasicData);
 			if (basicData != oldBasicData) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MeterSourcePackage.PLANT__BASIC_DATA, oldBasicData, basicData));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MeterSourcePackage.INTERMEDIATE_PLANT__BASIC_DATA, oldBasicData, basicData));
 			}
 		}
 		return basicData;
@@ -169,7 +157,7 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 		BasicData oldBasicData = basicData;
 		basicData = newBasicData;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.PLANT__BASIC_DATA, oldBasicData, basicData));
+			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.INTERMEDIATE_PLANT__BASIC_DATA, oldBasicData, basicData));
 	}
 
 	/**
@@ -192,20 +180,7 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.PLANT__ID, oldId, id));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Meter> getMeter() {
-		if (meter == null) {
-			meter = new EObjectResolvingEList<Meter>(Meter.class, this, MeterSourcePackage.PLANT__METER);
-		}
-		return meter;
+			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.INTERMEDIATE_PLANT__ID, oldId, id));
 	}
 
 	/**
@@ -216,15 +191,13 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MeterSourcePackage.PLANT__OPERATING_DATA:
+			case MeterSourcePackage.INTERMEDIATE_PLANT__OPERATING_DATA:
 				return getOperatingData();
-			case MeterSourcePackage.PLANT__BASIC_DATA:
+			case MeterSourcePackage.INTERMEDIATE_PLANT__BASIC_DATA:
 				if (resolve) return getBasicData();
 				return basicGetBasicData();
-			case MeterSourcePackage.PLANT__ID:
+			case MeterSourcePackage.INTERMEDIATE_PLANT__ID:
 				return getId();
-			case MeterSourcePackage.PLANT__METER:
-				return getMeter();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -238,19 +211,15 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MeterSourcePackage.PLANT__OPERATING_DATA:
+			case MeterSourcePackage.INTERMEDIATE_PLANT__OPERATING_DATA:
 				getOperatingData().clear();
 				getOperatingData().addAll((Collection<? extends OperatingData>)newValue);
 				return;
-			case MeterSourcePackage.PLANT__BASIC_DATA:
+			case MeterSourcePackage.INTERMEDIATE_PLANT__BASIC_DATA:
 				setBasicData((BasicData)newValue);
 				return;
-			case MeterSourcePackage.PLANT__ID:
+			case MeterSourcePackage.INTERMEDIATE_PLANT__ID:
 				setId((String)newValue);
-				return;
-			case MeterSourcePackage.PLANT__METER:
-				getMeter().clear();
-				getMeter().addAll((Collection<? extends Meter>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -264,17 +233,14 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MeterSourcePackage.PLANT__OPERATING_DATA:
+			case MeterSourcePackage.INTERMEDIATE_PLANT__OPERATING_DATA:
 				getOperatingData().clear();
 				return;
-			case MeterSourcePackage.PLANT__BASIC_DATA:
+			case MeterSourcePackage.INTERMEDIATE_PLANT__BASIC_DATA:
 				setBasicData((BasicData)null);
 				return;
-			case MeterSourcePackage.PLANT__ID:
+			case MeterSourcePackage.INTERMEDIATE_PLANT__ID:
 				setId(ID_EDEFAULT);
-				return;
-			case MeterSourcePackage.PLANT__METER:
-				getMeter().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -288,14 +254,12 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MeterSourcePackage.PLANT__OPERATING_DATA:
+			case MeterSourcePackage.INTERMEDIATE_PLANT__OPERATING_DATA:
 				return operatingData != null && !operatingData.isEmpty();
-			case MeterSourcePackage.PLANT__BASIC_DATA:
+			case MeterSourcePackage.INTERMEDIATE_PLANT__BASIC_DATA:
 				return basicData != null;
-			case MeterSourcePackage.PLANT__ID:
+			case MeterSourcePackage.INTERMEDIATE_PLANT__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case MeterSourcePackage.PLANT__METER:
-				return meter != null && !meter.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -316,4 +280,4 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 		return result.toString();
 	}
 
-} //PlantImpl
+} //IntermediatePlantImpl

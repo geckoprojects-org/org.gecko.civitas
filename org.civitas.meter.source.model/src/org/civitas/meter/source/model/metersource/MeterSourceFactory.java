@@ -81,13 +81,22 @@ public interface MeterSourceFactory extends EFactory {
 	Customer createCustomer();
 
 	/**
-	 * Returns a new object of class '<em>Plant</em>'.
+	 * Returns a new object of class '<em>Intermediate Plant</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Plant</em>'.
+	 * @return a new object of class '<em>Intermediate Plant</em>'.
 	 * @generated
 	 */
-	Plant createPlant();
+	IntermediatePlant createIntermediatePlant();
+
+	/**
+	 * Returns a new object of class '<em>Intermediate Metering Point</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Intermediate Metering Point</em>'.
+	 * @generated
+	 */
+	IntermediateMeteringPoint createIntermediateMeteringPoint();
 
 	/**
 	 * Returns a new object of class '<em>Remote Reading</em>'.

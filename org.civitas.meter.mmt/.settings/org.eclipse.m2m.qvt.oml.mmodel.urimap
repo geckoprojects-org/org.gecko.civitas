@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<uriMap:MappingContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uriMap="http:///www.eclipse.org/m2m/qvt/oml/MModelUriMap/1.0.0">
+  <mapping sourceURI="https://civitas.org/meter/source/1.0.0" targetURI="platform:/resource/org.civitas.meter.source.model/model/meter-source.ecore"/>
+  <mapping sourceURI="https://civitas.org/meter/target/1.0.0" targetURI="platform:/resource/org.civitas.meter.target.model/model/meter-target.ecore"/>  
+</uriMap:MappingContainer>
