@@ -1,0 +1,33 @@
+{
+  ":configurator:resource-version": 1,
+  ":configurator:symbolic-name": "org.civitas.advanced.repository.datasink.config",
+  ":configurator:version": "1.0.0",
+
+  "EMFRepositoryDataSink~meter-readings": {
+    "event.topic": "org/civitas/meter/readings/parsed",
+    "repo.target": "(&(repository.name=meter-repository)(repository.type=mongodb))",
+    "merger.strategy": "MERGE_INTO_IGNORE_UNSET",
+    "detailed.logging": true
+  },
+
+  "EMFRepositoryDataSink~meter-operational": {
+    "event.topic": "org/civitas/meter/operational/parsed",
+    "repo.target": "(&(repository.name=meter-repository)(repository.type=mongodb))",
+    "merger.strategy": "OVERWRITE",
+    "detailed.logging": false
+  },
+
+  "EMFRepositoryDataSink~audit-trail": {
+    "event.topic": "org/civitas/audit/events",
+    "repo.target": "(&(repository.name=audit-repository)(repository.type=postgresql))",
+    "merger.strategy": "OVERWRITE",
+    "detailed.logging": true
+  },
+
+  "EMFRepositoryDataSink~real-time-sensor": {
+    "event.topic": "org/civitas/sensor/real-time/*",
+    "repo.target": "(&(repository.name=sensor-repository)(repository.type=timeseries))",
+    "merger.strategy": "MERGE_INTO_IGNORE_UNSET",
+    "detailed.logging": false
+  }
+}

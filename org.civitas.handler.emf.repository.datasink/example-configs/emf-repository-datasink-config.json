@@ -1,0 +1,33 @@
+{
+  ":configurator:resource-version": 1,
+  ":configurator:symbolic-name": "org.civitas.handler.emf.repository.datasink.config",
+  ":configurator:version": "1.0.0",
+
+  "EMFRepositoryDataSink~meter-data": {
+    "event.topic": "org/civitas/meter/data/parsed",
+    "repo.target": "(repository.name=meter-repository)",
+    "merger.strategy": "MERGE_INTO_IGNORE_UNSET",
+    "detailed.logging": true
+  },
+
+  "EMFRepositoryDataSink~sensor-data": {
+    "event.topic": "org/civitas/sensor/data/parsed",
+    "repo.target": "(repository.name=sensor-repository)",
+    "merger.strategy": "MERGE_INTO_IGNORE_UNSET",
+    "detailed.logging": false
+  },
+
+  "EMFRepositoryDataSink~customer-data": {
+    "event.topic": "org/civitas/customer/data/parsed",
+    "repo.target": "(repository.name=customer-repository)",
+    "merger.strategy": "OVERWRITE",
+    "detailed.logging": false
+  },
+
+  "EMFRepositoryDataSink~building-data": {
+    "event.topic": "org/civitas/glt/building/data/parsed",
+    "repo.target": "(repository.name=glt-repository)",
+    "merger.strategy": "MERGE_INTO_IGNORE_UNSET",
+    "detailed.logging": true
+  }
+}

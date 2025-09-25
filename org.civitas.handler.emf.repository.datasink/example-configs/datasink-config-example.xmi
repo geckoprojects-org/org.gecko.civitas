@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasinkconfig:EMFRepositoryDataSinkConfigurationRoot xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:datasinkconfig="https://civitas.org/handler/emf/repository/datasink/config/1.0.0"
+    name="Civitas EMF Repository Data Sink Configuration"
+    version="1.0.0"
+    environment="DEVELOPMENT">
+
+  <!-- Meter Data Persistence Configuration -->
+  <dataSinkConfigurations configurationId="meter-data-sink"
+                         eventTopic="org/civitas/meter/data/parsed"
+                         repoTarget="(repository.name=meter-repository)"
+                         mergeStrategy="MERGE_INTO_IGNORE_UNSET"
+                         detailedLogging="true"
+                         enabled="true"
+                         description="Persists parsed meter data from CSV files to the meter repository"/>
+
+  <!-- Sensor Data Persistence Configuration -->
+  <dataSinkConfigurations configurationId="sensor-data-sink"
+                         eventTopic="org/civitas/sensor/data/parsed"
+                         repoTarget="(repository.name=sensor-repository)"
+                         mergeStrategy="MERGE_INTO_IGNORE_UNSET"
+                         detailedLogging="false"
+                         enabled="true"
+                         description="Persists sensor readings to the sensor repository"/>
+
+  <!-- Customer Data Persistence Configuration -->
+  <dataSinkConfigurations configurationId="customer-data-sink"
+                         eventTopic="org/civitas/customer/data/parsed"
+                         repoTarget="(repository.name=customer-repository)"
+                         mergeStrategy="OVERWRITE"
+                         detailedLogging="false"
+                         enabled="true"
+                         description="Persists customer data with overwrite strategy for authoritative updates"/>
+
+  <!-- GLT Building Data Persistence Configuration -->
+  <dataSinkConfigurations configurationId="building-data-sink"
+                         eventTopic="org/civitas/glt/building/data/parsed"
+                         repoTarget="(&(repository.name=glt-repository)(repository.type=mongodb))"
+                         mergeStrategy="MERGE_INTO_IGNORE_UNSET"
+                         detailedLogging="true"
+                         enabled="true"
+                         description="Persists GLT building data to MongoDB repository"/>
+
+  <!-- Audit Trail Configuration -->
+  <dataSinkConfigurations configurationId="audit-trail-sink"
+                         eventTopic="org/civitas/audit/events"
+                         repoTarget="(&(repository.name=audit-repository)(repository.type=postgresql))"
+                         mergeStrategy="OVERWRITE"
+                         detailedLogging="true"
+                         enabled="true"
+                         description="Persists audit events to PostgreSQL repository with complete overwrite"/>
+
+  <!-- Disabled Configuration Example -->
+  <dataSinkConfigurations configurationId="test-data-sink"
+                         eventTopic="org/civitas/test/data/parsed"
+                         repoTarget="(repository.name=test-repository)"
+                         mergeStrategy="MERGE_INTO_IGNORE_UNSET"
+                         detailedLogging="false"
+                         enabled="false"
+                         description="Test configuration - currently disabled"/>
+</datasinkconfig:EMFRepositoryDataSinkConfigurationRoot>
