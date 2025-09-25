@@ -17,7 +17,6 @@ import java.util.Collection;
 
 import org.civitas.meter.source.model.metersource.BasicData;
 import org.civitas.meter.source.model.metersource.IntermediatePlant;
-import org.civitas.meter.source.model.metersource.Meter;
 import org.civitas.meter.source.model.metersource.MeterSourcePackage;
 import org.civitas.meter.source.model.metersource.OperatingData;
 
@@ -44,7 +43,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link org.civitas.meter.source.model.metersource.impl.IntermediatePlantImpl#getOperatingData <em>Operating Data</em>}</li>
  *   <li>{@link org.civitas.meter.source.model.metersource.impl.IntermediatePlantImpl#getBasicData <em>Basic Data</em>}</li>
  *   <li>{@link org.civitas.meter.source.model.metersource.impl.IntermediatePlantImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.impl.IntermediatePlantImpl#getMeter <em>Meter</em>}</li>
  * </ul>
  *
  * @generated
@@ -89,16 +87,6 @@ public class IntermediatePlantImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getMeter() <em>Meter</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMeter()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Meter> meter;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -201,19 +189,6 @@ public class IntermediatePlantImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public EList<Meter> getMeter() {
-		if (meter == null) {
-			meter = new EObjectResolvingEList<Meter>(Meter.class, this, MeterSourcePackage.INTERMEDIATE_PLANT__METER);
-		}
-		return meter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case MeterSourcePackage.INTERMEDIATE_PLANT__OPERATING_DATA:
@@ -223,8 +198,6 @@ public class IntermediatePlantImpl extends MinimalEObjectImpl.Container implemen
 				return basicGetBasicData();
 			case MeterSourcePackage.INTERMEDIATE_PLANT__ID:
 				return getId();
-			case MeterSourcePackage.INTERMEDIATE_PLANT__METER:
-				return getMeter();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -248,10 +221,6 @@ public class IntermediatePlantImpl extends MinimalEObjectImpl.Container implemen
 			case MeterSourcePackage.INTERMEDIATE_PLANT__ID:
 				setId((String)newValue);
 				return;
-			case MeterSourcePackage.INTERMEDIATE_PLANT__METER:
-				getMeter().clear();
-				getMeter().addAll((Collection<? extends Meter>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -273,9 +242,6 @@ public class IntermediatePlantImpl extends MinimalEObjectImpl.Container implemen
 			case MeterSourcePackage.INTERMEDIATE_PLANT__ID:
 				setId(ID_EDEFAULT);
 				return;
-			case MeterSourcePackage.INTERMEDIATE_PLANT__METER:
-				getMeter().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -294,8 +260,6 @@ public class IntermediatePlantImpl extends MinimalEObjectImpl.Container implemen
 				return basicData != null;
 			case MeterSourcePackage.INTERMEDIATE_PLANT__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case MeterSourcePackage.INTERMEDIATE_PLANT__METER:
-				return meter != null && !meter.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

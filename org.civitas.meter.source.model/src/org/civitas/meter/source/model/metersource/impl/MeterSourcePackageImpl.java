@@ -407,16 +407,6 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 	 * @generated
 	 */
 	@Override
-	public EReference getIntermediatePlant_Meter() {
-		return (EReference)intermediatePlantEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getIntermediateMeteringPoint() {
 		return intermediateMeteringPointEClass;
 	}
@@ -510,7 +500,6 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 		createEReference(intermediatePlantEClass, INTERMEDIATE_PLANT__OPERATING_DATA);
 		createEReference(intermediatePlantEClass, INTERMEDIATE_PLANT__BASIC_DATA);
 		createEAttribute(intermediatePlantEClass, INTERMEDIATE_PLANT__ID);
-		createEReference(intermediatePlantEClass, INTERMEDIATE_PLANT__METER);
 
 		intermediateMeteringPointEClass = createEClass(INTERMEDIATE_METERING_POINT);
 		createEAttribute(intermediateMeteringPointEClass, INTERMEDIATE_METERING_POINT__METER_ID);
@@ -581,7 +570,6 @@ public class MeterSourcePackageImpl extends EPackageImpl implements MeterSourceP
 		initEReference(getIntermediatePlant_OperatingData(), this.getOperatingData(), null, "operatingData", null, 0, -1, IntermediatePlant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIntermediatePlant_BasicData(), this.getBasicData(), null, "basicData", null, 1, 1, IntermediatePlant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIntermediatePlant_Id(), ecorePackage.getEString(), "id", null, 0, 1, IntermediatePlant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIntermediatePlant_Meter(), this.getMeter(), null, "meter", null, 0, -1, IntermediatePlant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(intermediateMeteringPointEClass, IntermediateMeteringPoint.class, "IntermediateMeteringPoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIntermediateMeteringPoint_MeterId(), ecorePackage.getEString(), "meterId", null, 0, 1, IntermediateMeteringPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

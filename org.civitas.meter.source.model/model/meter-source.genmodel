@@ -38,7 +38,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-source.ecore#//IntermediatePlant/operatingData"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-source.ecore#//IntermediatePlant/basicData"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//IntermediatePlant/id"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-source.ecore#//IntermediatePlant/meter"/>
     </genClasses>
     <genClasses ecoreClass="meter-source.ecore#//IntermediateMeteringPoint">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-source.ecore#//IntermediateMeteringPoint/meterId"/>

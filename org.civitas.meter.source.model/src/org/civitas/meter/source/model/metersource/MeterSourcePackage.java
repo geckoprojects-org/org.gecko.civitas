@@ -397,22 +397,13 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	int INTERMEDIATE_PLANT__ID = 2;
 
 	/**
-	 * The feature id for the '<em><b>Meter</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERMEDIATE_PLANT__METER = 3;
-
-	/**
 	 * The number of structural features of the '<em>Intermediate Plant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERMEDIATE_PLANT_FEATURE_COUNT = 4;
+	int INTERMEDIATE_PLANT_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Intermediate Plant</em>' class.
@@ -749,17 +740,6 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getIntermediatePlant_Id();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getMeter <em>Meter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Meter</em>'.
-	 * @see org.civitas.meter.source.model.metersource.IntermediatePlant#getMeter()
-	 * @see #getIntermediatePlant()
-	 * @generated
-	 */
-	EReference getIntermediatePlant_Meter();
-
-	/**
 	 * Returns the meta object for class '{@link org.civitas.meter.source.model.metersource.IntermediateMeteringPoint <em>Intermediate Metering Point</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1036,14 +1016,6 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute INTERMEDIATE_PLANT__ID = eINSTANCE.getIntermediatePlant_Id();
-
-		/**
-		 * The meta object literal for the '<em><b>Meter</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INTERMEDIATE_PLANT__METER = eINSTANCE.getIntermediatePlant_Meter();
 
 		/**
 		 * The meta object literal for the '{@link org.civitas.meter.source.model.metersource.impl.IntermediateMeteringPointImpl <em>Intermediate Metering Point</em>}' class.

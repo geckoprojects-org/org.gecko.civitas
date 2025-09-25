@@ -31,7 +31,6 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getOperatingData <em>Operating Data</em>}</li>
  *   <li>{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getBasicData <em>Basic Data</em>}</li>
  *   <li>{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getId <em>Id</em>}</li>
- *   <li>{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getMeter <em>Meter</em>}</li>
  * </ul>
  *
  * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getIntermediatePlant()
@@ -95,17 +94,5 @@ public interface IntermediatePlant extends EObject {
 	 * @generated
 	 */
 	void setId(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Meter</b></em>' reference list.
-	 * The list contents are of type {@link org.civitas.meter.source.model.metersource.Meter}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Meter</em>' reference list.
-	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getIntermediatePlant_Meter()
-	 * @model
-	 * @generated
-	 */
-	EList<Meter> getMeter();
 
 } // IntermediatePlant
