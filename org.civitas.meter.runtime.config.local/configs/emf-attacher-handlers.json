@@ -1,0 +1,31 @@
+{
+  ":configurator:resource-version": 1,
+  
+	"EMFAttacherHandler~BasicData": 
+  	{
+	    "repository.target": "(repo_id=civitas)",
+		"incomingEClassUri" : "https://civitas.org/meter/source/1.0.0#//BasicData",
+		"targetEClassUri": "https://civitas.org/meter/source/1.0.0#//Plant",
+		"foreignKeyFeatureUri": "https://civitas.org/meter/source/1.0.0#//BasicData_plantId",
+		"targetReferenceUri": "https://civitas.org/meter/source/1.0.0#//Plant_basicData",
+		"forwardTopic": "civitas/meter/plant"
+	},
+	"EMFAttacherHandler~OperatingData":
+	{
+		"repository.target": "(repo_id=civitas)",
+		"incomingEClassUri" : "https://civitas.org/meter/source/1.0.0#//OperatingData",
+		"targetEClassUri": "https://civitas.org/meter/source/1.0.0#//Plant",
+		"foreignKeyFeatureUri": "https://civitas.org/meter/source/1.0.0#//OperatingData_plantId",
+		"targetReferenceUri": "https://civitas.org/meter/source/1.0.0#//Plant_operatingData",
+		"forwardTopic": "civitas/meter/plant"
+	},
+	"EMFAttacherHandler~Meter":
+	{
+		"repository.target": "(repo_id=civitas)",
+		"incomingEClassUri" : "https://civitas.org/meter/source/1.0.0#//Meter",
+		"targetEClassUri": "https://civitas.org/meter/source/1.0.0#//Plant",
+		"foreignKeyFeatureUri": "https://civitas.org/meter/source/1.0.0#//Meter_plantId",
+		"targetReferenceUri": "https://civitas.org/meter/source/1.0.0#//Plant_meter",
+		"forwardTopic": "civitas/meter/plant"
+	}
+}
