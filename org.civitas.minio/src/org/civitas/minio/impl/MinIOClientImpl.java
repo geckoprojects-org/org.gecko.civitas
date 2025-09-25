@@ -25,6 +25,8 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.minio.BucketExistsArgs;
 import io.minio.GetObjectArgs;
@@ -37,9 +39,6 @@ import io.minio.RemoveObjectArgs;
 import io.minio.Result;
 import io.minio.messages.Bucket;
 import io.minio.messages.Item;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Component(
 		name = "MinIOClient",

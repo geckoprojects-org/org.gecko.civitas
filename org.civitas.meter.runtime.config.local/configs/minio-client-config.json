@@ -24,15 +24,6 @@
     "eClassUri": "https://civitas.org/meter/source/1.0.0#//Meter",
     "eventTopic" : "meterusecase/meter_source"
   },
-  "EMFAttacherHandler~operating": {
-    "eventTopyic" : "meterusecase/operating_source",
-    "repo.target" : "(id=inmem)",
-    "incomming.eclassuri" : "https://civitas.org/meter/source/1.0.0#//OperatingData",
-    "target.eclassuri" : "https://civitas.org/meter/source/1.0.0#//Plant",
-    "foreignKeyFeature.uri" : "https://civitas.org/meter/source/1.0.0#//OperatingData/plantId",
-    "target.reference.uri" : "https://civitas.org/meter/source/1.0.0#//Plant/operatingData",
-    "forwardTopic" : "meterusecase/Plant_source"
-  },
   "QVTHandler~plant": {
     "eventTopyic" : "meterusecase/Plant_source",
     "trafo.target" : "(id=plantQVT)",
