@@ -1,5 +1,12 @@
 -library: enable-emf
 
+# Uncomment to generate Java classes from Ecore model
+#-generate: \
+#    model/emf-attacher-config.genmodel;output=src;generateEdit=false;generateEditor=false
+
+# Include model resources
+-includeresource.model: model=model
+
 -buildpath: \
 	org.osgi.service.typedevent,\
 	org.gecko.emf.repository.api,\
