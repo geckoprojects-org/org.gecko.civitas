@@ -122,6 +122,7 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 		// create target object if null and attach eObject (copy) to it
 		if(targetEObject == null) {
 			targetEObject = EcoreUtil.create((EClass) target);
+			targetEObject.eSet(targetEObject.eClass().getEIDAttribute(), eObject.eGet(foreignKeyFeature));
 		} 
 		
 //		We have to distinguish here between many ref and single ref. 
