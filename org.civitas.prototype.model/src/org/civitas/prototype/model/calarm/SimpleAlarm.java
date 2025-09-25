@@ -13,6 +13,7 @@
  */
 package org.civitas.prototype.model.calarm;
 
+import org.civitas.glt.model.glt.Building;
 import org.civitas.glt.model.glt.Contact;
 
 import org.civitas.glt.sensor.model.sensor.SensorReading;
@@ -35,6 +36,7 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link org.civitas.prototype.model.calarm.SimpleAlarm#getNotificationType <em>Notification Type</em>}</li>
  *   <li>{@link org.civitas.prototype.model.calarm.SimpleAlarm#getAlarmReceiver <em>Alarm Receiver</em>}</li>
  *   <li>{@link org.civitas.prototype.model.calarm.SimpleAlarm#getAlarmTriggerEvent <em>Alarm Trigger Event</em>}</li>
+ *   <li>{@link org.civitas.prototype.model.calarm.SimpleAlarm#getAlarmTriggeringBuilder <em>Alarm Triggering Builder</em>}</li>
  *   <li>{@link org.civitas.prototype.model.calarm.SimpleAlarm#getMassage <em>Massage</em>}</li>
  * </ul>
  *
@@ -159,6 +161,28 @@ public interface SimpleAlarm extends EObject {
 	 * @generated
 	 */
 	void setAlarmTriggerEvent(SensorReading value);
+
+	/**
+	 * Returns the value of the '<em><b>Alarm Triggering Builder</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Alarm Triggering Builder</em>' containment reference.
+	 * @see #setAlarmTriggeringBuilder(Building)
+	 * @see org.civitas.prototype.model.calarm.CIVAlarmPackage#getSimpleAlarm_AlarmTriggeringBuilder()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Building getAlarmTriggeringBuilder();
+
+	/**
+	 * Sets the value of the '{@link org.civitas.prototype.model.calarm.SimpleAlarm#getAlarmTriggeringBuilder <em>Alarm Triggering Builder</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Alarm Triggering Builder</em>' containment reference.
+	 * @see #getAlarmTriggeringBuilder()
+	 * @generated
+	 */
+	void setAlarmTriggeringBuilder(Building value);
 
 	/**
 	 * Returns the value of the '<em><b>Massage</b></em>' attribute.

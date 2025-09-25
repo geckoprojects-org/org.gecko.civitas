@@ -290,8 +290,18 @@ public class CIVAlarmPackageImpl extends EPackageImpl implements CIVAlarmPackage
 	 * @generated
 	 */
 	@Override
+	public EReference getSimpleAlarm_AlarmTriggeringBuilder() {
+		return (EReference)simpleAlarmEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getSimpleAlarm_Massage() {
-		return (EAttribute)simpleAlarmEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)simpleAlarmEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -358,6 +368,7 @@ public class CIVAlarmPackageImpl extends EPackageImpl implements CIVAlarmPackage
 		createEAttribute(simpleAlarmEClass, SIMPLE_ALARM__NOTIFICATION_TYPE);
 		createEReference(simpleAlarmEClass, SIMPLE_ALARM__ALARM_RECEIVER);
 		createEReference(simpleAlarmEClass, SIMPLE_ALARM__ALARM_TRIGGER_EVENT);
+		createEReference(simpleAlarmEClass, SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER);
 		createEAttribute(simpleAlarmEClass, SIMPLE_ALARM__MASSAGE);
 
 		// Create enums
@@ -415,6 +426,7 @@ public class CIVAlarmPackageImpl extends EPackageImpl implements CIVAlarmPackage
 		initEAttribute(getSimpleAlarm_NotificationType(), this.getNotificationType(), "notificationType", null, 0, 1, SimpleAlarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSimpleAlarm_AlarmReceiver(), theGLTPackage.getContact(), null, "alarmReceiver", null, 0, 1, SimpleAlarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSimpleAlarm_AlarmTriggerEvent(), theBuildingSensorPackage.getSensorReading(), null, "alarmTriggerEvent", null, 0, 1, SimpleAlarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSimpleAlarm_AlarmTriggeringBuilder(), theGLTPackage.getBuilding(), null, "alarmTriggeringBuilder", null, 0, 1, SimpleAlarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleAlarm_Massage(), ecorePackage.getEString(), "massage", null, 0, 1, SimpleAlarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
