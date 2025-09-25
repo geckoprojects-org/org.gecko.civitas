@@ -1,47 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="Local" increment="1758643108215">
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="license" value="Eclipse Public License 2.0"/>
-      <attribute name="copyright" value="Data In Motion Consulting GmbH - All rights reserved"/>
-      <attribute name="osgi.identity" value="org.eclipse.fennec.codec.constants"/>
-      <attribute name="documentation" value="https://github.com/geckoprojects-org/org.gecko.codec"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" value="1.0.0.202509230729-SNAPSHOT" type="Version"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="bundle-symbolic-name" value="org.eclipse.fennec.codec.constants"/>
-      <attribute name="bundle-version" value="1.0.0.202509230729-SNAPSHOT" type="Version"/>
-      <attribute name="osgi.wiring.package" value="org.eclipse.fennec.codec.options"/>
-      <attribute name="version" value="1.0.0" type="Version"/>
-      <attribute name="bnd.hashes" value="2003733838,-692733123,-1751267356,-655305156,1133984730,2102015793,-1509355135,-1164584962,-1923478059" type="List&lt;Long&gt;"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="bundle-version" value="1.0.0.202509230729-SNAPSHOT" type="Version"/>
-      <attribute name="osgi.wiring.bundle" value="org.eclipse.fennec.codec.constants"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="bundle-version" value="1.0.0.202509230729-SNAPSHOT" type="Version"/>
-      <attribute name="osgi.wiring.host" value="org.eclipse.fennec.codec.constants"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="size" value="26014" type="Long"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-      <attribute name="url" value="org.eclipse.fennec.codec.constants/org.eclipse.fennec.codec.constants-1.0.0.jar"/>
-      <attribute name="osgi.content" value="25C18716991CDC349E4B035A87743FCE89D329BED2E323BD23F16574D9A31924"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=java.lang)"/>
-      <attribute name="osgi.wiring.package" value="java.lang"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=java.lang.annotation)"/>
-      <attribute name="osgi.wiring.package" value="java.lang.annotation"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=17))"/>
-    </requirement>
-  </resource>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="Local" increment="1758630282006">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="license" value="Eclipse Public License 2.0"/>
@@ -623,6 +581,48 @@
     <requirement namespace="osgi.service">
       <directive name="filter" value="(objectClass=org.eclipse.fennec.codec.info.helper.CodecInfoHolderHelper)"/>
       <directive name="effective" value="active"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="Eclipse Public License 2.0"/>
+      <attribute name="copyright" value="Data In Motion Consulting GmbH - All rights reserved"/>
+      <attribute name="osgi.identity" value="org.eclipse.fennec.codec.constants"/>
+      <attribute name="documentation" value="https://github.com/geckoprojects-org/org.gecko.codec"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="1.0.0.202509230729-SNAPSHOT" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="bundle-symbolic-name" value="org.eclipse.fennec.codec.constants"/>
+      <attribute name="bundle-version" value="1.0.0.202509230729-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.package" value="org.eclipse.fennec.codec.options"/>
+      <attribute name="version" value="1.0.0" type="Version"/>
+      <attribute name="bnd.hashes" value="2003733838,-692733123,-1751267356,-655305156,1133984730,2102015793,-1509355135,-1164584962,-1923478059" type="List&lt;Long&gt;"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="1.0.0.202509230729-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.eclipse.fennec.codec.constants"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="1.0.0.202509230729-SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.eclipse.fennec.codec.constants"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="26014" type="Long"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="url" value="org.eclipse.fennec.codec.constants/org.eclipse.fennec.codec.constants-1.0.0.jar"/>
+      <attribute name="osgi.content" value="25C18716991CDC349E4B035A87743FCE89D329BED2E323BD23F16574D9A31924"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.lang)"/>
+      <attribute name="osgi.wiring.package" value="java.lang"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=java.lang.annotation)"/>
+      <attribute name="osgi.wiring.package" value="java.lang.annotation"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=17))"/>
     </requirement>
   </resource>
   <resource>
