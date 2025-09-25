@@ -27,11 +27,21 @@
   "QVTHandler~plant": {
     "eventTopic" : "meterusecase/Plant_source",
     "trafo.target" : "(id=plantQVT)",
-    "eclassuri" : "https://civitas.org/meter/source/1.0.0#//Plant",
+    "eclassuri" : "https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
     "forwardTopic" : "meterusecase/Plant_target"
+  },
+  "QVTHandler~intermediateMeteringPoint": {
+    "eventTopyic" : "meterusecase/Plant_target",
+    "trafo.target" : "(id=plantQVT)",
+    "eclassuri" : "https://civitas.org/meter/target/1.0.0#//Plant",
+    "forwardTopic" : "meterusecase/IntermediateMeteringPoint_target"
+  },
+  "EMFRepositoryDataSink~IntermediateMeteringPoint": {
+    "eventTopyic" : "meterusecase/IntermediateMeteringPoint_target",
+    "repo.target" : "(repo_id=inmem)"
   },
   "EMFRepositoryDataSink~Plant": {
     "eventTopyic" : "meterusecase/Plant_target",
-    "repo.target" : "(id=postgres)"
+    "repo.target" : "(repo_id=postgres)"
   }
 }

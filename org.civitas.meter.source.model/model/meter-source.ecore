@@ -79,7 +79,7 @@
       <details key="documentation" value="This is another way of storing the plants, used for remote meters."/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Plant">
+  <eClassifiers xsi:type="ecore:EClass" name="IntermediatePlant">
     <eStructuralFeatures xsi:type="ecore:EReference" name="operatingData" upperBound="-1"
         eType="#//OperatingData"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="basicData" lowerBound="1"
@@ -88,5 +88,12 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="meter" upperBound="-1"
         eType="#//Meter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntermediateMeteringPoint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="meterId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="plantId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="readings" upperBound="-1"
+        eType="#//Reading"/>
   </eClassifiers>
 </ecore:EPackage>

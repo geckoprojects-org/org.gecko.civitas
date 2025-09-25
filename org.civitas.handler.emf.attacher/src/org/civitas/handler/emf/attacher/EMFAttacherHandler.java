@@ -48,7 +48,7 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 	@interface Config{
 		
 		@AttributeDefinition(name = "Event Topic", description = "The topic this handler is listening to")
-		String eventTopic();
+		String event_topic();
 		
 		@AttributeDefinition(name = "Repo Target", description = "The EMF Repository target")
 		String repo_target();
