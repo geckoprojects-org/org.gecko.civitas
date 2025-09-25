@@ -81,6 +81,15 @@ public interface MeterSourceFactory extends EFactory {
 	Customer createCustomer();
 
 	/**
+	 * Returns a new object of class '<em>Plant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Plant</em>'.
+	 * @generated
+	 */
+	Plant createPlant();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

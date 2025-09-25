@@ -16,6 +16,7 @@ package org.civitas.meter.source.model.metersource;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 
 import org.gecko.emf.osgi.annotation.provide.EPackage;
 
@@ -358,6 +359,70 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	 */
 	int CUSTOMER_OPERATION_COUNT = 0;
 
+	/**
+	 * The meta object id for the '{@link org.civitas.meter.source.model.metersource.impl.PlantImpl <em>Plant</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.civitas.meter.source.model.metersource.impl.PlantImpl
+	 * @see org.civitas.meter.source.model.metersource.impl.MeterSourcePackageImpl#getPlant()
+	 * @generated
+	 */
+	int PLANT = 5;
+
+	/**
+	 * The feature id for the '<em><b>Operating Data</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLANT__OPERATING_DATA = 0;
+
+	/**
+	 * The feature id for the '<em><b>Basic Data</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLANT__BASIC_DATA = 1;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLANT__ID = 2;
+
+	/**
+	 * The feature id for the '<em><b>Meter</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLANT__METER = 3;
+
+	/**
+	 * The number of structural features of the '<em>Plant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLANT_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Plant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLANT_OPERATION_COUNT = 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link org.civitas.meter.source.model.metersource.BasicData <em>Basic Data</em>}'.
@@ -586,6 +651,60 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getCustomer();
 
 	/**
+	 * Returns the meta object for class '{@link org.civitas.meter.source.model.metersource.Plant <em>Plant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Plant</em>'.
+	 * @see org.civitas.meter.source.model.metersource.Plant
+	 * @generated
+	 */
+	EClass getPlant();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.civitas.meter.source.model.metersource.Plant#getOperatingData <em>Operating Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Operating Data</em>'.
+	 * @see org.civitas.meter.source.model.metersource.Plant#getOperatingData()
+	 * @see #getPlant()
+	 * @generated
+	 */
+	EReference getPlant_OperatingData();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.civitas.meter.source.model.metersource.Plant#getBasicData <em>Basic Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Basic Data</em>'.
+	 * @see org.civitas.meter.source.model.metersource.Plant#getBasicData()
+	 * @see #getPlant()
+	 * @generated
+	 */
+	EReference getPlant_BasicData();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.meter.source.model.metersource.Plant#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.civitas.meter.source.model.metersource.Plant#getId()
+	 * @see #getPlant()
+	 * @generated
+	 */
+	EAttribute getPlant_Id();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.civitas.meter.source.model.metersource.Plant#getMeter <em>Meter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Meter</em>'.
+	 * @see org.civitas.meter.source.model.metersource.Plant#getMeter()
+	 * @see #getPlant()
+	 * @generated
+	 */
+	EReference getPlant_Meter();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -785,6 +904,48 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EClass CUSTOMER = eINSTANCE.getCustomer();
+
+		/**
+		 * The meta object literal for the '{@link org.civitas.meter.source.model.metersource.impl.PlantImpl <em>Plant</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.civitas.meter.source.model.metersource.impl.PlantImpl
+		 * @see org.civitas.meter.source.model.metersource.impl.MeterSourcePackageImpl#getPlant()
+		 * @generated
+		 */
+		EClass PLANT = eINSTANCE.getPlant();
+
+		/**
+		 * The meta object literal for the '<em><b>Operating Data</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PLANT__OPERATING_DATA = eINSTANCE.getPlant_OperatingData();
+
+		/**
+		 * The meta object literal for the '<em><b>Basic Data</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PLANT__BASIC_DATA = eINSTANCE.getPlant_BasicData();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLANT__ID = eINSTANCE.getPlant_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Meter</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PLANT__METER = eINSTANCE.getPlant_Meter();
 
 	}
 

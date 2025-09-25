@@ -99,6 +99,10 @@ public class MeterSourceAdapterFactory extends AdapterFactoryImpl {
 				return createCustomerAdapter();
 			}
 			@Override
+			public Adapter casePlant(Plant object) {
+				return createPlantAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -185,6 +189,20 @@ public class MeterSourceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCustomerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.civitas.meter.source.model.metersource.Plant <em>Plant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.civitas.meter.source.model.metersource.Plant
+	 * @generated
+	 */
+	public Adapter createPlantAdapter() {
 		return null;
 	}
 
