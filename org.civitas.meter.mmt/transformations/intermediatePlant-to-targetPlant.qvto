@@ -1,0 +1,42 @@
+modeltype ECORE "strict" uses ecore('http://www.eclipse.org/emf/2002/Ecore');
+modeltype SOURCE uses "https://civitas.org/meter/source/1.0.0";
+modeltype TARGET uses "https://civitas.org/meter/target/1.0.0";
+
+
+transformation IntermediatePlantToTargetPlant(in intermediatePlant : SOURCE, out targetPlant : TARGET);
+
+main() {
+	intermediatePlant.rootObjects()[SOURCE::IntermediatePlant] -> map toTargetPlant(); 
+}
+
+mapping SOURCE::IntermediatePlant::toTargetPlant(): TARGET::Plant {
+	id := self.id;
+	city := self.basicData.city;
+	postalcode := self.basicData.zip;
+	street := self.basicData.street;
+	net := self.map toTargetNet();
+	operatingData += self.operatingData->map toTargetOperatingData();
+	meteringPoints += self.meter->map toTargetMeteringPoint();
+}
+
+mapping SOURCE::IntermediatePlant::toTargetNet(): TARGET::Net {
+	id := self.basicData.net.toString();
+	number := self.basicData.net.toString();
+}
+
+mapping SOURCE::OperatingData::toTargetOperatingData(): TARGET::OperatingData {
+	id := self.id.toString();
+	operatingHours := self.operatingHours;
+//	TODO: how do I put a non-contained ref to the Plant??
+//	plant := 
+}
+
+mapping SOURCE::Meter::toTargetMeteringPoint(): TARGET::MeteringPoint {
+	id := self.id;
+	currentMeter := self.map toTargetMeter();
+}
+
+mapping SOURCE::Meter::toTargetMeter(): TARGET::Meter {
+	id := self.id;
+}
+

@@ -13,7 +13,7 @@
  */
 package org.civitas.meter.source.model.metersource.impl;
 
-import java.time.Instant;
+import java.util.Date;
 
 import org.civitas.meter.source.model.metersource.MeterSourcePackage;
 import org.civitas.meter.source.model.metersource.Reading;
@@ -50,7 +50,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int ID_EDEFAULT = 0;
+	protected static final String ID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -60,7 +60,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 * @ordered
 	 */
-	protected int id = ID_EDEFAULT;
+	protected String id = ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMeterId() <em>Meter Id</em>}' attribute.
@@ -90,7 +90,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int VALUE_EDEFAULT = 0;
+	protected static final Double VALUE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -100,7 +100,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 * @ordered
 	 */
-	protected int value = VALUE_EDEFAULT;
+	protected Double value = VALUE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
@@ -110,7 +110,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Instant TIMESTAMP_EDEFAULT = null;
+	protected static final Date TIMESTAMP_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
@@ -120,7 +120,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 * @ordered
 	 */
-	protected Instant timestamp = TIMESTAMP_EDEFAULT;
+	protected Date timestamp = TIMESTAMP_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -147,7 +147,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 */
 	@Override
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -157,8 +157,8 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 */
 	@Override
-	public void setId(int newId) {
-		int oldId = id;
+	public void setId(String newId) {
+		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.READING__ID, oldId, id));
@@ -193,7 +193,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 */
 	@Override
-	public int getValue() {
+	public Double getValue() {
 		return value;
 	}
 
@@ -203,8 +203,8 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 */
 	@Override
-	public void setValue(int newValue) {
-		int oldValue = value;
+	public void setValue(Double newValue) {
+		Double oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.READING__VALUE, oldValue, value));
@@ -216,7 +216,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 */
 	@Override
-	public Instant getTimestamp() {
+	public Date getTimestamp() {
 		return timestamp;
 	}
 
@@ -226,8 +226,8 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 */
 	@Override
-	public void setTimestamp(Instant newTimestamp) {
-		Instant oldTimestamp = timestamp;
+	public void setTimestamp(Date newTimestamp) {
+		Date oldTimestamp = timestamp;
 		timestamp = newTimestamp;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.READING__TIMESTAMP, oldTimestamp, timestamp));
@@ -262,16 +262,16 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case MeterSourcePackage.READING__ID:
-				setId((Integer)newValue);
+				setId((String)newValue);
 				return;
 			case MeterSourcePackage.READING__METER_ID:
 				setMeterId((String)newValue);
 				return;
 			case MeterSourcePackage.READING__VALUE:
-				setValue((Integer)newValue);
+				setValue((Double)newValue);
 				return;
 			case MeterSourcePackage.READING__TIMESTAMP:
-				setTimestamp((Instant)newValue);
+				setTimestamp((Date)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -310,11 +310,11 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case MeterSourcePackage.READING__ID:
-				return id != ID_EDEFAULT;
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case MeterSourcePackage.READING__METER_ID:
 				return METER_ID_EDEFAULT == null ? meterId != null : !METER_ID_EDEFAULT.equals(meterId);
 			case MeterSourcePackage.READING__VALUE:
-				return value != VALUE_EDEFAULT;
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 			case MeterSourcePackage.READING__TIMESTAMP:
 				return TIMESTAMP_EDEFAULT == null ? timestamp != null : !TIMESTAMP_EDEFAULT.equals(timestamp);
 		}
