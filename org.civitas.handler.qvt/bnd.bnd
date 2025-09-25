@@ -3,3 +3,5 @@
 -buildpath: \
 	org.osgi.service.typedevent,\
 	org.eclipse.fennec.qvt.api
+	
+-workingset: handler
