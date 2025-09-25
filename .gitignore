@@ -3,11 +3,17 @@
 /target/
 .metadata
 /build/
+/documents/build/
+/docker/build/
+/docker/glt/build/
+/docker/meter/build/
 /release/
 /build/
 /local/
 /cnf/cache/
 /cnf/build/
+/docker/build/
+/documents/build/
 generated/
 bin/
 bin_test/

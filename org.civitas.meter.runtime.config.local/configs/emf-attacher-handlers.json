@@ -3,29 +3,32 @@
   
 	"EMFAttacherHandler~BasicData": 
   	{
+  	 	"eventTopic" : "meterusecase/basic_source",
 	    "repository.target": "(repo_id=civitas)",
-		"incomingEClassUri" : "https://civitas.org/meter/source/1.0.0#//BasicData",
-		"targetEClassUri": "https://civitas.org/meter/source/1.0.0#//Plant",
-		"foreignKeyFeatureUri": "https://civitas.org/meter/source/1.0.0#//BasicData_plantId",
-		"targetReferenceUri": "https://civitas.org/meter/source/1.0.0#//Plant_basicData",
+		"incomming.eclassuri" : "https://civitas.org/meter/source/1.0.0#//BasicData",
+		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//Plant",
+		"foreignKeyFeature.uri": "https://civitas.org/meter/source/1.0.0#//BasicData_plantId",
+		"target.reference.uri": "https://civitas.org/meter/source/1.0.0#//Plant_basicData",
 		"forwardTopic": "civitas/meter/plant"
 	},
 	"EMFAttacherHandler~OperatingData":
 	{
+		"eventTopic" : "meterusecase/operating_source",
 		"repository.target": "(repo_id=civitas)",
-		"incomingEClassUri" : "https://civitas.org/meter/source/1.0.0#//OperatingData",
-		"targetEClassUri": "https://civitas.org/meter/source/1.0.0#//Plant",
-		"foreignKeyFeatureUri": "https://civitas.org/meter/source/1.0.0#//OperatingData_plantId",
-		"targetReferenceUri": "https://civitas.org/meter/source/1.0.0#//Plant_operatingData",
+		"incomming.eclassuri" : "https://civitas.org/meter/source/1.0.0#//OperatingData",
+		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//Plant",
+		"foreignKeyFeature.uri": "https://civitas.org/meter/source/1.0.0#//OperatingData_plantId",
+		"target.reference.uri": "https://civitas.org/meter/source/1.0.0#//Plant_operatingData",
 		"forwardTopic": "civitas/meter/plant"
 	},
 	"EMFAttacherHandler~Meter":
 	{
+		"eventTopic" : "meterusecase/meter_source",
 		"repository.target": "(repo_id=civitas)",
-		"incomingEClassUri" : "https://civitas.org/meter/source/1.0.0#//Meter",
-		"targetEClassUri": "https://civitas.org/meter/source/1.0.0#//Plant",
-		"foreignKeyFeatureUri": "https://civitas.org/meter/source/1.0.0#//Meter_plantId",
-		"targetReferenceUri": "https://civitas.org/meter/source/1.0.0#//Plant_meter",
+		"incomming.eclassuri" : "https://civitas.org/meter/source/1.0.0#//Meter",
+		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//Plant",
+		"foreignKeyFeature.uri": "https://civitas.org/meter/source/1.0.0#//Meter_plantId",
+		"target.reference.uri": "https://civitas.org/meter/source/1.0.0#//Plant_meter",
 		"forwardTopic": "civitas/meter/plant"
 	}
 }

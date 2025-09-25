@@ -120,10 +120,6 @@ org.slf4j:jul-to-slf4j:2.0.11
 ch.qos.logback:logback-core:1.5.3
 ch.qos.logback:logback-classic:1.5.3
 
-org.geckoprojects.bnd:org.gecko.bnd.dimc.library:2.1.0-SNAPSHOT
-org.geckoprojects.bnd:org.gecko.bnd.jacoco.library:2.1.0-SNAPSHOT
-org.geckoprojects.bnd:org.gecko.bnd.osgitest.library:2.1.0-SNAPSHOT
-
 org.bndtools:org.bndtools.templates.osgi:7.0.0
 
 #org.eclipse.fennec.emf:org.eclipse.fennec.emf.osgi.bnd.library.workspace:1.0.0-SNAPSHOT

@@ -5,7 +5,6 @@
 -library: \
 	geckoDIMC,\
 	geckoOSGi-Test,\
-	geckoJacoco,\
 	geckoEMF,\
 	fennecQVT,\
 	fennecCamel,\
