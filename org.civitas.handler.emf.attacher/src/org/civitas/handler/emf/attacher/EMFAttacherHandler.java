@@ -13,6 +13,7 @@
  */
 package org.civitas.handler.emf.attacher;
 
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.EList;
@@ -66,7 +67,7 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 		String target_reference_uri(); // Plant_meters
 		
 		@AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the updated target EObject")
-		String forwardTopic();
+		String[] forward_topics();
 	}
 	
 	private static final Logger LOGGER = Logger.getLogger(EMFAttacherHandler.class.getName());
@@ -142,9 +143,9 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 		
 		// save in repo
 		repository.save(targetEObject);
-		
+		final EObject forwadObject = targetEObject;
 		// create Copy of target EObject and send via Typed Eventadmin
-		typedEventBus.deliver(config.forwardTopic(), EcoreUtil.copy(targetEObject));
+		Arrays.asList(config.forward_topics()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(forwadObject)));
 	}
 
 	

@@ -23,6 +23,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import org.assertj.core.util.Arrays;
 import org.civitas.csv.reader.api.CSVReaderService;
 import org.civitas.minio.MinIOClient;
 import org.eclipse.emf.ecore.EClass;
@@ -71,8 +72,8 @@ public class MinIOCSVDownloadService {
       @AttributeDefinition(name = "EClassUri", description = "The URI of the EClass to expect")
       String eClassUri();
 
-      @AttributeDefinition(name = "Event Topic", description = "The topic to publish parsed EObjects to")
-      String eventTopic() default "org/civitas/meter/data/parsed";
+      @AttributeDefinition(name = "The Forward Topcis", description = "The topic to publish parsed EObjects to")
+      String[] forward_topics() default "org/civitas/meter/data/parsed";
     }
     
     @Reference(name="client")
@@ -175,20 +176,19 @@ public class MinIOCSVDownloadService {
     }
 
     private void sendAhead(String fileName, List<EObject> objects) {
-        String eventTopic = config.eventTopic();
-
-        for (int i = 0; i < objects.size(); i++) {
+        List<Object> topics = Arrays.asList(config.forward_topics());
+	for (int i = 0; i < objects.size(); i++) {
             EObject obj = objects.get(i);
 
             // Send each EObject to the configured event topic
             try {
-                typedEventBus.deliver(eventTopic, obj);
+        	topics.forEach(t -> typedEventBus.deliver((String) t, obj));
+                
             } catch (Exception e) {
                 logger.error("Failed to send EObject to event bus", e);
             }
         }
         logger.info("=== End of parsed objects from file: {} ===", fileName);
-        logger.info("Sent {} objects to event topic: {}", objects.size(), eventTopic);
     }
 
     private void startScheduler() {
