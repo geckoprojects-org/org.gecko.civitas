@@ -1,0 +1,15 @@
+modeltype ECORE "strict" uses ecore('http://www.eclipse.org/emf/2002/Ecore');
+modeltype SOURCE uses "https://civitas.org/meter/source/1.0.0";
+
+
+transformation IntermediatePlantToIntermediateMeteringPoint(in intermediatePlant : SOURCE, out intermediateMeteringPoint : SOURCE);
+
+main() {
+	intermediatePlant.rootObjects()[SOURCE::IntermediatePlant].meter -> map toIntermediateMeteringPoint();
+}
+
+mapping SOURCE::Meter::toIntermediateMeteringPoint(): SOURCE::IntermediateMeteringPoint {
+	meterId := self.id;
+	plantId := self.plantId;
+}
+
