@@ -223,13 +223,22 @@ public interface CIVAlarmPackage extends org.eclipse.emf.ecore.EPackage {
 	int SIMPLE_ALARM__ALARM_TRIGGER_EVENT = 4;
 
 	/**
+	 * The feature id for the '<em><b>Alarm Triggering Builder</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER = 5;
+
+	/**
 	 * The feature id for the '<em><b>Massage</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_ALARM__MASSAGE = 5;
+	int SIMPLE_ALARM__MASSAGE = 6;
 
 	/**
 	 * The number of structural features of the '<em>Simple Alarm</em>' class.
@@ -238,7 +247,7 @@ public interface CIVAlarmPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_ALARM_FEATURE_COUNT = 6;
+	int SIMPLE_ALARM_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Simple Alarm</em>' class.
@@ -423,6 +432,17 @@ public interface CIVAlarmPackage extends org.eclipse.emf.ecore.EPackage {
 	EReference getSimpleAlarm_AlarmTriggerEvent();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.civitas.prototype.model.calarm.SimpleAlarm#getAlarmTriggeringBuilder <em>Alarm Triggering Builder</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Alarm Triggering Builder</em>'.
+	 * @see org.civitas.prototype.model.calarm.SimpleAlarm#getAlarmTriggeringBuilder()
+	 * @see #getSimpleAlarm()
+	 * @generated
+	 */
+	EReference getSimpleAlarm_AlarmTriggeringBuilder();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.civitas.prototype.model.calarm.SimpleAlarm#getMassage <em>Massage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -591,6 +611,14 @@ public interface CIVAlarmPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EReference SIMPLE_ALARM__ALARM_TRIGGER_EVENT = eINSTANCE.getSimpleAlarm_AlarmTriggerEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Alarm Triggering Builder</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER = eINSTANCE.getSimpleAlarm_AlarmTriggeringBuilder();
 
 		/**
 		 * The meta object literal for the '<em><b>Massage</b></em>' attribute feature.

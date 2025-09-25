@@ -13,6 +13,7 @@
  */
 package org.civitas.prototype.model.calarm.impl;
 
+import org.civitas.glt.model.glt.Building;
 import org.civitas.glt.model.glt.Contact;
 
 import org.civitas.glt.sensor.model.sensor.SensorReading;
@@ -44,6 +45,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link org.civitas.prototype.model.calarm.impl.SimpleAlarmImpl#getNotificationType <em>Notification Type</em>}</li>
  *   <li>{@link org.civitas.prototype.model.calarm.impl.SimpleAlarmImpl#getAlarmReceiver <em>Alarm Receiver</em>}</li>
  *   <li>{@link org.civitas.prototype.model.calarm.impl.SimpleAlarmImpl#getAlarmTriggerEvent <em>Alarm Trigger Event</em>}</li>
+ *   <li>{@link org.civitas.prototype.model.calarm.impl.SimpleAlarmImpl#getAlarmTriggeringBuilder <em>Alarm Triggering Builder</em>}</li>
  *   <li>{@link org.civitas.prototype.model.calarm.impl.SimpleAlarmImpl#getMassage <em>Massage</em>}</li>
  * </ul>
  *
@@ -129,6 +131,16 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 	 * @ordered
 	 */
 	protected SensorReading alarmTriggerEvent;
+
+	/**
+	 * The cached value of the '{@link #getAlarmTriggeringBuilder() <em>Alarm Triggering Builder</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAlarmTriggeringBuilder()
+	 * @generated
+	 * @ordered
+	 */
+	protected Building alarmTriggeringBuilder;
 
 	/**
 	 * The default value of the '{@link #getMassage() <em>Massage</em>}' attribute.
@@ -334,6 +346,51 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 	 * @generated
 	 */
 	@Override
+	public Building getAlarmTriggeringBuilder() {
+		return alarmTriggeringBuilder;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAlarmTriggeringBuilder(Building newAlarmTriggeringBuilder, NotificationChain msgs) {
+		Building oldAlarmTriggeringBuilder = alarmTriggeringBuilder;
+		alarmTriggeringBuilder = newAlarmTriggeringBuilder;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER, oldAlarmTriggeringBuilder, newAlarmTriggeringBuilder);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setAlarmTriggeringBuilder(Building newAlarmTriggeringBuilder) {
+		if (newAlarmTriggeringBuilder != alarmTriggeringBuilder) {
+			NotificationChain msgs = null;
+			if (alarmTriggeringBuilder != null)
+				msgs = ((InternalEObject)alarmTriggeringBuilder).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER, null, msgs);
+			if (newAlarmTriggeringBuilder != null)
+				msgs = ((InternalEObject)newAlarmTriggeringBuilder).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER, null, msgs);
+			msgs = basicSetAlarmTriggeringBuilder(newAlarmTriggeringBuilder, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER, newAlarmTriggeringBuilder, newAlarmTriggeringBuilder));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String getMassage() {
 		return massage;
 	}
@@ -363,6 +420,8 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 				return basicSetAlarmReceiver(null, msgs);
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGER_EVENT:
 				return basicSetAlarmTriggerEvent(null, msgs);
+			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER:
+				return basicSetAlarmTriggeringBuilder(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -385,6 +444,8 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 				return getAlarmReceiver();
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGER_EVENT:
 				return getAlarmTriggerEvent();
+			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER:
+				return getAlarmTriggeringBuilder();
 			case CIVAlarmPackage.SIMPLE_ALARM__MASSAGE:
 				return getMassage();
 		}
@@ -413,6 +474,9 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 				return;
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGER_EVENT:
 				setAlarmTriggerEvent((SensorReading)newValue);
+				return;
+			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER:
+				setAlarmTriggeringBuilder((Building)newValue);
 				return;
 			case CIVAlarmPackage.SIMPLE_ALARM__MASSAGE:
 				setMassage((String)newValue);
@@ -444,6 +508,9 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGER_EVENT:
 				setAlarmTriggerEvent((SensorReading)null);
 				return;
+			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER:
+				setAlarmTriggeringBuilder((Building)null);
+				return;
 			case CIVAlarmPackage.SIMPLE_ALARM__MASSAGE:
 				setMassage(MASSAGE_EDEFAULT);
 				return;
@@ -469,6 +536,8 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 				return alarmReceiver != null;
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGER_EVENT:
 				return alarmTriggerEvent != null;
+			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER:
+				return alarmTriggeringBuilder != null;
 			case CIVAlarmPackage.SIMPLE_ALARM__MASSAGE:
 				return MASSAGE_EDEFAULT == null ? massage != null : !MASSAGE_EDEFAULT.equals(massage);
 		}

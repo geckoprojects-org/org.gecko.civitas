@@ -30,22 +30,42 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.typedevent.TypedEventBus;
 import org.osgi.service.typedevent.TypedEventConstants;
 import org.osgi.service.typedevent.TypedEventHandler;
+import org.osgi.service.metatype.annotations.AttributeDefinition;
+import org.osgi.service.metatype.annotations.Designate;
+import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
 /**
  * 
  * @author grune
  * @since Sep 24, 2025
  */
+@Designate(ocd = EMFAttacherHandler.Config.class)
 @Component(name = "EMFAttacherHandler", property = {TypedEventConstants.TYPED_EVENT_TOPICS+"=emf/attacher"}, 
 configurationPid = "EMFAttacherHandler", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 	
+	@ObjectClassDefinition(name = "EMFAttacherHandler Configuration")
 	@interface Config{
+		
+		@AttributeDefinition(name = "Event Topic", description = "The topic this handler is listening to")
+		String eventTopic();
+		
+		@AttributeDefinition(name = "Repo Target", description = "The EMF Repository target")
 		String repo_target();
+		
+		@AttributeDefinition(name = "Incoming EClass URI", description = "The URI of the incoming EObject EClass")
 		String incomming_eclassuri(); // http:,....#//Meter
+		
+		@AttributeDefinition(name = "Target EClass URI", description = "The URI of the targer EClass")
 		String target_eclassuri(); // http:,....#//Plant
+		
+		@AttributeDefinition(name = "Foreign Key Feature URI", description = "The URI of the EStructuralFeature from the incoming EObject to be used as identifier for the target EObject")
 		String foreignKeyFeature_uri(); // http:,....#//Meter_plantId
+		
+		@AttributeDefinition(name = "Target Reference URI", description = "The URI of the target EReference where to put the incoming EObject")
 		String target_reference_uri(); // Plant_meters
+		
+		@AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the updated target EObject")
 		String forwardTopic();
 	}
 	
