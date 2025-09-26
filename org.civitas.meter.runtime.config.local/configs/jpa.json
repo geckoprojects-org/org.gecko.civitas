@@ -93,58 +93,5 @@
 		"repo_id": "assets",
 		"base_uri": "assets",
 		"entityManager.target": "(osgi.unit.name=assets)"
-	},
-	"GenericScheduledLoader~manual-meters": {
-		"schedule.interval": 180,
-		"forward.topics": [
-			"civitas/meter/manual/loaded",
-			"data/meter/manual"
-		],
-		"query.limit": 1000,
-		"initial.query.skip": 0,
-		"repo.target": "(repo_id=manualMeter)",
-		"eclass.name": "Meter",
-		"package.target": "(emf.nsURI=https://civitas.org/meter/source/1.0.0)",
-		"loader.name": "manual meters"
-	},
-	"GenericScheduledLoader~remote-meters": {
-		"schedule.interval": 180,
-		"forward.topics": [
-			"civitas/meter/remote/loaded",
-			"data/meter/remote"
-		],
-		"query.limit": 1000,
-		"initial.query.skip": 0,
-		"repo.target": "(repo_id=remoteMeter)",
-		
-		"eclass.name": "Meter",
-		"package.target": "(emf.nsURI=https://civitas.org/meter/source/1.0.0)",
-		"loader.name": "remote meters"
-	},
-	"GenericScheduledLoader~manual-readings": {
-		"schedule.interval": 60,
-		"forward.topics": [
-			"civitas/reading/manual/loaded",
-			"data/reading/manual"
-		],
-		"query.limit": 1000,
-		"initial.query.skip": 0,
-		"repo.target": "(repo_id=manualReading)",
-		"eclass.name": "Reading",
-		"package.target": "(emf.nsURI=https://civitas.org/meter/source/1.0.0)",
-		"loader.name": "manual readings"
-	},
-	"GenericScheduledLoader~remote-readings": {
-		"schedule.interval": 60,
-		"orward.topics": [
-			"civitas/reading/remote/loaded",
-			"data/reading/remote"
-		],
-		"query.limit": 1000,
-		"initial.query.skip": 0,
-		"repo.target": "(repo_id=remoteMeter)",
-		"eclass.name": "RemoteReading",
-		"package.target": "(emf.nsURI=https://civitas.org/meter/source/1.0.0)",
-		"loader.name": "remote readings"
 	}
 }
