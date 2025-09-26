@@ -53,6 +53,7 @@ javac.target: 17
 		local = ${build}/cache/temp
 		
 -workingset:  \
+  handler;member=${filter;${p};.*\.handler*}, \
   model;member=${filter;${p};.*\.model*}, \
   glt;member=${filter;${p};.*\.glt\.*},\
   meter;member=${filter;${p};.*\.meter\.*},\
