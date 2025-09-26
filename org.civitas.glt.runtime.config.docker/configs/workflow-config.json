@@ -5,7 +5,7 @@
 
   "MqttReceiver~building": {
   		"mqtt.topic" : "buildings",
-  		"payload.eclassuri": "https://civitas.org/glt/1.0.0#//Building",
+  		"payload.eclassuri": "https://civitas.org/glt/sensor/1.0.0#//SensorReading",
   		"print.payload": false,
   		"forward.topic": [
 			"gltusecase/SensorReading_target"
