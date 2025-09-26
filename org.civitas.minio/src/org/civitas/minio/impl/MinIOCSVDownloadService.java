@@ -15,6 +15,7 @@ package org.civitas.minio.impl;
 
 import java.io.InputStream;
 import java.net.URI;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,14 +24,12 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import org.assertj.core.util.Arrays;
 import org.civitas.csv.reader.api.CSVReaderService;
 import org.civitas.minio.MinIOClient;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Diagnostician;
 import org.gecko.emf.osgi.constants.EMFNamespaces;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -176,13 +175,13 @@ public class MinIOCSVDownloadService {
     }
 
     private void sendAhead(String fileName, List<EObject> objects) {
-        List<Object> topics = Arrays.asList(config.forward_topic());
+        List<String> topics = Arrays.asList(config.forward_topic());
 	for (int i = 0; i < objects.size(); i++) {
             EObject obj = objects.get(i);
 
             // Send each EObject to the configured event topic
             try {
-        	topics.forEach(t -> typedEventBus.deliver((String) t, obj));
+        	topics.forEach(t -> typedEventBus.deliver(t, obj));
                 
             } catch (Exception e) {
                 logger.error("Failed to send EObject to event bus", e);
