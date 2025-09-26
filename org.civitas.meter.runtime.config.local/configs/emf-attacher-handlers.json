@@ -47,7 +47,7 @@
 		"repository.target": "(repo_id=inmem)",
 		"incomming.eclassuri" : "https://civitas.org/meter/target/1.0.0#//MeteringPoint",
 		"target.eclassuri": "https://civitas.org/meter/target/1.0.0#//Plant",
-		"foreignKeyFeature.uri": "https://civitas.org/meter/target/1.0.0#//IntermediateMeteringPoint_plant_id",
+		"foreignKeyFeature.uri": "https://civitas.org/meter/target/1.0.0#//IntermediateMeteringPoint_plant",
 		"target.reference.uri": "https://civitas.org/meter/target/1.0.0#//Plant_meteringPoints",
 		"forwardTopic": "meterusecase/Plant_target"
 	}
