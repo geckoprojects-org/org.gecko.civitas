@@ -42,11 +42,11 @@
     "forwardTopic" : "meterusecase/Plant_target"
   },
   "EMFRepositoryDataSink~IntermediateMeteringPoint": {
-    "eventTopyic" : "meterusecase/IntermediateMeteringPoint_target",
+    "eventTopic" : "meterusecase/IntermediateMeteringPoint_target",
     "repo.target" : "(repo_id=inmem)"
   },
   "EMFRepositoryDataSink~Plant": {
-    "eventTopyic" : "meterusecase/Plant_target",
+    "eventTopic" : "meterusecase/Plant_target",
     "repo.target" : "(repo_id=postgres)"
   }
 }
