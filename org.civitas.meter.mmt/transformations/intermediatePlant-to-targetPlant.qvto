@@ -29,7 +29,6 @@ mapping SOURCE::IntermediatePlant::toTargetPlant(): TARGET::Plant {
 	street := self.basicData.street;
 	net := self.map toTargetNet();
 	operatingData += self.operatingData->map toTargetOperatingData();
-	meteringPoints += self.meter->map toTargetMeteringPoint();
 }
 
 mapping SOURCE::IntermediatePlant::toTargetNet(): TARGET::Net {
@@ -42,14 +41,5 @@ mapping SOURCE::OperatingData::toTargetOperatingData(): TARGET::OperatingData {
 	operatingHours := self.operatingHours;
 //	TODO: how do I put a non-contained ref to the Plant??
 //	plant := 
-}
-
-mapping SOURCE::Meter::toTargetMeteringPoint(): TARGET::MeteringPoint {
-	id := self.id;
-	currentMeter := self.map toTargetMeter();
-}
-
-mapping SOURCE::Meter::toTargetMeter(): TARGET::Meter {
-	id := self.id;
 }
 

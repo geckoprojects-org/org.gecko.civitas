@@ -35,17 +35,11 @@
     "eclassuri" : "https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
     "forwardTopic" : "meterusecase/Plant_target"
   },
-  "QVTHandler~intMeteringPointToPlant": {
+  "QVTHandler~intMeteringPointToTargetMeteringPoint": {
     "eventTopyic" : "meterusecase/IntermediateMeteringPoint_target",
-    "trafo.target" : "(id=intMeteringPointToPlantQVT)",
-    "eclassuri" : "https://civitas.org/meter/target/1.0.0#//Plant",
+    "trafo.target" : "(id=intMeteringPointToTargetMeteringPointQVT)",
+    "eclassuri" : "https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
     "forwardTopic" : "meterusecase/Plant_target"
-  },
-  "QVTHandler~intermediatePlantToIntermediateMeteringPoint": {
-    "eventTopyic" : "meterusecase/Plant_target",
-    "trafo.target" : "(id=intermediatePlantToIntermediateMeteringPointQVT)",
-    "eclassuri" : "https://civitas.org/meter/target/1.0.0#//IntermediatePlant",
-    "forwardTopic" : "meterusecase/IntermediateMeteringPoint_target"
   },
   "EMFRepositoryDataSink~IntermediateMeteringPoint": {
     "eventTopyic" : "meterusecase/IntermediateMeteringPoint_target",
