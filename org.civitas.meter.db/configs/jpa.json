@@ -5,7 +5,6 @@
 	"fennec.jpa.EORMMappingService~metersource": {
 		"fennec.jpa.eorm.mappingName": "metersource",
 		"fennec.jpa.eorm.strict": true,
-		"fennec.jpa.eorm.customizer.target": "(name=metersource)",
 		"fennec.jpa.eorm.eClasses": ["Plant", "Meter", "Reading", "RemoteReading"],
 		"fennec.jpa.eorm.model.target": "(emf.name=metersource)"
 	},
