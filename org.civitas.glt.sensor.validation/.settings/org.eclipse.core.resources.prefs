@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
-encoding//src/org/civitas/glt/sensor/validation/ValidationServiceImpl.java=UTF-8
+encoding//src/org/civitas/glt/sensor/validation/ValidationHandler.java=UTF-8
+encoding//src/org/civitas/glt/sensor/validation/ValidationServiceImpl2.java=UTF-8
 encoding/<project>=UTF-8
 encoding/bnd.bnd=UTF-8

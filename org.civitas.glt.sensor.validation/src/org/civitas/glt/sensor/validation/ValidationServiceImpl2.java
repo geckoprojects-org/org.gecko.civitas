@@ -27,8 +27,8 @@ import org.osgi.service.component.annotations.*;
 import org.osgi.service.metatype.annotations.Designate;
 
 @Designate(ocd = ValidationServiceConfig.class)
-@Component(name = "ValidationService", configurationPid = "ValidationService", configurationPolicy = ConfigurationPolicy.REQUIRE)
-public class ValidationServiceImpl implements ValidationService {
+//@Component(name = "ValidationService", configurationPid = "ValidationService", configurationPolicy = ConfigurationPolicy.REQUIRE)
+public class ValidationServiceImpl2 implements ValidationService {
 	
 	private ValidationServiceConfig config;
 	private ValidationType type;

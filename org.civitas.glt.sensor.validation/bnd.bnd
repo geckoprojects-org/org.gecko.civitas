@@ -5,4 +5,5 @@
 	org.civitas.glt.sensor.model;version=snapshot,\
 	org.civitas.prototype.model;version=snapshot,\
 	org.osgi.service.cm,\
-	org.osgi.service.metatype.annotations
+	org.osgi.service.metatype.annotations,\
+	org.osgi.service.typedevent
