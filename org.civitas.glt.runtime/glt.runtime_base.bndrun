@@ -27,7 +27,6 @@ slf4j.runpath:  \
 	bnd.identity;id='org.civitas.glt.model',\
 	bnd.identity;id='org.civitas.glt.sensor.model',\
 	bnd.identity;id='org.civitas.glt.sensor.validation',\
-	bnd.identity;id='org.civitas.mqtt.mocked.receiver',\
 	bnd.identity;id='org.civitas.glt.intermediate.model',\
 	bnd.identity;id='org.civitas.glt.mmt',\
 	bnd.identity;id='org.civitas.handler.emf.attacher',\
@@ -75,7 +74,6 @@ slf4j.runpath:  \
 	org.osgi.util.function;version='[1.2.0,1.2.1)',\
 	org.osgi.util.promise;version='[1.3.0,1.3.1)',\
 	org.osgi.util.pushstream;version='[1.1.0,1.1.1)',\
-	org.civitas.mqtt.mocked.receiver;version=snapshot,\
 	org.apache.felix.cm.json;version='[2.0.6,2.0.7)',\
 	org.apache.felix.configadmin.plugin.interpolation;version='[1.2.8,1.2.9)',\
 	org.apache.felix.configurator;version='[1.0.18,1.0.19)',\
