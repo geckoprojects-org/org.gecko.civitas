@@ -27,7 +27,11 @@ mapping SOURCE::IntermediateMeteringPoint::toTargetMeteringPoint(): TARGET::Mete
 	id := self.meterId;
 	meterReadings += self.readings->map toTargetMeterReading();
 	currentMeter := self.map toTargetMeter();
-//	plant := create a Plant obj and only set the id that is available in the IntermediateMeteringPoint
+	plant := self.map toPlant();
+}
+
+mapping SOURCE::IntermediateMeteringPoint::toPlant(): TARGET:: Plant {
+	id := self.plantId;
 }
 
 mapping SOURCE::Reading::toTargetMeterReading(): TARGET::MeterReading {
