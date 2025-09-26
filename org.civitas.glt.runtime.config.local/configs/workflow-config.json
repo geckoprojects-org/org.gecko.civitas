@@ -3,6 +3,14 @@
   ":configurator:symbolic-name": "org.civitas.workflow.config",
   ":configurator:version": "1.0.0",
 
+  "MqttReceiver~building": {
+  		"mqtt.topic" : "buildings",
+  		"payload.eclassuri": "https://civitas.org/glt/1.0.0#//Building",
+  		"print.payload": false,
+  		"forward.topic": [
+			"gltusecase/SensorReading_target"
+			]
+  	},
   "EMFAttacherHandler~Building": 
   	{
   	 	"event.topic" : "gltusecase/Building_source",
@@ -55,6 +63,8 @@
   	},
   	"MqttReceiver~simpleAlarm": {
   		"mqtt.topic" : "gltusecase/alarm",
-  		"payload.eclassuri": "https://civitas.org/alarm-notification/1.0.0#//SimpleAlarm"
+  		"payload.eclassuri": "https://civitas.org/alarm-notification/1.0.0#//SimpleAlarm",
+  		"print.payload": true,
+  		"forward.topic": []
   	}
 }

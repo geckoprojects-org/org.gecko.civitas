@@ -11,16 +11,18 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package org.civitas.mqtt.mocked.receiver;
+package org.civitas.handler.mqtt;
 
+import java.util.Arrays;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.civitas.mqtt.mocked.receiver.helper.MqttReceiverHelper;
+import org.civitas.handler.mqtt.helper.MqttReceiverHelper;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gecko.emf.osgi.constants.EMFNamespaces;
 import org.gecko.osgi.messaging.Message;
 import org.gecko.osgi.messaging.MessagingService;
@@ -33,6 +35,7 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
+import org.osgi.service.typedevent.TypedEventBus;
 import org.osgi.util.pushstream.PushStream;
 
 /**
@@ -46,6 +49,9 @@ public class MqttReceiver {
 	
 	@Reference
 	private MessagingService messaging;
+	
+	@Reference
+	TypedEventBus typedEventBus;
 	
 	private static final Logger LOGGER = Logger.getLogger(MqttReceiver.class.getName());
 	
@@ -61,8 +67,13 @@ public class MqttReceiver {
 		
 		@AttributeDefinition(name = "Payload EClass URI", description = "The EClass URI of the object we expect in the MQTT message payload")
 		String payload_eclassuri();
+		
+		@AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the received EObject")
+		String[] forward_topic();
+		
+		@AttributeDefinition(name = "Print Payload", description = "Whether or not to print the payload content")
+		boolean print_payload() default false;
 	}
-
 	
 	@Activate
 	public MqttReceiver(Config config, 
@@ -88,9 +99,10 @@ public class MqttReceiver {
 			LOGGER.warning(String.format("Message is null! Cannot extract anything!"));
 			return;
 		}
-		LOGGER.info(String.format("Got Alarm Msg for topic %s", msg.topic()));
+		LOGGER.info(String.format("Got Msg for topic %s", msg.topic()));
 		EObject content = extractPayload(msg);
-		printPayload(content);
+		if(config.print_payload()) printPayload(content);
+		Arrays.asList(config.forward_topic()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(content)));
 	}
 
 	private EObject extractPayload(Message message) {		
@@ -115,4 +127,5 @@ public class MqttReceiver {
 			LOGGER.log(Level.SEVERE, String.format("IOException while printing payload from MQTT"), e);
 		}
 	}
+
 }

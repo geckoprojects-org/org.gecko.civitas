@@ -11,7 +11,7 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package org.civitas.mqtt.mocked.receiver.helper;
+package org.civitas.handler.mqtt.helper;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
