@@ -1,8 +1,17 @@
+/**
+ * Copyright (c) 2012 - 2025 Data In Motion and others.
+ * All rights reserved. 
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *     Data In Motion - initial API and implementation
+ */
 package org.civitas.jsonschema.loader.example;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,6 +26,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.fennec.codec.configurator.ObjectMapperConfigurator;
 import org.eclipse.fennec.codec.options.CodecModelInfoOptions;
 import org.eclipse.fennec.codec.options.CodecModuleOptions;
 import org.eclipse.fennec.codec.options.CodecResourceOptions;
@@ -25,7 +35,6 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
-import org.eclipse.fennec.codec.configurator.ObjectMapperConfigurator;
 
 @Component(immediate = true, name = "JsonschamaLoader")
 public class JsonschemaLoader {
@@ -57,15 +66,25 @@ public class JsonschemaLoader {
 		options.put(CodecResourceOptions.CODEC_OPTIONS, Map.of(EcorePackage.Literals.EPACKAGE, classOptions));
 		
 		res.load(options);		
-		assertFalse(res.getContents().isEmpty());
+		if(res.getContents().isEmpty()) {
+			LOGGER.warning(String.format("No content loaded for %s", pathToJsonschemaFile));
+			return;
+		}
 		EObject obj = res.getContents().get(0);
-		assertNotNull(obj);
-		assertThat(obj).isInstanceOf(EPackage.class);
-		EPackage ePackage = (EPackage) res.getContents().get(0);
+		if(obj == null) {
+			LOGGER.warning(String.format("Null content loaded for %s", pathToJsonschemaFile));
+			return;
+		}
+		if(obj instanceof EPackage ePackage) {
+			res = resourceSet.createResource(URI.createURI(UUID.randomUUID().toString()+".ecore"));
+			res.getContents().add(ePackage);
+			res.save(options);
+		} else {
+			LOGGER.warning(String.format("Content loaded from %s is not of type EPackage", pathToJsonschemaFile));
+			return;
+		}
 		
-		res = resourceSet.createResource(URI.createURI(UUID.randomUUID().toString()+".ecore"));
-		res.getContents().add(ePackage);
-		res.save(options);
+		
 	}
 
 }
