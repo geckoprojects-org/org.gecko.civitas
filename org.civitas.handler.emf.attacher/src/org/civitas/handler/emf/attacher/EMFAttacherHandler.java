@@ -13,6 +13,7 @@
  */
 package org.civitas.handler.emf.attacher;
 
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.EList;
@@ -47,8 +48,8 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 	@interface Config {
 
 		@AttributeDefinition(name = "Event Topic", description = "The topic this handler is listening to")
-		String event_topic();
-
+		String[] event_topic();
+		
 		@AttributeDefinition(name = "Repo Target", description = "The EMF Repository target")
 		String repo_target();
 
@@ -65,7 +66,7 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 		String target_reference_uri(); // Plant_meters
 
 		@AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the updated target EObject")
-		String forwardTopic();
+		String[] forward_topic();
 	}
 
 	private static final Logger LOGGER = Logger.getLogger(EMFAttacherHandler.class.getName());
@@ -155,9 +156,9 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 
 		// save in repo
 		repository.save(targetEObject);
-
+		final EObject forwadObject = targetEObject;
 		// create Copy of target EObject and send via Typed Eventadmin
-		typedEventBus.deliver(config.forwardTopic(), EcoreUtil.copy(targetEObject));
+		Arrays.asList(config.forward_topic()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(forwadObject)));
 	}
 
 	private void addOrReplaceById(EObject eObjectToAdd, EList<EObject> eList, EStructuralFeature idFeature) {

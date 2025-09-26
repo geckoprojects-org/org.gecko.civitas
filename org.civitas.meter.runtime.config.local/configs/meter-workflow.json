@@ -1,0 +1,112 @@
+{
+  ":configurator:resource-version": 1,
+  ":configurator:symbolic-name": "org.civitas.minio.client.config",
+  ":configurator:version": "1.0.0",
+
+  "MinIOClient~default": {
+    "id": "minio",
+    "endpoint": "http://localhost:9000",
+    "accessKey": "minio",
+    "secretKey": "minio123"
+  },
+  "MinIOCSVDownloadService~operatingdata": {
+    "bucketname": "dummy-data",
+    "cron": "0 */5 * * * *",
+    "client.target": "(id=minio)",
+    "eClassUri": "https://civitas.org/meter/source/1.0.0#//OperatingData",
+    "eventTopic" : "meterusecase/operating_source"
+  },
+  "MinIOCSVDownloadService~basicdata": {
+    "bucketname": "dummy-data",
+    "cron": "0 */5 * * * *",
+    "client.target": "(id=minio)",
+    "eClassUri": "https://civitas.org/meter/source/1.0.0#//BasicaData",
+    "eventTopic" : "meterusecase/basicdata_source"
+  },
+	"GenericScheduledLoader~manual-meters": {
+		"schedule.interval": 180,
+		"forward.topics": [
+			"civitas/meter/manual/loaded",
+			"data/meter/manual"
+		],
+		"query.limit": 1000,
+		"initial.query.skip": 0,
+		"repo.target": "(repo_id=manualMeter)",
+		"eclass.name": "Meter",
+		"package.target": "(emf.nsURI=https://civitas.org/meter/source/1.0.0)",
+		"loader.name": "manual meters"
+	},
+	"GenericScheduledLoader~remote-meters": {
+		"schedule.interval": 180,
+		"forward.topics": [
+			"civitas/meter/remote/loaded",
+			"data/meter/remote"
+		],
+		"query.limit": 1000,
+		"initial.query.skip": 0,
+		"repo.target": "(repo_id=remoteMeter)",
+		
+		"eclass.name": "Meter",
+		"package.target": "(emf.nsURI=https://civitas.org/meter/source/1.0.0)",
+		"loader.name": "remote meters"
+	},
+	"GenericScheduledLoader~manual-readings": {
+		"schedule.interval": 60,
+		"forward.topics": [
+			"civitas/reading/manual/loaded",
+			"data/reading/manual"
+		],
+		"query.limit": 1000,
+		"initial.query.skip": 0,
+		"repo.target": "(repo_id=manualReading)",
+		"eclass.name": "Reading",
+		"package.target": "(emf.nsURI=https://civitas.org/meter/source/1.0.0)",
+		"loader.name": "manual readings"
+	},
+	"GenericScheduledLoader~remote-readings": {
+		"schedule.interval": 60,
+		"orward.topics": [
+			"civitas/reading/remote/loaded",
+			"data/reading/remote"
+		],
+		"query.limit": 1000,
+		"initial.query.skip": 0,
+		"repo.target": "(repo_id=remoteMeter)",
+		"eclass.name": "RemoteReading",
+		"package.target": "(emf.nsURI=https://civitas.org/meter/source/1.0.0)",
+		"loader.name": "remote readings"
+	},
+  
+  "QVTHandler~basicdata": {
+    "eventTopic" : "meterusecase/basicdata_source",
+    "trafo.target" : "(id=basicDataQVT)",
+    "eclassuri" : "https://civitas.org/meter/source/1.0.0#//BasicData",
+    "forward.topic" : [
+    	"meterusecase/basicdata_wo_prefix_source"
+    	]
+  },
+  "QVTHandler~intPlantToPlant": {
+    "eventTopic" : "meterusecase/Plant_source",
+    "trafo.target" : "(id=intPlantToPlantQVT)",
+    "eclassuri" : "https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
+    "forward.topic" : [
+    	"meterusecase/Plant_target"
+    	]
+  },
+  "QVTHandler~intMeteringPointToTargetMeteringPoint": {
+    "eventTopyic" : "meterusecase/IntermediateMeteringPoint_target",
+    "trafo.target" : "(id=intMeteringPointToTargetMeteringPointQVT)",
+    "eclassuri" : "https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
+    "forward.topic" : [
+    	"meterusecase/Plant_target"
+    	]
+  },
+  "EMFRepositoryDataSink~IntermediateMeteringPoint": {
+    "eventTopic" : "meterusecase/IntermediateMeteringPoint_target",
+    "repo.target" : "(repo_id=inmem)"
+  },
+  "EMFRepositoryDataSink~Plant": {
+    "eventTopic" : "meterusecase/Plant_target",
+    "repo.target" : "(repo_id=postgres)"
+  }
+}

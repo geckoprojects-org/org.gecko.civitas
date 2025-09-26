@@ -203,11 +203,13 @@ public interface Plant extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Operating Data</b></em>' containment reference list.
 	 * The list contents are of type {@link org.civitas.meter.target.OperatingData}.
+	 * It is bidirectional and its opposite is '{@link org.civitas.meter.target.OperatingData#getPlant <em>Plant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Operating Data</em>' containment reference list.
 	 * @see org.civitas.meter.target.targetPackage#getPlant_OperatingData()
-	 * @model containment="true"
+	 * @see org.civitas.meter.target.OperatingData#getPlant
+	 * @model opposite="plant" containment="true"
 	 * @generated
 	 */
 	EList<OperatingData> getOperatingData();
@@ -215,11 +217,13 @@ public interface Plant extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Metering Points</b></em>' containment reference list.
 	 * The list contents are of type {@link org.civitas.meter.target.MeteringPoint}.
+	 * It is bidirectional and its opposite is '{@link org.civitas.meter.target.MeteringPoint#getPlant <em>Plant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Metering Points</em>' containment reference list.
 	 * @see org.civitas.meter.target.targetPackage#getPlant_MeteringPoints()
-	 * @model containment="true"
+	 * @see org.civitas.meter.target.MeteringPoint#getPlant
+	 * @model opposite="plant" containment="true"
 	 * @generated
 	 */
 	EList<MeteringPoint> getMeteringPoints();

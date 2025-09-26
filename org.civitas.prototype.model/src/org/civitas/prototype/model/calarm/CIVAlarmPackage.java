@@ -187,31 +187,13 @@ public interface CIVAlarmPackage extends org.eclipse.emf.ecore.EPackage {
 	int SIMPLE_ALARM__ALARM_ID = 0;
 
 	/**
-	 * The feature id for the '<em><b>Severity</b></em>' attribute.
+	 * The feature id for the '<em><b>Alarm Receiver</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_ALARM__SEVERITY = 1;
-
-	/**
-	 * The feature id for the '<em><b>Notification Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMPLE_ALARM__NOTIFICATION_TYPE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Alarm Receiver</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMPLE_ALARM__ALARM_RECEIVER = 3;
+	int SIMPLE_ALARM__ALARM_RECEIVER = 1;
 
 	/**
 	 * The feature id for the '<em><b>Alarm Trigger Event</b></em>' containment reference.
@@ -220,7 +202,7 @@ public interface CIVAlarmPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_ALARM__ALARM_TRIGGER_EVENT = 4;
+	int SIMPLE_ALARM__ALARM_TRIGGER_EVENT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Alarm Triggering Builder</b></em>' containment reference.
@@ -229,16 +211,7 @@ public interface CIVAlarmPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER = 5;
-
-	/**
-	 * The feature id for the '<em><b>Massage</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMPLE_ALARM__MASSAGE = 6;
+	int SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER = 3;
 
 	/**
 	 * The number of structural features of the '<em>Simple Alarm</em>' class.
@@ -247,7 +220,7 @@ public interface CIVAlarmPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_ALARM_FEATURE_COUNT = 7;
+	int SIMPLE_ALARM_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Simple Alarm</em>' class.
@@ -388,32 +361,10 @@ public interface CIVAlarmPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getSimpleAlarm_AlarmId();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.civitas.prototype.model.calarm.SimpleAlarm#getSeverity <em>Severity</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.civitas.prototype.model.calarm.SimpleAlarm#getAlarmReceiver <em>Alarm Receiver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Severity</em>'.
-	 * @see org.civitas.prototype.model.calarm.SimpleAlarm#getSeverity()
-	 * @see #getSimpleAlarm()
-	 * @generated
-	 */
-	EAttribute getSimpleAlarm_Severity();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.civitas.prototype.model.calarm.SimpleAlarm#getNotificationType <em>Notification Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Notification Type</em>'.
-	 * @see org.civitas.prototype.model.calarm.SimpleAlarm#getNotificationType()
-	 * @see #getSimpleAlarm()
-	 * @generated
-	 */
-	EAttribute getSimpleAlarm_NotificationType();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.civitas.prototype.model.calarm.SimpleAlarm#getAlarmReceiver <em>Alarm Receiver</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Alarm Receiver</em>'.
+	 * @return the meta object for the containment reference list '<em>Alarm Receiver</em>'.
 	 * @see org.civitas.prototype.model.calarm.SimpleAlarm#getAlarmReceiver()
 	 * @see #getSimpleAlarm()
 	 * @generated
@@ -441,17 +392,6 @@ public interface CIVAlarmPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EReference getSimpleAlarm_AlarmTriggeringBuilder();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.civitas.prototype.model.calarm.SimpleAlarm#getMassage <em>Massage</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Massage</em>'.
-	 * @see org.civitas.prototype.model.calarm.SimpleAlarm#getMassage()
-	 * @see #getSimpleAlarm()
-	 * @generated
-	 */
-	EAttribute getSimpleAlarm_Massage();
 
 	/**
 	 * Returns the meta object for enum '{@link org.civitas.prototype.model.calarm.SeverityType <em>Severity Type</em>}'.
@@ -581,23 +521,7 @@ public interface CIVAlarmPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute SIMPLE_ALARM__ALARM_ID = eINSTANCE.getSimpleAlarm_AlarmId();
 
 		/**
-		 * The meta object literal for the '<em><b>Severity</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMPLE_ALARM__SEVERITY = eINSTANCE.getSimpleAlarm_Severity();
-
-		/**
-		 * The meta object literal for the '<em><b>Notification Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMPLE_ALARM__NOTIFICATION_TYPE = eINSTANCE.getSimpleAlarm_NotificationType();
-
-		/**
-		 * The meta object literal for the '<em><b>Alarm Receiver</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Alarm Receiver</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -619,14 +543,6 @@ public interface CIVAlarmPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EReference SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER = eINSTANCE.getSimpleAlarm_AlarmTriggeringBuilder();
-
-		/**
-		 * The meta object literal for the '<em><b>Massage</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMPLE_ALARM__MASSAGE = eINSTANCE.getSimpleAlarm_Massage();
 
 		/**
 		 * The meta object literal for the '{@link org.civitas.prototype.model.calarm.SeverityType <em>Severity Type</em>}' enum.

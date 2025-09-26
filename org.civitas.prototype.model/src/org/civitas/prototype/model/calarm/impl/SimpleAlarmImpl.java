@@ -13,24 +13,29 @@
  */
 package org.civitas.prototype.model.calarm.impl;
 
+import java.util.Collection;
+
 import org.civitas.glt.model.glt.Building;
 import org.civitas.glt.model.glt.Contact;
 
 import org.civitas.glt.sensor.model.sensor.SensorReading;
 
 import org.civitas.prototype.model.calarm.CIVAlarmPackage;
-import org.civitas.prototype.model.calarm.NotificationType;
-import org.civitas.prototype.model.calarm.SeverityType;
 import org.civitas.prototype.model.calarm.SimpleAlarm;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,12 +46,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link org.civitas.prototype.model.calarm.impl.SimpleAlarmImpl#getAlarmId <em>Alarm Id</em>}</li>
- *   <li>{@link org.civitas.prototype.model.calarm.impl.SimpleAlarmImpl#getSeverity <em>Severity</em>}</li>
- *   <li>{@link org.civitas.prototype.model.calarm.impl.SimpleAlarmImpl#getNotificationType <em>Notification Type</em>}</li>
  *   <li>{@link org.civitas.prototype.model.calarm.impl.SimpleAlarmImpl#getAlarmReceiver <em>Alarm Receiver</em>}</li>
  *   <li>{@link org.civitas.prototype.model.calarm.impl.SimpleAlarmImpl#getAlarmTriggerEvent <em>Alarm Trigger Event</em>}</li>
  *   <li>{@link org.civitas.prototype.model.calarm.impl.SimpleAlarmImpl#getAlarmTriggeringBuilder <em>Alarm Triggering Builder</em>}</li>
- *   <li>{@link org.civitas.prototype.model.calarm.impl.SimpleAlarmImpl#getMassage <em>Massage</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,54 +75,14 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 	protected String alarmId = ALARM_ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSeverity() <em>Severity</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeverity()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final SeverityType SEVERITY_EDEFAULT = SeverityType.INFO;
-
-	/**
-	 * The cached value of the '{@link #getSeverity() <em>Severity</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSeverity()
-	 * @generated
-	 * @ordered
-	 */
-	protected SeverityType severity = SEVERITY_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getNotificationType() <em>Notification Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNotificationType()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final NotificationType NOTIFICATION_TYPE_EDEFAULT = NotificationType.EMAIL;
-
-	/**
-	 * The cached value of the '{@link #getNotificationType() <em>Notification Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNotificationType()
-	 * @generated
-	 * @ordered
-	 */
-	protected NotificationType notificationType = NOTIFICATION_TYPE_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getAlarmReceiver() <em>Alarm Receiver</em>}' containment reference.
+	 * The cached value of the '{@link #getAlarmReceiver() <em>Alarm Receiver</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getAlarmReceiver()
 	 * @generated
 	 * @ordered
 	 */
-	protected Contact alarmReceiver;
+	protected EList<Contact> alarmReceiver;
 
 	/**
 	 * The cached value of the '{@link #getAlarmTriggerEvent() <em>Alarm Trigger Event</em>}' containment reference.
@@ -141,26 +103,6 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 	 * @ordered
 	 */
 	protected Building alarmTriggeringBuilder;
-
-	/**
-	 * The default value of the '{@link #getMassage() <em>Massage</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMassage()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String MASSAGE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getMassage() <em>Massage</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMassage()
-	 * @generated
-	 * @ordered
-	 */
-	protected String massage = MASSAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -210,89 +152,11 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 	 * @generated
 	 */
 	@Override
-	public SeverityType getSeverity() {
-		return severity;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setSeverity(SeverityType newSeverity) {
-		SeverityType oldSeverity = severity;
-		severity = newSeverity == null ? SEVERITY_EDEFAULT : newSeverity;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CIVAlarmPackage.SIMPLE_ALARM__SEVERITY, oldSeverity, severity));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationType getNotificationType() {
-		return notificationType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setNotificationType(NotificationType newNotificationType) {
-		NotificationType oldNotificationType = notificationType;
-		notificationType = newNotificationType == null ? NOTIFICATION_TYPE_EDEFAULT : newNotificationType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CIVAlarmPackage.SIMPLE_ALARM__NOTIFICATION_TYPE, oldNotificationType, notificationType));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Contact getAlarmReceiver() {
+	public EList<Contact> getAlarmReceiver() {
+		if (alarmReceiver == null) {
+			alarmReceiver = new EObjectContainmentEList<Contact>(Contact.class, this, CIVAlarmPackage.SIMPLE_ALARM__ALARM_RECEIVER);
+		}
 		return alarmReceiver;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetAlarmReceiver(Contact newAlarmReceiver, NotificationChain msgs) {
-		Contact oldAlarmReceiver = alarmReceiver;
-		alarmReceiver = newAlarmReceiver;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CIVAlarmPackage.SIMPLE_ALARM__ALARM_RECEIVER, oldAlarmReceiver, newAlarmReceiver);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setAlarmReceiver(Contact newAlarmReceiver) {
-		if (newAlarmReceiver != alarmReceiver) {
-			NotificationChain msgs = null;
-			if (alarmReceiver != null)
-				msgs = ((InternalEObject)alarmReceiver).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CIVAlarmPackage.SIMPLE_ALARM__ALARM_RECEIVER, null, msgs);
-			if (newAlarmReceiver != null)
-				msgs = ((InternalEObject)newAlarmReceiver).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CIVAlarmPackage.SIMPLE_ALARM__ALARM_RECEIVER, null, msgs);
-			msgs = basicSetAlarmReceiver(newAlarmReceiver, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CIVAlarmPackage.SIMPLE_ALARM__ALARM_RECEIVER, newAlarmReceiver, newAlarmReceiver));
 	}
 
 	/**
@@ -391,33 +255,10 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 	 * @generated
 	 */
 	@Override
-	public String getMassage() {
-		return massage;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setMassage(String newMassage) {
-		String oldMassage = massage;
-		massage = newMassage;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CIVAlarmPackage.SIMPLE_ALARM__MASSAGE, oldMassage, massage));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_RECEIVER:
-				return basicSetAlarmReceiver(null, msgs);
+				return ((InternalEList<?>)getAlarmReceiver()).basicRemove(otherEnd, msgs);
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGER_EVENT:
 				return basicSetAlarmTriggerEvent(null, msgs);
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER:
@@ -436,18 +277,12 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 		switch (featureID) {
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_ID:
 				return getAlarmId();
-			case CIVAlarmPackage.SIMPLE_ALARM__SEVERITY:
-				return getSeverity();
-			case CIVAlarmPackage.SIMPLE_ALARM__NOTIFICATION_TYPE:
-				return getNotificationType();
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_RECEIVER:
 				return getAlarmReceiver();
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGER_EVENT:
 				return getAlarmTriggerEvent();
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER:
 				return getAlarmTriggeringBuilder();
-			case CIVAlarmPackage.SIMPLE_ALARM__MASSAGE:
-				return getMassage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -457,29 +292,22 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_ID:
 				setAlarmId((String)newValue);
 				return;
-			case CIVAlarmPackage.SIMPLE_ALARM__SEVERITY:
-				setSeverity((SeverityType)newValue);
-				return;
-			case CIVAlarmPackage.SIMPLE_ALARM__NOTIFICATION_TYPE:
-				setNotificationType((NotificationType)newValue);
-				return;
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_RECEIVER:
-				setAlarmReceiver((Contact)newValue);
+				getAlarmReceiver().clear();
+				getAlarmReceiver().addAll((Collection<? extends Contact>)newValue);
 				return;
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGER_EVENT:
 				setAlarmTriggerEvent((SensorReading)newValue);
 				return;
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER:
 				setAlarmTriggeringBuilder((Building)newValue);
-				return;
-			case CIVAlarmPackage.SIMPLE_ALARM__MASSAGE:
-				setMassage((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -496,23 +324,14 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_ID:
 				setAlarmId(ALARM_ID_EDEFAULT);
 				return;
-			case CIVAlarmPackage.SIMPLE_ALARM__SEVERITY:
-				setSeverity(SEVERITY_EDEFAULT);
-				return;
-			case CIVAlarmPackage.SIMPLE_ALARM__NOTIFICATION_TYPE:
-				setNotificationType(NOTIFICATION_TYPE_EDEFAULT);
-				return;
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_RECEIVER:
-				setAlarmReceiver((Contact)null);
+				getAlarmReceiver().clear();
 				return;
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGER_EVENT:
 				setAlarmTriggerEvent((SensorReading)null);
 				return;
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER:
 				setAlarmTriggeringBuilder((Building)null);
-				return;
-			case CIVAlarmPackage.SIMPLE_ALARM__MASSAGE:
-				setMassage(MASSAGE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -528,18 +347,12 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 		switch (featureID) {
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_ID:
 				return ALARM_ID_EDEFAULT == null ? alarmId != null : !ALARM_ID_EDEFAULT.equals(alarmId);
-			case CIVAlarmPackage.SIMPLE_ALARM__SEVERITY:
-				return severity != SEVERITY_EDEFAULT;
-			case CIVAlarmPackage.SIMPLE_ALARM__NOTIFICATION_TYPE:
-				return notificationType != NOTIFICATION_TYPE_EDEFAULT;
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_RECEIVER:
-				return alarmReceiver != null;
+				return alarmReceiver != null && !alarmReceiver.isEmpty();
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGER_EVENT:
 				return alarmTriggerEvent != null;
 			case CIVAlarmPackage.SIMPLE_ALARM__ALARM_TRIGGERING_BUILDER:
 				return alarmTriggeringBuilder != null;
-			case CIVAlarmPackage.SIMPLE_ALARM__MASSAGE:
-				return MASSAGE_EDEFAULT == null ? massage != null : !MASSAGE_EDEFAULT.equals(massage);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -556,12 +369,6 @@ public class SimpleAlarmImpl extends MinimalEObjectImpl.Container implements Sim
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (alarmId: ");
 		result.append(alarmId);
-		result.append(", severity: ");
-		result.append(severity);
-		result.append(", notificationType: ");
-		result.append(notificationType);
-		result.append(", massage: ");
-		result.append(massage);
 		result.append(')');
 		return result.toString();
 	}

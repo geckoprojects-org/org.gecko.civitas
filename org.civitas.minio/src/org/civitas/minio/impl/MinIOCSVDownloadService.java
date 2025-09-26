@@ -15,6 +15,7 @@ package org.civitas.minio.impl;
 
 import java.io.InputStream;
 import java.net.URI;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,7 +30,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Diagnostician;
 import org.gecko.emf.osgi.constants.EMFNamespaces;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -71,8 +71,8 @@ public class MinIOCSVDownloadService {
       @AttributeDefinition(name = "EClassUri", description = "The URI of the EClass to expect")
       String eClassUri();
 
-      @AttributeDefinition(name = "Event Topic", description = "The topic to publish parsed EObjects to")
-      String eventTopic() default "org/civitas/meter/data/parsed";
+      @AttributeDefinition(name = "The Forward Topcis", description = "The topic to publish parsed EObjects to")
+      String[] forward_topic() default "org/civitas/meter/data/parsed";
     }
     
     @Reference(name="client")
@@ -175,20 +175,19 @@ public class MinIOCSVDownloadService {
     }
 
     private void sendAhead(String fileName, List<EObject> objects) {
-        String eventTopic = config.eventTopic();
-
-        for (int i = 0; i < objects.size(); i++) {
+        List<String> topics = Arrays.asList(config.forward_topic());
+	for (int i = 0; i < objects.size(); i++) {
             EObject obj = objects.get(i);
 
             // Send each EObject to the configured event topic
             try {
-                typedEventBus.deliver(eventTopic, obj);
+        	topics.forEach(t -> typedEventBus.deliver(t, obj));
+                
             } catch (Exception e) {
                 logger.error("Failed to send EObject to event bus", e);
             }
         }
         logger.info("=== End of parsed objects from file: {} ===", fileName);
-        logger.info("Sent {} objects to event topic: {}", objects.size(), eventTopic);
     }
 
     private void startScheduler() {

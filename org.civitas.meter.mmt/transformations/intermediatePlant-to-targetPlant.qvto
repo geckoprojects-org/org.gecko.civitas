@@ -39,7 +39,5 @@ mapping SOURCE::IntermediatePlant::toTargetNet(): TARGET::Net {
 mapping SOURCE::OperatingData::toTargetOperatingData(): TARGET::OperatingData {
 	id := self.id.toString();
 	operatingHours := self.operatingHours;
-//	TODO: how do I put a non-contained ref to the Plant??
-//	plant := 
 }
 

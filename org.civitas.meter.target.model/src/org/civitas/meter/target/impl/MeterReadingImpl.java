@@ -20,12 +20,15 @@ import org.civitas.meter.target.MeteringPoint;
 import org.civitas.meter.target.targetPackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -103,16 +106,6 @@ public class MeterReadingImpl extends MinimalEObjectImpl.Container implements Me
 	 * @ordered
 	 */
 	protected Date timestamp = TIMESTAMP_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getMeteringPoint() <em>Metering Point</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMeteringPoint()
-	 * @generated
-	 * @ordered
-	 */
-	protected MeteringPoint meteringPoint;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -209,15 +202,8 @@ public class MeterReadingImpl extends MinimalEObjectImpl.Container implements Me
 	 */
 	@Override
 	public MeteringPoint getMeteringPoint() {
-		if (meteringPoint != null && meteringPoint.eIsProxy()) {
-			InternalEObject oldMeteringPoint = (InternalEObject)meteringPoint;
-			meteringPoint = (MeteringPoint)eResolveProxy(oldMeteringPoint);
-			if (meteringPoint != oldMeteringPoint) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, targetPackage.METER_READING__METERING_POINT, oldMeteringPoint, meteringPoint));
-			}
-		}
-		return meteringPoint;
+		if (eContainerFeatureID() != targetPackage.METER_READING__METERING_POINT) return null;
+		return (MeteringPoint)eInternalContainer();
 	}
 
 	/**
@@ -225,8 +211,9 @@ public class MeterReadingImpl extends MinimalEObjectImpl.Container implements Me
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MeteringPoint basicGetMeteringPoint() {
-		return meteringPoint;
+	public NotificationChain basicSetMeteringPoint(MeteringPoint newMeteringPoint, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newMeteringPoint, targetPackage.METER_READING__METERING_POINT, msgs);
+		return msgs;
 	}
 
 	/**
@@ -236,10 +223,63 @@ public class MeterReadingImpl extends MinimalEObjectImpl.Container implements Me
 	 */
 	@Override
 	public void setMeteringPoint(MeteringPoint newMeteringPoint) {
-		MeteringPoint oldMeteringPoint = meteringPoint;
-		meteringPoint = newMeteringPoint;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, targetPackage.METER_READING__METERING_POINT, oldMeteringPoint, meteringPoint));
+		if (newMeteringPoint != eInternalContainer() || (eContainerFeatureID() != targetPackage.METER_READING__METERING_POINT && newMeteringPoint != null)) {
+			if (EcoreUtil.isAncestor(this, newMeteringPoint))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newMeteringPoint != null)
+				msgs = ((InternalEObject)newMeteringPoint).eInverseAdd(this, targetPackage.METERING_POINT__METER_READINGS, MeteringPoint.class, msgs);
+			msgs = basicSetMeteringPoint(newMeteringPoint, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, targetPackage.METER_READING__METERING_POINT, newMeteringPoint, newMeteringPoint));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case targetPackage.METER_READING__METERING_POINT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetMeteringPoint((MeteringPoint)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case targetPackage.METER_READING__METERING_POINT:
+				return basicSetMeteringPoint(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case targetPackage.METER_READING__METERING_POINT:
+				return eInternalContainer().eInverseRemove(this, targetPackage.METERING_POINT__METER_READINGS, MeteringPoint.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -257,8 +297,7 @@ public class MeterReadingImpl extends MinimalEObjectImpl.Container implements Me
 			case targetPackage.METER_READING__TIMESTAMP:
 				return getTimestamp();
 			case targetPackage.METER_READING__METERING_POINT:
-				if (resolve) return getMeteringPoint();
-				return basicGetMeteringPoint();
+				return getMeteringPoint();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -326,7 +365,7 @@ public class MeterReadingImpl extends MinimalEObjectImpl.Container implements Me
 			case targetPackage.METER_READING__TIMESTAMP:
 				return TIMESTAMP_EDEFAULT == null ? timestamp != null : !TIMESTAMP_EDEFAULT.equals(timestamp);
 			case targetPackage.METER_READING__METERING_POINT:
-				return meteringPoint != null;
+				return getMeteringPoint() != null;
 		}
 		return super.eIsSet(featureID);
 	}

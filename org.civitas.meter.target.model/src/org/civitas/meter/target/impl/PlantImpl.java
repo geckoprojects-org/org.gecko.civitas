@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -424,7 +425,7 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 	@Override
 	public EList<OperatingData> getOperatingData() {
 		if (operatingData == null) {
-			operatingData = new EObjectContainmentEList<OperatingData>(OperatingData.class, this, targetPackage.PLANT__OPERATING_DATA);
+			operatingData = new EObjectContainmentWithInverseEList<OperatingData>(OperatingData.class, this, targetPackage.PLANT__OPERATING_DATA, targetPackage.OPERATING_DATA__PLANT);
 		}
 		return operatingData;
 	}
@@ -437,7 +438,7 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 	@Override
 	public EList<MeteringPoint> getMeteringPoints() {
 		if (meteringPoints == null) {
-			meteringPoints = new EObjectContainmentEList<MeteringPoint>(MeteringPoint.class, this, targetPackage.PLANT__METERING_POINTS);
+			meteringPoints = new EObjectContainmentWithInverseEList<MeteringPoint>(MeteringPoint.class, this, targetPackage.PLANT__METERING_POINTS, targetPackage.METERING_POINT__PLANT);
 		}
 		return meteringPoints;
 	}
@@ -453,6 +454,23 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 			parts = new EObjectContainmentEList<Parts>(Parts.class, this, targetPackage.PLANT__PARTS);
 		}
 		return parts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case targetPackage.PLANT__OPERATING_DATA:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOperatingData()).basicAdd(otherEnd, msgs);
+			case targetPackage.PLANT__METERING_POINTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getMeteringPoints()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

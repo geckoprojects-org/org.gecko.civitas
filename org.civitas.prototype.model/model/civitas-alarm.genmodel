@@ -35,12 +35,9 @@
     </genClasses>
     <genClasses ecoreClass="civitas-alarm.ecore#//SimpleAlarm">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-alarm.ecore#//SimpleAlarm/alarmId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-alarm.ecore#//SimpleAlarm/severity"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-alarm.ecore#//SimpleAlarm/notificationType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference civitas-alarm.ecore#//SimpleAlarm/alarmReceiver"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference civitas-alarm.ecore#//SimpleAlarm/alarmTriggerEvent"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference civitas-alarm.ecore#//SimpleAlarm/alarmTriggeringBuilder"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute civitas-alarm.ecore#//SimpleAlarm/massage"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Cbase" ecorePackage="civitas-base.ecore#/">

@@ -7,7 +7,8 @@
 	org.eclipse.fennec.persistence.eclipselink;version=latest,\
 	org.eclipse.fennec.persistence.orm;version=latest,\
 	org.civitas.meter.source.model;version=snapshot,\
-	jakarta.persistence-api
+	jakarta.persistence-api,\
+	org.osgi.service.typedevent
 	
 -includeresource: \
 	OSGI-INF/configurator/=configs/

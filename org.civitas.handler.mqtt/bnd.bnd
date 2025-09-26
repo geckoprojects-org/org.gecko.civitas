@@ -1,4 +1,8 @@
 -library:  enable-emf
 -buildpath: \
 	org.osgi.service.typedevent,\
-	org.gecko.osgi.messaging
+	org.gecko.osgi.messaging,\
+	org.osgi.service.component,\
+	org.osgi.util.pushstream,\
+	org.osgi.util.promise,\
+	org.gecko.emf.json

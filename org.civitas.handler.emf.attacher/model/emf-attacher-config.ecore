@@ -2,16 +2,10 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="emfattacherconfig" nsURI="https://civitas.org/handler/emf/attacher/config/1.0.0"
     nsPrefix="emfattacherconfig">
-  <eClassifiers xsi:type="ecore:EClass" name="EMFAttacherHandlerConfig">
+  <eClassifiers xsi:type="ecore:EClass" name="EMFAttacherHandlerConfig" eSuperTypes="../../org.civitas.osgi.component.configuration.model/model/component.ecore#//Configuration ../../org.civitas.pipeline.model/model/pipeline.ecore#//DataSink">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Configuration for EMF Attacher Handler that processes EMF objects and attaches them to target objects"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eventTopic" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The event topic this handler is listening to"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="repoTarget" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -42,12 +36,6 @@
         <details key="documentation" value="The URI of the target EReference where to put the incoming EObject (e.g., Plant/meters)"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="forwardTopic" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The event topic where to publish the updated target EObject"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="configurationId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Unique identifier for this EMF Attacher Handler configuration"/>
@@ -57,28 +45,6 @@
         defaultValueLiteral="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Whether this EMF Attacher Handler configuration is enabled"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EMFAttacherConfigurationRoot">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Root container for EMF Attacher Handler configuration objects"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="handlerConfigurations" upperBound="-1"
-        eType="#//EMFAttacherHandlerConfig" containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Collection of EMF Attacher Handler configurations"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Name for this configuration set"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="1.0.0">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Version of this configuration set"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

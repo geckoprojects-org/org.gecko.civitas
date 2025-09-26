@@ -9,7 +9,8 @@
 	bnd.identity;id='org.eclipse.fennec.persistence.eclipselink',\
 	bnd.identity;id='org.civitas.meter.source.model',\
 	bnd.identity;id='org.civitas.glt.model',\
-	bnd.identity;id='org.civitas.meter.db'
+	bnd.identity;id='org.civitas.meter.db',\
+	bnd.identity;id='org.apache.aries.typedevent.bus'
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 -runbundles: \
 	org.apache.felix.cm.json;version='[2.0.6,2.0.7)',\
@@ -48,4 +49,8 @@
 	slf4j.simple;version='[2.0.17,2.0.18)',\
 	org.eclipse.fennec.persistence.repository;version='[1.0.0,1.0.1)',\
 	org.eclipse.persistence.jpa.jpql;version='[4.0.4,4.0.5)',\
-	org.civitas.glt.model;version=snapshot
+	org.civitas.glt.model;version=snapshot,\
+	org.osgi.service.typedevent;version='[1.0.0,1.0.1)',\
+	org.osgi.util.pushstream;version='[1.1.0,1.1.1)',\
+	org.apache.aries.component-dsl.component-dsl;version='[1.2.2,1.2.3)',\
+	org.apache.aries.typedevent.bus;version='[1.0.1,1.0.2)'

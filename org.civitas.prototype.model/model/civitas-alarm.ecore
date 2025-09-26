@@ -41,15 +41,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="SimpleAlarm">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="alarmId" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="severity" eType="#//SeverityType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="notificationType" eType="#//NotificationType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="alarmReceiver" eType="ecore:EClass ../../org.civitas.glt.model/model/glt.ecore#//Contact"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alarmReceiver" upperBound="-1"
+        eType="ecore:EClass ../../org.civitas.glt.model/model/glt.ecore#//Contact"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="alarmTriggerEvent" eType="ecore:EClass ../../org.civitas.glt.sensor.model/model/building_sensor.ecore#//SensorReading"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="alarmTriggeringBuilder"
         eType="ecore:EClass ../../org.civitas.glt.model/model/glt.ecore#//Building"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="massage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -13,6 +13,7 @@
  */
 package org.civitas.glt.sensor.validation;
 
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import org.civitas.glt.sensor.validation.api.ValidationType;
@@ -75,7 +76,7 @@ public class ValidationHandler implements TypedEventHandler<EObject> {
 		double maxThreshold() default -9999.;
 
 		@AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the updated target EObject")
-		String forwardTopic();
+		String[] forward_topic();
 	}
 
 	@Activate
@@ -109,17 +110,18 @@ public class ValidationHandler implements TypedEventHandler<EObject> {
 			EObject attObj = resourceSet.getEObject(URI.createURI(config.attribute_uri_to_be_validated()), false);
 			EObject refObj = resourceSet.getEObject(URI.createURI(config.reference_uri_to_be_validated()), false);
 			if(refObj instanceof EReference ref && attObj instanceof EAttribute att) {
-				numberToBeValidated = (Number) ((EObject) eObject.eGet(ref)).eGet(att);
+				EObject refValue = (EObject) eObject.eGet(ref);
+				if(refValue != null) {
+					numberToBeValidated = (Number) refValue.eGet(att);
+				}				
 			}
 		}
 		if(numberToBeValidated != null) {
 			if(!isValid(numberToBeValidated)) {
 				LOGGER.info(String.format("Validation failed. Passing object forward"));
-				typedEventBus.deliver(config.forwardTopic(), EcoreUtil.copy(eObject));
+				Arrays.asList(config.forward_topic()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(eObject)));
 			}
 		}
-		
-
 	}
 
 	private boolean isValid(Number number) {

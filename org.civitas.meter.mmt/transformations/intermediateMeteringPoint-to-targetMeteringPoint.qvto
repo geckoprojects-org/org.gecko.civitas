@@ -27,14 +27,17 @@ mapping SOURCE::IntermediateMeteringPoint::toTargetMeteringPoint(): TARGET::Mete
 	id := self.meterId;
 	meterReadings += self.readings->map toTargetMeterReading();
 	currentMeter := self.map toTargetMeter();
+	plant := self.map toPlant();
+}
+
+mapping SOURCE::IntermediateMeteringPoint::toPlant(): TARGET:: Plant {
+	id := self.plantId;
 }
 
 mapping SOURCE::Reading::toTargetMeterReading(): TARGET::MeterReading {
 	id := self.id.toString();
 	value := self.value;
 	timestamp := self.timestamp;
-//	TODO: ref to meteringPoint ???
-//	meteringPoint := 
 }
 
 mapping SOURCE::IntermediateMeteringPoint::toTargetMeter(): TARGET::Meter {

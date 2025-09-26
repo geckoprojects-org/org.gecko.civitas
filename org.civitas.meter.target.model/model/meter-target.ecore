@@ -14,9 +14,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="houseNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="net" lowerBound="1" eType="#//Net"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operatingData" upperBound="-1"
-        eType="#//OperatingData" containment="true"/>
+        eType="#//OperatingData" containment="true" eOpposite="#//OperatingData/plant"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="meteringPoints" upperBound="-1"
-        eType="#//MeteringPoint" containment="true"/>
+        eType="#//MeteringPoint" containment="true" eOpposite="#//MeteringPoint/plant"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parts" upperBound="-1"
         eType="#//Parts" containment="true"/>
   </eClassifiers>
@@ -39,16 +39,18 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operatingHours" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="starts" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="plant" lowerBound="1" eType="#//Plant"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="plant" lowerBound="1" eType="#//Plant"
+        eOpposite="#//Plant/operatingData"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MeteringPoint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="plant" eType="#//Plant"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="plant" eType="#//Plant"
+        eOpposite="#//Plant/meteringPoints"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentMeter" lowerBound="1"
         eType="#//Meter"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="meterReadings" upperBound="-1"
-        eType="#//MeterReading" containment="true"/>
+        eType="#//MeterReading" containment="true" eOpposite="#//MeterReading/meteringPoint"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="meterHistory" upperBound="-1"
         eType="#//MeterHistory" containment="true"/>
   </eClassifiers>
@@ -63,7 +65,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="meteringPoint" lowerBound="1"
-        eType="#//MeteringPoint"/>
+        eType="#//MeteringPoint" eOpposite="#//MeteringPoint/meterReadings"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MeterHistory">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

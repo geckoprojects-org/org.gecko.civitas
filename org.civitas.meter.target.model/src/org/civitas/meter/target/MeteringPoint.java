@@ -64,22 +64,24 @@ public interface MeteringPoint extends EObject {
 	void setId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Plant</b></em>' reference.
+	 * Returns the value of the '<em><b>Plant</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.civitas.meter.target.Plant#getMeteringPoints <em>Metering Points</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Plant</em>' reference.
+	 * @return the value of the '<em>Plant</em>' container reference.
 	 * @see #setPlant(Plant)
 	 * @see org.civitas.meter.target.targetPackage#getMeteringPoint_Plant()
-	 * @model
+	 * @see org.civitas.meter.target.Plant#getMeteringPoints
+	 * @model opposite="meteringPoints" transient="false"
 	 * @generated
 	 */
 	Plant getPlant();
 
 	/**
-	 * Sets the value of the '{@link org.civitas.meter.target.MeteringPoint#getPlant <em>Plant</em>}' reference.
+	 * Sets the value of the '{@link org.civitas.meter.target.MeteringPoint#getPlant <em>Plant</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Plant</em>' reference.
+	 * @param value the new value of the '<em>Plant</em>' container reference.
 	 * @see #getPlant()
 	 * @generated
 	 */
@@ -110,11 +112,13 @@ public interface MeteringPoint extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Meter Readings</b></em>' containment reference list.
 	 * The list contents are of type {@link org.civitas.meter.target.MeterReading}.
+	 * It is bidirectional and its opposite is '{@link org.civitas.meter.target.MeterReading#getMeteringPoint <em>Metering Point</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Meter Readings</em>' containment reference list.
 	 * @see org.civitas.meter.target.targetPackage#getMeteringPoint_MeterReadings()
-	 * @model containment="true"
+	 * @see org.civitas.meter.target.MeterReading#getMeteringPoint
+	 * @model opposite="meteringPoint" containment="true"
 	 * @generated
 	 */
 	EList<MeterReading> getMeterReadings();

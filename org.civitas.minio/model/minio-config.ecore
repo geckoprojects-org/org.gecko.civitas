@@ -67,17 +67,6 @@
         <details key="documentation" value="Maps directly to OSGi Configuration Admin property 'eClassUri' (no underscore conversion needed)"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eventTopic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="org/civitas/minio/csv/parsed">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Event topic to publish parsed EObjects to using TypedEventBus"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/ExtendedMetaData">
-        <details key="osgi.config.property" value="eventTopic"/>
-        <details key="osgi.annotation.attribute" value="eventTopic"/>
-        <details key="documentation" value="Maps directly to OSGi Configuration Admin property 'eventTopic' (no underscore conversion needed)"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="configurationId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Unique identifier for this CSV download service configuration"/>

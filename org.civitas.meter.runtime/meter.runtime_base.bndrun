@@ -26,7 +26,12 @@ slf4j.runpath:  \
 	bnd.identity;id='org.apache.felix.configadmin',\
 	bnd.identity;id='org.civitas.minio',\
 	bnd.identity;id='org.civitas.meter.source.model',\
-	bnd.identity;id='org.civitas.logging.handler'
+	bnd.identity;id='org.civitas.logging.handler',\
+	bnd.identity;id='org.civitas.meter.mmt',\
+	bnd.identity;id='org.civitas.meter.target.model',\
+	bnd.identity;id='org.civitas.handler.emf.attacher',\
+	bnd.identity;id='org.civitas.handler.emf.repository.datasink',\
+	bnd.identity;id='org.civitas.handler.qvt'
 	
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 -runee: JavaSE-21
@@ -98,4 +103,28 @@ slf4j.runpath:  \
 	org.osgi.util.pushstream;version='[1.1.0,1.1.1)',\
 	org.civitas.logging.handler;version=snapshot,\
 	org.gecko.emf.osgi.extender;version='[6.3.0,6.3.1)',\
-	org.osgi.service.coordinator;version='[1.0.2,1.0.3)'
+	org.osgi.service.coordinator;version='[1.0.2,1.0.3)',\
+	org.civitas.meter.mmt;version=snapshot,\
+	org.civitas.meter.target.model;version=snapshot,\
+	lpg.runtime.java;version='[2.0.17,2.0.18)',\
+	org.civitas.handler.emf.attacher;version=snapshot,\
+	org.civitas.handler.emf.repository.datasink;version=snapshot,\
+	org.civitas.handler.qvt;version=snapshot,\
+	org.eclipse.emf.ecore.change;version='[2.15.0,2.15.1)',\
+	org.eclipse.equinox.supplement;version='[1.11.100,1.11.101)',\
+	org.eclipse.fennec.qvt.component;version='[1.1.0,1.1.1)',\
+	org.eclipse.m2m.qvt.oml;version='[1.0.0,1.0.1)',\
+	org.eclipse.m2m.qvt.oml.common;version='[1.0.0,1.0.1)',\
+	org.eclipse.m2m.qvt.oml.cst.parser;version='[1.0.0,1.0.1)',\
+	org.eclipse.m2m.qvt.oml.ecore.imperativeocl;version='[1.0.0,1.0.1)',\
+	org.eclipse.m2m.qvt.oml.emf.util;version='[1.0.0,1.0.1)',\
+	org.eclipse.m2m.qvt.oml.ocl;version='[1.0.0,1.0.1)',\
+	org.eclipse.ocl;version='[1.0.0,1.0.1)',\
+	org.eclipse.ocl.common;version='[1.0.0,1.0.1)',\
+	org.eclipse.ocl.ecore;version='[1.0.0,1.0.1)',\
+	org.gecko.emf.collections;version='[2.2.2,2.2.3)',\
+	org.gecko.emf.mongo.component;version='[6.2.0,6.2.1)',\
+	org.gecko.emf.repository.api;version='[9.3.1,9.3.2)',\
+	org.gecko.emf.repository.mongo;version='[3.3.0,3.3.1)',\
+	org.gecko.mongo.osgi.component;version='[6.2.0,6.2.1)',\
+	org.mongodb.mongo-java-driver;version='[3.12.14,3.12.15)'

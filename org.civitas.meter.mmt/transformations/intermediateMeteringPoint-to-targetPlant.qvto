@@ -39,8 +39,6 @@ mapping SOURCE::Reading::toTargetMeterReading(): TARGET::MeterReading {
 	id := self.id.toString();
 	value := self.value;
 	timestamp := self.timestamp;
-//	TODO: ref to meteringPoint ???
-//	meteringPoint := 
 }
 
 mapping SOURCE::IntermediateMeteringPoint::toTargetMeter(): TARGET::Meter {

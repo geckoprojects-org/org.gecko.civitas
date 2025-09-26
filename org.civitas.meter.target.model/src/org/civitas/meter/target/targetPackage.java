@@ -358,7 +358,7 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	int OPERATING_DATA__STARTS = 2;
 
 	/**
-	 * The feature id for the '<em><b>Plant</b></em>' reference.
+	 * The feature id for the '<em><b>Plant</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -404,7 +404,7 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	int METERING_POINT__ID = 0;
 
 	/**
-	 * The feature id for the '<em><b>Plant</b></em>' reference.
+	 * The feature id for the '<em><b>Plant</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -541,7 +541,7 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	int METER_READING__TIMESTAMP = 2;
 
 	/**
-	 * The feature id for the '<em><b>Metering Point</b></em>' reference.
+	 * The feature id for the '<em><b>Metering Point</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -913,10 +913,10 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getOperatingData_Starts();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.civitas.meter.target.OperatingData#getPlant <em>Plant</em>}'.
+	 * Returns the meta object for the container reference '{@link org.civitas.meter.target.OperatingData#getPlant <em>Plant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Plant</em>'.
+	 * @return the meta object for the container reference '<em>Plant</em>'.
 	 * @see org.civitas.meter.target.OperatingData#getPlant()
 	 * @see #getOperatingData()
 	 * @generated
@@ -945,10 +945,10 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getMeteringPoint_Id();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.civitas.meter.target.MeteringPoint#getPlant <em>Plant</em>}'.
+	 * Returns the meta object for the container reference '{@link org.civitas.meter.target.MeteringPoint#getPlant <em>Plant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Plant</em>'.
+	 * @return the meta object for the container reference '<em>Plant</em>'.
 	 * @see org.civitas.meter.target.MeteringPoint#getPlant()
 	 * @see #getMeteringPoint()
 	 * @generated
@@ -1064,10 +1064,10 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getMeterReading_Timestamp();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.civitas.meter.target.MeterReading#getMeteringPoint <em>Metering Point</em>}'.
+	 * Returns the meta object for the container reference '{@link org.civitas.meter.target.MeterReading#getMeteringPoint <em>Metering Point</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Metering Point</em>'.
+	 * @return the meta object for the container reference '<em>Metering Point</em>'.
 	 * @see org.civitas.meter.target.MeterReading#getMeteringPoint()
 	 * @see #getMeterReading()
 	 * @generated
@@ -1371,7 +1371,7 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute OPERATING_DATA__STARTS = eINSTANCE.getOperatingData_Starts();
 
 		/**
-		 * The meta object literal for the '<em><b>Plant</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Plant</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1397,7 +1397,7 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute METERING_POINT__ID = eINSTANCE.getMeteringPoint_Id();
 
 		/**
-		 * The meta object literal for the '<em><b>Plant</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Plant</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1489,7 +1489,7 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute METER_READING__TIMESTAMP = eINSTANCE.getMeterReading_Timestamp();
 
 		/**
-		 * The meta object literal for the '<em><b>Metering Point</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Metering Point</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

@@ -18,6 +18,8 @@ import org.civitas.glt.model.glt.Contact;
 
 import org.civitas.glt.sensor.model.sensor.SensorReading;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 import org.osgi.annotation.versioning.ProviderType;
@@ -32,12 +34,9 @@ import org.osgi.annotation.versioning.ProviderType;
  * </p>
  * <ul>
  *   <li>{@link org.civitas.prototype.model.calarm.SimpleAlarm#getAlarmId <em>Alarm Id</em>}</li>
- *   <li>{@link org.civitas.prototype.model.calarm.SimpleAlarm#getSeverity <em>Severity</em>}</li>
- *   <li>{@link org.civitas.prototype.model.calarm.SimpleAlarm#getNotificationType <em>Notification Type</em>}</li>
  *   <li>{@link org.civitas.prototype.model.calarm.SimpleAlarm#getAlarmReceiver <em>Alarm Receiver</em>}</li>
  *   <li>{@link org.civitas.prototype.model.calarm.SimpleAlarm#getAlarmTriggerEvent <em>Alarm Trigger Event</em>}</li>
  *   <li>{@link org.civitas.prototype.model.calarm.SimpleAlarm#getAlarmTriggeringBuilder <em>Alarm Triggering Builder</em>}</li>
- *   <li>{@link org.civitas.prototype.model.calarm.SimpleAlarm#getMassage <em>Massage</em>}</li>
  * </ul>
  *
  * @see org.civitas.prototype.model.calarm.CIVAlarmPackage#getSimpleAlarm()
@@ -69,76 +68,16 @@ public interface SimpleAlarm extends EObject {
 	void setAlarmId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Severity</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.civitas.prototype.model.calarm.SeverityType}.
+	 * Returns the value of the '<em><b>Alarm Receiver</b></em>' containment reference list.
+	 * The list contents are of type {@link org.civitas.glt.model.glt.Contact}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Severity</em>' attribute.
-	 * @see org.civitas.prototype.model.calarm.SeverityType
-	 * @see #setSeverity(SeverityType)
-	 * @see org.civitas.prototype.model.calarm.CIVAlarmPackage#getSimpleAlarm_Severity()
-	 * @model
-	 * @generated
-	 */
-	SeverityType getSeverity();
-
-	/**
-	 * Sets the value of the '{@link org.civitas.prototype.model.calarm.SimpleAlarm#getSeverity <em>Severity</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Severity</em>' attribute.
-	 * @see org.civitas.prototype.model.calarm.SeverityType
-	 * @see #getSeverity()
-	 * @generated
-	 */
-	void setSeverity(SeverityType value);
-
-	/**
-	 * Returns the value of the '<em><b>Notification Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.civitas.prototype.model.calarm.NotificationType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Notification Type</em>' attribute.
-	 * @see org.civitas.prototype.model.calarm.NotificationType
-	 * @see #setNotificationType(NotificationType)
-	 * @see org.civitas.prototype.model.calarm.CIVAlarmPackage#getSimpleAlarm_NotificationType()
-	 * @model
-	 * @generated
-	 */
-	NotificationType getNotificationType();
-
-	/**
-	 * Sets the value of the '{@link org.civitas.prototype.model.calarm.SimpleAlarm#getNotificationType <em>Notification Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Notification Type</em>' attribute.
-	 * @see org.civitas.prototype.model.calarm.NotificationType
-	 * @see #getNotificationType()
-	 * @generated
-	 */
-	void setNotificationType(NotificationType value);
-
-	/**
-	 * Returns the value of the '<em><b>Alarm Receiver</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Alarm Receiver</em>' containment reference.
-	 * @see #setAlarmReceiver(Contact)
+	 * @return the value of the '<em>Alarm Receiver</em>' containment reference list.
 	 * @see org.civitas.prototype.model.calarm.CIVAlarmPackage#getSimpleAlarm_AlarmReceiver()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Contact getAlarmReceiver();
-
-	/**
-	 * Sets the value of the '{@link org.civitas.prototype.model.calarm.SimpleAlarm#getAlarmReceiver <em>Alarm Receiver</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Alarm Receiver</em>' containment reference.
-	 * @see #getAlarmReceiver()
-	 * @generated
-	 */
-	void setAlarmReceiver(Contact value);
+	EList<Contact> getAlarmReceiver();
 
 	/**
 	 * Returns the value of the '<em><b>Alarm Trigger Event</b></em>' containment reference.
@@ -183,27 +122,5 @@ public interface SimpleAlarm extends EObject {
 	 * @generated
 	 */
 	void setAlarmTriggeringBuilder(Building value);
-
-	/**
-	 * Returns the value of the '<em><b>Massage</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Massage</em>' attribute.
-	 * @see #setMassage(String)
-	 * @see org.civitas.prototype.model.calarm.CIVAlarmPackage#getSimpleAlarm_Massage()
-	 * @model
-	 * @generated
-	 */
-	String getMassage();
-
-	/**
-	 * Sets the value of the '{@link org.civitas.prototype.model.calarm.SimpleAlarm#getMassage <em>Massage</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Massage</em>' attribute.
-	 * @see #getMassage()
-	 * @generated
-	 */
-	void setMassage(String value);
 
 } // SimpleAlarm
