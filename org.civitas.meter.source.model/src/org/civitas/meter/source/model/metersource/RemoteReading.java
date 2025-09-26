@@ -35,7 +35,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * </ul>
  *
  * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getRemoteReading()
- * @model
+ * @model extendedMetaData="name='meter_reading'"
  * @generated
  */
 @ProviderType
@@ -70,12 +70,12 @@ public interface RemoteReading extends EObject {
 	 * This is a reference to the meterId
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Meter Id</em>' attribute.
-	 * @see #setMeterId(String)
+	 * @see #setMeterId(int)
 	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getRemoteReading_MeterId()
 	 * @model extendedMetaData="name='meter_id'"
 	 * @generated
 	 */
-	String getMeterId();
+	int getMeterId();
 
 	/**
 	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.RemoteReading#getMeterId <em>Meter Id</em>}' attribute.
@@ -85,7 +85,7 @@ public interface RemoteReading extends EObject {
 	 * @see #getMeterId()
 	 * @generated
 	 */
-	void setMeterId(String value);
+	void setMeterId(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.

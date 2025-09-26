@@ -70,7 +70,7 @@ public class RemoteReadingImpl extends MinimalEObjectImpl.Container implements R
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String METER_ID_EDEFAULT = null;
+	protected static final int METER_ID_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getMeterId() <em>Meter Id</em>}' attribute.
@@ -80,7 +80,7 @@ public class RemoteReadingImpl extends MinimalEObjectImpl.Container implements R
 	 * @generated
 	 * @ordered
 	 */
-	protected String meterId = METER_ID_EDEFAULT;
+	protected int meterId = METER_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -170,7 +170,7 @@ public class RemoteReadingImpl extends MinimalEObjectImpl.Container implements R
 	 * @generated
 	 */
 	@Override
-	public String getMeterId() {
+	public int getMeterId() {
 		return meterId;
 	}
 
@@ -180,8 +180,8 @@ public class RemoteReadingImpl extends MinimalEObjectImpl.Container implements R
 	 * @generated
 	 */
 	@Override
-	public void setMeterId(String newMeterId) {
-		String oldMeterId = meterId;
+	public void setMeterId(int newMeterId) {
+		int oldMeterId = meterId;
 		meterId = newMeterId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.REMOTE_READING__METER_ID, oldMeterId, meterId));
@@ -265,7 +265,7 @@ public class RemoteReadingImpl extends MinimalEObjectImpl.Container implements R
 				setId((Integer)newValue);
 				return;
 			case MeterSourcePackage.REMOTE_READING__METER_ID:
-				setMeterId((String)newValue);
+				setMeterId((Integer)newValue);
 				return;
 			case MeterSourcePackage.REMOTE_READING__VALUE:
 				setValue((Integer)newValue);
@@ -312,7 +312,7 @@ public class RemoteReadingImpl extends MinimalEObjectImpl.Container implements R
 			case MeterSourcePackage.REMOTE_READING__ID:
 				return id != ID_EDEFAULT;
 			case MeterSourcePackage.REMOTE_READING__METER_ID:
-				return METER_ID_EDEFAULT == null ? meterId != null : !METER_ID_EDEFAULT.equals(meterId);
+				return meterId != METER_ID_EDEFAULT;
 			case MeterSourcePackage.REMOTE_READING__VALUE:
 				return value != VALUE_EDEFAULT;
 			case MeterSourcePackage.REMOTE_READING__TIMESTAMP:

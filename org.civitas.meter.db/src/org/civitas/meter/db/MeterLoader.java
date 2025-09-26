@@ -30,7 +30,7 @@ import org.osgi.service.component.annotations.Reference;
  * @author mark
  * @since 25.09.2025
  */
-//@Component
+@Component
 public class MeterLoader {
 	
 	@Reference(target = "(repo_id=manualMeter)")

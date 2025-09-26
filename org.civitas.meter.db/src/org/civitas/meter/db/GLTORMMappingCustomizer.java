@@ -25,7 +25,7 @@ import org.osgi.service.component.annotations.Component;
  * @author Mark Hoffmann
  * @since 25.09.2025
  */
-@Component(property = "name=glt")
+//@Component(property = "name=glt")
 public class GLTORMMappingCustomizer implements EORMMappingCustomizer {
 
 	/* 

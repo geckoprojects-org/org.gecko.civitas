@@ -50,7 +50,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ID_EDEFAULT = null;
+	protected static final int ID_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -60,7 +60,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 * @ordered
 	 */
-	protected String id = ID_EDEFAULT;
+	protected int id = ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMeterId() <em>Meter Id</em>}' attribute.
@@ -147,7 +147,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 */
 	@Override
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -157,8 +157,8 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	 * @generated
 	 */
 	@Override
-	public void setId(String newId) {
-		String oldId = id;
+	public void setId(int newId) {
+		int oldId = id;
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.READING__ID, oldId, id));
@@ -262,7 +262,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case MeterSourcePackage.READING__ID:
-				setId((String)newValue);
+				setId((Integer)newValue);
 				return;
 			case MeterSourcePackage.READING__METER_ID:
 				setMeterId((String)newValue);
@@ -310,7 +310,7 @@ public class ReadingImpl extends MinimalEObjectImpl.Container implements Reading
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case MeterSourcePackage.READING__ID:
-				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+				return id != ID_EDEFAULT;
 			case MeterSourcePackage.READING__METER_ID:
 				return METER_ID_EDEFAULT == null ? meterId != null : !METER_ID_EDEFAULT.equals(meterId);
 			case MeterSourcePackage.READING__VALUE:
