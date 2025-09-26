@@ -13,10 +13,10 @@
  */
 package org.civitas.handler.emf.attacher;
 
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.assertj.core.util.Arrays;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -97,7 +97,7 @@ public class QVTHandler implements TypedEventHandler<EObject> {
 			Diagnostic diagnostic = Diagnostician.INSTANCE.validate(event);
 			if (diagnostic.getSeverity() == Diagnostic.OK && trafo != null) {
 				EObject result = trafo.doTransformation(event);
-				Arrays.asList(config.forward_topic()).forEach(t -> bus.deliver((String) t, result));
+				Arrays.asList(config.forward_topic()).forEach(t -> bus.deliver(t, result));
 			}
 		}
 	}
