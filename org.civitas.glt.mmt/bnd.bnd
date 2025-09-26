@@ -1,0 +1,14 @@
+-includeresource: \
+	transformations=transformations
+	
+	
+-buildpath: \
+	org.osgi.service.condition,\
+	org.osgi.service.component.annotations;version=latest,\
+	org.eclipse.m2m.qvt.oml,\
+	org.eclipse.fennec.qvt.api,\
+	org.civitas.glt.intermediate.model;version=snapshot,\
+	org.civitas.prototype.model;version=snapshot,\
+	org.civitas.glt.model;version=snapshot,\
+	org.civitas.glt.sensor.model;version=snapshot
+-library: enable-emf
