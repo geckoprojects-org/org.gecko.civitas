@@ -14,7 +14,9 @@
 package org.civitas.handler.mqtt;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,8 +49,8 @@ public class MqttEventHandler implements TypedEventHandler<EObject>{
 		@AttributeDefinition(name = "Event Topic", description = "The topic this handler is listening to")
 		String event_topic();
 
-		@AttributeDefinition(name = "MQTT Topic", description = "The MQTT topic where to publish the result")
-		String mqtt_topic();
+		@AttributeDefinition(name = "MQTT Topic", description = "The MQTT topic list where to publish the result")
+		String[] mqtt_topic();
 	}
 
 	@Activate
@@ -70,9 +72,15 @@ public class MqttEventHandler implements TypedEventHandler<EObject>{
 			res.save(bao, null);
 			LOGGER.log(Level.INFO, "Sending EObject via MQTT. {0}", new String(bao.toByteArray()));
 			ByteBuffer buffer = ByteBuffer.wrap(bao.toByteArray());
-			messaging.publish(config.mqtt_topic(), buffer);
-		} catch (Exception e) {
-			LOGGER.log(Level.SEVERE, "Error while sending EObject via MQTT.", e);
+			Arrays.asList(config.mqtt_topic()).forEach(t -> {
+				try {
+					messaging.publish(t, buffer);
+				} catch (Exception e) {
+					LOGGER.log(Level.SEVERE, String.format("Error while sending EObject via MQTT for topic %s.", t), e);
+				}
+			});
+		} catch (IOException e) {
+			LOGGER.log(Level.SEVERE, "Error while saving meg content.", e);
 		}
 		
 	}

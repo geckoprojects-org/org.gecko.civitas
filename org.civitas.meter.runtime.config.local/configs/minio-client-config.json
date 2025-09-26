@@ -27,19 +27,25 @@
     "eventTopic" : "meterusecase/basicdata_source",
     "trafo.target" : "(id=basicDataQVT)",
     "eclassuri" : "https://civitas.org/meter/source/1.0.0#//BasicData",
-    "forwardTopic" : "meterusecase/basicdata_wo_prefix_source"
+    "forward.topic" : [
+    	"meterusecase/basicdata_wo_prefix_source"
+    	]
   },
   "QVTHandler~intPlantToPlant": {
     "eventTopic" : "meterusecase/Plant_source",
     "trafo.target" : "(id=intPlantToPlantQVT)",
     "eclassuri" : "https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
-    "forwardTopic" : "meterusecase/Plant_target"
+    "forward.topic" : [
+    	"meterusecase/Plant_target"
+    	]
   },
   "QVTHandler~intMeteringPointToTargetMeteringPoint": {
     "eventTopyic" : "meterusecase/IntermediateMeteringPoint_target",
     "trafo.target" : "(id=intMeteringPointToTargetMeteringPointQVT)",
     "eclassuri" : "https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
-    "forwardTopic" : "meterusecase/Plant_target"
+    "forward.topic" : [
+    	"meterusecase/Plant_target"
+    	]
   },
   "EMFRepositoryDataSink~IntermediateMeteringPoint": {
     "eventTopic" : "meterusecase/IntermediateMeteringPoint_target",

@@ -3,20 +3,17 @@
   ":configurator:symbolic-name": "org.civitas.workflow.config",
   ":configurator:version": "1.0.0",
 
-  "EMFRepositoryDataSink~Building": {
-    "eventTopic" : "gltusecase/Building_source",
-    "repo.target" : "(repo_id=inmem)",
-    "forwardTopic": "gltusecase/Building_source_saved"
-  },
   "EMFAttacherHandler~Building": 
   	{
-  	 	"event.topic" : "gltusecase/Building_source_saved",
+  	 	"event.topic" : "gltusecase/Building_source",
 	    "repository.target": "(repo_id=inmem)",
 		"incomming.eclassuri" : "https://civitas.org/glt/1.0.0#//Building",
 		"target.eclassuri": "https://civitas.org/glt/intermediate/1.0.0#//BuildingSensorReading",
 		"foreignKeyFeature.uri": "https://civitas.org/glt/1.0.0#//Building_id",
 		"target.reference.uri": "https://civitas.org/glt/intermediate/1.0.0#//BuildingSensorReading_building",
-		"forwardTopic": "gltusecase/BuildingSensorReading"
+		"forward.topic": [
+			"gltusecase/BuildingSensorReading"
+			]
 	},
    "EMFAttacherHandler~SensorReading": 
   	{
@@ -26,7 +23,9 @@
 		"target.eclassuri": "https://civitas.org/glt/intermediate/1.0.0#//BuildingSensorReading",
 		"foreignKeyFeature.uri": "https://civitas.org/glt/1.0.0#//SensorReading_buildingId",
 		"target.reference.uri": "https://civitas.org/glt/intermediate/1.0.0#//BuildingSensorReading_sensorReading",
-		"forwardTopic": "gltusecase/BuildingSensorReading"
+		"forward.topic": [
+			"gltusecase/BuildingSensorReading"
+			]
 	},
 	"ValidationHandler~BuildingSensorReading": 
 	{
@@ -36,17 +35,23 @@
 		"incomming.eclassuri": "https://civitas.org/glt/intermediate/1.0.0#//BuildingSensorReading",
 		"reference.uri.to.be.validated": "https://civitas.org/glt/intermediate/1.0.0#//BuildingSensorReading_sensorReading",
 		"attribute.uri.to.be.validated": "https://civitas.org/glt/sensor/1.0.0#//SensorReading_value",
-		"forwardTopic": "gltusecase/validation/BuildingSensorReading"
+		"forward.topic": [
+			"gltusecase/validation/BuildingSensorReading"
+			]
 	},
     "QVTHandler~buildingSensorReadingToSimpleAlarm": {
     	"eventTopic" : "gltusecase/validation/BuildingSensorReading",
     	"trafo.target" : "(id=buildingSensorReadingToSimpleAlarmQVT)",
     	"eclassuri" : "https://civitas.org/glt/intermediate/1.0.0#//BuildingSensorReading",
-    	"forwardTopic" : "gltusecase/alarm"
+    	"forward.topic" : [
+    		"gltusecase/alarm"
+    		]
   	},
   	"MqttEventHandler~simpleAlarm": {
     	"event.topic" : "gltusecase/alarm",
-    	"mqtt.topic" : "gltusecase/alarm"
+    	"mqtt.topic" : [
+    		"gltusecase/alarm"
+    		]
   	},
   	"MqttReceiver~simpleAlarm": {
   		"mqtt.topic" : "gltusecase/alarm",
