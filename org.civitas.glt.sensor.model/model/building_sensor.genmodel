@@ -15,4 +15,21 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute building_sensor.ecore#//SensorReading/value"/>
     </genClasses>
   </genPackages>
+  <genPackages prefix="Glt" basePackage="org.civitas.glt.model" resource="XMI" ecorePackage="../../org.civitas.glt.model/model/glt.ecore#/">
+    <genClasses ecoreClass="../../org.civitas.glt.model/model/glt.ecore#//Building">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.civitas.glt.model/model/glt.ecore#//Building/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.civitas.glt.model/model/glt.ecore#//Building/city"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.civitas.glt.model/model/glt.ecore#//Building/zip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.civitas.glt.model/model/glt.ecore#//Building/street"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.civitas.glt.model/model/glt.ecore#//Building/contacts"/>
+    </genClasses>
+    <genClasses ecoreClass="../../org.civitas.glt.model/model/glt.ecore#//Contact">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.civitas.glt.model/model/glt.ecore#//Contact/buildingId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.civitas.glt.model/model/glt.ecore#//Contact/firstName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.civitas.glt.model/model/glt.ecore#//Contact/lastName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.civitas.glt.model/model/glt.ecore#//Contact/role"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.civitas.glt.model/model/glt.ecore#//Contact/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.civitas.glt.model/model/glt.ecore#//Contact/phoneNumber"/>
+    </genClasses>
+  </genPackages>
 </genmodel:GenModel>

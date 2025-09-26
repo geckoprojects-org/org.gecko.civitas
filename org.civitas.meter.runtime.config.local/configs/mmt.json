@@ -13,16 +13,10 @@
 		"qvt.model.target": "(&(emf.name=metersource)(emf.name=metertarget))"
 		
 	},
-	"QVTModelTransformator~intMeteringPointToPlant": {
-		"transformator.id": "intMeteringPointToPlantQVT",
-		"qvt.template.path": "org.civitas.meter.mmt/transformations/intermediateMeteringPoint-to-targetPlant.qvto",
+	"QVTModelTransformator~intMeteringPointToTargetMeteringPoint": {
+		"transformator.id": "intMeteringPointToTargetMeteringPointQVT",
+		"qvt.template.path": "org.civitas.meter.mmt/transformations/intermediateMeteringPoint-to-targetMeteringPoint.qvto",
 		"qvt.model.target": "(&(emf.name=metersource)(emf.name=metertarget))"
-		
-	},
-	"QVTModelTransformator~intermediatePlantToIntermediateMeteringPoint": {
-		"transformator.id": "intermediatePlantToIntermediateMeteringPointQVT",
-		"qvt.template.path": "org.civitas.meter.mmt/transformations/intermediatePlant-to-intermediateMeteringPoint.qvto",
-		"qvt.model.target": "(emf.name=metersource)"
 		
 	}
 }

@@ -65,5 +65,7 @@ header:
     - 'gradlew'
     - 'gradlew.bat'
     - 'settings.gradle'
+    - '**/*.urimap'
+    - '**/*.eorm'
  
   comment: always

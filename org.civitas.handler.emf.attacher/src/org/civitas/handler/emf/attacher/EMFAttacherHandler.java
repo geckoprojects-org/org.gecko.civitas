@@ -32,7 +32,6 @@ import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.osgi.service.typedevent.TypedEventBus;
-import org.osgi.service.typedevent.TypedEventConstants;
 import org.osgi.service.typedevent.TypedEventHandler;
 
 /**
@@ -41,8 +40,7 @@ import org.osgi.service.typedevent.TypedEventHandler;
  * @since Sep 24, 2025
  */
 @Designate(ocd = EMFAttacherHandler.Config.class)
-@Component(name = "EMFAttacherHandler", property = { TypedEventConstants.TYPED_EVENT_TOPICS
-		+ "=emf/attacher" }, configurationPid = "EMFAttacherHandler", configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(name = "EMFAttacherHandler", configurationPid = "EMFAttacherHandler", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 
 	@ObjectClassDefinition(name = "EMFAttacherHandler Configuration")
