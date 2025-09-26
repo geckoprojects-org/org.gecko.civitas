@@ -107,22 +107,24 @@ public interface MeterReading extends EObject {
 	void setTimestamp(Date value);
 
 	/**
-	 * Returns the value of the '<em><b>Metering Point</b></em>' reference.
+	 * Returns the value of the '<em><b>Metering Point</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.civitas.meter.target.MeteringPoint#getMeterReadings <em>Meter Readings</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Metering Point</em>' reference.
+	 * @return the value of the '<em>Metering Point</em>' container reference.
 	 * @see #setMeteringPoint(MeteringPoint)
 	 * @see org.civitas.meter.target.targetPackage#getMeterReading_MeteringPoint()
-	 * @model required="true"
+	 * @see org.civitas.meter.target.MeteringPoint#getMeterReadings
+	 * @model opposite="meterReadings" required="true" transient="false"
 	 * @generated
 	 */
 	MeteringPoint getMeteringPoint();
 
 	/**
-	 * Sets the value of the '{@link org.civitas.meter.target.MeterReading#getMeteringPoint <em>Metering Point</em>}' reference.
+	 * Sets the value of the '{@link org.civitas.meter.target.MeterReading#getMeteringPoint <em>Metering Point</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Metering Point</em>' reference.
+	 * @param value the new value of the '<em>Metering Point</em>' container reference.
 	 * @see #getMeteringPoint()
 	 * @generated
 	 */

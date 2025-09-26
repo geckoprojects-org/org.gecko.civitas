@@ -34,6 +34,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -73,16 +75,6 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getPlant() <em>Plant</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPlant()
-	 * @generated
-	 * @ordered
-	 */
-	protected Plant plant;
 
 	/**
 	 * The cached value of the '{@link #getCurrentMeter() <em>Current Meter</em>}' reference.
@@ -163,15 +155,8 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 	 */
 	@Override
 	public Plant getPlant() {
-		if (plant != null && plant.eIsProxy()) {
-			InternalEObject oldPlant = (InternalEObject)plant;
-			plant = (Plant)eResolveProxy(oldPlant);
-			if (plant != oldPlant) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, targetPackage.METERING_POINT__PLANT, oldPlant, plant));
-			}
-		}
-		return plant;
+		if (eContainerFeatureID() != targetPackage.METERING_POINT__PLANT) return null;
+		return (Plant)eInternalContainer();
 	}
 
 	/**
@@ -179,8 +164,9 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Plant basicGetPlant() {
-		return plant;
+	public NotificationChain basicSetPlant(Plant newPlant, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newPlant, targetPackage.METERING_POINT__PLANT, msgs);
+		return msgs;
 	}
 
 	/**
@@ -190,10 +176,19 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 	 */
 	@Override
 	public void setPlant(Plant newPlant) {
-		Plant oldPlant = plant;
-		plant = newPlant;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, targetPackage.METERING_POINT__PLANT, oldPlant, plant));
+		if (newPlant != eInternalContainer() || (eContainerFeatureID() != targetPackage.METERING_POINT__PLANT && newPlant != null)) {
+			if (EcoreUtil.isAncestor(this, newPlant))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newPlant != null)
+				msgs = ((InternalEObject)newPlant).eInverseAdd(this, targetPackage.PLANT__METERING_POINTS, Plant.class, msgs);
+			msgs = basicSetPlant(newPlant, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, targetPackage.METERING_POINT__PLANT, newPlant, newPlant));
 	}
 
 	/**
@@ -244,7 +239,7 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 	@Override
 	public EList<MeterReading> getMeterReadings() {
 		if (meterReadings == null) {
-			meterReadings = new EObjectContainmentEList<MeterReading>(MeterReading.class, this, targetPackage.METERING_POINT__METER_READINGS);
+			meterReadings = new EObjectContainmentWithInverseEList<MeterReading>(MeterReading.class, this, targetPackage.METERING_POINT__METER_READINGS, targetPackage.METER_READING__METERING_POINT);
 		}
 		return meterReadings;
 	}
@@ -267,9 +262,30 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case targetPackage.METERING_POINT__PLANT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetPlant((Plant)otherEnd, msgs);
+			case targetPackage.METERING_POINT__METER_READINGS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getMeterReadings()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case targetPackage.METERING_POINT__PLANT:
+				return basicSetPlant(null, msgs);
 			case targetPackage.METERING_POINT__METER_READINGS:
 				return ((InternalEList<?>)getMeterReadings()).basicRemove(otherEnd, msgs);
 			case targetPackage.METERING_POINT__METER_HISTORY:
@@ -284,13 +300,26 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case targetPackage.METERING_POINT__PLANT:
+				return eInternalContainer().eInverseRemove(this, targetPackage.PLANT__METERING_POINTS, Plant.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case targetPackage.METERING_POINT__ID:
 				return getId();
 			case targetPackage.METERING_POINT__PLANT:
-				if (resolve) return getPlant();
-				return basicGetPlant();
+				return getPlant();
 			case targetPackage.METERING_POINT__CURRENT_METER:
 				if (resolve) return getCurrentMeter();
 				return basicGetCurrentMeter();
@@ -370,7 +399,7 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 			case targetPackage.METERING_POINT__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case targetPackage.METERING_POINT__PLANT:
-				return plant != null;
+				return getPlant() != null;
 			case targetPackage.METERING_POINT__CURRENT_METER:
 				return currentMeter != null;
 			case targetPackage.METERING_POINT__METER_READINGS:

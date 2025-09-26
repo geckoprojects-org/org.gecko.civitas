@@ -18,12 +18,15 @@ import org.civitas.meter.target.Plant;
 import org.civitas.meter.target.targetPackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -101,16 +104,6 @@ public class OperatingDataImpl extends MinimalEObjectImpl.Container implements O
 	 * @ordered
 	 */
 	protected int starts = STARTS_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getPlant() <em>Plant</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPlant()
-	 * @generated
-	 * @ordered
-	 */
-	protected Plant plant;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -207,15 +200,8 @@ public class OperatingDataImpl extends MinimalEObjectImpl.Container implements O
 	 */
 	@Override
 	public Plant getPlant() {
-		if (plant != null && plant.eIsProxy()) {
-			InternalEObject oldPlant = (InternalEObject)plant;
-			plant = (Plant)eResolveProxy(oldPlant);
-			if (plant != oldPlant) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, targetPackage.OPERATING_DATA__PLANT, oldPlant, plant));
-			}
-		}
-		return plant;
+		if (eContainerFeatureID() != targetPackage.OPERATING_DATA__PLANT) return null;
+		return (Plant)eInternalContainer();
 	}
 
 	/**
@@ -223,8 +209,9 @@ public class OperatingDataImpl extends MinimalEObjectImpl.Container implements O
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Plant basicGetPlant() {
-		return plant;
+	public NotificationChain basicSetPlant(Plant newPlant, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newPlant, targetPackage.OPERATING_DATA__PLANT, msgs);
+		return msgs;
 	}
 
 	/**
@@ -234,10 +221,63 @@ public class OperatingDataImpl extends MinimalEObjectImpl.Container implements O
 	 */
 	@Override
 	public void setPlant(Plant newPlant) {
-		Plant oldPlant = plant;
-		plant = newPlant;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, targetPackage.OPERATING_DATA__PLANT, oldPlant, plant));
+		if (newPlant != eInternalContainer() || (eContainerFeatureID() != targetPackage.OPERATING_DATA__PLANT && newPlant != null)) {
+			if (EcoreUtil.isAncestor(this, newPlant))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newPlant != null)
+				msgs = ((InternalEObject)newPlant).eInverseAdd(this, targetPackage.PLANT__OPERATING_DATA, Plant.class, msgs);
+			msgs = basicSetPlant(newPlant, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, targetPackage.OPERATING_DATA__PLANT, newPlant, newPlant));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case targetPackage.OPERATING_DATA__PLANT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetPlant((Plant)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case targetPackage.OPERATING_DATA__PLANT:
+				return basicSetPlant(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case targetPackage.OPERATING_DATA__PLANT:
+				return eInternalContainer().eInverseRemove(this, targetPackage.PLANT__OPERATING_DATA, Plant.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -255,8 +295,7 @@ public class OperatingDataImpl extends MinimalEObjectImpl.Container implements O
 			case targetPackage.OPERATING_DATA__STARTS:
 				return getStarts();
 			case targetPackage.OPERATING_DATA__PLANT:
-				if (resolve) return getPlant();
-				return basicGetPlant();
+				return getPlant();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -324,7 +363,7 @@ public class OperatingDataImpl extends MinimalEObjectImpl.Container implements O
 			case targetPackage.OPERATING_DATA__STARTS:
 				return starts != STARTS_EDEFAULT;
 			case targetPackage.OPERATING_DATA__PLANT:
-				return plant != null;
+				return getPlant() != null;
 		}
 		return super.eIsSet(featureID);
 	}

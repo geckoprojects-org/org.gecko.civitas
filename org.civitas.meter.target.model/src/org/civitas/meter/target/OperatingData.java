@@ -105,22 +105,24 @@ public interface OperatingData extends EObject {
 	void setStarts(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Plant</b></em>' reference.
+	 * Returns the value of the '<em><b>Plant</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.civitas.meter.target.Plant#getOperatingData <em>Operating Data</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Plant</em>' reference.
+	 * @return the value of the '<em>Plant</em>' container reference.
 	 * @see #setPlant(Plant)
 	 * @see org.civitas.meter.target.targetPackage#getOperatingData_Plant()
-	 * @model required="true"
+	 * @see org.civitas.meter.target.Plant#getOperatingData
+	 * @model opposite="operatingData" required="true" transient="false"
 	 * @generated
 	 */
 	Plant getPlant();
 
 	/**
-	 * Sets the value of the '{@link org.civitas.meter.target.OperatingData#getPlant <em>Plant</em>}' reference.
+	 * Sets the value of the '{@link org.civitas.meter.target.OperatingData#getPlant <em>Plant</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Plant</em>' reference.
+	 * @param value the new value of the '<em>Plant</em>' container reference.
 	 * @see #getPlant()
 	 * @generated
 	 */
