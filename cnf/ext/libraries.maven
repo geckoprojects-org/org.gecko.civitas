@@ -15,3 +15,5 @@ org.geckoprojects.bnd:org.gecko.bnd.dimc.library:2.1.0-SNAPSHOT
 org.geckoprojects.bnd:org.gecko.bnd.jacoco.library:2.1.0-SNAPSHOT
 org.geckoprojects.bnd:org.gecko.bnd.osgitest.library:2.1.0-SNAPSHOT
 
+org.geckoprojects.fennec.persistence:org.gecko.fennec.persistence.workspace.library:1.0.0-SNAPSHOT
+

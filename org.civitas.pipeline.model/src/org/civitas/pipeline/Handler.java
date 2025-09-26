@@ -45,6 +45,7 @@ public interface Handler extends PipelineStep {
 	 * @return the value of the '<em>Inputs</em>' reference list.
 	 * @see org.civitas.pipeline.PipelinePackage#getHandler_Inputs()
 	 * @model required="true"
+	 *        extendedMetaData="osgi.config.property='event.topics'"
 	 * @generated
 	 */
 	EList<PipelineStep> getInputs();

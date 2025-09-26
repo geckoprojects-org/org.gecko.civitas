@@ -344,6 +344,8 @@ public class PipelinePackageImpl extends EPackageImpl implements PipelinePackage
 		createVersionAnnotations();
 		// http://www.eclipse.org/emf/2002/GenModel
 		createGenModelAnnotations();
+		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
+		createExtendedMetaDataAnnotations();
 	}
 
 	/**
@@ -378,6 +380,34 @@ public class PipelinePackageImpl extends EPackageImpl implements PipelinePackage
 			   "oSGiCompatible", "true",
 			   "basePackage", "org.civitas",
 			   "resource", "XMI"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createExtendedMetaDataAnnotations() {
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
+		addAnnotation
+		  (getDataFountain_Outputs(),
+		   source,
+		   new String[] {
+			   "osgi.config.property", "event.topics"
+		   });
+		addAnnotation
+		  (getDataSink_Inputs(),
+		   source,
+		   new String[] {
+			   "osgi.config.property", "event.topics"
+		   });
+		addAnnotation
+		  (getHandler_Inputs(),
+		   source,
+		   new String[] {
+			   "osgi.config.property", "event.topics"
 		   });
 	}
 

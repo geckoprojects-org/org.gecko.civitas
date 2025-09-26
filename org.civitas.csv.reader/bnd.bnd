@@ -1,9 +1,9 @@
 -library: enable-emf
 
 -buildpath: \
-	org.apache.commons.commons-csv,\
-	org.eclipse.fennec.codec.constants,\
-	org.eclipse.fennec.codec.csv
+	org.apache.commons.commons-csv;version=latest,\
+	org.eclipse.fennec.codec.constants;version=latest,\
+	org.eclipse.fennec.codec.csv;version=latest
 
 -includeresource: OSGI-INF/configurator/=configs/
 Require-Capability: osgi.extender;filter:='(osgi.extender=osgi.configurator)'

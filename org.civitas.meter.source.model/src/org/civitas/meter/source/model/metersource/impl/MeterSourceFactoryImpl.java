@@ -74,6 +74,7 @@ public class MeterSourceFactoryImpl extends EFactoryImpl implements MeterSourceF
 			case MeterSourcePackage.CUSTOMER: return createCustomer();
 			case MeterSourcePackage.INTERMEDIATE_PLANT: return createIntermediatePlant();
 			case MeterSourcePackage.INTERMEDIATE_METERING_POINT: return createIntermediateMeteringPoint();
+			case MeterSourcePackage.REMOTE_READING: return createRemoteReading();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -154,6 +155,17 @@ public class MeterSourceFactoryImpl extends EFactoryImpl implements MeterSourceF
 	public IntermediateMeteringPoint createIntermediateMeteringPoint() {
 		IntermediateMeteringPointImpl intermediateMeteringPoint = new IntermediateMeteringPointImpl();
 		return intermediateMeteringPoint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public RemoteReading createRemoteReading() {
+		RemoteReadingImpl remoteReading = new RemoteReadingImpl();
+		return remoteReading;
 	}
 
 	/**

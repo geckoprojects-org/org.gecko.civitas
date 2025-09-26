@@ -394,6 +394,18 @@ public class GLTPackageImpl extends EPackageImpl implements GLTPackage {
 			   "name", "building_id"
 		   });
 		addAnnotation
+		  (getContact_FirstName(),
+		   source,
+		   new String[] {
+			   "name", "first_name"
+		   });
+		addAnnotation
+		  (getContact_LastName(),
+		   source,
+		   new String[] {
+			   "name", "last_name"
+		   });
+		addAnnotation
 		  (getContact_PhoneNumber(),
 		   source,
 		   new String[] {

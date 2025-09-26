@@ -32,6 +32,7 @@ public interface DataFountain extends PipelineStep {
 	 * @return the value of the '<em>Outputs</em>' reference list.
 	 * @see org.civitas.pipeline.PipelinePackage#getDataFountain_Outputs()
 	 * @model required="true"
+	 *        extendedMetaData="osgi.config.property='event.topics'"
 	 * @generated
 	 */
 	EList<PipelineStep> getOutputs();

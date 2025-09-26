@@ -99,6 +99,15 @@ public interface MeterSourceFactory extends EFactory {
 	IntermediateMeteringPoint createIntermediateMeteringPoint();
 
 	/**
+	 * Returns a new object of class '<em>Remote Reading</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Remote Reading</em>'.
+	 * @generated
+	 */
+	RemoteReading createRemoteReading();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

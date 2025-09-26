@@ -1,0 +1,4 @@
+-library: enable-emf
+-buildpath: \
+	org.eclipse.fennec.codec.constants,\
+	org.eclipse.fennec.codec

@@ -119,6 +119,12 @@ public class MeterSourceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case MeterSourcePackage.REMOTE_READING: {
+				RemoteReading remoteReading = (RemoteReading)theEObject;
+				T result = caseRemoteReading(remoteReading);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -225,6 +231,21 @@ public class MeterSourceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIntermediateMeteringPoint(IntermediateMeteringPoint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Remote Reading</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Remote Reading</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRemoteReading(RemoteReading object) {
 		return null;
 	}
 

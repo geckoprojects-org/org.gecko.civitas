@@ -46,7 +46,7 @@ public class MeterImpl extends MinimalEObjectImpl.Container implements Meter {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PLANT_ID_EDEFAULT = null;
+	protected static final int PLANT_ID_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getPlantId() <em>Plant Id</em>}' attribute.
@@ -56,7 +56,7 @@ public class MeterImpl extends MinimalEObjectImpl.Container implements Meter {
 	 * @generated
 	 * @ordered
 	 */
-	protected String plantId = PLANT_ID_EDEFAULT;
+	protected int plantId = PLANT_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -66,7 +66,7 @@ public class MeterImpl extends MinimalEObjectImpl.Container implements Meter {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ID_EDEFAULT = null;
+	protected static final int ID_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -76,7 +76,7 @@ public class MeterImpl extends MinimalEObjectImpl.Container implements Meter {
 	 * @generated
 	 * @ordered
 	 */
-	protected String id = ID_EDEFAULT;
+	protected int id = ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,7 +103,7 @@ public class MeterImpl extends MinimalEObjectImpl.Container implements Meter {
 	 * @generated
 	 */
 	@Override
-	public String getPlantId() {
+	public int getPlantId() {
 		return plantId;
 	}
 
@@ -113,8 +113,8 @@ public class MeterImpl extends MinimalEObjectImpl.Container implements Meter {
 	 * @generated
 	 */
 	@Override
-	public void setPlantId(String newPlantId) {
-		String oldPlantId = plantId;
+	public void setPlantId(int newPlantId) {
+		int oldPlantId = plantId;
 		plantId = newPlantId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.METER__PLANT_ID, oldPlantId, plantId));
@@ -126,7 +126,7 @@ public class MeterImpl extends MinimalEObjectImpl.Container implements Meter {
 	 * @generated
 	 */
 	@Override
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -136,8 +136,8 @@ public class MeterImpl extends MinimalEObjectImpl.Container implements Meter {
 	 * @generated
 	 */
 	@Override
-	public void setId(String newId) {
-		String oldId = id;
+	public void setId(int newId) {
+		int oldId = id;
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.METER__ID, oldId, id));
@@ -168,10 +168,10 @@ public class MeterImpl extends MinimalEObjectImpl.Container implements Meter {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case MeterSourcePackage.METER__PLANT_ID:
-				setPlantId((String)newValue);
+				setPlantId((Integer)newValue);
 				return;
 			case MeterSourcePackage.METER__ID:
-				setId((String)newValue);
+				setId((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -204,9 +204,9 @@ public class MeterImpl extends MinimalEObjectImpl.Container implements Meter {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case MeterSourcePackage.METER__PLANT_ID:
-				return PLANT_ID_EDEFAULT == null ? plantId != null : !PLANT_ID_EDEFAULT.equals(plantId);
+				return plantId != PLANT_ID_EDEFAULT;
 			case MeterSourcePackage.METER__ID:
-				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+				return id != ID_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

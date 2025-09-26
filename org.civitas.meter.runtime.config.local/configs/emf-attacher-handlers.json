@@ -36,9 +36,19 @@
 		"event.topic" : "meterusecase/meter_source",
 		"repository.target": "(repo_id=inmem)",
 		"incomming.eclassuri" : "https://civitas.org/meter/source/1.0.0#//Meter",
-		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
-		"foreignKeyFeature.uri": "https://civitas.org/meter/source/1.0.0#//Meter_plantId",
-		"target.reference.uri": "https://civitas.org/meter/source/1.0.0#//IntermediatePlant_meter",
+		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
+		"foreignKeyFeature.uri": "https://civitas.org/meter/source/1.0.0#//Meter_id",
+		"target.reference.uri": "https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint_plantId",
 		"forward.topic": "civitas/meter/plant"
+	},
+	"EMFAttacherHandler~TargetMeteringPoint":
+	{
+		"event.topic" : "meterusecase/meter_source",
+		"repository.target": "(repo_id=inmem)",
+		"incomming.eclassuri" : "https://civitas.org/meter/target/1.0.0#//MeteringPoint",
+		"target.eclassuri": "https://civitas.org/meter/target/1.0.0#//Plant",
+		"foreignKeyFeature.uri": "https://civitas.org/meter/target/1.0.0#//IntermediateMeteringPoint_plant",
+		"target.reference.uri": "https://civitas.org/meter/target/1.0.0#//Plant_meteringPoints",
+		"forwardTopic": "meterusecase/Plant_target"
 	}
 }

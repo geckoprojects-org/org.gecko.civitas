@@ -70,7 +70,7 @@ public interface Contact extends EObject {
 	 * @return the value of the '<em>First Name</em>' attribute.
 	 * @see #setFirstName(String)
 	 * @see org.civitas.glt.model.glt.GLTPackage#getContact_FirstName()
-	 * @model
+	 * @model extendedMetaData="name='first_name'"
 	 * @generated
 	 */
 	String getFirstName();
@@ -92,7 +92,7 @@ public interface Contact extends EObject {
 	 * @return the value of the '<em>Last Name</em>' attribute.
 	 * @see #setLastName(String)
 	 * @see org.civitas.glt.model.glt.GLTPackage#getContact_LastName()
-	 * @model
+	 * @model extendedMetaData="name='last_name'"
 	 * @generated
 	 */
 	String getLastName();

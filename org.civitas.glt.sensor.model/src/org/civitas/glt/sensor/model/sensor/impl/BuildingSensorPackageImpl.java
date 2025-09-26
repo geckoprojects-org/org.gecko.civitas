@@ -13,6 +13,10 @@
  */
 package org.civitas.glt.sensor.model.sensor.impl;
 
+import org.civitas.glt.model.glt.GltPackage;
+
+import org.civitas.glt.model.glt.impl.GltPackageImpl;
+
 import org.civitas.glt.sensor.model.sensor.BuildingSensorFactory;
 import org.civitas.glt.sensor.model.sensor.BuildingSensorPackage;
 import org.civitas.glt.sensor.model.sensor.SensorReading;
@@ -88,11 +92,17 @@ public class BuildingSensorPackageImpl extends EPackageImpl implements BuildingS
 		// Initialize simple dependencies
 		UnitsPackage.eINSTANCE.eClass();
 
+		// Obtain or create and register interdependencies
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(GltPackage.eNS_URI);
+		GltPackageImpl theGltPackage = (GltPackageImpl)(registeredPackage instanceof GltPackageImpl ? registeredPackage : GltPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theBuildingSensorPackage.createPackageContents();
+		theGltPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theBuildingSensorPackage.initializePackageContents();
+		theGltPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theBuildingSensorPackage.freeze();
