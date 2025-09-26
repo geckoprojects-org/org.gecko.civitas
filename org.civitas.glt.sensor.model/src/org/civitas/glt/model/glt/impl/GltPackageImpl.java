@@ -338,7 +338,7 @@ public class GltPackageImpl extends EPackageImpl implements GltPackage {
 		initEAttribute(getContact_FirstName(), ecorePackage.getEString(), "firstName", null, 0, 1, Contact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContact_LastName(), ecorePackage.getEString(), "lastName", null, 0, 1, Contact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContact_Role(), ecorePackage.getEString(), "role", null, 0, 1, Contact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getContact_Email(), ecorePackage.getEString(), "email", null, 0, 1, Contact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContact_Email(), ecorePackage.getEString(), "email", null, 0, 1, Contact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContact_PhoneNumber(), ecorePackage.getEString(), "phoneNumber", null, 0, 1, Contact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
@@ -402,6 +402,24 @@ public class GltPackageImpl extends EPackageImpl implements GltPackage {
 	 */
 	protected void createExtendedMetaDataAnnotations() {
 		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
+		addAnnotation
+		  (buildingEClass,
+		   source,
+		   new String[] {
+			   "name", "Buildings"
+		   });
+		addAnnotation
+		  (getBuilding_Id(),
+		   source,
+		   new String[] {
+			   "name", "id"
+		   });
+		addAnnotation
+		  (contactEClass,
+		   source,
+		   new String[] {
+			   "name", "Contacts"
+		   });
 		addAnnotation
 		  (getContact_BuildingId(),
 		   source,

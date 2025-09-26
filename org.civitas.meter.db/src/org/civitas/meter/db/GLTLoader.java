@@ -14,10 +14,8 @@
 package org.civitas.meter.db;
 
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -32,17 +30,16 @@ import org.osgi.service.component.annotations.Reference;
  * @author mark
  * @since 25.09.2025
  */
-//@Component
+@Component
 public class GLTLoader {
 	
-	@Reference(target = "(repo_id=glt)")
+	@Reference(target = "(repo_id=assets)")
 	private EMFRepository gltRepo;
 	
 	@Reference(target = "(emf.name=glt)")
 	private EPackage gltPackage;
 
 	private EClass buildingEClass;
-	private EClass contactEClass;
 	private EStructuralFeature contactsFeature;
 	
 	@Activate
@@ -50,7 +47,6 @@ public class GLTLoader {
 		System.out.println("GLT LOADER ACTIVE");
 		buildingEClass = (EClass) gltPackage.getEClassifier("Building");
 		contactsFeature = buildingEClass.getEStructuralFeature("contacts");
-		contactEClass = (EClass) gltPackage.getEClassifier("Contact");
 		printGLTAssets();
 		
 	}
@@ -58,12 +54,14 @@ public class GLTLoader {
 	/**
 	 * 
 	 */
+	@SuppressWarnings("unchecked")
 	private void printGLTAssets() {
 		EObject eObject = gltRepo.getEObject("Building", Integer.valueOf("3"));
-		System.out.println("Building by id '3': " + eObject);
+		System.out.println("Building by id '3': " + eObject + " contacts: " + ((List<EObject>)eObject.eGet(contactsFeature)).size());
+		
 		// All objects are detached here and have no resource
-		List<EObject> allEObjects = gltRepo.getAllEObjects(buildingEClass);
-		allEObjects.forEach(eo->{
+		List<EObject> allBuildings = gltRepo.getAllEObjects(buildingEClass);
+		allBuildings.forEach(eo->{
 			System.out.println("Building id: " + EcoreUtil.getID(eo) + " contacts: " + ((List<EObject>)eo.eGet(contactsFeature)).size());
 		});
 	}

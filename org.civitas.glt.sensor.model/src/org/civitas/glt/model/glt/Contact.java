@@ -35,7 +35,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * </ul>
  *
  * @see org.civitas.glt.model.glt.GltPackage#getContact()
- * @model
+ * @model extendedMetaData="name='Contacts'"
  * @generated
  */
 @ProviderType
@@ -136,7 +136,7 @@ public interface Contact extends EObject {
 	 * @return the value of the '<em>Email</em>' attribute.
 	 * @see #setEmail(String)
 	 * @see org.civitas.glt.model.glt.GltPackage#getContact_Email()
-	 * @model
+	 * @model id="true"
 	 * @generated
 	 */
 	String getEmail();

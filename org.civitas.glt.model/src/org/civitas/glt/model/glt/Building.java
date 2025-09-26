@@ -36,7 +36,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * </ul>
  *
  * @see org.civitas.glt.model.glt.GLTPackage#getBuilding()
- * @model
+ * @model extendedMetaData="name='Buildings'"
  * @generated
  */
 @ProviderType
@@ -49,6 +49,7 @@ public interface Building extends EObject {
 	 * @see #setId(Integer)
 	 * @see org.civitas.glt.model.glt.GLTPackage#getBuilding_Id()
 	 * @model id="true" required="true"
+	 *        extendedMetaData="name='id'"
 	 * @generated
 	 */
 	Integer getId();
