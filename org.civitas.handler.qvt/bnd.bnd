@@ -2,6 +2,18 @@
 
 -buildpath: \
 	org.osgi.service.typedevent,\
-	org.eclipse.fennec.qvt.api
-	
+	org.eclipse.fennec.qvt.api,\
+    org.civitas.pipeline.model;version=snapshot,\
+    org.civitas.osgi.component.configuration.model;version=snapshot
+src: src, src-gen
+    
 -workingset: handler
+
+# Include model resources
+-includeresource.model: model=model
+
+-generate:\
+    model/qvt-handler.genmodel;\
+        generate=geckoEMF;\
+        genmodel=model/qvt-handler.genmodel;\
+        output=src-gen

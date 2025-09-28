@@ -5,11 +5,18 @@
 -buildpath: \
     org.osgi.service.typedevent,\
     org.gecko.emf.repository.api,\
-    org.osgi.service.metatype.annotations
+    org.osgi.service.metatype.annotations,\
+    org.civitas.pipeline.model;version=snapshot,\
+    org.civitas.osgi.component.configuration.model;version=snapshot
+src: src, src-gen
+    
+-workingset: handler
 
--includeresource: model=model
+# Include model resources
+-includeresource.model: model=model
 
-Require-Capability: \
-    osgi.extender;\
-        filter:="(osgi.extender=emf.model)";\
-        models:List<String>="/model"
+-generate:\
+    model/emf-repository-datasink-config.genmodel;\
+        generate=geckoEMF;\
+        genmodel=model/emf-repository-datasink-config.genmodel;\
+        output=src-gen

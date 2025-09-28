@@ -35,7 +35,6 @@ import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.osgi.service.typedevent.TypedEventBus;
-import org.osgi.service.typedevent.TypedEventConstants;
 import org.osgi.service.typedevent.TypedEventHandler;
 
 /**
@@ -43,8 +42,7 @@ import org.osgi.service.typedevent.TypedEventHandler;
  * @author grune
  * @since Sep 24, 2025
  */
-@Component(name = "QVTHandler", property = { TypedEventConstants.TYPED_EVENT_TOPICS
-	+ "=*" }, configurationPid = "QVTHandler", configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(name = "QVTHandler", configurationPid = "QVTHandlerConfig", configurationPolicy = ConfigurationPolicy.REQUIRE)
 @Designate(ocd = QVTHandler.Config.class)
 public class QVTHandler implements TypedEventHandler<EObject> {
     private static final Logger LOGGER = Logger.getLogger(QVTHandler.class.getName());
@@ -58,8 +56,8 @@ public class QVTHandler implements TypedEventHandler<EObject> {
 	@AttributeDefinition(name = "EClass URI", description = "The URI of the source eobject")
 	String eclassuri(); // http:,....#//Meter
 
-	@AttributeDefinition(name = "QVT ID", description = "ID of the QVT transformation")
-	String trafo_id();
+	@AttributeDefinition(name = "QVT Trafo Target", description = "ID of the QVT transformation")
+	String trafo_target();
 
 	@AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the transformed target EObject")
 	String[] forward_topics();
@@ -67,7 +65,8 @@ public class QVTHandler implements TypedEventHandler<EObject> {
 
     @Reference
     private TypedEventBus bus;
-
+    
+    @Reference(name = "trafo", target = "(&(needs_configuration=true)(must_not_resolve=true)(must_not_resolve=false))")
     private ModelTransformator trafo;
 
     private Config config;
@@ -75,23 +74,6 @@ public class QVTHandler implements TypedEventHandler<EObject> {
     @Activate
     public void activate(BundleContext ctx, Config config) throws InvalidSyntaxException {
 	this.config = config;
-	ctx.addServiceListener(event -> {
-	    int type = event.getType();
-	    ServiceReference<?> ref = event.getServiceReference();
-	    switch (type) {
-	    case ServiceEvent.REGISTERED, ServiceEvent.MODIFIED:
-		if (ctx.getService(ref) instanceof ModelTransformator t) {
-		    trafo = t;
-		}
-		break;
-	    case ServiceEvent.UNREGISTERING:
-		trafo = null;
-		break;
-	    default:
-		LOGGER.log(Level.SEVERE, "Unexpected value for service event type: {0}", type);
-	    }
-
-	}, "(" + ModelTransformationConstants.TRANSFORMATOR_ID + "=" + config.trafo_id() + ")");
     }
 
     @Override

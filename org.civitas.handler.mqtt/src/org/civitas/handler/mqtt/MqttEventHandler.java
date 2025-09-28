@@ -34,7 +34,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.osgi.service.typedevent.TypedEventHandler;
 
 @Designate(ocd = MqttEventHandler.Config.class)
-@Component(name = "MqttEventHandler", configurationPid = "MqttEventHandler", configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(name = "MqttEventHandler", configurationPid = "MqttEventHandlerConfig", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class MqttEventHandler implements TypedEventHandler<EObject>{
 	
 	@Reference

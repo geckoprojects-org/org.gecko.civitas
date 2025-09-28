@@ -2,30 +2,24 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="datasinkconfig" nsURI="https://civitas.org/handler/emf/repository/datasink/config/1.0.0"
     nsPrefix="datasinkconfig">
-  <eClassifiers xsi:type="ecore:EClass" name="EMFRepositoryDataSinkConfig">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="complianceLevel" value="17.0"/>
+    <details key="oSGiCompatible" value="true"/>
+    <details key="basePackage" value="org.civitas"/>
+    <details key="resource" value="XMI"/>
+    <details key="copyrightText" value="Copyright (c) 2012 - 2025 Data In Motion and others.&#xA;All rights reserved. &#xA;&#xA;This program and the accompanying materials are made&#xA;available under the terms of the Eclipse Public License 2.0&#xA;which is available at https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;&#xA;Contributors:&#xA;    Data In Motion - initial API and implementation"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="EMFRepositoryDataSinkConfig" eSuperTypes="../../org.civitas.osgi.component.configuration.model/model/component.ecore#//Configuration ../../org.civitas.pipeline.model/model/pipeline.ecore#//DataSink">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Configuration for EMF Repository Data Sink component that persists EObjects from event topics"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eventTopic" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The OSGi event topic to listen to for EObject events (e.g., 'org/civitas/meter/data/parsed')"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/ExtendedMetaData">
-        <details key="osgi.config.property" value="event.topic"/>
-        <details key="osgi.annotation.attribute" value="event_topic"/>
-        <details key="documentation" value="Maps to OSGi Configuration Admin property 'event.topic' from annotation attribute 'event_topic'"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="repoTarget" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="OSGi filter to target the specific EMF Repository instance (e.g., '(repository.name=meter-repository)')"/>
       </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/ExtendedMetaData">
-        <details key="osgi.config.property" value="repo.target"/>
-        <details key="osgi.annotation.attribute" value="repo_target"/>
-        <details key="documentation" value="Maps to OSGi Configuration Admin property 'repo.target' from annotation attribute 'repo_target'"/>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="repo.target"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mergeStrategy" eType="#//MergeStrategy"
@@ -33,10 +27,8 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Strategy for handling existing objects in the repository"/>
       </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/ExtendedMetaData">
-        <details key="osgi.config.property" value="merger.strategy"/>
-        <details key="osgi.annotation.attribute" value="merger_strategy"/>
-        <details key="documentation" value="Maps to OSGi Configuration Admin property 'merger.strategy' from annotation attribute 'merger_strategy'"/>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="merger.strategy"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="detailedLogging" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -44,26 +36,8 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Enable detailed logging for debugging and monitoring purposes"/>
       </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/emf/2002/ExtendedMetaData">
-        <details key="osgi.config.property" value="detailed.logging"/>
-        <details key="osgi.annotation.attribute" value="detailed_logging"/>
-        <details key="documentation" value="Maps to OSGi Configuration Admin property 'detailed.logging' from annotation attribute 'detailed_logging'"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="configurationId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Unique identifier for this data sink configuration"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Whether this data sink configuration is enabled"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Human-readable description of this data sink configuration"/>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="detailed.logging"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

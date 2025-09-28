@@ -1,5 +1,7 @@
 -library: enable-emf
 
+-workingset: handler
+
 -buildpath: \
 	org.apache.commons.commons-csv;version=latest,\
 	org.eclipse.fennec.codec.constants;version=latest,\

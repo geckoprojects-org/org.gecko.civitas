@@ -44,7 +44,7 @@ import org.osgi.util.pushstream.PushStream;
  * @since Sep 26, 2025
  */
 @Designate(ocd = MqttReceiver.Config.class)
-@Component(name = "MqttReceiver", configurationPid = "MqttReceiver", configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(name = "MqttReceiver", configurationPid = "MqttReceiverConfig", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class MqttReceiver {
 	
 	@Reference
@@ -69,7 +69,7 @@ public class MqttReceiver {
 		String payload_eclassuri();
 		
 		@AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the received EObject")
-		String[] forward_topic();
+		String[] forward_topics();
 		
 		@AttributeDefinition(name = "Print Payload", description = "Whether or not to print the payload content")
 		boolean print_payload() default false;
@@ -102,7 +102,7 @@ public class MqttReceiver {
 		LOGGER.info(String.format("Got Msg for topic %s", msg.topic()));
 		EObject content = extractPayload(msg);
 		if(config.print_payload()) printPayload(content);
-		Arrays.asList(config.forward_topic()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(content)));
+		Arrays.asList(config.forward_topics()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(content)));
 	}
 
 	private EObject extractPayload(Message message) {		

@@ -85,7 +85,7 @@ import org.osgi.service.typedevent.TypedEventHandler;
  * @since Sep 24, 2025
  */
 @Designate(ocd = EMFRepositoryDataSink.Config.class)
-@Component(name = "EMFRepositoryDataSink", configurationPid = "EMFRepositoryDataSink", configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(name = "EMFRepositoryDataSink", configurationPid = "EMFRepositoryDataSinkConfig", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class EMFRepositoryDataSink implements TypedEventHandler<EObject> {
 
     /**

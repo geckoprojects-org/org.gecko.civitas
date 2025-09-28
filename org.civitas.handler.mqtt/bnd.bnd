@@ -1,9 +1,23 @@
 -library:  enable-emf
--workingset: handler
+
 -buildpath: \
 	org.osgi.service.typedevent,\
 	org.gecko.osgi.messaging,\
 	org.osgi.service.component,\
 	org.osgi.util.pushstream,\
 	org.osgi.util.promise,\
-	org.gecko.emf.json
+	org.gecko.emf.json,\
+    org.civitas.pipeline.model;version=snapshot,\
+    org.civitas.osgi.component.configuration.model;version=snapshot
+src: src, src-gen
+    
+-workingset: handler
+
+# Include model resources
+-includeresource.model: model=model
+
+-generate:\
+    model/mqtt-handler.genmodel;\
+        generate=geckoEMF;\
+        genmodel=model/mqtt-handler.genmodel;\
+        output=src-gen

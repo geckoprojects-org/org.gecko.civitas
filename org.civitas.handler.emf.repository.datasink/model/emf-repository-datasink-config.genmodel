@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012 - 2025 Data In Motion and others.&#xA;All rights reserved. &#xA;&#xA;This program and the accompanying materials are made&#xA;available under the terms of the Eclipse Public License 2.0&#xA;which is available at https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;&#xA;Contributors:&#xA;    Data In Motion - initial API and implementation"
+    modelDirectory="/org.civitas.handler.emf.repository.datasink/src" modelPluginID="org.civitas.handler.emf.repository.datasink"
+    modelName="Emf-repository-datasink-config" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0" copyrightFields="false"
+    usedGenPackages="../../org.civitas.osgi.component.configuration.model/model/component.genmodel#//component ../../org.civitas.pipeline.model/model/pipeline.genmodel#//pipeline"
+    operationReflection="true" importOrganizing="true" oSGiCompatible="true">
+  <foreignModel>emf-repository-datasink-config.ecore</foreignModel>
+  <genPackages prefix="Datasinkconfig" basePackage="org.civitas" resource="XMI" disposableProviderFactory="true"
+      ecorePackage="emf-repository-datasink-config.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="emf-repository-datasink-config.ecore#//MergeStrategy">
+      <genEnumLiterals ecoreEnumLiteral="emf-repository-datasink-config.ecore#//MergeStrategy/OVERWRITE"/>
+      <genEnumLiterals ecoreEnumLiteral="emf-repository-datasink-config.ecore#//MergeStrategy/MERGE_INTO_IGNORE_UNSET"/>
+    </genEnums>
+    <genClasses ecoreClass="emf-repository-datasink-config.ecore#//EMFRepositoryDataSinkConfig">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute emf-repository-datasink-config.ecore#//EMFRepositoryDataSinkConfig/repoTarget"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute emf-repository-datasink-config.ecore#//EMFRepositoryDataSinkConfig/mergeStrategy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute emf-repository-datasink-config.ecore#//EMFRepositoryDataSinkConfig/detailedLogging"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

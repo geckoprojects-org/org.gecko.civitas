@@ -1,6 +1,5 @@
 -library: enable-emf
 
-src: src, src-gen
 
 -buildpath: \
 	org.osgi.service.typedevent,\
@@ -9,6 +8,7 @@ src: src, src-gen
 	org.osgi.service.metatype.annotations,\
 	org.civitas.pipeline.model;version=snapshot,\
 	org.civitas.osgi.component.configuration.model;version=snapshot
+src: src, src-gen
 	
 -workingset: handler
 
