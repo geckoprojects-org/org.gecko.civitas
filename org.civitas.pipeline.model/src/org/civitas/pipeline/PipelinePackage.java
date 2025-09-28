@@ -37,7 +37,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @see org.civitas.pipeline.PipelineFactory
  * @model kind="package"
  *        annotation="Version value='1.0'"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel complianceLevel='17.0' oSGiCompatible='true' basePackage='org.civitas' resource='XMI'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel complianceLevel='17.0' oSGiCompatible='true' basePackage='org.civitas' resource='XMI' copyrightText='Copyright (c) 2012 - 2025 Data In Motion and others.\nAll rights reserved. \n\nThis program and the accompanying materials are made\navailable under the terms of the Eclipse Public License 2.0\nwhich is available at https://www.eclipse.org/legal/epl-2.0/\n\nSPDX-License-Identifier: EPL-2.0\n\nContributors:\n    Data In Motion - initial API and implementation'"
  * @generated
  */
 @ProviderType
@@ -113,14 +113,14 @@ public interface PipelinePackage extends org.eclipse.emf.ecore.EPackage {
 	int PIPELINE_STEP_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.civitas.pipeline.impl.DataFountainImpl <em>Data Fountain</em>}' class.
+	 * The meta object id for the '{@link org.civitas.pipeline.impl.DataSourceImpl <em>Data Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.civitas.pipeline.impl.DataFountainImpl
-	 * @see org.civitas.pipeline.impl.PipelinePackageImpl#getDataFountain()
+	 * @see org.civitas.pipeline.impl.DataSourceImpl
+	 * @see org.civitas.pipeline.impl.PipelinePackageImpl#getDataSource()
 	 * @generated
 	 */
-	int DATA_FOUNTAIN = 1;
+	int DATA_SOURCE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -129,7 +129,7 @@ public interface PipelinePackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_FOUNTAIN__ID = PIPELINE_STEP__ID;
+	int DATA_SOURCE__ID = PIPELINE_STEP__ID;
 
 	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' reference list.
@@ -138,25 +138,25 @@ public interface PipelinePackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_FOUNTAIN__OUTPUTS = PIPELINE_STEP_FEATURE_COUNT + 0;
+	int DATA_SOURCE__OUTPUTS = PIPELINE_STEP_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Data Fountain</em>' class.
+	 * The number of structural features of the '<em>Data Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_FOUNTAIN_FEATURE_COUNT = PIPELINE_STEP_FEATURE_COUNT + 1;
+	int DATA_SOURCE_FEATURE_COUNT = PIPELINE_STEP_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Data Fountain</em>' class.
+	 * The number of operations of the '<em>Data Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_FOUNTAIN_OPERATION_COUNT = PIPELINE_STEP_OPERATION_COUNT + 0;
+	int DATA_SOURCE_OPERATION_COUNT = PIPELINE_STEP_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.civitas.pipeline.impl.DataSinkImpl <em>Data Sink</em>}' class.
@@ -260,14 +260,14 @@ public interface PipelinePackage extends org.eclipse.emf.ecore.EPackage {
 	int HANDLER_OPERATION_COUNT = PIPELINE_STEP_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.civitas.pipeline.impl.PiplineImpl <em>Pipline</em>}' class.
+	 * The meta object id for the '{@link org.civitas.pipeline.impl.PipelineImpl <em>Pipeline</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.civitas.pipeline.impl.PiplineImpl
-	 * @see org.civitas.pipeline.impl.PipelinePackageImpl#getPipline()
+	 * @see org.civitas.pipeline.impl.PipelineImpl
+	 * @see org.civitas.pipeline.impl.PipelinePackageImpl#getPipeline()
 	 * @generated
 	 */
-	int PIPLINE = 4;
+	int PIPELINE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -276,7 +276,7 @@ public interface PipelinePackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PIPLINE__ID = 0;
+	int PIPELINE__ID = 0;
 
 	/**
 	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
@@ -285,25 +285,34 @@ public interface PipelinePackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PIPLINE__STEPS = 1;
+	int PIPELINE__STEPS = 1;
 
 	/**
-	 * The number of structural features of the '<em>Pipline</em>' class.
+	 * The feature id for the '<em><b>Components</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PIPLINE_FEATURE_COUNT = 2;
+	int PIPELINE__COMPONENTS = 2;
 
 	/**
-	 * The number of operations of the '<em>Pipline</em>' class.
+	 * The number of structural features of the '<em>Pipeline</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PIPLINE_OPERATION_COUNT = 0;
+	int PIPELINE_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Pipeline</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_OPERATION_COUNT = 0;
 
 
 	/**
@@ -328,25 +337,25 @@ public interface PipelinePackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getPipelineStep_Id();
 
 	/**
-	 * Returns the meta object for class '{@link org.civitas.pipeline.DataFountain <em>Data Fountain</em>}'.
+	 * Returns the meta object for class '{@link org.civitas.pipeline.DataSource <em>Data Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data Fountain</em>'.
-	 * @see org.civitas.pipeline.DataFountain
+	 * @return the meta object for class '<em>Data Source</em>'.
+	 * @see org.civitas.pipeline.DataSource
 	 * @generated
 	 */
-	EClass getDataFountain();
+	EClass getDataSource();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.civitas.pipeline.DataFountain#getOutputs <em>Outputs</em>}'.
+	 * Returns the meta object for the reference list '{@link org.civitas.pipeline.DataSource#getOutputs <em>Outputs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Outputs</em>'.
-	 * @see org.civitas.pipeline.DataFountain#getOutputs()
-	 * @see #getDataFountain()
+	 * @see org.civitas.pipeline.DataSource#getOutputs()
+	 * @see #getDataSource()
 	 * @generated
 	 */
-	EReference getDataFountain_Outputs();
+	EReference getDataSource_Outputs();
 
 	/**
 	 * Returns the meta object for class '{@link org.civitas.pipeline.DataSink <em>Data Sink</em>}'.
@@ -380,58 +389,47 @@ public interface PipelinePackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getHandler();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.civitas.pipeline.Handler#getOutputs <em>Outputs</em>}'.
+	 * Returns the meta object for class '{@link org.civitas.pipeline.Pipeline <em>Pipeline</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Outputs</em>'.
-	 * @see org.civitas.pipeline.Handler#getOutputs()
-	 * @see #getHandler()
+	 * @return the meta object for class '<em>Pipeline</em>'.
+	 * @see org.civitas.pipeline.Pipeline
 	 * @generated
 	 */
-	EReference getHandler_Outputs();
+	EClass getPipeline();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.civitas.pipeline.Handler#getInputs <em>Inputs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Inputs</em>'.
-	 * @see org.civitas.pipeline.Handler#getInputs()
-	 * @see #getHandler()
-	 * @generated
-	 */
-	EReference getHandler_Inputs();
-
-	/**
-	 * Returns the meta object for class '{@link org.civitas.pipeline.Pipline <em>Pipline</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Pipline</em>'.
-	 * @see org.civitas.pipeline.Pipline
-	 * @generated
-	 */
-	EClass getPipline();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.civitas.pipeline.Pipline#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link org.civitas.pipeline.Pipeline#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see org.civitas.pipeline.Pipline#getId()
-	 * @see #getPipline()
+	 * @see org.civitas.pipeline.Pipeline#getId()
+	 * @see #getPipeline()
 	 * @generated
 	 */
-	EAttribute getPipline_Id();
+	EAttribute getPipeline_Id();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.civitas.pipeline.Pipline#getSteps <em>Steps</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.civitas.pipeline.Pipeline#getSteps <em>Steps</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Steps</em>'.
-	 * @see org.civitas.pipeline.Pipline#getSteps()
-	 * @see #getPipline()
+	 * @see org.civitas.pipeline.Pipeline#getSteps()
+	 * @see #getPipeline()
 	 * @generated
 	 */
-	EReference getPipline_Steps();
+	EReference getPipeline_Steps();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.civitas.pipeline.Pipeline#getComponents <em>Components</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Components</em>'.
+	 * @see org.civitas.pipeline.Pipeline#getComponents()
+	 * @see #getPipeline()
+	 * @generated
+	 */
+	EReference getPipeline_Components();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -475,14 +473,14 @@ public interface PipelinePackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute PIPELINE_STEP__ID = eINSTANCE.getPipelineStep_Id();
 
 		/**
-		 * The meta object literal for the '{@link org.civitas.pipeline.impl.DataFountainImpl <em>Data Fountain</em>}' class.
+		 * The meta object literal for the '{@link org.civitas.pipeline.impl.DataSourceImpl <em>Data Source</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.civitas.pipeline.impl.DataFountainImpl
-		 * @see org.civitas.pipeline.impl.PipelinePackageImpl#getDataFountain()
+		 * @see org.civitas.pipeline.impl.DataSourceImpl
+		 * @see org.civitas.pipeline.impl.PipelinePackageImpl#getDataSource()
 		 * @generated
 		 */
-		EClass DATA_FOUNTAIN = eINSTANCE.getDataFountain();
+		EClass DATA_SOURCE = eINSTANCE.getDataSource();
 
 		/**
 		 * The meta object literal for the '<em><b>Outputs</b></em>' reference list feature.
@@ -490,7 +488,7 @@ public interface PipelinePackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATA_FOUNTAIN__OUTPUTS = eINSTANCE.getDataFountain_Outputs();
+		EReference DATA_SOURCE__OUTPUTS = eINSTANCE.getDataSource_Outputs();
 
 		/**
 		 * The meta object literal for the '{@link org.civitas.pipeline.impl.DataSinkImpl <em>Data Sink</em>}' class.
@@ -521,30 +519,14 @@ public interface PipelinePackage extends org.eclipse.emf.ecore.EPackage {
 		EClass HANDLER = eINSTANCE.getHandler();
 
 		/**
-		 * The meta object literal for the '<em><b>Outputs</b></em>' reference list feature.
+		 * The meta object literal for the '{@link org.civitas.pipeline.impl.PipelineImpl <em>Pipeline</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.civitas.pipeline.impl.PipelineImpl
+		 * @see org.civitas.pipeline.impl.PipelinePackageImpl#getPipeline()
 		 * @generated
 		 */
-		EReference HANDLER__OUTPUTS = eINSTANCE.getHandler_Outputs();
-
-		/**
-		 * The meta object literal for the '<em><b>Inputs</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference HANDLER__INPUTS = eINSTANCE.getHandler_Inputs();
-
-		/**
-		 * The meta object literal for the '{@link org.civitas.pipeline.impl.PiplineImpl <em>Pipline</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.civitas.pipeline.impl.PiplineImpl
-		 * @see org.civitas.pipeline.impl.PipelinePackageImpl#getPipline()
-		 * @generated
-		 */
-		EClass PIPLINE = eINSTANCE.getPipline();
+		EClass PIPELINE = eINSTANCE.getPipeline();
 
 		/**
 		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
@@ -552,7 +534,7 @@ public interface PipelinePackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PIPLINE__ID = eINSTANCE.getPipline_Id();
+		EAttribute PIPELINE__ID = eINSTANCE.getPipeline_Id();
 
 		/**
 		 * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
@@ -560,7 +542,15 @@ public interface PipelinePackage extends org.eclipse.emf.ecore.EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PIPLINE__STEPS = eINSTANCE.getPipline_Steps();
+		EReference PIPELINE__STEPS = eINSTANCE.getPipeline_Steps();
+
+		/**
+		 * The meta object literal for the '<em><b>Components</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PIPELINE__COMPONENTS = eINSTANCE.getPipeline_Components();
 
 	}
 

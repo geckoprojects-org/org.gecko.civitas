@@ -30,7 +30,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * </ul>
  *
  * @see org.civitas.pipeline.PipelinePackage#getPipelineStep()
- * @model
+ * @model abstract="true"
  * @generated
  */
 @ProviderType
@@ -42,7 +42,7 @@ public interface PipelineStep extends EObject {
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see org.civitas.pipeline.PipelinePackage#getPipelineStep_Id()
-	 * @model
+	 * @model id="true"
 	 * @generated
 	 */
 	String getId();

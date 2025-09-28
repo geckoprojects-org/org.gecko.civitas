@@ -83,8 +83,8 @@ public class PipelineAdapterFactory extends AdapterFactoryImpl {
 				return createPipelineStepAdapter();
 			}
 			@Override
-			public Adapter caseDataFountain(DataFountain object) {
-				return createDataFountainAdapter();
+			public Adapter caseDataSource(DataSource object) {
+				return createDataSourceAdapter();
 			}
 			@Override
 			public Adapter caseDataSink(DataSink object) {
@@ -95,8 +95,8 @@ public class PipelineAdapterFactory extends AdapterFactoryImpl {
 				return createHandlerAdapter();
 			}
 			@Override
-			public Adapter casePipline(Pipline object) {
-				return createPiplineAdapter();
+			public Adapter casePipeline(Pipeline object) {
+				return createPipelineAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -133,16 +133,16 @@ public class PipelineAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.civitas.pipeline.DataFountain <em>Data Fountain</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.civitas.pipeline.DataSource <em>Data Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.civitas.pipeline.DataFountain
+	 * @see org.civitas.pipeline.DataSource
 	 * @generated
 	 */
-	public Adapter createDataFountainAdapter() {
+	public Adapter createDataSourceAdapter() {
 		return null;
 	}
 
@@ -175,16 +175,16 @@ public class PipelineAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.civitas.pipeline.Pipline <em>Pipline</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.civitas.pipeline.Pipeline <em>Pipeline</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.civitas.pipeline.Pipline
+	 * @see org.civitas.pipeline.Pipeline
 	 * @generated
 	 */
-	public Adapter createPiplineAdapter() {
+	public Adapter createPipelineAdapter() {
 		return null;
 	}
 

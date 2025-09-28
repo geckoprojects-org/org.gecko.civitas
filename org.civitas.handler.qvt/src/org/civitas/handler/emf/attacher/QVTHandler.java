@@ -44,62 +44,65 @@ import org.osgi.service.typedevent.TypedEventHandler;
  * @since Sep 24, 2025
  */
 @Component(name = "QVTHandler", property = { TypedEventConstants.TYPED_EVENT_TOPICS
-		+ "=*" }, configurationPid = "QVTHandler", configurationPolicy = ConfigurationPolicy.REQUIRE)
+	+ "=*" }, configurationPid = "QVTHandler", configurationPolicy = ConfigurationPolicy.REQUIRE)
 @Designate(ocd = QVTHandler.Config.class)
 public class QVTHandler implements TypedEventHandler<EObject> {
-	private static final Logger LOGGER = Logger.getLogger(QVTHandler.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(QVTHandler.class.getName());
 
-	@ObjectClassDefinition(name = "EObject QVT handler configuration")
-	@interface Config {
+    @ObjectClassDefinition(name = "EObject QVT handler configuration")
+    @interface Config {
 
-		@AttributeDefinition(name = "EClass URI", description = "The URI of the source eobject")
-		String eclassuri(); // http:,....#//Meter
+	@AttributeDefinition(name = "Event Topics", description = "The OSGi event topic to listen to for EObject events (e.g., 'org/civitas/meter/data/parsed')")
+	String event_topics();
 
-		@AttributeDefinition(name = "QVT ID", description = "ID of the QVT transformation")
-		String trafo_id();
+	@AttributeDefinition(name = "EClass URI", description = "The URI of the source eobject")
+	String eclassuri(); // http:,....#//Meter
 
-		@AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the transformed target EObject")
-		String[] forward_topic();
-	}
+	@AttributeDefinition(name = "QVT ID", description = "ID of the QVT transformation")
+	String trafo_id();
 
-	@Reference
-	private TypedEventBus bus;
+	@AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the transformed target EObject")
+	String[] forward_topics();
+    }
 
-	private ModelTransformator trafo;
+    @Reference
+    private TypedEventBus bus;
 
-	private Config config;
+    private ModelTransformator trafo;
 
-	@Activate
-	public void activate(BundleContext ctx, Config config) throws InvalidSyntaxException {
-		this.config = config;
-		ctx.addServiceListener(event -> {
-			int type = event.getType();
-			ServiceReference<?> ref = event.getServiceReference();
-			switch (type) {
-			case ServiceEvent.REGISTERED, ServiceEvent.MODIFIED:
-				if (ctx.getService(ref) instanceof ModelTransformator t) {
-					trafo = t;
-				}
-				break;
-			case ServiceEvent.UNREGISTERING:
-				trafo = null;
-				break;
-			default:
-				LOGGER.log(Level.SEVERE, "Unexpected value for service event type: {0}", type);
-			}
+    private Config config;
 
-		}, "(" + ModelTransformationConstants.TRANSFORMATOR_ID + "=" + config.trafo_id() + ")");
-	}
-
-	@Override
-	public void notify(String topic, EObject event) {
-		if (config.eclassuri().equals(EcoreUtil.getURI(event).toString())) {
-			Diagnostic diagnostic = Diagnostician.INSTANCE.validate(event);
-			if (diagnostic.getSeverity() == Diagnostic.OK && trafo != null) {
-				EObject result = trafo.doTransformation(event);
-				Arrays.asList(config.forward_topic()).forEach(t -> bus.deliver(t, result));
-			}
+    @Activate
+    public void activate(BundleContext ctx, Config config) throws InvalidSyntaxException {
+	this.config = config;
+	ctx.addServiceListener(event -> {
+	    int type = event.getType();
+	    ServiceReference<?> ref = event.getServiceReference();
+	    switch (type) {
+	    case ServiceEvent.REGISTERED, ServiceEvent.MODIFIED:
+		if (ctx.getService(ref) instanceof ModelTransformator t) {
+		    trafo = t;
 		}
+		break;
+	    case ServiceEvent.UNREGISTERING:
+		trafo = null;
+		break;
+	    default:
+		LOGGER.log(Level.SEVERE, "Unexpected value for service event type: {0}", type);
+	    }
+
+	}, "(" + ModelTransformationConstants.TRANSFORMATOR_ID + "=" + config.trafo_id() + ")");
+    }
+
+    @Override
+    public void notify(String topic, EObject event) {
+	if (config.eclassuri().equals(EcoreUtil.getURI(event).toString())) {
+	    Diagnostic diagnostic = Diagnostician.INSTANCE.validate(event);
+	    if (diagnostic.getSeverity() == Diagnostic.OK && trafo != null) {
+		EObject result = trafo.doTransformation(event);
+		Arrays.asList(config.forward_topics()).forEach(t -> bus.deliver(t, result));
+	    }
 	}
+    }
 
 }

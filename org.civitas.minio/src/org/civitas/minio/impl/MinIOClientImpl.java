@@ -40,101 +40,77 @@ import io.minio.Result;
 import io.minio.messages.Bucket;
 import io.minio.messages.Item;
 
-@Component(
-		name = "MinIOClient",
-		configurationPolicy = ConfigurationPolicy.REQUIRE
-		)
+@Component(name = "MinIOClient", configurationPid = "MinIOClientConfig", configurationPolicy = ConfigurationPolicy.REQUIRE)
 @Designate(ocd = MinIOClientImpl.Config.class)
 @RequireConfigurationAdmin
 public class MinIOClientImpl implements MinIOClient {
 
-	@ObjectClassDefinition(name = "MinIO Client Configuration")
-	public @interface Config {
+    @ObjectClassDefinition(name = "MinIO Client Configuration")
+    public @interface Config {
 
-		@AttributeDefinition(name = "Endpoint", description = "MinIO server endpoint")
-		String endpoint() default "http://localhost:9000";
+	@AttributeDefinition(name = "Endpoint", description = "MinIO server endpoint")
+	String endpoint() default "http://localhost:9000";
 
-		@AttributeDefinition(name = "Access Key", description = "MinIO access key")
-		String accessKey() default "admin";
+	@AttributeDefinition(name = "Access Key", description = "MinIO access key")
+	String accessKey() default "admin";
 
-		@AttributeDefinition(name = "Secret Key", description = "MinIO secret key")
-		String secretKey() default "password123";
-	}
+	@AttributeDefinition(name = "Secret Key", description = "MinIO secret key")
+	String secretKey() default "password123";
+    }
 
-	private MinioClient minioClient;
-	private Logger logger = LoggerFactory.getLogger(MinIOClientImpl.class);
+    private MinioClient minioClient;
+    private Logger logger = LoggerFactory.getLogger(MinIOClientImpl.class);
 
-	@Activate
-	void activate(Config config) {
+    @Activate
+    void activate(Config config) {
 
-		this.minioClient = MinioClient.builder()
-				.endpoint(config.endpoint())
-				.credentials(config.accessKey(), config.secretKey())
-				.build();
+	this.minioClient = MinioClient.builder().endpoint(config.endpoint())
+		.credentials(config.accessKey(), config.secretKey()).build();
 
-		logger.info("MinIO client activated with endpoint: {}", config.endpoint());
-	}
+	logger.info("MinIO client activated with endpoint: {}", config.endpoint());
+    }
 
-	@Deactivate
-	void deactivate() {
-		logger.info("MinIO client deactivated");
-	}
+    @Deactivate
+    void deactivate() {
+	logger.info("MinIO client deactivated");
+    }
 
-	@Override
-	public void createBucket(String bucketName) throws Exception {
-		minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
-		logger.info("Created bucket: {}", bucketName);
-	}
+    @Override
+    public void createBucket(String bucketName) throws Exception {
+	minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
+	logger.info("Created bucket: {}", bucketName);
+    }
 
-	@Override
-	public boolean bucketExists(String bucketName) throws Exception {
-		return minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
-	}
+    @Override
+    public boolean bucketExists(String bucketName) throws Exception {
+	return minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
+    }
 
-	@Override
-	public List<Bucket> listBuckets() throws Exception {
-		return minioClient.listBuckets(ListBucketsArgs.builder().build());
-	}
+    @Override
+    public List<Bucket> listBuckets() throws Exception {
+	return minioClient.listBuckets(ListBucketsArgs.builder().build());
+    }
 
-	@Override
-	public void putObject(String bucketName, String objectName, InputStream data, long size) throws Exception {
-		minioClient.putObject(
-				PutObjectArgs.builder()
-				.bucket(bucketName)
-				.object(objectName)
-				.stream(data, size, -1)
-				.build()
-				);
-		logger.info("Put object: {}/{}", bucketName, objectName);
-	}
+    @Override
+    public void putObject(String bucketName, String objectName, InputStream data, long size) throws Exception {
+	minioClient.putObject(
+		PutObjectArgs.builder().bucket(bucketName).object(objectName).stream(data, size, -1).build());
+	logger.info("Put object: {}/{}", bucketName, objectName);
+    }
 
-	@Override
-	public InputStream getObject(String bucketName, String objectName) throws Exception {
-		return minioClient.getObject(
-				GetObjectArgs.builder()
-				.bucket(bucketName)
-				.object(objectName)
-				.build()
-				);
-	}
+    @Override
+    public InputStream getObject(String bucketName, String objectName) throws Exception {
+	return minioClient.getObject(GetObjectArgs.builder().bucket(bucketName).object(objectName).build());
+    }
 
-	@Override
-	public void removeObject(String bucketName, String objectName) throws Exception {
-		minioClient.removeObject(
-				RemoveObjectArgs.builder()
-				.bucket(bucketName)
-				.object(objectName)
-				.build()
-				);
-		logger.info("Removed object: {}/{}", bucketName, objectName);
-	}
+    @Override
+    public void removeObject(String bucketName, String objectName) throws Exception {
+	minioClient.removeObject(RemoveObjectArgs.builder().bucket(bucketName).object(objectName).build());
+	logger.info("Removed object: {}/{}", bucketName, objectName);
+    }
 
-	@Override
-	public Iterable<Result<Item>> listObjects(String bucketName) throws Exception {
-		return minioClient.listObjects(
-				ListObjectsArgs.builder()
-				.bucket(bucketName)
-				.build()
-				);
-	}
+    @Override
+    public Iterable<Result<Item>> listObjects(String bucketName) throws Exception {
+	return minioClient.listObjects(ListObjectsArgs.builder().bucket(bucketName).build());
+    }
 }

@@ -4,26 +4,25 @@
     modelDirectory="/org.civitas.pipeline.model/src" modelPluginID="org.civitas.pipeline.model"
     modelName="pipeline" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0" suppressGenModelAnnotations="false"
-    copyrightFields="false" operationReflection="true" importOrganizing="true" oSGiCompatible="true">
+    copyrightFields="false" usedGenPackages="../../org.civitas.osgi.component.configuration.model/model/component.genmodel#//component"
+    operationReflection="true" importOrganizing="true" oSGiCompatible="true">
   <foreignModel>pipeline.ecore</foreignModel>
   <genPackages prefix="Pipeline" basePackage="org.civitas" resource="XMI" disposableProviderFactory="true"
       ecorePackage="pipeline.ecore#/">
     <genClasses ecoreClass="pipeline.ecore#//PipelineStep">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pipeline.ecore#//PipelineStep/id"/>
     </genClasses>
-    <genClasses ecoreClass="pipeline.ecore#//DataFountain">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pipeline.ecore#//DataFountain/outputs"/>
+    <genClasses ecoreClass="pipeline.ecore#//DataSource">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pipeline.ecore#//DataSource/outputs"/>
     </genClasses>
     <genClasses ecoreClass="pipeline.ecore#//DataSink">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pipeline.ecore#//DataSink/inputs"/>
     </genClasses>
-    <genClasses ecoreClass="pipeline.ecore#//Handler">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pipeline.ecore#//Handler/outputs"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pipeline.ecore#//Handler/inputs"/>
-    </genClasses>
-    <genClasses ecoreClass="pipeline.ecore#//Pipline">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pipeline.ecore#//Pipline/id"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pipeline.ecore#//Pipline/steps"/>
+    <genClasses ecoreClass="pipeline.ecore#//Handler"/>
+    <genClasses ecoreClass="pipeline.ecore#//Pipeline">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pipeline.ecore#//Pipeline/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pipeline.ecore#//Pipeline/steps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pipeline.ecore#//Pipeline/components"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

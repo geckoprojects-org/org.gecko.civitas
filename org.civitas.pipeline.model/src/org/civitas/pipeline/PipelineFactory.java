@@ -36,49 +36,13 @@ public interface PipelineFactory extends EFactory {
 	PipelineFactory eINSTANCE = org.civitas.pipeline.impl.PipelineFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Step</em>'.
+	 * Returns a new object of class '<em>Pipeline</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Step</em>'.
+	 * @return a new object of class '<em>Pipeline</em>'.
 	 * @generated
 	 */
-	PipelineStep createPipelineStep();
-
-	/**
-	 * Returns a new object of class '<em>Data Fountain</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Fountain</em>'.
-	 * @generated
-	 */
-	DataFountain createDataFountain();
-
-	/**
-	 * Returns a new object of class '<em>Data Sink</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Sink</em>'.
-	 * @generated
-	 */
-	DataSink createDataSink();
-
-	/**
-	 * Returns a new object of class '<em>Handler</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Handler</em>'.
-	 * @generated
-	 */
-	Handler createHandler();
-
-	/**
-	 * Returns a new object of class '<em>Pipline</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Pipline</em>'.
-	 * @generated
-	 */
-	Pipline createPipline();
+	Pipeline createPipeline();
 
 	/**
 	 * Returns the package supported by this factory.

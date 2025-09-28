@@ -1,4 +1,5 @@
 -library:  enable-emf
+-workingset: handler
 -buildpath: \
 	org.osgi.service.typedevent,\
 	org.gecko.osgi.messaging,\

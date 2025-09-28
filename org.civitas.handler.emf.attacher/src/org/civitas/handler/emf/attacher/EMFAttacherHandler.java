@@ -41,155 +41,155 @@ import org.osgi.service.typedevent.TypedEventHandler;
  * @since Sep 24, 2025
  */
 @Designate(ocd = EMFAttacherHandler.Config.class)
-@Component(name = "EMFAttacherHandler", configurationPid = "EMFAttacherHandler", configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(name = "EMFAttacherHandler", configurationPid = "EMFAttacherHandlerConfig", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 
-	@ObjectClassDefinition(name = "EMFAttacherHandler Configuration")
-	@interface Config {
+    @ObjectClassDefinition(name = "EMFAttacherHandler Configuration")
+    @interface Config {
 
-		@AttributeDefinition(name = "Event Topic", description = "The topic this handler is listening to")
-		String[] event_topic();
-		
-		@AttributeDefinition(name = "Repo Target", description = "The EMF Repository target")
-		String repo_target();
+	@AttributeDefinition(name = "Event Topic", description = "The topic this handler is listening to")
+	String[] event_topics();
 
-		@AttributeDefinition(name = "Incoming EClass URI", description = "The URI of the incoming EObject EClass")
-		String incomming_eclassuri(); // http:,....#//Meter
+	@AttributeDefinition(name = "Repo Target", description = "The EMF Repository target")
+	String repo_target();
 
-		@AttributeDefinition(name = "Target EClass URI", description = "The URI of the targer EClass")
-		String target_eclassuri(); // http:,....#//Plant
+	@AttributeDefinition(name = "Incoming EClass URI", description = "The URI of the incoming EObject EClass")
+	String incomming_eclassuri(); // http:,....#//Meter
 
-		@AttributeDefinition(name = "Foreign Key Feature URI", description = "The URI of the EStructuralFeature from the incoming EObject to be used as identifier for the target EObject")
-		String foreignKeyFeature_uri(); // http:,....#//Meter_plantId
+	@AttributeDefinition(name = "Target EClass URI", description = "The URI of the targer EClass")
+	String target_eclassuri(); // http:,....#//Plant
 
-		@AttributeDefinition(name = "Target Reference URI", description = "The URI of the target EReference where to put the incoming EObject")
-		String target_reference_uri(); // Plant_meters
+	@AttributeDefinition(name = "Foreign Key Feature URI", description = "The URI of the EStructuralFeature from the incoming EObject to be used as identifier for the target EObject")
+	String foreignKeyFeature_uri(); // http:,....#//Meter_plantId
 
-		@AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the updated target EObject")
-		String[] forward_topic();
+	@AttributeDefinition(name = "Target Reference URI", description = "The URI of the target EReference where to put the incoming EObject")
+	String target_reference_uri(); // Plant_meters
+
+	@AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the updated target EObject")
+	String[] forward_topics();
+    }
+
+    private static final Logger LOGGER = Logger.getLogger(EMFAttacherHandler.class.getName());
+
+    @Reference
+    EMFRepository repository;
+
+    @Reference
+    TypedEventBus typedEventBus;
+
+    private Config config;
+
+    @Activate
+    public EMFAttacherHandler(Config config) {
+	this.config = config;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.osgi.service.typedevent.TypedEventHandler#notify(java.lang.String,
+     * java.lang.Object)
+     */
+    @Override
+    public void notify(String topic, EObject event) {
+	handleEvent(event);
+
+    }
+
+    void handleEvent(EObject eObject) {
+	// check if we can handle this EClass
+	if (!EcoreUtil.getURI(eObject.eClass()).toString().equals(config.incomming_eclassuri()))
+	    return;
+
+	// look for target Eclass with foreign key in repository
+	EObject target = repository.getResourceSet().getEObject(URI.createURI(config.target_eclassuri()), false);
+	if (!(target instanceof EClass)) {
+	    LOGGER.severe(
+		    String.format("No EClass found in ResourceSet for target_eclassuri %s", config.target_eclassuri()));
+	    return;
+	}
+	EObject foreignKeyObject = repository.getResourceSet().getEObject(URI.createURI(config.foreignKeyFeature_uri()),
+		false);
+	if (!(foreignKeyObject instanceof EStructuralFeature)) {
+	    LOGGER.severe(String.format("No EStructuralFeature found in ResourceSet for foreignKeyFeature_uri %s",
+		    config.foreignKeyFeature_uri()));
+	    return;
 	}
 
-	private static final Logger LOGGER = Logger.getLogger(EMFAttacherHandler.class.getName());
-
-	@Reference
-	EMFRepository repository;
-
-	@Reference
-	TypedEventBus typedEventBus;
-
-	private Config config;
-
-	@Activate
-	public EMFAttacherHandler(Config config) {
-		this.config = config;
+	EObject targetRefObj = repository.getResourceSet().getEObject(URI.createURI(config.target_reference_uri()),
+		false);
+	if (!(targetRefObj instanceof EReference)) {
+	    LOGGER.severe(String.format("No EReference found in ResourceSet for target_reference_uri %s",
+		    config.target_reference_uri()));
+	    return;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.osgi.service.typedevent.TypedEventHandler#notify(java.lang.String,
-	 * java.lang.Object)
-	 */
-	@Override
-	public void notify(String topic, EObject event) {
-		handleEvent(event);
-
+	EStructuralFeature foreignKeyFeature = (EStructuralFeature) foreignKeyObject;
+	Object id;
+	if (foreignKeyFeature instanceof EAttribute) {
+	    id = eObject.eGet(foreignKeyFeature);
+	} else {
+	    id = EcoreUtil.getID((EObject) eObject.eGet(foreignKeyFeature));
 	}
 
-	void handleEvent(EObject eObject) {
-		// check if we can handle this EClass
-		if (!EcoreUtil.getURI(eObject.eClass()).toString().equals(config.incomming_eclassuri()))
-			return;
-
-		// look for target Eclass with foreign key in repository
-		EObject target = repository.getResourceSet().getEObject(URI.createURI(config.target_eclassuri()), false);
-		if (!(target instanceof EClass)) {
-			LOGGER.severe(
-					String.format("No EClass found in ResourceSet for target_eclassuri %s", config.target_eclassuri()));
-			return;
-		}
-		EObject foreignKeyObject = repository.getResourceSet().getEObject(URI.createURI(config.foreignKeyFeature_uri()),
-				false);
-		if (!(foreignKeyObject instanceof EStructuralFeature)) {
-			LOGGER.severe(String.format("No EStructuralFeature found in ResourceSet for foreignKeyFeature_uri %s",
-					config.foreignKeyFeature_uri()));
-			return;
-		}
-
-		EObject targetRefObj = repository.getResourceSet().getEObject(URI.createURI(config.target_reference_uri()),
-				false);
-		if (!(targetRefObj instanceof EReference)) {
-			LOGGER.severe(String.format("No EReference found in ResourceSet for target_reference_uri %s",
-					config.target_reference_uri()));
-			return;
-		}
-
-		EStructuralFeature foreignKeyFeature = (EStructuralFeature) foreignKeyObject;
-		Object id;
-		if (foreignKeyFeature instanceof EAttribute) {
-			id = eObject.eGet(foreignKeyFeature);
-		} else {
-			id = EcoreUtil.getID((EObject) eObject.eGet(foreignKeyFeature));
-		}
-
-		// create target object if null and attach eObject (copy) to it
-		EObject targetEObject = repository.getEObject((EClass) target, id, null);
-		if (targetEObject == null) {
-			targetEObject = EcoreUtil.create((EClass) target);
-			targetEObject.eSet(targetEObject.eClass().getEIDAttribute(), id);
-		}
+	// create target object if null and attach eObject (copy) to it
+	EObject targetEObject = repository.getEObject((EClass) target, id, null);
+	if (targetEObject == null) {
+	    targetEObject = EcoreUtil.create((EClass) target);
+	    targetEObject.eSet(targetEObject.eClass().getEIDAttribute(), id);
+	}
 
 //		We have to distinguish here between many ref and single ref. 
 //		If many ref we have to look in the existing list and replace the right element based on its ID feature
-		EReference targetRef = (EReference) targetRefObj;
-		if (targetRef.isMany()) {
-			@SuppressWarnings("unchecked")
-			EList<EObject> eList = (EList<EObject>) targetEObject.eGet(targetRef);
-			if (eList.isEmpty()) {
-				eList.add(EcoreUtil.copy(eObject));
-			} else {
-				addOrReplaceById(EcoreUtil.copy(eObject), eList, eObject.eClass().getEIDAttribute());
-			}
-		} else {
-			targetEObject.eSet(targetRef, EcoreUtil.copy(eObject));
-		}
-
-		// save in repo
-		repository.save(targetEObject);
-		final EObject forwadObject = targetEObject;
-		// create Copy of target EObject and send via Typed Eventadmin
-		Arrays.asList(config.forward_topic()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(forwadObject)));
+	EReference targetRef = (EReference) targetRefObj;
+	if (targetRef.isMany()) {
+	    @SuppressWarnings("unchecked")
+	    EList<EObject> eList = (EList<EObject>) targetEObject.eGet(targetRef);
+	    if (eList.isEmpty()) {
+		eList.add(EcoreUtil.copy(eObject));
+	    } else {
+		addOrReplaceById(EcoreUtil.copy(eObject), eList, eObject.eClass().getEIDAttribute());
+	    }
+	} else {
+	    targetEObject.eSet(targetRef, EcoreUtil.copy(eObject));
 	}
 
-	private void addOrReplaceById(EObject eObjectToAdd, EList<EObject> eList, EStructuralFeature idFeature) {
-		// If no ID feature, we simply add the new object
-		if (idFeature == null) {
-			eList.add(eObjectToAdd);
-			return;
-		}
+	// save in repo
+	repository.save(targetEObject);
+	final EObject forwadObject = targetEObject;
+	// create Copy of target EObject and send via Typed Eventadmin
+	Arrays.asList(config.forward_topics()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(forwadObject)));
+    }
 
-		// Get the ID of the new object
-		Object idOfNewObject = eObjectToAdd.eGet(idFeature);
-
-		// Find a matching object in the list
-		int indexToReplace = -1;
-		for (int i = 0; i < eList.size(); i++) {
-			EObject existingObject = eList.get(i);
-			Object idOfExistingObject = existingObject.eGet(idFeature);
-
-			if (idOfNewObject.equals(idOfExistingObject)) {
-				indexToReplace = i;
-				break; // Found a match, exit the loop
-			}
-		}
-
-		// Replace or add the new object
-		if (indexToReplace != -1) {
-			// A matching object was found, so replace it
-			eList.set(indexToReplace, eObjectToAdd);
-		} else {
-			// No match found, so add the new object
-			eList.add(eObjectToAdd);
-		}
+    private void addOrReplaceById(EObject eObjectToAdd, EList<EObject> eList, EStructuralFeature idFeature) {
+	// If no ID feature, we simply add the new object
+	if (idFeature == null) {
+	    eList.add(eObjectToAdd);
+	    return;
 	}
+
+	// Get the ID of the new object
+	Object idOfNewObject = eObjectToAdd.eGet(idFeature);
+
+	// Find a matching object in the list
+	int indexToReplace = -1;
+	for (int i = 0; i < eList.size(); i++) {
+	    EObject existingObject = eList.get(i);
+	    Object idOfExistingObject = existingObject.eGet(idFeature);
+
+	    if (idOfNewObject.equals(idOfExistingObject)) {
+		indexToReplace = i;
+		break; // Found a match, exit the loop
+	    }
+	}
+
+	// Replace or add the new object
+	if (indexToReplace != -1) {
+	    // A matching object was found, so replace it
+	    eList.set(indexToReplace, eObjectToAdd);
+	} else {
+	    // No match found, so add the new object
+	    eList.add(eObjectToAdd);
+	}
+    }
 }

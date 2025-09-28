@@ -30,22 +30,24 @@ import org.osgi.annotation.versioning.ProviderType;
  * </ul>
  *
  * @see org.civitas.pipeline.PipelinePackage#getDataSink()
- * @model
+ * @model abstract="true"
  * @generated
  */
 @ProviderType
 public interface DataSink extends PipelineStep {
 	/**
 	 * Returns the value of the '<em><b>Inputs</b></em>' reference list.
-	 * The list contents are of type {@link org.civitas.pipeline.PipelineStep}.
+	 * The list contents are of type {@link org.civitas.pipeline.DataSource}.
+	 * It is bidirectional and its opposite is '{@link org.civitas.pipeline.DataSource#getOutputs <em>Outputs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Inputs</em>' reference list.
 	 * @see org.civitas.pipeline.PipelinePackage#getDataSink_Inputs()
-	 * @model required="true"
-	 *        extendedMetaData="osgi.config.property='event.topics'"
+	 * @see org.civitas.pipeline.DataSource#getOutputs
+	 * @model opposite="outputs" required="true"
+	 *        extendedMetaData="name='event.topics'"
 	 * @generated
 	 */
-	EList<PipelineStep> getInputs();
+	EList<DataSource> getInputs();
 
 } // DataSink

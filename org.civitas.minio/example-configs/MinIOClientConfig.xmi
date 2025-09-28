@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<minioconfig:MinIOClientConfig
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:minioconfig="https://civitas.org/minio/config/1.0.0"
+    xsi:schemaLocation="https://civitas.org/minio/config/1.0.0 ../model/minio-config.ecore"
+    pid="default"
+    accessKey="minio"
+    secretKey="minio123"/>

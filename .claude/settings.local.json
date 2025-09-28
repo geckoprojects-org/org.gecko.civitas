@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(./gradlew:*)",
-      "WebFetch(domain:docs.osgi.org)"
+      "WebFetch(domain:docs.osgi.org)",
+      "Bash(export JAVA_HOME=n:/tools/java/jdk-21.0.2)",
+      "Bash(export PATH=$JAVA_HOME/bin:$PATH)"
     ],
     "deny": [],
     "ask": []

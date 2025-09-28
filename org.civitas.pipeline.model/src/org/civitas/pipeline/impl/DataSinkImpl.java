@@ -16,14 +16,18 @@ package org.civitas.pipeline.impl;
 import java.util.Collection;
 
 import org.civitas.pipeline.DataSink;
+import org.civitas.pipeline.DataSource;
 import org.civitas.pipeline.PipelinePackage;
-import org.civitas.pipeline.PipelineStep;
+
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,7 +42,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *
  * @generated
  */
-public class DataSinkImpl extends PipelineStepImpl implements DataSink {
+public abstract class DataSinkImpl extends PipelineStepImpl implements DataSink {
 	/**
 	 * The cached value of the '{@link #getInputs() <em>Inputs</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -47,7 +51,7 @@ public class DataSinkImpl extends PipelineStepImpl implements DataSink {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PipelineStep> inputs;
+	protected EList<DataSource> inputs;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,11 +78,40 @@ public class DataSinkImpl extends PipelineStepImpl implements DataSink {
 	 * @generated
 	 */
 	@Override
-	public EList<PipelineStep> getInputs() {
+	public EList<DataSource> getInputs() {
 		if (inputs == null) {
-			inputs = new EObjectResolvingEList<PipelineStep>(PipelineStep.class, this, PipelinePackage.DATA_SINK__INPUTS);
+			inputs = new EObjectWithInverseResolvingEList.ManyInverse<DataSource>(DataSource.class, this, PipelinePackage.DATA_SINK__INPUTS, PipelinePackage.DATA_SOURCE__OUTPUTS);
 		}
 		return inputs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PipelinePackage.DATA_SINK__INPUTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getInputs()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PipelinePackage.DATA_SINK__INPUTS:
+				return ((InternalEList<?>)getInputs()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -106,7 +139,7 @@ public class DataSinkImpl extends PipelineStepImpl implements DataSink {
 		switch (featureID) {
 			case PipelinePackage.DATA_SINK__INPUTS:
 				getInputs().clear();
-				getInputs().addAll((Collection<? extends PipelineStep>)newValue);
+				getInputs().addAll((Collection<? extends DataSource>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

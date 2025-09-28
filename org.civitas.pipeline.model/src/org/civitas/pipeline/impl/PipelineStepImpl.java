@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class PipelineStepImpl extends MinimalEObjectImpl.Container implements PipelineStep {
+public abstract class PipelineStepImpl extends MinimalEObjectImpl.Container implements PipelineStep {
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -2,3 +2,5 @@
 -buildpath: \
 	org.eclipse.fennec.codec.constants,\
 	org.eclipse.fennec.codec
+	
+-workingset: atlas

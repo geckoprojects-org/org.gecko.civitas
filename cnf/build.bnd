@@ -24,12 +24,12 @@ mavenCentral: false
 # For Geckoprojects the groupid must start with org.geckoprojects
 -groupid: org.geckoprojects.civitas
 
-javac.source: 17
-javac.target: 17
+javac.source: 21
+javac.target: 21
 
 -require-bnd "(version>=7.1.0)"
 
--jpms-module-info:
+#-jpms-module-info:
 
 -plugin.2.Central: \
     aQute.bnd.repository.maven.provider.MavenBndRepository; \

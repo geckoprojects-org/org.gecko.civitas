@@ -31,7 +31,8 @@ slf4j.runpath:  \
 	bnd.identity;id='org.civitas.meter.target.model',\
 	bnd.identity;id='org.civitas.handler.emf.attacher',\
 	bnd.identity;id='org.civitas.handler.emf.repository.datasink',\
-	bnd.identity;id='org.civitas.handler.qvt'
+	bnd.identity;id='org.civitas.handler.qvt',\
+	bnd.identity;id='org.civitas.model.atlas'
 	
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 -runee: JavaSE-21
@@ -127,4 +128,25 @@ slf4j.runpath:  \
 	org.gecko.emf.repository.api;version='[9.3.1,9.3.2)',\
 	org.gecko.emf.repository.mongo;version='[3.3.0,3.3.1)',\
 	org.gecko.mongo.osgi.component;version='[6.2.0,6.2.1)',\
-	org.mongodb.mongo-java-driver;version='[3.12.14,3.12.15)'
+	org.mongodb.mongo-java-driver;version='[3.12.14,3.12.15)',\
+	com.fasterxml.jackson.dataformat.jackson-dataformat-properties;version='[2.14.1,2.14.2)',\
+	com.fasterxml.jackson.dataformat.jackson-dataformat-yaml;version='[2.14.1,2.14.2)',\
+	com.fasterxml.jackson.datatype.jackson-datatype-jsr310;version='[2.14.1,2.14.2)',\
+	de.jena.mdo.emf.common;version=snapshot,\
+	de.siegmar.fastcsv;version='[3.4.0,3.4.1)',\
+	org.civitas.model.atlas;version=snapshot,\
+	org.eclipse.daanse.io.fs.watcher.api;version='[0.0.1,0.0.2)',\
+	org.eclipse.daanse.io.fs.watcher.watchservice;version='[0.0.1,0.0.2)',\
+	org.eclipse.daanse.jdbc.datasource.common;version='[0.0.1,0.0.2)',\
+	org.eclipse.daanse.jdbc.datasource.postgresql;version='[0.0.1,0.0.2)',\
+	org.eclipse.daanse.jdbc.db.api;version='[0.0.1,0.0.2)',\
+	org.eclipse.daanse.jdbc.db.core;version='[0.0.1,0.0.2)',\
+	org.eclipse.daanse.jdbc.db.importer.csv;version='[0.0.1,0.0.2)',\
+	org.eclipse.daanse.jdbc.db.record;version='[0.0.1,0.0.2)',\
+	org.eclipse.emfcloud.emfjson-jackson;version='[2.2.0,2.2.1)',\
+	org.eclipse.fennec.persistence;version='[1.0.0,1.0.1)',\
+	org.eclipse.fennec.persistence.orm;version='[1.0.0,1.0.1)',\
+	org.eclipse.sensinact.gateway.core.geo-json.model;version='[1.0.0,1.0.1)',\
+	org.gecko.emf.json;version='[1.5.1,1.5.2)',\
+	org.postgresql.jdbc;version='[42.7.3,42.7.4)',\
+	org.yaml.snakeyaml;version='[1.33.0,1.33.1)'

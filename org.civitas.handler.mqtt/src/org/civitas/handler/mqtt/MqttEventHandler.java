@@ -47,7 +47,7 @@ public class MqttEventHandler implements TypedEventHandler<EObject>{
 	@interface Config {
 
 		@AttributeDefinition(name = "Event Topic", description = "The topic this handler is listening to")
-		String event_topic();
+		String event_topics();
 
 		@AttributeDefinition(name = "MQTT Topic", description = "The MQTT topic list where to publish the result")
 		String[] mqtt_topic();

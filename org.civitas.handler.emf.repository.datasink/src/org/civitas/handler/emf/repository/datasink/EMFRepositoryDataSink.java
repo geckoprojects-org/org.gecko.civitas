@@ -106,9 +106,9 @@ public class EMFRepositoryDataSink implements TypedEventHandler<EObject> {
             MERGE_INTO_IGNORE_UNSET
         }
 
-        @AttributeDefinition(name = "Event Topic",
+        @AttributeDefinition(name = "Event Topics",
                            description = "The OSGi event topic to listen to for EObject events (e.g., 'org/civitas/meter/data/parsed')")
-        String event_topic();
+        String event_topics();
 
         @AttributeDefinition(name = "Repository Target",
                            description = "OSGi filter to target the specific EMF Repository instance (e.g., '(repository.name=meter-repository)')")
@@ -195,7 +195,7 @@ public class EMFRepositoryDataSink implements TypedEventHandler<EObject> {
     @Activate
     public EMFRepositoryDataSink(Config config) {
         this.config = config;
-        LOGGER.info("EMFRepositoryDataSink activated - Topic: '" + config.event_topic() +
+        LOGGER.info("EMFRepositoryDataSink activated - Topic: '" + config.event_topics() +
                    "', Repository Target: '" + config.repo_target() +
                    "', Merge Strategy: " + config.merger_strategy() +
                    ", Detailed Logging: " + config.detailed_logging());

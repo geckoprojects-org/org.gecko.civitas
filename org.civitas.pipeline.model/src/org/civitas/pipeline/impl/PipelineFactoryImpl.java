@@ -67,11 +67,7 @@ public class PipelineFactoryImpl extends EFactoryImpl implements PipelineFactory
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case PipelinePackage.PIPELINE_STEP: return createPipelineStep();
-			case PipelinePackage.DATA_FOUNTAIN: return createDataFountain();
-			case PipelinePackage.DATA_SINK: return createDataSink();
-			case PipelinePackage.HANDLER: return createHandler();
-			case PipelinePackage.PIPLINE: return createPipline();
+			case PipelinePackage.PIPELINE: return createPipeline();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -83,53 +79,9 @@ public class PipelineFactoryImpl extends EFactoryImpl implements PipelineFactory
 	 * @generated
 	 */
 	@Override
-	public PipelineStep createPipelineStep() {
-		PipelineStepImpl pipelineStep = new PipelineStepImpl();
-		return pipelineStep;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public DataFountain createDataFountain() {
-		DataFountainImpl dataFountain = new DataFountainImpl();
-		return dataFountain;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public DataSink createDataSink() {
-		DataSinkImpl dataSink = new DataSinkImpl();
-		return dataSink;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Handler createHandler() {
-		HandlerImpl handler = new HandlerImpl();
-		return handler;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Pipline createPipline() {
-		PiplineImpl pipline = new PiplineImpl();
-		return pipline;
+	public Pipeline createPipeline() {
+		PipelineImpl pipeline = new PipelineImpl();
+		return pipeline;
 	}
 
 	/**

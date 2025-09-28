@@ -30,7 +30,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * </ul>
  *
  * @see org.civitas.osgi.component.ComponentConfigPackage#getConfiguration()
- * @model
+ * @model interface="true" abstract="true"
  * @generated
  */
 @ProviderType

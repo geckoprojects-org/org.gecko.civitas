@@ -19,5 +19,7 @@
 Bundle-Version: 1.0.0.SNAPSHOT
 
 -buildpath: \
-	org.osgi.service.condition;version=latest
+	org.osgi.service.condition;version=latest,\
+	org.civitas.osgi.component.configuration.model;version=snapshot
 
+-workingset: dataatlas

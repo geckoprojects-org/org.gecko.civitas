@@ -13,13 +13,15 @@
  */
 package org.civitas.pipeline.impl;
 
-import org.civitas.pipeline.DataFountain;
+import org.civitas.osgi.component.ComponentConfigPackage;
+
 import org.civitas.pipeline.DataSink;
+import org.civitas.pipeline.DataSource;
 import org.civitas.pipeline.Handler;
+import org.civitas.pipeline.Pipeline;
 import org.civitas.pipeline.PipelineFactory;
 import org.civitas.pipeline.PipelinePackage;
 import org.civitas.pipeline.PipelineStep;
-import org.civitas.pipeline.Pipline;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -47,7 +49,7 @@ public class PipelinePackageImpl extends EPackageImpl implements PipelinePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass dataFountainEClass = null;
+	private EClass dataSourceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,7 +70,7 @@ public class PipelinePackageImpl extends EPackageImpl implements PipelinePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass piplineEClass = null;
+	private EClass pipelineEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -116,6 +118,9 @@ public class PipelinePackageImpl extends EPackageImpl implements PipelinePackage
 
 		isInited = true;
 
+		// Initialize simple dependencies
+		ComponentConfigPackage.eINSTANCE.eClass();
+
 		// Create package meta-data objects
 		thePipelinePackage.createPackageContents();
 
@@ -156,8 +161,8 @@ public class PipelinePackageImpl extends EPackageImpl implements PipelinePackage
 	 * @generated
 	 */
 	@Override
-	public EClass getDataFountain() {
-		return dataFountainEClass;
+	public EClass getDataSource() {
+		return dataSourceEClass;
 	}
 
 	/**
@@ -166,8 +171,8 @@ public class PipelinePackageImpl extends EPackageImpl implements PipelinePackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDataFountain_Outputs() {
-		return (EReference)dataFountainEClass.getEStructuralFeatures().get(0);
+	public EReference getDataSource_Outputs() {
+		return (EReference)dataSourceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -206,8 +211,8 @@ public class PipelinePackageImpl extends EPackageImpl implements PipelinePackage
 	 * @generated
 	 */
 	@Override
-	public EReference getHandler_Outputs() {
-		return (EReference)handlerEClass.getEStructuralFeatures().get(0);
+	public EClass getPipeline() {
+		return pipelineEClass;
 	}
 
 	/**
@@ -216,8 +221,8 @@ public class PipelinePackageImpl extends EPackageImpl implements PipelinePackage
 	 * @generated
 	 */
 	@Override
-	public EReference getHandler_Inputs() {
-		return (EReference)handlerEClass.getEStructuralFeatures().get(1);
+	public EAttribute getPipeline_Id() {
+		return (EAttribute)pipelineEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -226,8 +231,8 @@ public class PipelinePackageImpl extends EPackageImpl implements PipelinePackage
 	 * @generated
 	 */
 	@Override
-	public EClass getPipline() {
-		return piplineEClass;
+	public EReference getPipeline_Steps() {
+		return (EReference)pipelineEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -236,18 +241,8 @@ public class PipelinePackageImpl extends EPackageImpl implements PipelinePackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getPipline_Id() {
-		return (EAttribute)piplineEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getPipline_Steps() {
-		return (EReference)piplineEClass.getEStructuralFeatures().get(1);
+	public EReference getPipeline_Components() {
+		return (EReference)pipelineEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -282,19 +277,18 @@ public class PipelinePackageImpl extends EPackageImpl implements PipelinePackage
 		pipelineStepEClass = createEClass(PIPELINE_STEP);
 		createEAttribute(pipelineStepEClass, PIPELINE_STEP__ID);
 
-		dataFountainEClass = createEClass(DATA_FOUNTAIN);
-		createEReference(dataFountainEClass, DATA_FOUNTAIN__OUTPUTS);
+		dataSourceEClass = createEClass(DATA_SOURCE);
+		createEReference(dataSourceEClass, DATA_SOURCE__OUTPUTS);
 
 		dataSinkEClass = createEClass(DATA_SINK);
 		createEReference(dataSinkEClass, DATA_SINK__INPUTS);
 
 		handlerEClass = createEClass(HANDLER);
-		createEReference(handlerEClass, HANDLER__OUTPUTS);
-		createEReference(handlerEClass, HANDLER__INPUTS);
 
-		piplineEClass = createEClass(PIPLINE);
-		createEAttribute(piplineEClass, PIPLINE__ID);
-		createEReference(piplineEClass, PIPLINE__STEPS);
+		pipelineEClass = createEClass(PIPELINE);
+		createEAttribute(pipelineEClass, PIPELINE__ID);
+		createEReference(pipelineEClass, PIPELINE__STEPS);
+		createEReference(pipelineEClass, PIPELINE__COMPONENTS);
 	}
 
 	/**
@@ -320,32 +314,36 @@ public class PipelinePackageImpl extends EPackageImpl implements PipelinePackage
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		ComponentConfigPackage theComponentConfigPackage = (ComponentConfigPackage)EPackage.Registry.INSTANCE.getEPackage(ComponentConfigPackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		dataFountainEClass.getESuperTypes().add(this.getPipelineStep());
+		dataSourceEClass.getESuperTypes().add(this.getPipelineStep());
 		dataSinkEClass.getESuperTypes().add(this.getPipelineStep());
 		handlerEClass.getESuperTypes().add(this.getPipelineStep());
+		handlerEClass.getESuperTypes().add(this.getDataSource());
+		handlerEClass.getESuperTypes().add(this.getDataSink());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(pipelineStepEClass, PipelineStep.class, "PipelineStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPipelineStep_Id(), ecorePackage.getEString(), "id", null, 0, 1, PipelineStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(pipelineStepEClass, PipelineStep.class, "PipelineStep", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPipelineStep_Id(), ecorePackage.getEString(), "id", null, 0, 1, PipelineStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dataFountainEClass, DataFountain.class, "DataFountain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDataFountain_Outputs(), this.getPipelineStep(), null, "outputs", null, 1, -1, DataFountain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(dataSourceEClass, DataSource.class, "DataSource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataSource_Outputs(), this.getDataSink(), this.getDataSink_Inputs(), "outputs", null, 1, -1, DataSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dataSinkEClass, DataSink.class, "DataSink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDataSink_Inputs(), this.getPipelineStep(), null, "inputs", null, 1, -1, DataSink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(dataSinkEClass, DataSink.class, "DataSink", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataSink_Inputs(), this.getDataSource(), this.getDataSource_Outputs(), "inputs", null, 1, -1, DataSink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(handlerEClass, Handler.class, "Handler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHandler_Outputs(), this.getPipelineStep(), null, "outputs", null, 1, -1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHandler_Inputs(), this.getPipelineStep(), null, "inputs", null, 1, -1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(handlerEClass, Handler.class, "Handler", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(piplineEClass, Pipline.class, "Pipline", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPipline_Id(), ecorePackage.getEString(), "id", null, 0, 1, Pipline.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipline_Steps(), this.getPipelineStep(), null, "steps", null, 0, -1, Pipline.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(pipelineEClass, Pipeline.class, "Pipeline", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPipeline_Id(), ecorePackage.getEString(), "id", null, 0, 1, Pipeline.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPipeline_Steps(), this.getPipelineStep(), null, "steps", null, 0, -1, Pipeline.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPipeline_Components(), theComponentConfigPackage.getConfiguration(), null, "components", null, 0, -1, Pipeline.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -390,7 +388,8 @@ public class PipelinePackageImpl extends EPackageImpl implements PipelinePackage
 			   "complianceLevel", "17.0",
 			   "oSGiCompatible", "true",
 			   "basePackage", "org.civitas",
-			   "resource", "XMI"
+			   "resource", "XMI",
+			   "copyrightText", "Copyright (c) 2012 - 2025 Data In Motion and others.\nAll rights reserved. \n\nThis program and the accompanying materials are made\navailable under the terms of the Eclipse Public License 2.0\nwhich is available at https://www.eclipse.org/legal/epl-2.0/\n\nSPDX-License-Identifier: EPL-2.0\n\nContributors:\n    Data In Motion - initial API and implementation"
 		   });
 	}
 
@@ -403,22 +402,16 @@ public class PipelinePackageImpl extends EPackageImpl implements PipelinePackage
 	protected void createExtendedMetaDataAnnotations() {
 		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
 		addAnnotation
-		  (getDataFountain_Outputs(),
+		  (getDataSource_Outputs(),
 		   source,
 		   new String[] {
-			   "osgi.config.property", "event.topics"
+			   "name", "forward.topics"
 		   });
 		addAnnotation
 		  (getDataSink_Inputs(),
 		   source,
 		   new String[] {
-			   "osgi.config.property", "event.topics"
-		   });
-		addAnnotation
-		  (getHandler_Inputs(),
-		   source,
-		   new String[] {
-			   "osgi.config.property", "event.topics"
+			   "name", "event.topics"
 		   });
 	}
 

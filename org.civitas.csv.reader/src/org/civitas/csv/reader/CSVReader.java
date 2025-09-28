@@ -69,7 +69,7 @@ public class CSVReader implements CSVReaderService{
 	    try {
 	      resource.load(new ByteArrayInputStream(row.getBytes()), properties);
 	      if(!resource.getContents().isEmpty()) {
-	        if(!resource.getContents().get(0).eClass().getInstanceClassName().equals(rootObject.getInstanceClassName())) {
+	        if(resource.getContents().get(0).eClass() != rootObject) {
 	          LOGGER.warning(String.format("Root Object loaded from CSVResource is not of type %s but of type %s", rootObject.getInstanceClass(), resource.getContents().get(0).eClass().getInstanceClassName()));
 	        } else {
 	          results.add(resource.getContents().get(0));

@@ -46,7 +46,7 @@ import org.slf4j.LoggerFactory;
 import io.minio.Result;
 import io.minio.messages.Item;
 
-@Component(name="MinIOCSVDownloadService", configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(name="MinIOCSVDownloadService", configurationPid = "MinIOCSVDownloadServiceConfig", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class MinIOCSVDownloadService {
     
     private Logger logger = LoggerFactory.getLogger(MinIOCSVDownloadService.class);
@@ -72,7 +72,7 @@ public class MinIOCSVDownloadService {
       String eClassUri();
 
       @AttributeDefinition(name = "The Forward Topcis", description = "The topic to publish parsed EObjects to")
-      String[] forward_topic() default "org/civitas/meter/data/parsed";
+      String[] forward_topics() default "org/civitas/meter/data/parsed";
     }
     
     @Reference(name="client")
@@ -175,7 +175,7 @@ public class MinIOCSVDownloadService {
     }
 
     private void sendAhead(String fileName, List<EObject> objects) {
-        List<String> topics = Arrays.asList(config.forward_topic());
+        List<String> topics = Arrays.asList(config.forward_topics());
 	for (int i = 0; i < objects.size(); i++) {
             EObject obj = objects.get(i);
 

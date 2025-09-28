@@ -9,39 +9,36 @@
     <details key="oSGiCompatible" value="true"/>
     <details key="basePackage" value="org.civitas"/>
     <details key="resource" value="XMI"/>
+    <details key="copyrightText" value="Copyright (c) 2012 - 2025 Data In Motion and others.&#xA;All rights reserved. &#xA;&#xA;This program and the accompanying materials are made&#xA;available under the terms of the Eclipse Public License 2.0&#xA;which is available at https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;&#xA;Contributors:&#xA;    Data In Motion - initial API and implementation"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="PipelineStep">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PipelineStep" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataFountain" eSuperTypes="#//PipelineStep">
+  <eClassifiers xsi:type="ecore:EClass" name="DataSource" abstract="true" eSuperTypes="#//PipelineStep">
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" lowerBound="1"
-        upperBound="-1" eType="#//PipelineStep">
+        upperBound="-1" eType="#//DataSink" eOpposite="#//DataSink/inputs">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="osgi.config.property" value="event.topics"/>
+        <details key="name" value="forward.topics"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataSink" eSuperTypes="#//PipelineStep">
+  <eClassifiers xsi:type="ecore:EClass" name="DataSink" abstract="true" eSuperTypes="#//PipelineStep">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" lowerBound="1"
-        upperBound="-1" eType="#//PipelineStep">
+        upperBound="-1" eType="#//DataSource" eOpposite="#//DataSource/outputs">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="osgi.config.property" value="event.topics"/>
+        <details key="name" value="event.topics"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Handler" eSuperTypes="#//PipelineStep">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" lowerBound="1"
-        upperBound="-1" eType="#//PipelineStep"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" lowerBound="1"
-        upperBound="-1" eType="#//PipelineStep">
-      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="osgi.config.property" value="event.topics"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Pipline">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Handler" abstract="true" eSuperTypes="#//PipelineStep #//DataSource #//DataSink"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Pipeline">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
         eType="#//PipelineStep" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
+        eType="ecore:EClass ../../org.civitas.osgi.component.configuration.model/model/component.ecore#//Configuration"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

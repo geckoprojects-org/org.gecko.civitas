@@ -83,10 +83,10 @@ public class PipelineSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PipelinePackage.DATA_FOUNTAIN: {
-				DataFountain dataFountain = (DataFountain)theEObject;
-				T result = caseDataFountain(dataFountain);
-				if (result == null) result = casePipelineStep(dataFountain);
+			case PipelinePackage.DATA_SOURCE: {
+				DataSource dataSource = (DataSource)theEObject;
+				T result = caseDataSource(dataSource);
+				if (result == null) result = casePipelineStep(dataSource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -100,13 +100,15 @@ public class PipelineSwitch<T> extends Switch<T> {
 			case PipelinePackage.HANDLER: {
 				Handler handler = (Handler)theEObject;
 				T result = caseHandler(handler);
+				if (result == null) result = caseDataSource(handler);
+				if (result == null) result = caseDataSink(handler);
 				if (result == null) result = casePipelineStep(handler);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PipelinePackage.PIPLINE: {
-				Pipline pipline = (Pipline)theEObject;
-				T result = casePipline(pipline);
+			case PipelinePackage.PIPELINE: {
+				Pipeline pipeline = (Pipeline)theEObject;
+				T result = casePipeline(pipeline);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -130,17 +132,17 @@ public class PipelineSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Fountain</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Data Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Fountain</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Data Source</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDataFountain(DataFountain object) {
+	public T caseDataSource(DataSource object) {
 		return null;
 	}
 
@@ -175,17 +177,17 @@ public class PipelineSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Pipline</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Pipeline</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Pipline</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Pipeline</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePipline(Pipline object) {
+	public T casePipeline(Pipeline object) {
 		return null;
 	}
 

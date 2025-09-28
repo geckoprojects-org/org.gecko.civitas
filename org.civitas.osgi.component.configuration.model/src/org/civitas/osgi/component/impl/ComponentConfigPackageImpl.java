@@ -180,7 +180,7 @@ public class ComponentConfigPackageImpl extends EPackageImpl implements Componen
 		// Add supertypes to classes
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(configurationEClass, Configuration.class, "Configuration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(configurationEClass, Configuration.class, "Configuration", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConfiguration_Pid(), ecorePackage.getEString(), "pid", null, 0, 1, Configuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
@@ -224,7 +224,8 @@ public class ComponentConfigPackageImpl extends EPackageImpl implements Componen
 			   "complianceLevel", "17.0",
 			   "oSGiCompatible", "true",
 			   "basePackage", "org.civitas.osgi",
-			   "resource", "XMI"
+			   "resource", "XMI",
+			   "copyrightText", "Copyright (c) 2012 - 2025 Data In Motion and others.\nAll rights reserved. \n\nThis program and the accompanying materials are made\navailable under the terms of the Eclipse Public License 2.0\nwhich is available at https://www.eclipse.org/legal/epl-2.0/\n\nSPDX-License-Identifier: EPL-2.0\n\nContributors:\n    Data In Motion - initial API and implementation"
 		   });
 	}
 
