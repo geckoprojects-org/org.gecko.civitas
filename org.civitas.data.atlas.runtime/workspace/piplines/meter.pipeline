@@ -4,9 +4,9 @@
     <eClass href="../models/meter-source.ecore#//OperatingData"/>
   </steps>
   <steps xsi:type="emfattacherconfig:EMFAttacherHandlerConfig" pid="plant_id_attacher" id="plant_id_attacher" inputs="//@steps.0" repoTarget="(repo_id=inmem)">
-    <targetEClassUri href="../models/meter-source.ecore#//IntermediatePlant"/>
-    <incomingEClassUri href="../models/meter-source.ecore#//OperatingData"/>
-    <targetReferenceUri href="../models/meter-source.ecore#//IntermediatePlant/operatingData"/>
+    <targetEClassUri href="../models/meter/meter-source.ecore#//IntermediatePlant"/>
+    <incomingEClassUri href="../models/meter/meter-source.ecore#//OperatingData"/>
+    <targetReferenceUri href="../models/meter/meter-source.ecore#//IntermediatePlant/operatingData"/>
     <foreignKeyFeatureUri xsi:type="ecore:EAttribute" href="../models/meter-source.ecore#//OperatingData/plantId"/>
   </steps>
   <components xsi:type="minioconfig:MinIOClientConfig" pid="minioClient" accessKey="minio" secretKey="minio123"/>

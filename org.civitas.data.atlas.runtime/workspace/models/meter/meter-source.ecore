@@ -41,12 +41,12 @@
         <details key="name" value="plant_id"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operatingHours" eType="ecore:EDataType units.ecore#//Hours">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operatingHours" eType="ecore:EDataType ../units.ecore#//Hours">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="name" value="operating_hours"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="starts" eType="ecore:EDataType units.ecore#//EInstant"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="starts" eType="ecore:EDataType ../units.ecore#//EInstant"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Meter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="plantId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
@@ -74,7 +74,7 @@
         <details key="name" value="meter_id"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType units.ecore#//KilowattHours"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType ../units.ecore#//KilowattHours"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Customer">
