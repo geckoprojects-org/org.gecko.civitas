@@ -6,12 +6,18 @@
 	org.gecko.emf.repository.api;version=latest,\
 	org.eclipse.fennec.persistence.eclipselink;version=latest,\
 	org.eclipse.fennec.persistence.orm;version=latest,\
-	org.civitas.meter.source.model;version=snapshot,\
 	jakarta.persistence-api,\
-	org.osgi.service.typedevent
+	org.osgi.service.typedevent,\
+	org.civitas.osgi.component.configuration.model,\
+	org.civitas.pipeline.model
 	
 -includeresource: \
-	OSGI-INF/configurator/=configs/
+	model=model
 
 Bundle-Name: Database Connection for the Meter Use-Case
-Require-Capability: osgi.extender;filter:='(osgi.extender=osgi.configurator)'
+-generate:\
+    model/scheduled-loader.genmodel;\
+        generate=geckoEMF;\
+        genmodel=model/scheduled-loader.genmodel;\
+        output=src-gen
+-workingset: handler

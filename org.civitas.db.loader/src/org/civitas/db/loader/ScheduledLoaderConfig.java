@@ -11,7 +11,7 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package org.civitas.meter.db;
+package org.civitas.db.loader;
 
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
@@ -42,7 +42,7 @@ public @interface ScheduledLoaderConfig {
 	String repo_target();
 
 	@AttributeDefinition(name = "EClass Name", description = "The name of the EClass to load from the repository (e.g., 'Meter', 'Reading', 'RemoteReading')")
-	String eclass_name();
+	String eclass();
 
 	@AttributeDefinition(name = "Package Name", description = "The EMF package name to use for EClass lookup")
 	String package_target() default "metersource";

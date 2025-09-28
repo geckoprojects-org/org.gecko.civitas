@@ -11,8 +11,9 @@
  * Contributors:
  *     Data In Motion - initial API and implementation
  */
-package org.civitas.meter.db;
+package org.civitas.db.loader;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executors;
@@ -43,7 +44,7 @@ import org.osgi.service.typedevent.TypedEventBus;
  * @since 26.09.2025
  */
 @Designate(ocd = ScheduledLoaderConfig.class)
-@Component(name = "GenericScheduledLoader", configurationPid = "GenericScheduledLoader", configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(name = "GenericScheduledLoader", configurationPid = "ScheduledLoaderConfig", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class GenericScheduledLoader {
 
 	private static final Logger LOGGER = Logger.getLogger(GenericScheduledLoader.class.getName());
@@ -69,9 +70,10 @@ public class GenericScheduledLoader {
 		this.config = config;
 		currentOffset = config.initial_query_skip();
 		// Get the EClass from the package
-		eClass = (EClass) ePackage.getEClassifier(config.eclass_name());
+		URI eClassURI = URI.create(config.eclass());
+		eClass = (EClass) ePackage.eResource().getEObject(eClassURI.getFragment());
 		if (eClass == null) {
-			throw new IllegalArgumentException("EClass '" + config.eclass_name() + "' not found in package: " + ePackage.getName());
+			throw new IllegalArgumentException("EClass '" + config.eclass() + "' not found in package: " + ePackage.getName());
 		}
 
 
@@ -83,7 +85,7 @@ public class GenericScheduledLoader {
 
 		startScheduledLoading();
 		LOGGER.info("Generic Scheduled Loader '" + config.loader_name() + "' activated: repository=" + config.repo_target() +
-				   ", eClass=" + config.eclass_name() + ", interval=" + config.schedule_interval() + "s, offset=" + config.initial_query_skip());
+				   ", eClass=" + config.eclass() + ", interval=" + config.schedule_interval() + "s, offset=" + config.initial_query_skip());
 	}
 
 	@Deactivate
