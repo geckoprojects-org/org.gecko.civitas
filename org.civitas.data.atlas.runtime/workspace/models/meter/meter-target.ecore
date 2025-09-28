@@ -4,6 +4,11 @@
   <eAnnotations source="Version">
     <details key="value" value="1.0"/>
   </eAnnotations>
+  <eAnnotations source="properties">
+    <details key="Rest" value="true"/>
+    <details key="GraphQL" value="true"/>
+    <details key="repo.ref.target" value="(repo_id=plantTarget)"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Plant">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>

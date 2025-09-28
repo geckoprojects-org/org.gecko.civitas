@@ -38,7 +38,8 @@ slf4j.runpath:  \
 	bnd.identity;id='org.civitas.model.atlas',\
 	bnd.identity;id='org.civitas.data.atlas.runtime.config',\
 	bnd.identity;id='org.eclipse.fennec.data.atlas.pipline.configurator',\
-	bnd.identity;id='org.gecko.emf.repository.file'
+	bnd.identity;id='org.gecko.emf.repository.file',\
+	bnd.identity;id='org.civitas.atlas.common.configuration'
 	
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 -runee: JavaSE-21
@@ -124,9 +125,6 @@ slf4j.runpath:  \
 	org.eclipse.ocl.common;version='[1.0.0,1.0.1)',\
 	org.eclipse.ocl.ecore;version='[1.0.0,1.0.1)',\
 	org.gecko.emf.repository.api;version='[9.3.1,9.3.2)',\
-	com.fasterxml.jackson.dataformat.jackson-dataformat-properties;version='[2.14.1,2.14.2)',\
-	com.fasterxml.jackson.dataformat.jackson-dataformat-yaml;version='[2.14.1,2.14.2)',\
-	com.fasterxml.jackson.datatype.jackson-datatype-jsr310;version='[2.14.1,2.14.2)',\
 	de.jena.mdo.emf.common;version=snapshot,\
 	de.siegmar.fastcsv;version='[3.4.0,3.4.1)',\
 	org.civitas.model.atlas;version=snapshot,\
@@ -143,7 +141,6 @@ slf4j.runpath:  \
 	org.eclipse.fennec.persistence.orm;version='[1.0.0,1.0.1)',\
 	org.gecko.emf.json;version='[1.5.1,1.5.2)',\
 	org.postgresql.jdbc;version='[42.7.3,42.7.4)',\
-	org.yaml.snakeyaml;version='[1.33.0,1.33.1)',\
 	org.civitas.data.atlas.runtime.config;version=snapshot,\
 	org.civitas.osgi.component.configuration.model;version=snapshot,\
 	org.civitas.pipeline.model;version=snapshot,\
@@ -156,4 +153,10 @@ slf4j.runpath:  \
 	org.eclipse.persistence.asm;version='[9.8.0,9.8.1)',\
 	org.eclipse.persistence.core;version='[4.0.8,4.0.9)',\
 	org.eclipse.persistence.jpa;version='[4.0.8,4.0.9)',\
-	org.eclipse.persistence.jpa.jpql;version='[4.0.8,4.0.9)'
+	org.eclipse.persistence.jpa.jpql;version='[4.0.8,4.0.9)',\
+	com.fasterxml.jackson.dataformat.jackson-dataformat-properties;version='[2.18.0,2.18.1)',\
+	com.fasterxml.jackson.dataformat.jackson-dataformat-yaml;version='[2.18.0,2.18.1)',\
+	com.fasterxml.jackson.datatype.jackson-datatype-jsr310;version='[2.18.0,2.18.1)',\
+	org.civitas.atlas.common.configuration;version=snapshot,\
+	org.eclipse.sensinact.gateway.core.geo-json.model;version='[1.0.0,1.0.1)',\
+	org.yaml.snakeyaml;version='[2.2.0,2.2.1)'

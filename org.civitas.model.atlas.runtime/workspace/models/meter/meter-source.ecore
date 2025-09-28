@@ -24,7 +24,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="net" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="city" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="zip" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="zip" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="street" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperatingData">
@@ -41,7 +41,8 @@
         <details key="name" value="plant_id"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operatingHours" eType="ecore:EDataType ../units.ecore#//Hours">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operatingHours" lowerBound="1"
+        eType="ecore:EDataType ../units.ecore#//Hours">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="name" value="operating_hours"/>
       </eAnnotations>
@@ -84,9 +85,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntermediatePlant">
     <eStructuralFeatures xsi:type="ecore:EReference" name="operatingData" upperBound="-1"
-        eType="#//OperatingData"/>
+        eType="#//OperatingData" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="basicData" lowerBound="1"
-        eType="#//BasicData"/>
+        eType="#//BasicData" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
   </eClassifiers>
@@ -95,7 +96,7 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="plantId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="readings" upperBound="-1"
-        eType="#//Reading"/>
+        eType="#//Reading" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RemoteReading">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
