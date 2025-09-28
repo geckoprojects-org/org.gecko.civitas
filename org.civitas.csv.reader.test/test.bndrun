@@ -12,7 +12,7 @@
 
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 
--runee: JavaSE-17
+-runee: JavaSE-21
 
 -runbundles: \
 	assertj-core;version='[3.26.3,3.26.4)',\
