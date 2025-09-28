@@ -53,10 +53,10 @@ pipeline  {
             steps  {
                 echo "I am exporting applications on branch: ${env.GIT_BRANCH}"
 
-                sh "./gradlew org.civitas.data.atlas.runtime:resolve.meter.runtime_base --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-                sh "./gradlew org.civitas.data.atlas.runtime:export.meter.runtime_docker --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-                sh "./gradlew org.civitas.model.atlas.runtime:resolve.glt.runtime_base --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-                sh "./gradlew org.civitas.model.atlas.runtime:export.glt.runtime_docker --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew org.civitas.data.atlas.runtime:resolve.dataatlas.runtime_base --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew org.civitas.data.atlas.runtime:export.dataatlas.runtime_docker --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew org.civitas.model.atlas.runtime:resolve.modelatlas.runtime_base --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew org.civitas.model.atlas.runtime:export.modelatlas.runtime_docker --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
             }
         }
 
