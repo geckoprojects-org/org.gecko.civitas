@@ -34,10 +34,10 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link org.civitas.meter.target.Plant#getPostalcode <em>Postalcode</em>}</li>
  *   <li>{@link org.civitas.meter.target.Plant#getStreet <em>Street</em>}</li>
  *   <li>{@link org.civitas.meter.target.Plant#getHouseNumber <em>House Number</em>}</li>
- *   <li>{@link org.civitas.meter.target.Plant#getNet <em>Net</em>}</li>
  *   <li>{@link org.civitas.meter.target.Plant#getOperatingData <em>Operating Data</em>}</li>
  *   <li>{@link org.civitas.meter.target.Plant#getMeteringPoints <em>Metering Points</em>}</li>
  *   <li>{@link org.civitas.meter.target.Plant#getParts <em>Parts</em>}</li>
+ *   <li>{@link org.civitas.meter.target.Plant#getMeter <em>Meter</em>}</li>
  * </ul>
  *
  * @see org.civitas.meter.target.targetPackage#getPlant()
@@ -179,28 +179,6 @@ public interface Plant extends EObject {
 	void setHouseNumber(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Net</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Net</em>' reference.
-	 * @see #setNet(Net)
-	 * @see org.civitas.meter.target.targetPackage#getPlant_Net()
-	 * @model required="true"
-	 * @generated
-	 */
-	Net getNet();
-
-	/**
-	 * Sets the value of the '{@link org.civitas.meter.target.Plant#getNet <em>Net</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Net</em>' reference.
-	 * @see #getNet()
-	 * @generated
-	 */
-	void setNet(Net value);
-
-	/**
 	 * Returns the value of the '<em><b>Operating Data</b></em>' containment reference list.
 	 * The list contents are of type {@link org.civitas.meter.target.OperatingData}.
 	 * It is bidirectional and its opposite is '{@link org.civitas.meter.target.OperatingData#getPlant <em>Plant</em>}'.
@@ -231,13 +209,27 @@ public interface Plant extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Parts</b></em>' containment reference list.
 	 * The list contents are of type {@link org.civitas.meter.target.Parts}.
+	 * It is bidirectional and its opposite is '{@link org.civitas.meter.target.Parts#getPlant <em>Plant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parts</em>' containment reference list.
 	 * @see org.civitas.meter.target.targetPackage#getPlant_Parts()
-	 * @model containment="true"
+	 * @see org.civitas.meter.target.Parts#getPlant
+	 * @model opposite="plant" containment="true"
 	 * @generated
 	 */
 	EList<Parts> getParts();
+
+	/**
+	 * Returns the value of the '<em><b>Meter</b></em>' containment reference list.
+	 * The list contents are of type {@link org.civitas.meter.target.Meter}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Meter</em>' containment reference list.
+	 * @see org.civitas.meter.target.targetPackage#getPlant_Meter()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Meter> getMeter();
 
 } // Plant

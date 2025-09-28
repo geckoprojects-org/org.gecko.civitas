@@ -74,7 +74,6 @@ public class targetFactoryImpl extends EFactoryImpl implements targetFactory {
 			case targetPackage.METERING_POINT: return createMeteringPoint();
 			case targetPackage.METER: return createMeter();
 			case targetPackage.METER_READING: return createMeterReading();
-			case targetPackage.METER_HISTORY: return createMeterHistory();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -155,17 +154,6 @@ public class targetFactoryImpl extends EFactoryImpl implements targetFactory {
 	public MeterReading createMeterReading() {
 		MeterReadingImpl meterReading = new MeterReadingImpl();
 		return meterReading;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public MeterHistory createMeterHistory() {
-		MeterHistoryImpl meterHistory = new MeterHistoryImpl();
-		return meterHistory;
 	}
 
 	/**

@@ -50,7 +50,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.civitas.qvthandler.impl.QVTHandlerConfigImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.civitas.qvthandler.impl.QVTHandlerConfigImpl#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link org.civitas.qvthandler.impl.QVTHandlerConfigImpl#getInputs <em>Inputs</em>}</li>
- *   <li>{@link org.civitas.qvthandler.impl.QVTHandlerConfigImpl#getTrafoTarget <em>Trafo Target</em>}</li>
+ *   <li>{@link org.civitas.qvthandler.impl.QVTHandlerConfigImpl#getTrafo <em>Trafo</em>}</li>
  *   <li>{@link org.civitas.qvthandler.impl.QVTHandlerConfigImpl#getEclassuri <em>Eclassuri</em>}</li>
  * </ul>
  *
@@ -118,24 +118,24 @@ public class QVTHandlerConfigImpl extends MinimalEObjectImpl.Container implement
 	protected EList<DataSource> inputs;
 
 	/**
-	 * The default value of the '{@link #getTrafoTarget() <em>Trafo Target</em>}' attribute.
+	 * The default value of the '{@link #getTrafo() <em>Trafo</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTrafoTarget()
+	 * @see #getTrafo()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRAFO_TARGET_EDEFAULT = null;
+	protected static final String TRAFO_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTrafoTarget() <em>Trafo Target</em>}' attribute.
+	 * The cached value of the '{@link #getTrafo() <em>Trafo</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTrafoTarget()
+	 * @see #getTrafo()
 	 * @generated
 	 * @ordered
 	 */
-	protected String trafoTarget = TRAFO_TARGET_EDEFAULT;
+	protected String trafo = TRAFO_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getEclassuri() <em>Eclassuri</em>}' reference.
@@ -244,8 +244,8 @@ public class QVTHandlerConfigImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 */
 	@Override
-	public String getTrafoTarget() {
-		return trafoTarget;
+	public String getTrafo() {
+		return trafo;
 	}
 
 	/**
@@ -254,11 +254,11 @@ public class QVTHandlerConfigImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 */
 	@Override
-	public void setTrafoTarget(String newTrafoTarget) {
-		String oldTrafoTarget = trafoTarget;
-		trafoTarget = newTrafoTarget;
+	public void setTrafo(String newTrafo) {
+		String oldTrafo = trafo;
+		trafo = newTrafo;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QvthandlerPackage.QVT_HANDLER_CONFIG__TRAFO_TARGET, oldTrafoTarget, trafoTarget));
+			eNotify(new ENotificationImpl(this, Notification.SET, QvthandlerPackage.QVT_HANDLER_CONFIG__TRAFO, oldTrafo, trafo));
 	}
 
 	/**
@@ -350,8 +350,8 @@ public class QVTHandlerConfigImpl extends MinimalEObjectImpl.Container implement
 				return getOutputs();
 			case QvthandlerPackage.QVT_HANDLER_CONFIG__INPUTS:
 				return getInputs();
-			case QvthandlerPackage.QVT_HANDLER_CONFIG__TRAFO_TARGET:
-				return getTrafoTarget();
+			case QvthandlerPackage.QVT_HANDLER_CONFIG__TRAFO:
+				return getTrafo();
 			case QvthandlerPackage.QVT_HANDLER_CONFIG__ECLASSURI:
 				if (resolve) return getEclassuri();
 				return basicGetEclassuri();
@@ -382,8 +382,8 @@ public class QVTHandlerConfigImpl extends MinimalEObjectImpl.Container implement
 				getInputs().clear();
 				getInputs().addAll((Collection<? extends DataSource>)newValue);
 				return;
-			case QvthandlerPackage.QVT_HANDLER_CONFIG__TRAFO_TARGET:
-				setTrafoTarget((String)newValue);
+			case QvthandlerPackage.QVT_HANDLER_CONFIG__TRAFO:
+				setTrafo((String)newValue);
 				return;
 			case QvthandlerPackage.QVT_HANDLER_CONFIG__ECLASSURI:
 				setEclassuri((EClass)newValue);
@@ -412,8 +412,8 @@ public class QVTHandlerConfigImpl extends MinimalEObjectImpl.Container implement
 			case QvthandlerPackage.QVT_HANDLER_CONFIG__INPUTS:
 				getInputs().clear();
 				return;
-			case QvthandlerPackage.QVT_HANDLER_CONFIG__TRAFO_TARGET:
-				setTrafoTarget(TRAFO_TARGET_EDEFAULT);
+			case QvthandlerPackage.QVT_HANDLER_CONFIG__TRAFO:
+				setTrafo(TRAFO_EDEFAULT);
 				return;
 			case QvthandlerPackage.QVT_HANDLER_CONFIG__ECLASSURI:
 				setEclassuri((EClass)null);
@@ -438,8 +438,8 @@ public class QVTHandlerConfigImpl extends MinimalEObjectImpl.Container implement
 				return outputs != null && !outputs.isEmpty();
 			case QvthandlerPackage.QVT_HANDLER_CONFIG__INPUTS:
 				return inputs != null && !inputs.isEmpty();
-			case QvthandlerPackage.QVT_HANDLER_CONFIG__TRAFO_TARGET:
-				return TRAFO_TARGET_EDEFAULT == null ? trafoTarget != null : !TRAFO_TARGET_EDEFAULT.equals(trafoTarget);
+			case QvthandlerPackage.QVT_HANDLER_CONFIG__TRAFO:
+				return TRAFO_EDEFAULT == null ? trafo != null : !TRAFO_EDEFAULT.equals(trafo);
 			case QvthandlerPackage.QVT_HANDLER_CONFIG__ECLASSURI:
 				return eclassuri != null;
 		}
@@ -526,8 +526,8 @@ public class QVTHandlerConfigImpl extends MinimalEObjectImpl.Container implement
 		result.append(pid);
 		result.append(", id: ");
 		result.append(id);
-		result.append(", trafoTarget: ");
-		result.append(trafoTarget);
+		result.append(", trafo: ");
+		result.append(trafo);
 		result.append(')');
 		return result.toString();
 	}

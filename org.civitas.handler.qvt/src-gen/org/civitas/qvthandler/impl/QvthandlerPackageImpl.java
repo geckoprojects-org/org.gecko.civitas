@@ -122,7 +122,7 @@ public class QvthandlerPackageImpl extends EPackageImpl implements QvthandlerPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getQVTHandlerConfig_TrafoTarget() {
+	public EAttribute getQVTHandlerConfig_Trafo() {
 		return (EAttribute)qvtHandlerConfigEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -166,7 +166,7 @@ public class QvthandlerPackageImpl extends EPackageImpl implements QvthandlerPac
 
 		// Create classes and their features
 		qvtHandlerConfigEClass = createEClass(QVT_HANDLER_CONFIG);
-		createEAttribute(qvtHandlerConfigEClass, QVT_HANDLER_CONFIG__TRAFO_TARGET);
+		createEAttribute(qvtHandlerConfigEClass, QVT_HANDLER_CONFIG__TRAFO);
 		createEReference(qvtHandlerConfigEClass, QVT_HANDLER_CONFIG__ECLASSURI);
 	}
 
@@ -207,7 +207,7 @@ public class QvthandlerPackageImpl extends EPackageImpl implements QvthandlerPac
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(qvtHandlerConfigEClass, QVTHandlerConfig.class, "QVTHandlerConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getQVTHandlerConfig_TrafoTarget(), ecorePackage.getEString(), "trafoTarget", null, 0, 1, QVTHandlerConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getQVTHandlerConfig_Trafo(), ecorePackage.getEString(), "trafo", null, 0, 1, QVTHandlerConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getQVTHandlerConfig_Eclassuri(), ecorePackage.getEClass(), null, "eclassuri", null, 0, 1, QVTHandlerConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
@@ -227,10 +227,10 @@ public class QvthandlerPackageImpl extends EPackageImpl implements QvthandlerPac
 	protected void createExtendedMetaDataAnnotations() {
 		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
 		addAnnotation
-		  (getQVTHandlerConfig_TrafoTarget(),
+		  (getQVTHandlerConfig_Trafo(),
 		   source,
 		   new String[] {
-			   "name", "trafotarget"
+			   "name", "trafo.target"
 		   });
 	}
 

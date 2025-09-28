@@ -15,10 +15,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-target.ecore#//Plant/postalcode"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-target.ecore#//Plant/street"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-target.ecore#//Plant/houseNumber"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-target.ecore#//Plant/net"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference meter-target.ecore#//Plant/operatingData"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference meter-target.ecore#//Plant/meteringPoints"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference meter-target.ecore#//Plant/parts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference meter-target.ecore#//Plant/meter"/>
     </genClasses>
     <genClasses ecoreClass="meter-target.ecore#//Net">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-target.ecore#//Net/id"/>
@@ -41,9 +41,7 @@
     <genClasses ecoreClass="meter-target.ecore#//MeteringPoint">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-target.ecore#//MeteringPoint/id"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-target.ecore#//MeteringPoint/plant"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-target.ecore#//MeteringPoint/currentMeter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference meter-target.ecore#//MeteringPoint/meterReadings"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference meter-target.ecore#//MeteringPoint/meterHistory"/>
     </genClasses>
     <genClasses ecoreClass="meter-target.ecore#//Meter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-target.ecore#//Meter/id"/>
@@ -54,13 +52,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-target.ecore#//MeterReading/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-target.ecore#//MeterReading/timestamp"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-target.ecore#//MeterReading/meteringPoint"/>
-    </genClasses>
-    <genClasses ecoreClass="meter-target.ecore#//MeterHistory">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-target.ecore#//MeterHistory/id"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-target.ecore#//MeterHistory/removalStatus"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute meter-target.ecore#//MeterHistory/timestamp"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-target.ecore#//MeterHistory/meter"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference meter-target.ecore#//MeterHistory/meteringPoint"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

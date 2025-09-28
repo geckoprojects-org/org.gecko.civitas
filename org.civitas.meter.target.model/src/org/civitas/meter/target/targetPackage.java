@@ -139,22 +139,13 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	int PLANT__HOUSE_NUMBER = 5;
 
 	/**
-	 * The feature id for the '<em><b>Net</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLANT__NET = 6;
-
-	/**
 	 * The feature id for the '<em><b>Operating Data</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLANT__OPERATING_DATA = 7;
+	int PLANT__OPERATING_DATA = 6;
 
 	/**
 	 * The feature id for the '<em><b>Metering Points</b></em>' containment reference list.
@@ -163,7 +154,7 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLANT__METERING_POINTS = 8;
+	int PLANT__METERING_POINTS = 7;
 
 	/**
 	 * The feature id for the '<em><b>Parts</b></em>' containment reference list.
@@ -172,7 +163,16 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLANT__PARTS = 9;
+	int PLANT__PARTS = 8;
+
+	/**
+	 * The feature id for the '<em><b>Meter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLANT__METER = 9;
 
 	/**
 	 * The number of structural features of the '<em>Plant</em>' class.
@@ -294,7 +294,7 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	int PARTS__CONSTRUCTION_YEAR = 3;
 
 	/**
-	 * The feature id for the '<em><b>Plant</b></em>' reference.
+	 * The feature id for the '<em><b>Plant</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -413,31 +413,13 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	int METERING_POINT__PLANT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Current Meter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METERING_POINT__CURRENT_METER = 2;
-
-	/**
 	 * The feature id for the '<em><b>Meter Readings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int METERING_POINT__METER_READINGS = 3;
-
-	/**
-	 * The feature id for the '<em><b>Meter History</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METERING_POINT__METER_HISTORY = 4;
+	int METERING_POINT__METER_READINGS = 2;
 
 	/**
 	 * The number of structural features of the '<em>Metering Point</em>' class.
@@ -446,7 +428,7 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int METERING_POINT_FEATURE_COUNT = 5;
+	int METERING_POINT_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Metering Point</em>' class.
@@ -567,79 +549,6 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	 */
 	int METER_READING_OPERATION_COUNT = 0;
 
-	/**
-	 * The meta object id for the '{@link org.civitas.meter.target.impl.MeterHistoryImpl <em>Meter History</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.civitas.meter.target.impl.MeterHistoryImpl
-	 * @see org.civitas.meter.target.impl.targetPackageImpl#getMeterHistory()
-	 * @generated
-	 */
-	int METER_HISTORY = 7;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METER_HISTORY__ID = 0;
-
-	/**
-	 * The feature id for the '<em><b>Removal Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METER_HISTORY__REMOVAL_STATUS = 1;
-
-	/**
-	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METER_HISTORY__TIMESTAMP = 2;
-
-	/**
-	 * The feature id for the '<em><b>Meter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METER_HISTORY__METER = 3;
-
-	/**
-	 * The feature id for the '<em><b>Metering Point</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METER_HISTORY__METERING_POINT = 4;
-
-	/**
-	 * The number of structural features of the '<em>Meter History</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METER_HISTORY_FEATURE_COUNT = 5;
-
-	/**
-	 * The number of operations of the '<em>Meter History</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METER_HISTORY_OPERATION_COUNT = 0;
-
 
 	/**
 	 * Returns the meta object for class '{@link org.civitas.meter.target.Plant <em>Plant</em>}'.
@@ -718,17 +627,6 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getPlant_HouseNumber();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.civitas.meter.target.Plant#getNet <em>Net</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Net</em>'.
-	 * @see org.civitas.meter.target.Plant#getNet()
-	 * @see #getPlant()
-	 * @generated
-	 */
-	EReference getPlant_Net();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link org.civitas.meter.target.Plant#getOperatingData <em>Operating Data</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -760,6 +658,17 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EReference getPlant_Parts();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.civitas.meter.target.Plant#getMeter <em>Meter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Meter</em>'.
+	 * @see org.civitas.meter.target.Plant#getMeter()
+	 * @see #getPlant()
+	 * @generated
+	 */
+	EReference getPlant_Meter();
 
 	/**
 	 * Returns the meta object for class '{@link org.civitas.meter.target.Net <em>Net</em>}'.
@@ -859,10 +768,10 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	EAttribute getParts_ConstructionYear();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.civitas.meter.target.Parts#getPlant <em>Plant</em>}'.
+	 * Returns the meta object for the container reference '{@link org.civitas.meter.target.Parts#getPlant <em>Plant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Plant</em>'.
+	 * @return the meta object for the container reference '<em>Plant</em>'.
 	 * @see org.civitas.meter.target.Parts#getPlant()
 	 * @see #getParts()
 	 * @generated
@@ -956,17 +865,6 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	EReference getMeteringPoint_Plant();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.civitas.meter.target.MeteringPoint#getCurrentMeter <em>Current Meter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Current Meter</em>'.
-	 * @see org.civitas.meter.target.MeteringPoint#getCurrentMeter()
-	 * @see #getMeteringPoint()
-	 * @generated
-	 */
-	EReference getMeteringPoint_CurrentMeter();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link org.civitas.meter.target.MeteringPoint#getMeterReadings <em>Meter Readings</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -976,17 +874,6 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EReference getMeteringPoint_MeterReadings();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.civitas.meter.target.MeteringPoint#getMeterHistory <em>Meter History</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Meter History</em>'.
-	 * @see org.civitas.meter.target.MeteringPoint#getMeterHistory()
-	 * @see #getMeteringPoint()
-	 * @generated
-	 */
-	EReference getMeteringPoint_MeterHistory();
 
 	/**
 	 * Returns the meta object for class '{@link org.civitas.meter.target.Meter <em>Meter</em>}'.
@@ -1075,71 +962,6 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 	EReference getMeterReading_MeteringPoint();
 
 	/**
-	 * Returns the meta object for class '{@link org.civitas.meter.target.MeterHistory <em>Meter History</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Meter History</em>'.
-	 * @see org.civitas.meter.target.MeterHistory
-	 * @generated
-	 */
-	EClass getMeterHistory();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.civitas.meter.target.MeterHistory#getId <em>Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see org.civitas.meter.target.MeterHistory#getId()
-	 * @see #getMeterHistory()
-	 * @generated
-	 */
-	EAttribute getMeterHistory_Id();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.civitas.meter.target.MeterHistory#getRemovalStatus <em>Removal Status</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Removal Status</em>'.
-	 * @see org.civitas.meter.target.MeterHistory#getRemovalStatus()
-	 * @see #getMeterHistory()
-	 * @generated
-	 */
-	EAttribute getMeterHistory_RemovalStatus();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.civitas.meter.target.MeterHistory#getTimestamp <em>Timestamp</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Timestamp</em>'.
-	 * @see org.civitas.meter.target.MeterHistory#getTimestamp()
-	 * @see #getMeterHistory()
-	 * @generated
-	 */
-	EAttribute getMeterHistory_Timestamp();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.civitas.meter.target.MeterHistory#getMeter <em>Meter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Meter</em>'.
-	 * @see org.civitas.meter.target.MeterHistory#getMeter()
-	 * @see #getMeterHistory()
-	 * @generated
-	 */
-	EReference getMeterHistory_Meter();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.civitas.meter.target.MeterHistory#getMeteringPoint <em>Metering Point</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Metering Point</em>'.
-	 * @see org.civitas.meter.target.MeterHistory#getMeteringPoint()
-	 * @see #getMeterHistory()
-	 * @generated
-	 */
-	EReference getMeterHistory_MeteringPoint();
-
-	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1221,14 +1043,6 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute PLANT__HOUSE_NUMBER = eINSTANCE.getPlant_HouseNumber();
 
 		/**
-		 * The meta object literal for the '<em><b>Net</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PLANT__NET = eINSTANCE.getPlant_Net();
-
-		/**
 		 * The meta object literal for the '<em><b>Operating Data</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1251,6 +1065,14 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EReference PLANT__PARTS = eINSTANCE.getPlant_Parts();
+
+		/**
+		 * The meta object literal for the '<em><b>Meter</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PLANT__METER = eINSTANCE.getPlant_Meter();
 
 		/**
 		 * The meta object literal for the '{@link org.civitas.meter.target.impl.NetImpl <em>Net</em>}' class.
@@ -1329,7 +1151,7 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 		EAttribute PARTS__CONSTRUCTION_YEAR = eINSTANCE.getParts_ConstructionYear();
 
 		/**
-		 * The meta object literal for the '<em><b>Plant</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Plant</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1405,28 +1227,12 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 		EReference METERING_POINT__PLANT = eINSTANCE.getMeteringPoint_Plant();
 
 		/**
-		 * The meta object literal for the '<em><b>Current Meter</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference METERING_POINT__CURRENT_METER = eINSTANCE.getMeteringPoint_CurrentMeter();
-
-		/**
 		 * The meta object literal for the '<em><b>Meter Readings</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference METERING_POINT__METER_READINGS = eINSTANCE.getMeteringPoint_MeterReadings();
-
-		/**
-		 * The meta object literal for the '<em><b>Meter History</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference METERING_POINT__METER_HISTORY = eINSTANCE.getMeteringPoint_MeterHistory();
 
 		/**
 		 * The meta object literal for the '{@link org.civitas.meter.target.impl.MeterImpl <em>Meter</em>}' class.
@@ -1495,56 +1301,6 @@ public interface targetPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EReference METER_READING__METERING_POINT = eINSTANCE.getMeterReading_MeteringPoint();
-
-		/**
-		 * The meta object literal for the '{@link org.civitas.meter.target.impl.MeterHistoryImpl <em>Meter History</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.civitas.meter.target.impl.MeterHistoryImpl
-		 * @see org.civitas.meter.target.impl.targetPackageImpl#getMeterHistory()
-		 * @generated
-		 */
-		EClass METER_HISTORY = eINSTANCE.getMeterHistory();
-
-		/**
-		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute METER_HISTORY__ID = eINSTANCE.getMeterHistory_Id();
-
-		/**
-		 * The meta object literal for the '<em><b>Removal Status</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute METER_HISTORY__REMOVAL_STATUS = eINSTANCE.getMeterHistory_RemovalStatus();
-
-		/**
-		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute METER_HISTORY__TIMESTAMP = eINSTANCE.getMeterHistory_Timestamp();
-
-		/**
-		 * The meta object literal for the '<em><b>Meter</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference METER_HISTORY__METER = eINSTANCE.getMeterHistory_Meter();
-
-		/**
-		 * The meta object literal for the '<em><b>Metering Point</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference METER_HISTORY__METERING_POINT = eINSTANCE.getMeterHistory_MeteringPoint();
 
 	}
 
