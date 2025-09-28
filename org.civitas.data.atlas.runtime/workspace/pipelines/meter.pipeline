@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pipeline:Pipeline xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:emfattacherconfig="https://civitas.org/handler/emf/attacher/config/1.0.0" xmlns:minioconfig="https://civitas.org/minio/config/1.0.0" xmlns:pipeline="http://civitas.org/pipline/model/1.0" xmlns:scheduledloaderconfig="https://civitas.org/db/loader/scheduledloader/config/1.0.0" id="Meter_Pipeline">
+  <steps xsi:type="minioconfig:MinIOCSVDownloadServiceConfig" pid="operating_data_source" id="operating_data_source" outputs="plant_id_attacher" bucketname="dummy-data" clientTarget="//@components.0">
+    <eClass href="../models/meter/meter-source.ecore#//OperatingData"/>
+  </steps>
+  <steps xsi:type="scheduledloaderconfig:ScheduledLoaderConfig" pid="manual-meter" id="manual-meter" scheduleInterval="600" repoTarget="(repo_id=manualMeter)" loaderName="manual-meter">
+    <package href="https://civitas.org/meter/source/1.0.0#/"/>
+    <eclass href="../models/meter/meter-source.ecore#//Meter"/>
+  </steps>
+  <steps xsi:type="scheduledloaderconfig:ScheduledLoaderConfig" pid="remote-meter" id="remote-meter" scheduleInterval="600" repoTarget="(repo_id=remoteMeter)" loaderName="remote-meter">
+    <package href="https://civitas.org/meter/source/1.0.0#/"/>
+    <eclass href="../models/meter/meter-source.ecore#//Meter"/>
+  </steps>
+  <steps xsi:type="scheduledloaderconfig:ScheduledLoaderConfig" pid="manual-readings" id="manual-readings" repoTarget="(repo_id=manualReading)" loaderName="manual-readings">
+    <package href="https://civitas.org/meter/source/1.0.0#/"/>
+    <eclass href="../models/meter/meter-source.ecore#//Reading"/>
+  </steps>
+  <steps xsi:type="scheduledloaderconfig:ScheduledLoaderConfig" pid="remote-readings" id="remote-readings" repoTarget="(repo_id=remoteMeter)" loaderName="remote-readings">
+    <package href="https://civitas.org/meter/source/1.0.0#/"/>
+    <eclass href="../models/meter/meter-source.ecore#//RemoteReading"/>
+  </steps>
+  <steps xsi:type="emfattacherconfig:EMFAttacherHandlerConfig" pid="plant_id_attacher" id="plant_id_attacher" inputs="operating_data_source" repoTarget="(repo_id=inmem)">
+    <targetEClassUri href="../models/meter/meter-source.ecore#//IntermediatePlant"/>
+    <incomingEClassUri href="../models/meter/meter-source.ecore#//OperatingData"/>
+    <targetReferenceUri href="../models/meter/meter-source.ecore#//IntermediatePlant/operatingData"/>
+    <foreignKeyFeatureUri xsi:type="ecore:EAttribute" href="../models/meter/meter-source.ecore#//OperatingData/plantId"/>
+  </steps>
+  <components xsi:type="minioconfig:MinIOClientConfig" accessKey="minio" secretKey="minio123"/>
+</pipeline:Pipeline>
