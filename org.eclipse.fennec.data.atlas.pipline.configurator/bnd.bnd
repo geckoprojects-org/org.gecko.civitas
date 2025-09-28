@@ -1,6 +1,7 @@
 -library: enable-emf
 
 -workingset: dataatlas
+
 -buildpath: \
 	org.osgi.service.cm,\
 	org.civitas.pipeline.model;version=snapshot,\
