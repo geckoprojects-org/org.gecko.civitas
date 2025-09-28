@@ -9,6 +9,13 @@ pipeline  {
     }
 
     stages {
+        
+        stage('clean workspace and checkout') {
+            steps {
+                cleanWs()
+                checkout scm
+            }
+        }
         stage('Main branch release') {
             when { 
                 branch 'main' 
