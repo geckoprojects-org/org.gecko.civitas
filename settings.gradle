@@ -19,5 +19,5 @@ pluginManagement {
 plugins {
   id 'biz.aQute.bnd.workspace'
 }
-include ":docker:glt"
-include ":docker:meter"
+include ":docker:dataatlas"
+include ":docker:modelatlas"
