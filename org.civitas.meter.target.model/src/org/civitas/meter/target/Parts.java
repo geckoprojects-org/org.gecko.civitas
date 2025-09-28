@@ -128,22 +128,24 @@ public interface Parts extends EObject {
 	void setConstructionYear(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Plant</b></em>' reference.
+	 * Returns the value of the '<em><b>Plant</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.civitas.meter.target.Plant#getParts <em>Parts</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Plant</em>' reference.
+	 * @return the value of the '<em>Plant</em>' container reference.
 	 * @see #setPlant(Plant)
 	 * @see org.civitas.meter.target.targetPackage#getParts_Plant()
-	 * @model required="true"
+	 * @see org.civitas.meter.target.Plant#getParts
+	 * @model opposite="parts" required="true" transient="false"
 	 * @generated
 	 */
 	Plant getPlant();
 
 	/**
-	 * Sets the value of the '{@link org.civitas.meter.target.Parts#getPlant <em>Plant</em>}' reference.
+	 * Sets the value of the '{@link org.civitas.meter.target.Parts#getPlant <em>Plant</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Plant</em>' reference.
+	 * @param value the new value of the '<em>Plant</em>' container reference.
 	 * @see #getPlant()
 	 * @generated
 	 */

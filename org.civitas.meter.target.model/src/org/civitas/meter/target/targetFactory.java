@@ -99,15 +99,6 @@ public interface targetFactory extends EFactory {
 	MeterReading createMeterReading();
 
 	/**
-	 * Returns a new object of class '<em>Meter History</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Meter History</em>'.
-	 * @generated
-	 */
-	MeterHistory createMeterHistory();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

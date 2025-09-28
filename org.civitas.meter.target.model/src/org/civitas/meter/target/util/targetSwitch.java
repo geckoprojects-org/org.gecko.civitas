@@ -119,12 +119,6 @@ public class targetSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case targetPackage.METER_HISTORY: {
-				MeterHistory meterHistory = (MeterHistory)theEObject;
-				T result = caseMeterHistory(meterHistory);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -231,21 +225,6 @@ public class targetSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMeterReading(MeterReading object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Meter History</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Meter History</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMeterHistory(MeterHistory object) {
 		return null;
 	}
 

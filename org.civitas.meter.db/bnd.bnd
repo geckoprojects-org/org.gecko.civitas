@@ -11,7 +11,8 @@
 	org.osgi.service.typedevent
 	
 -includeresource: \
-	OSGI-INF/configurator/=configs/
+	OSGI-INF/configurator/=configs/,\
+	data=data
 
 Bundle-Name: Database Connection for the Meter Use-Case
 Require-Capability: osgi.extender;filter:='(osgi.extender=osgi.configurator)'

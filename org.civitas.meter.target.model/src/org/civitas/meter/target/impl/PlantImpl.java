@@ -15,8 +15,8 @@ package org.civitas.meter.target.impl;
 
 import java.util.Collection;
 
+import org.civitas.meter.target.Meter;
 import org.civitas.meter.target.MeteringPoint;
-import org.civitas.meter.target.Net;
 import org.civitas.meter.target.OperatingData;
 import org.civitas.meter.target.Parts;
 import org.civitas.meter.target.Plant;
@@ -51,10 +51,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.civitas.meter.target.impl.PlantImpl#getPostalcode <em>Postalcode</em>}</li>
  *   <li>{@link org.civitas.meter.target.impl.PlantImpl#getStreet <em>Street</em>}</li>
  *   <li>{@link org.civitas.meter.target.impl.PlantImpl#getHouseNumber <em>House Number</em>}</li>
- *   <li>{@link org.civitas.meter.target.impl.PlantImpl#getNet <em>Net</em>}</li>
  *   <li>{@link org.civitas.meter.target.impl.PlantImpl#getOperatingData <em>Operating Data</em>}</li>
  *   <li>{@link org.civitas.meter.target.impl.PlantImpl#getMeteringPoints <em>Metering Points</em>}</li>
  *   <li>{@link org.civitas.meter.target.impl.PlantImpl#getParts <em>Parts</em>}</li>
+ *   <li>{@link org.civitas.meter.target.impl.PlantImpl#getMeter <em>Meter</em>}</li>
  * </ul>
  *
  * @generated
@@ -181,16 +181,6 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 	protected String houseNumber = HOUSE_NUMBER_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getNet() <em>Net</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNet()
-	 * @generated
-	 * @ordered
-	 */
-	protected Net net;
-
-	/**
 	 * The cached value of the '{@link #getOperatingData() <em>Operating Data</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -219,6 +209,16 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 	 * @ordered
 	 */
 	protected EList<Parts> parts;
+
+	/**
+	 * The cached value of the '{@link #getMeter() <em>Meter</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMeter()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Meter> meter;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -383,46 +383,6 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 	 * @generated
 	 */
 	@Override
-	public Net getNet() {
-		if (net != null && net.eIsProxy()) {
-			InternalEObject oldNet = (InternalEObject)net;
-			net = (Net)eResolveProxy(oldNet);
-			if (net != oldNet) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, targetPackage.PLANT__NET, oldNet, net));
-			}
-		}
-		return net;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Net basicGetNet() {
-		return net;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setNet(Net newNet) {
-		Net oldNet = net;
-		net = newNet;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, targetPackage.PLANT__NET, oldNet, net));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EList<OperatingData> getOperatingData() {
 		if (operatingData == null) {
 			operatingData = new EObjectContainmentWithInverseEList<OperatingData>(OperatingData.class, this, targetPackage.PLANT__OPERATING_DATA, targetPackage.OPERATING_DATA__PLANT);
@@ -451,9 +411,22 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 	@Override
 	public EList<Parts> getParts() {
 		if (parts == null) {
-			parts = new EObjectContainmentEList<Parts>(Parts.class, this, targetPackage.PLANT__PARTS);
+			parts = new EObjectContainmentWithInverseEList<Parts>(Parts.class, this, targetPackage.PLANT__PARTS, targetPackage.PARTS__PLANT);
 		}
 		return parts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Meter> getMeter() {
+		if (meter == null) {
+			meter = new EObjectContainmentEList<Meter>(Meter.class, this, targetPackage.PLANT__METER);
+		}
+		return meter;
 	}
 
 	/**
@@ -469,6 +442,8 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOperatingData()).basicAdd(otherEnd, msgs);
 			case targetPackage.PLANT__METERING_POINTS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getMeteringPoints()).basicAdd(otherEnd, msgs);
+			case targetPackage.PLANT__PARTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getParts()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -487,6 +462,8 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 				return ((InternalEList<?>)getMeteringPoints()).basicRemove(otherEnd, msgs);
 			case targetPackage.PLANT__PARTS:
 				return ((InternalEList<?>)getParts()).basicRemove(otherEnd, msgs);
+			case targetPackage.PLANT__METER:
+				return ((InternalEList<?>)getMeter()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -511,15 +488,14 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 				return getStreet();
 			case targetPackage.PLANT__HOUSE_NUMBER:
 				return getHouseNumber();
-			case targetPackage.PLANT__NET:
-				if (resolve) return getNet();
-				return basicGetNet();
 			case targetPackage.PLANT__OPERATING_DATA:
 				return getOperatingData();
 			case targetPackage.PLANT__METERING_POINTS:
 				return getMeteringPoints();
 			case targetPackage.PLANT__PARTS:
 				return getParts();
+			case targetPackage.PLANT__METER:
+				return getMeter();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -551,9 +527,6 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 			case targetPackage.PLANT__HOUSE_NUMBER:
 				setHouseNumber((String)newValue);
 				return;
-			case targetPackage.PLANT__NET:
-				setNet((Net)newValue);
-				return;
 			case targetPackage.PLANT__OPERATING_DATA:
 				getOperatingData().clear();
 				getOperatingData().addAll((Collection<? extends OperatingData>)newValue);
@@ -565,6 +538,10 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 			case targetPackage.PLANT__PARTS:
 				getParts().clear();
 				getParts().addAll((Collection<? extends Parts>)newValue);
+				return;
+			case targetPackage.PLANT__METER:
+				getMeter().clear();
+				getMeter().addAll((Collection<? extends Meter>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -596,9 +573,6 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 			case targetPackage.PLANT__HOUSE_NUMBER:
 				setHouseNumber(HOUSE_NUMBER_EDEFAULT);
 				return;
-			case targetPackage.PLANT__NET:
-				setNet((Net)null);
-				return;
 			case targetPackage.PLANT__OPERATING_DATA:
 				getOperatingData().clear();
 				return;
@@ -607,6 +581,9 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 				return;
 			case targetPackage.PLANT__PARTS:
 				getParts().clear();
+				return;
+			case targetPackage.PLANT__METER:
+				getMeter().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -632,14 +609,14 @@ public class PlantImpl extends MinimalEObjectImpl.Container implements Plant {
 				return STREET_EDEFAULT == null ? street != null : !STREET_EDEFAULT.equals(street);
 			case targetPackage.PLANT__HOUSE_NUMBER:
 				return HOUSE_NUMBER_EDEFAULT == null ? houseNumber != null : !HOUSE_NUMBER_EDEFAULT.equals(houseNumber);
-			case targetPackage.PLANT__NET:
-				return net != null;
 			case targetPackage.PLANT__OPERATING_DATA:
 				return operatingData != null && !operatingData.isEmpty();
 			case targetPackage.PLANT__METERING_POINTS:
 				return meteringPoints != null && !meteringPoints.isEmpty();
 			case targetPackage.PLANT__PARTS:
 				return parts != null && !parts.isEmpty();
+			case targetPackage.PLANT__METER:
+				return meter != null && !meter.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -53,6 +53,15 @@
           value NUMERIC NOT NULL CHECK (value BETWEEN -100.0 AND 100.0), -- Range validation
           meter_id INTEGER NOT NULL                -- FK to meter
       );
+      
+      CREATE DATABASE plant_readings;
+      \c plant_readings
+      
+      -- Table: readings
+      CREATE TABLE test (
+          id SERIAL PRIMARY KEY,         -- Auto-incremented ID
+          timestamp TIMESTAMP NOT NULL,  -- e.g., '2023-01-15 08:00:00'
+      );
 
       GRANT USAGE ON SCHEMA public TO postgres;
       GRANT SELECT ON ALL TABLES IN SCHEMA public TO postgres;

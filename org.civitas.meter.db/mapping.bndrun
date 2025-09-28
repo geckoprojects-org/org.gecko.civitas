@@ -10,7 +10,8 @@
 	bnd.identity;id='org.civitas.meter.source.model',\
 	bnd.identity;id='org.civitas.glt.model',\
 	bnd.identity;id='org.civitas.meter.db',\
-	bnd.identity;id='org.apache.aries.typedevent.bus'
+	bnd.identity;id='org.apache.aries.typedevent.bus',\
+	bnd.identity;id='org.civitas.meter.target.model'
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 -runbundles: \
 	org.apache.felix.cm.json;version='[2.0.6,2.0.7)',\
@@ -53,4 +54,5 @@
 	org.eclipse.persistence.asm;version='[9.8.0,9.8.1)',\
 	org.eclipse.persistence.core;version='[4.0.8,4.0.9)',\
 	org.eclipse.persistence.jpa;version='[4.0.8,4.0.9)',\
-	org.eclipse.persistence.jpa.jpql;version='[4.0.8,4.0.9)'
+	org.eclipse.persistence.jpa.jpql;version='[4.0.8,4.0.9)',\
+	org.civitas.meter.target.model;version=snapshot

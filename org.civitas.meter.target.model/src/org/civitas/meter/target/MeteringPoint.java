@@ -30,9 +30,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * <ul>
  *   <li>{@link org.civitas.meter.target.MeteringPoint#getId <em>Id</em>}</li>
  *   <li>{@link org.civitas.meter.target.MeteringPoint#getPlant <em>Plant</em>}</li>
- *   <li>{@link org.civitas.meter.target.MeteringPoint#getCurrentMeter <em>Current Meter</em>}</li>
  *   <li>{@link org.civitas.meter.target.MeteringPoint#getMeterReadings <em>Meter Readings</em>}</li>
- *   <li>{@link org.civitas.meter.target.MeteringPoint#getMeterHistory <em>Meter History</em>}</li>
  * </ul>
  *
  * @see org.civitas.meter.target.targetPackage#getMeteringPoint()
@@ -88,28 +86,6 @@ public interface MeteringPoint extends EObject {
 	void setPlant(Plant value);
 
 	/**
-	 * Returns the value of the '<em><b>Current Meter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Current Meter</em>' reference.
-	 * @see #setCurrentMeter(Meter)
-	 * @see org.civitas.meter.target.targetPackage#getMeteringPoint_CurrentMeter()
-	 * @model required="true"
-	 * @generated
-	 */
-	Meter getCurrentMeter();
-
-	/**
-	 * Sets the value of the '{@link org.civitas.meter.target.MeteringPoint#getCurrentMeter <em>Current Meter</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Current Meter</em>' reference.
-	 * @see #getCurrentMeter()
-	 * @generated
-	 */
-	void setCurrentMeter(Meter value);
-
-	/**
 	 * Returns the value of the '<em><b>Meter Readings</b></em>' containment reference list.
 	 * The list contents are of type {@link org.civitas.meter.target.MeterReading}.
 	 * It is bidirectional and its opposite is '{@link org.civitas.meter.target.MeterReading#getMeteringPoint <em>Metering Point</em>}'.
@@ -122,17 +98,5 @@ public interface MeteringPoint extends EObject {
 	 * @generated
 	 */
 	EList<MeterReading> getMeterReadings();
-
-	/**
-	 * Returns the value of the '<em><b>Meter History</b></em>' containment reference list.
-	 * The list contents are of type {@link org.civitas.meter.target.MeterHistory}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Meter History</em>' containment reference list.
-	 * @see org.civitas.meter.target.targetPackage#getMeteringPoint_MeterHistory()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<MeterHistory> getMeterHistory();
 
 } // MeteringPoint

@@ -2,6 +2,41 @@
 	":configurator:resource-version": 1,
 	":configurator:symbolicname": "org.civitas.meter.jpa",
 	":configurator:version": "0.0.0",
+	"daanse.jdbc.datasource.postgresql.DataSource~plantTarget": {
+		"name": "plantTarget",
+		".password": "postgres",
+		"user": "postgres",
+		"dbname": "plant_readings",
+		"ports": 5432,
+		"host": "localhost"
+	},
+	"fennec.jpa.EORMMappingService~plantTarget": {
+		"fennec.jpa.eorm.mappingName": "plant",
+		"fennec.jpa.eorm.strict": true,
+		"fennec.jpa.eorm.eClasses": [
+			"Plant",
+			"Parts",
+			"Net",
+			"OperatingData",
+			"MeteringPoint",
+			"MeterReading",
+			"MeterHistory",
+			"Meter"
+		],
+		"fennec.jpa.eorm.model.target": "(emf.name=target)"
+	},
+	"fennec.jpa.EMPersistenceUnit~plantTarget": {
+		"fennec.jpa.ext.eclipselink.target-database": "PostgreSQL",
+		"fennec.jpa.ext.eclipselink.ddl-generation": "none",
+		"fennec.jpa.dataSource.target": "(name=plantTarget)",
+		"fennec.jpa.mapping.target": "(fennec.jpa.eorm.mapping=plant)",
+		"fennec.jpa.persistenceUnitName": "plantTarget"
+	},
+	"fennec.jpa.JPARepository~plantTarget": {
+		"repo_id": "plantTarget",
+		"base_uri": "plantTarget",
+		"entityManager.target": "(osgi.unit.name=plantTarget)"
+	},
 	"fennec.jpa.EORMMappingService~metersource": {
 		"fennec.jpa.eorm.mappingName": "metersource",
 		"fennec.jpa.eorm.strict": true,

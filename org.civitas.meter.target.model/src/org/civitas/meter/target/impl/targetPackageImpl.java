@@ -14,7 +14,6 @@
 package org.civitas.meter.target.impl;
 
 import org.civitas.meter.target.Meter;
-import org.civitas.meter.target.MeterHistory;
 import org.civitas.meter.target.MeterReading;
 import org.civitas.meter.target.MeteringPoint;
 import org.civitas.meter.target.Net;
@@ -86,13 +85,6 @@ public class targetPackageImpl extends EPackageImpl implements targetPackage {
 	 * @generated
 	 */
 	private EClass meterReadingEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass meterHistoryEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -230,7 +222,7 @@ public class targetPackageImpl extends EPackageImpl implements targetPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getPlant_Net() {
+	public EReference getPlant_OperatingData() {
 		return (EReference)plantEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -240,7 +232,7 @@ public class targetPackageImpl extends EPackageImpl implements targetPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getPlant_OperatingData() {
+	public EReference getPlant_MeteringPoints() {
 		return (EReference)plantEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -250,7 +242,7 @@ public class targetPackageImpl extends EPackageImpl implements targetPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getPlant_MeteringPoints() {
+	public EReference getPlant_Parts() {
 		return (EReference)plantEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -260,7 +252,7 @@ public class targetPackageImpl extends EPackageImpl implements targetPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getPlant_Parts() {
+	public EReference getPlant_Meter() {
 		return (EReference)plantEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -450,28 +442,8 @@ public class targetPackageImpl extends EPackageImpl implements targetPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getMeteringPoint_CurrentMeter() {
-		return (EReference)meteringPointEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getMeteringPoint_MeterReadings() {
-		return (EReference)meteringPointEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getMeteringPoint_MeterHistory() {
-		return (EReference)meteringPointEClass.getEStructuralFeatures().get(4);
+		return (EReference)meteringPointEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -560,66 +532,6 @@ public class targetPackageImpl extends EPackageImpl implements targetPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getMeterHistory() {
-		return meterHistoryEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getMeterHistory_Id() {
-		return (EAttribute)meterHistoryEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getMeterHistory_RemovalStatus() {
-		return (EAttribute)meterHistoryEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getMeterHistory_Timestamp() {
-		return (EAttribute)meterHistoryEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getMeterHistory_Meter() {
-		return (EReference)meterHistoryEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getMeterHistory_MeteringPoint() {
-		return (EReference)meterHistoryEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public targetFactory gettargetFactory() {
 		return (targetFactory)getEFactoryInstance();
 	}
@@ -650,10 +562,10 @@ public class targetPackageImpl extends EPackageImpl implements targetPackage {
 		createEAttribute(plantEClass, PLANT__POSTALCODE);
 		createEAttribute(plantEClass, PLANT__STREET);
 		createEAttribute(plantEClass, PLANT__HOUSE_NUMBER);
-		createEReference(plantEClass, PLANT__NET);
 		createEReference(plantEClass, PLANT__OPERATING_DATA);
 		createEReference(plantEClass, PLANT__METERING_POINTS);
 		createEReference(plantEClass, PLANT__PARTS);
+		createEReference(plantEClass, PLANT__METER);
 
 		netEClass = createEClass(NET);
 		createEAttribute(netEClass, NET__ID);
@@ -676,9 +588,7 @@ public class targetPackageImpl extends EPackageImpl implements targetPackage {
 		meteringPointEClass = createEClass(METERING_POINT);
 		createEAttribute(meteringPointEClass, METERING_POINT__ID);
 		createEReference(meteringPointEClass, METERING_POINT__PLANT);
-		createEReference(meteringPointEClass, METERING_POINT__CURRENT_METER);
 		createEReference(meteringPointEClass, METERING_POINT__METER_READINGS);
-		createEReference(meteringPointEClass, METERING_POINT__METER_HISTORY);
 
 		meterEClass = createEClass(METER);
 		createEAttribute(meterEClass, METER__ID);
@@ -689,13 +599,6 @@ public class targetPackageImpl extends EPackageImpl implements targetPackage {
 		createEAttribute(meterReadingEClass, METER_READING__VALUE);
 		createEAttribute(meterReadingEClass, METER_READING__TIMESTAMP);
 		createEReference(meterReadingEClass, METER_READING__METERING_POINT);
-
-		meterHistoryEClass = createEClass(METER_HISTORY);
-		createEAttribute(meterHistoryEClass, METER_HISTORY__ID);
-		createEAttribute(meterHistoryEClass, METER_HISTORY__REMOVAL_STATUS);
-		createEAttribute(meterHistoryEClass, METER_HISTORY__TIMESTAMP);
-		createEReference(meterHistoryEClass, METER_HISTORY__METER);
-		createEReference(meterHistoryEClass, METER_HISTORY__METERING_POINT);
 	}
 
 	/**
@@ -735,10 +638,10 @@ public class targetPackageImpl extends EPackageImpl implements targetPackage {
 		initEAttribute(getPlant_Postalcode(), ecorePackage.getEString(), "postalcode", null, 0, 1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlant_Street(), ecorePackage.getEString(), "street", null, 0, 1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlant_HouseNumber(), ecorePackage.getEString(), "houseNumber", null, 0, 1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPlant_Net(), this.getNet(), null, "net", null, 1, 1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlant_OperatingData(), this.getOperatingData(), this.getOperatingData_Plant(), "operatingData", null, 0, -1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlant_MeteringPoints(), this.getMeteringPoint(), this.getMeteringPoint_Plant(), "meteringPoints", null, 0, -1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPlant_Parts(), this.getParts(), null, "parts", null, 0, -1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPlant_Parts(), this.getParts(), this.getParts_Plant(), "parts", null, 0, -1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPlant_Meter(), this.getMeter(), null, "meter", null, 0, -1, Plant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(netEClass, Net.class, "Net", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNet_Id(), ecorePackage.getEString(), "id", null, 0, 1, Net.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -750,7 +653,7 @@ public class targetPackageImpl extends EPackageImpl implements targetPackage {
 		initEAttribute(getParts_Type(), ecorePackage.getEString(), "type", null, 0, 1, Parts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParts_Performance(), ecorePackage.getEString(), "performance", null, 0, 1, Parts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParts_ConstructionYear(), ecorePackage.getEInt(), "constructionYear", null, 0, 1, Parts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getParts_Plant(), this.getPlant(), null, "plant", null, 1, 1, Parts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParts_Plant(), this.getPlant(), this.getPlant_Parts(), "plant", null, 1, 1, Parts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operatingDataEClass, OperatingData.class, "OperatingData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOperatingData_Id(), ecorePackage.getEString(), "id", null, 0, 1, OperatingData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -761,9 +664,7 @@ public class targetPackageImpl extends EPackageImpl implements targetPackage {
 		initEClass(meteringPointEClass, MeteringPoint.class, "MeteringPoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMeteringPoint_Id(), ecorePackage.getEString(), "id", null, 0, 1, MeteringPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMeteringPoint_Plant(), this.getPlant(), this.getPlant_MeteringPoints(), "plant", null, 0, 1, MeteringPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMeteringPoint_CurrentMeter(), this.getMeter(), null, "currentMeter", null, 1, 1, MeteringPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMeteringPoint_MeterReadings(), this.getMeterReading(), this.getMeterReading_MeteringPoint(), "meterReadings", null, 0, -1, MeteringPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMeteringPoint_MeterHistory(), this.getMeterHistory(), null, "meterHistory", null, 0, -1, MeteringPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(meterEClass, Meter.class, "Meter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMeter_Id(), ecorePackage.getEString(), "id", null, 0, 1, Meter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -774,13 +675,6 @@ public class targetPackageImpl extends EPackageImpl implements targetPackage {
 		initEAttribute(getMeterReading_Value(), ecorePackage.getEDouble(), "value", null, 0, 1, MeterReading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMeterReading_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, MeterReading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMeterReading_MeteringPoint(), this.getMeteringPoint(), this.getMeteringPoint_MeterReadings(), "meteringPoint", null, 1, 1, MeterReading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(meterHistoryEClass, MeterHistory.class, "MeterHistory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMeterHistory_Id(), ecorePackage.getEString(), "id", null, 0, 1, MeterHistory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMeterHistory_RemovalStatus(), ecorePackage.getEString(), "removalStatus", null, 0, 1, MeterHistory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMeterHistory_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, MeterHistory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMeterHistory_Meter(), this.getMeter(), null, "meter", null, 1, 1, MeterHistory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMeterHistory_MeteringPoint(), this.getMeteringPoint(), null, "meteringPoint", null, 1, 1, MeterHistory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

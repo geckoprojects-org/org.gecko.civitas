@@ -107,10 +107,6 @@ public class targetAdapterFactory extends AdapterFactoryImpl {
 				return createMeterReadingAdapter();
 			}
 			@Override
-			public Adapter caseMeterHistory(MeterHistory object) {
-				return createMeterHistoryAdapter();
-			}
-			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -225,20 +221,6 @@ public class targetAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMeterReadingAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.civitas.meter.target.MeterHistory <em>Meter History</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.civitas.meter.target.MeterHistory
-	 * @generated
-	 */
-	public Adapter createMeterHistoryAdapter() {
 		return null;
 	}
 

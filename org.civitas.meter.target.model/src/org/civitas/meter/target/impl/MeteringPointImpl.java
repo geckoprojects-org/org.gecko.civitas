@@ -15,8 +15,6 @@ package org.civitas.meter.target.impl;
 
 import java.util.Collection;
 
-import org.civitas.meter.target.Meter;
-import org.civitas.meter.target.MeterHistory;
 import org.civitas.meter.target.MeterReading;
 import org.civitas.meter.target.MeteringPoint;
 import org.civitas.meter.target.Plant;
@@ -33,7 +31,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -48,9 +45,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link org.civitas.meter.target.impl.MeteringPointImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.civitas.meter.target.impl.MeteringPointImpl#getPlant <em>Plant</em>}</li>
- *   <li>{@link org.civitas.meter.target.impl.MeteringPointImpl#getCurrentMeter <em>Current Meter</em>}</li>
  *   <li>{@link org.civitas.meter.target.impl.MeteringPointImpl#getMeterReadings <em>Meter Readings</em>}</li>
- *   <li>{@link org.civitas.meter.target.impl.MeteringPointImpl#getMeterHistory <em>Meter History</em>}</li>
  * </ul>
  *
  * @generated
@@ -77,16 +72,6 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getCurrentMeter() <em>Current Meter</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCurrentMeter()
-	 * @generated
-	 * @ordered
-	 */
-	protected Meter currentMeter;
-
-	/**
 	 * The cached value of the '{@link #getMeterReadings() <em>Meter Readings</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -95,16 +80,6 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 	 * @ordered
 	 */
 	protected EList<MeterReading> meterReadings;
-
-	/**
-	 * The cached value of the '{@link #getMeterHistory() <em>Meter History</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMeterHistory()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<MeterHistory> meterHistory;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -197,64 +172,11 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 	 * @generated
 	 */
 	@Override
-	public Meter getCurrentMeter() {
-		if (currentMeter != null && currentMeter.eIsProxy()) {
-			InternalEObject oldCurrentMeter = (InternalEObject)currentMeter;
-			currentMeter = (Meter)eResolveProxy(oldCurrentMeter);
-			if (currentMeter != oldCurrentMeter) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, targetPackage.METERING_POINT__CURRENT_METER, oldCurrentMeter, currentMeter));
-			}
-		}
-		return currentMeter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Meter basicGetCurrentMeter() {
-		return currentMeter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setCurrentMeter(Meter newCurrentMeter) {
-		Meter oldCurrentMeter = currentMeter;
-		currentMeter = newCurrentMeter;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, targetPackage.METERING_POINT__CURRENT_METER, oldCurrentMeter, currentMeter));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EList<MeterReading> getMeterReadings() {
 		if (meterReadings == null) {
 			meterReadings = new EObjectContainmentWithInverseEList<MeterReading>(MeterReading.class, this, targetPackage.METERING_POINT__METER_READINGS, targetPackage.METER_READING__METERING_POINT);
 		}
 		return meterReadings;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<MeterHistory> getMeterHistory() {
-		if (meterHistory == null) {
-			meterHistory = new EObjectContainmentEList<MeterHistory>(MeterHistory.class, this, targetPackage.METERING_POINT__METER_HISTORY);
-		}
-		return meterHistory;
 	}
 
 	/**
@@ -288,8 +210,6 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 				return basicSetPlant(null, msgs);
 			case targetPackage.METERING_POINT__METER_READINGS:
 				return ((InternalEList<?>)getMeterReadings()).basicRemove(otherEnd, msgs);
-			case targetPackage.METERING_POINT__METER_HISTORY:
-				return ((InternalEList<?>)getMeterHistory()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -320,13 +240,8 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 				return getId();
 			case targetPackage.METERING_POINT__PLANT:
 				return getPlant();
-			case targetPackage.METERING_POINT__CURRENT_METER:
-				if (resolve) return getCurrentMeter();
-				return basicGetCurrentMeter();
 			case targetPackage.METERING_POINT__METER_READINGS:
 				return getMeterReadings();
-			case targetPackage.METERING_POINT__METER_HISTORY:
-				return getMeterHistory();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -346,16 +261,9 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 			case targetPackage.METERING_POINT__PLANT:
 				setPlant((Plant)newValue);
 				return;
-			case targetPackage.METERING_POINT__CURRENT_METER:
-				setCurrentMeter((Meter)newValue);
-				return;
 			case targetPackage.METERING_POINT__METER_READINGS:
 				getMeterReadings().clear();
 				getMeterReadings().addAll((Collection<? extends MeterReading>)newValue);
-				return;
-			case targetPackage.METERING_POINT__METER_HISTORY:
-				getMeterHistory().clear();
-				getMeterHistory().addAll((Collection<? extends MeterHistory>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -375,14 +283,8 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 			case targetPackage.METERING_POINT__PLANT:
 				setPlant((Plant)null);
 				return;
-			case targetPackage.METERING_POINT__CURRENT_METER:
-				setCurrentMeter((Meter)null);
-				return;
 			case targetPackage.METERING_POINT__METER_READINGS:
 				getMeterReadings().clear();
-				return;
-			case targetPackage.METERING_POINT__METER_HISTORY:
-				getMeterHistory().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -400,12 +302,8 @@ public class MeteringPointImpl extends MinimalEObjectImpl.Container implements M
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case targetPackage.METERING_POINT__PLANT:
 				return getPlant() != null;
-			case targetPackage.METERING_POINT__CURRENT_METER:
-				return currentMeter != null;
 			case targetPackage.METERING_POINT__METER_READINGS:
 				return meterReadings != null && !meterReadings.isEmpty();
-			case targetPackage.METERING_POINT__METER_HISTORY:
-				return meterHistory != null && !meterHistory.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
