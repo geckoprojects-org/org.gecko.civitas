@@ -1,0 +1,25 @@
+src=${^src},src-gen
+
+-library: \
+	enable-emf
+
+-buildpath: \
+	org.osgi.service.cm;version=latest,\
+	org.gecko.emf.repository.api;version=latest,\
+	org.eclipse.fennec.persistence.eclipselink;version=latest,\
+	org.eclipse.fennec.persistence.orm;version=latest,\
+	jakarta.persistence-api,\
+	org.osgi.service.typedevent,\
+	org.civitas.osgi.component.configuration.model,\
+	org.civitas.pipeline.model
+	
+-includeresource: \
+	model=model
+
+Bundle-Name: Database Connection for the Meter Use-Case
+-generate:\
+    model/scheduled-loader.genmodel;\
+        generate=geckoEMF;\
+        genmodel=model/scheduled-loader.genmodel;\
+        output=src-gen
+-workingset: handler

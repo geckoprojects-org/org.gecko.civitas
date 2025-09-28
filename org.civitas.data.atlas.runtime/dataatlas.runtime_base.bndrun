@@ -21,10 +21,16 @@ slf4j.runpath:  \
 	bnd.identity;id='org.apache.felix.gogo.shell',\
 	bnd.identity;id='org.apache.felix.gogo.command',\
 	osgi.identity;filter:='(&(osgi.identity=org.apache.felix.metatype)(version>=1.2.4))',\
+	bnd.identity;id='org.eclipse.daanse.jdbc.datasource.postgresql',\
+	bnd.identity;id='org.eclipse.persistence.asm',\
+	bnd.identity;id='org.eclipse.persistence.jpa.jpql',\
+	bnd.identity;id='org.eclipse.fennec.persistence.repository',\
+	bnd.identity;id='org.eclipse.fennec.persistence.eclipselink',\
 	bnd.identity;id='org.apache.felix.configurator',\
 	bnd.identity;id='org.apache.felix.configadmin.plugin.interpolation',\
 	bnd.identity;id='org.apache.felix.configadmin',\
 	bnd.identity;id='org.civitas.minio',\
+	bnd.identity;id='org.civitas.db.loader',\
 	bnd.identity;id='org.civitas.logging.handler',\
 	bnd.identity;id='org.civitas.handler.emf.attacher',\
 	bnd.identity;id='org.civitas.handler.emf.repository.datasink',\
@@ -101,8 +107,6 @@ slf4j.runpath:  \
 	org.osgi.service.typedevent;version='[1.0.0,1.0.1)',\
 	org.osgi.util.pushstream;version='[1.1.0,1.1.1)',\
 	org.civitas.logging.handler;version=snapshot,\
-	org.gecko.emf.osgi.extender;version='[6.3.0,6.3.1)',\
-	org.osgi.service.coordinator;version='[1.0.2,1.0.3)',\
 	lpg.runtime.java;version='[2.0.17,2.0.18)',\
 	org.civitas.handler.emf.attacher;version=snapshot,\
 	org.civitas.handler.emf.repository.datasink;version=snapshot,\
@@ -137,7 +141,6 @@ slf4j.runpath:  \
 	org.eclipse.emfcloud.emfjson-jackson;version='[2.2.0,2.2.1)',\
 	org.eclipse.fennec.persistence;version='[1.0.0,1.0.1)',\
 	org.eclipse.fennec.persistence.orm;version='[1.0.0,1.0.1)',\
-	org.eclipse.sensinact.gateway.core.geo-json.model;version='[1.0.0,1.0.1)',\
 	org.gecko.emf.json;version='[1.5.1,1.5.2)',\
 	org.postgresql.jdbc;version='[42.7.3,42.7.4)',\
 	org.yaml.snakeyaml;version='[1.33.0,1.33.1)',\
@@ -145,4 +148,12 @@ slf4j.runpath:  \
 	org.civitas.osgi.component.configuration.model;version=snapshot,\
 	org.civitas.pipeline.model;version=snapshot,\
 	org.eclipse.fennec.data.atlas.pipline.configurator;version=snapshot,\
-	org.gecko.emf.repository.file;version='[4.1.0,4.1.1)'
+	org.gecko.emf.repository.file;version='[4.1.0,4.1.1)',\
+	org.civitas.db.loader;version=snapshot,\
+	jakarta.persistence-api;version='[3.2.0,3.2.1)',\
+	org.eclipse.fennec.persistence.eclipselink;version='[1.0.0,1.0.1)',\
+	org.eclipse.fennec.persistence.repository;version='[1.0.0,1.0.1)',\
+	org.eclipse.persistence.asm;version='[9.8.0,9.8.1)',\
+	org.eclipse.persistence.core;version='[4.0.8,4.0.9)',\
+	org.eclipse.persistence.jpa;version='[4.0.8,4.0.9)',\
+	org.eclipse.persistence.jpa.jpql;version='[4.0.8,4.0.9)'
