@@ -27,6 +27,7 @@ header:
     - '**/*.xmi'
     - '**/*.yml'
     - '**/*.csv'	
+    - '**/*.jsonschema'	
     - '**/*.yaml'
     - '**/*.json'
     - '**/*.conf'
