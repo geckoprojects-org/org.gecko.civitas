@@ -33,6 +33,8 @@ header:
     - '**/*.ecore'
     - '**/*.genmodel'
     - '**/*.md'
+    - '**/*.target'
+    - '**/*.pipeline'
     - '**/*.MD'
     - '**/.keep'
     - '**/*.jetproperties'
