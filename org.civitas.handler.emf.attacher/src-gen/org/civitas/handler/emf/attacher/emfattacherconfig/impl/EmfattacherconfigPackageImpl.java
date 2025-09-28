@@ -268,6 +268,30 @@ public class EmfattacherconfigPackageImpl extends EPackageImpl implements Emfatt
 		   new String[] {
 			   "name", "repo.target"
 		   });
+		addAnnotation
+		  (getEMFAttacherHandlerConfig_TargetEClassUri(),
+		   source,
+		   new String[] {
+			   "name", "target.eclassuri"
+		   });
+		addAnnotation
+		  (getEMFAttacherHandlerConfig_IncomingEClassUri(),
+		   source,
+		   new String[] {
+			   "name", "incoming.eclassuri"
+		   });
+		addAnnotation
+		  (getEMFAttacherHandlerConfig_TargetReferenceUri(),
+		   source,
+		   new String[] {
+			   "name", "target.reference.uri"
+		   });
+		addAnnotation
+		  (getEMFAttacherHandlerConfig_ForeignKeyFeatureUri(),
+		   source,
+		   new String[] {
+			   "name", "foreignKeyFeature.uri"
+		   });
 	}
 
 } //EmfattacherconfigPackageImpl

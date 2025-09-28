@@ -122,13 +122,13 @@ public interface QvthandlerPackage extends org.eclipse.emf.ecore.EPackage {
 	int QVT_HANDLER_CONFIG__INPUTS = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Trafo Target</b></em>' attribute.
+	 * The feature id for the '<em><b>Trafo</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QVT_HANDLER_CONFIG__TRAFO_TARGET = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 3;
+	int QVT_HANDLER_CONFIG__TRAFO = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Eclassuri</b></em>' reference.
@@ -169,15 +169,15 @@ public interface QvthandlerPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getQVTHandlerConfig();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.civitas.qvthandler.QVTHandlerConfig#getTrafoTarget <em>Trafo Target</em>}'.
+	 * Returns the meta object for the attribute '{@link org.civitas.qvthandler.QVTHandlerConfig#getTrafo <em>Trafo</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Trafo Target</em>'.
-	 * @see org.civitas.qvthandler.QVTHandlerConfig#getTrafoTarget()
+	 * @return the meta object for the attribute '<em>Trafo</em>'.
+	 * @see org.civitas.qvthandler.QVTHandlerConfig#getTrafo()
 	 * @see #getQVTHandlerConfig()
 	 * @generated
 	 */
-	EAttribute getQVTHandlerConfig_TrafoTarget();
+	EAttribute getQVTHandlerConfig_Trafo();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.civitas.qvthandler.QVTHandlerConfig#getEclassuri <em>Eclassuri</em>}'.
@@ -224,12 +224,12 @@ public interface QvthandlerPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass QVT_HANDLER_CONFIG = eINSTANCE.getQVTHandlerConfig();
 
 		/**
-		 * The meta object literal for the '<em><b>Trafo Target</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Trafo</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute QVT_HANDLER_CONFIG__TRAFO_TARGET = eINSTANCE.getQVTHandlerConfig_TrafoTarget();
+		EAttribute QVT_HANDLER_CONFIG__TRAFO = eINSTANCE.getQVTHandlerConfig_Trafo();
 
 		/**
 		 * The meta object literal for the '<em><b>Eclassuri</b></em>' reference feature.

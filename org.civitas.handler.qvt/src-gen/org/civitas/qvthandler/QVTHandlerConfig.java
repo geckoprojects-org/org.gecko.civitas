@@ -34,7 +34,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.civitas.qvthandler.QVTHandlerConfig#getTrafoTarget <em>Trafo Target</em>}</li>
+ *   <li>{@link org.civitas.qvthandler.QVTHandlerConfig#getTrafo <em>Trafo</em>}</li>
  *   <li>{@link org.civitas.qvthandler.QVTHandlerConfig#getEclassuri <em>Eclassuri</em>}</li>
  * </ul>
  *
@@ -45,29 +45,29 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public interface QVTHandlerConfig extends Configuration, Handler {
 	/**
-	 * Returns the value of the '<em><b>Trafo Target</b></em>' attribute.
+	 * Returns the value of the '<em><b>Trafo</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * ID of the QVT transformation
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Trafo Target</em>' attribute.
-	 * @see #setTrafoTarget(String)
-	 * @see org.civitas.qvthandler.QvthandlerPackage#getQVTHandlerConfig_TrafoTarget()
-	 * @model extendedMetaData="name='trafotarget'"
+	 * @return the value of the '<em>Trafo</em>' attribute.
+	 * @see #setTrafo(String)
+	 * @see org.civitas.qvthandler.QvthandlerPackage#getQVTHandlerConfig_Trafo()
+	 * @model extendedMetaData="name='trafo.target'"
 	 * @generated
 	 */
-	String getTrafoTarget();
+	String getTrafo();
 
 	/**
-	 * Sets the value of the '{@link org.civitas.qvthandler.QVTHandlerConfig#getTrafoTarget <em>Trafo Target</em>}' attribute.
+	 * Sets the value of the '{@link org.civitas.qvthandler.QVTHandlerConfig#getTrafo <em>Trafo</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Trafo Target</em>' attribute.
-	 * @see #getTrafoTarget()
+	 * @param value the new value of the '<em>Trafo</em>' attribute.
+	 * @see #getTrafo()
 	 * @generated
 	 */
-	void setTrafoTarget(String value);
+	void setTrafo(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Eclassuri</b></em>' reference.

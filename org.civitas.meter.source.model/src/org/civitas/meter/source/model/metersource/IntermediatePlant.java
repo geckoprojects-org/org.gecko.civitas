@@ -40,34 +40,34 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public interface IntermediatePlant extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Operating Data</b></em>' reference list.
+	 * Returns the value of the '<em><b>Operating Data</b></em>' containment reference list.
 	 * The list contents are of type {@link org.civitas.meter.source.model.metersource.OperatingData}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Operating Data</em>' reference list.
+	 * @return the value of the '<em>Operating Data</em>' containment reference list.
 	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getIntermediatePlant_OperatingData()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<OperatingData> getOperatingData();
 
 	/**
-	 * Returns the value of the '<em><b>Basic Data</b></em>' reference.
+	 * Returns the value of the '<em><b>Basic Data</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Basic Data</em>' reference.
+	 * @return the value of the '<em>Basic Data</em>' containment reference.
 	 * @see #setBasicData(BasicData)
 	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getIntermediatePlant_BasicData()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	BasicData getBasicData();
 
 	/**
-	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getBasicData <em>Basic Data</em>}' reference.
+	 * Sets the value of the '{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getBasicData <em>Basic Data</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Basic Data</em>' reference.
+	 * @param value the new value of the '<em>Basic Data</em>' containment reference.
 	 * @see #getBasicData()
 	 * @generated
 	 */

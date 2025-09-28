@@ -1,10 +1,13 @@
 -library: enable-emf
 
 -workingset: dataatlas
+
 -buildpath: \
 	org.osgi.service.cm,\
 	org.civitas.pipeline.model;version=snapshot,\
 	org.civitas.osgi.component.configuration.model;version=snapshot,\
 	org.civitas.minio;version=snapshot,\
 	org.civitas.handler.emf.attacher;version=snapshot,\
-	org.civitas.db.loader;version=snapshot
+	org.civitas.db.loader;version=snapshot,\
+	org.civitas.handler.qvt,\
+	org.civitas.handler.emf.repository.datasink

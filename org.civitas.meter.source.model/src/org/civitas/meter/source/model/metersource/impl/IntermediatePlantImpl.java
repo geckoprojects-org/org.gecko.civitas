@@ -21,6 +21,7 @@ import org.civitas.meter.source.model.metersource.MeterSourcePackage;
 import org.civitas.meter.source.model.metersource.OperatingData;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -30,7 +31,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -49,7 +51,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class IntermediatePlantImpl extends MinimalEObjectImpl.Container implements IntermediatePlant {
 	/**
-	 * The cached value of the '{@link #getOperatingData() <em>Operating Data</em>}' reference list.
+	 * The cached value of the '{@link #getOperatingData() <em>Operating Data</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getOperatingData()
@@ -59,7 +61,7 @@ public class IntermediatePlantImpl extends MinimalEObjectImpl.Container implemen
 	protected EList<OperatingData> operatingData;
 
 	/**
-	 * The cached value of the '{@link #getBasicData() <em>Basic Data</em>}' reference.
+	 * The cached value of the '{@link #getBasicData() <em>Basic Data</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getBasicData()
@@ -115,7 +117,7 @@ public class IntermediatePlantImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public EList<OperatingData> getOperatingData() {
 		if (operatingData == null) {
-			operatingData = new EObjectResolvingEList<OperatingData>(OperatingData.class, this, MeterSourcePackage.INTERMEDIATE_PLANT__OPERATING_DATA);
+			operatingData = new EObjectContainmentEList<OperatingData>(OperatingData.class, this, MeterSourcePackage.INTERMEDIATE_PLANT__OPERATING_DATA);
 		}
 		return operatingData;
 	}
@@ -127,14 +129,6 @@ public class IntermediatePlantImpl extends MinimalEObjectImpl.Container implemen
 	 */
 	@Override
 	public BasicData getBasicData() {
-		if (basicData != null && basicData.eIsProxy()) {
-			InternalEObject oldBasicData = (InternalEObject)basicData;
-			basicData = (BasicData)eResolveProxy(oldBasicData);
-			if (basicData != oldBasicData) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MeterSourcePackage.INTERMEDIATE_PLANT__BASIC_DATA, oldBasicData, basicData));
-			}
-		}
 		return basicData;
 	}
 
@@ -143,8 +137,14 @@ public class IntermediatePlantImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BasicData basicGetBasicData() {
-		return basicData;
+	public NotificationChain basicSetBasicData(BasicData newBasicData, NotificationChain msgs) {
+		BasicData oldBasicData = basicData;
+		basicData = newBasicData;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MeterSourcePackage.INTERMEDIATE_PLANT__BASIC_DATA, oldBasicData, newBasicData);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -154,10 +154,17 @@ public class IntermediatePlantImpl extends MinimalEObjectImpl.Container implemen
 	 */
 	@Override
 	public void setBasicData(BasicData newBasicData) {
-		BasicData oldBasicData = basicData;
-		basicData = newBasicData;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.INTERMEDIATE_PLANT__BASIC_DATA, oldBasicData, basicData));
+		if (newBasicData != basicData) {
+			NotificationChain msgs = null;
+			if (basicData != null)
+				msgs = ((InternalEObject)basicData).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MeterSourcePackage.INTERMEDIATE_PLANT__BASIC_DATA, null, msgs);
+			if (newBasicData != null)
+				msgs = ((InternalEObject)newBasicData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MeterSourcePackage.INTERMEDIATE_PLANT__BASIC_DATA, null, msgs);
+			msgs = basicSetBasicData(newBasicData, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MeterSourcePackage.INTERMEDIATE_PLANT__BASIC_DATA, newBasicData, newBasicData));
 	}
 
 	/**
@@ -189,13 +196,28 @@ public class IntermediatePlantImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case MeterSourcePackage.INTERMEDIATE_PLANT__OPERATING_DATA:
+				return ((InternalEList<?>)getOperatingData()).basicRemove(otherEnd, msgs);
+			case MeterSourcePackage.INTERMEDIATE_PLANT__BASIC_DATA:
+				return basicSetBasicData(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case MeterSourcePackage.INTERMEDIATE_PLANT__OPERATING_DATA:
 				return getOperatingData();
 			case MeterSourcePackage.INTERMEDIATE_PLANT__BASIC_DATA:
-				if (resolve) return getBasicData();
-				return basicGetBasicData();
+				return getBasicData();
 			case MeterSourcePackage.INTERMEDIATE_PLANT__ID:
 				return getId();
 		}

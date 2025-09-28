@@ -1,3 +1,32 @@
+Bundle-Developers: \
+    jalbert; \
+        email="j.albert@datainmotion.com"; \
+        name="Juergen Albert"; \
+        organization="Data In Motion"; \
+        organizationUrl="https://datainmotion.com"; \
+        roles="architect,developer", \
+    mhoffmann; \
+        name="Mark Hoffmann"; \
+        email="m.hoffmann@datainmotion.com"; \
+        url="https://www.datainmotion.com"; \
+        organization="Data In Motion"; \
+        organizationUrl="https://www.datainmotion.com"; \
+        roles="developer,architect",\
+    isalvadori; \
+        name="Ilenia Salvadori"; \
+        email="i.salvadori@datainmotion.com"; \
+        url="https://www.datainmotion.com"; \
+        organization="Data In Motion"; \
+        organizationUrl="https://www.datainmotion.com"; \
+        roles="developer",\
+    ggrune; \
+        name="Guido Grune"; \
+        email="g.grune@datainmotion.com"; \
+        url="https://www.datainmotion.com"; \
+        organization="Data In Motion"; \
+        organizationUrl="https://www.datainmotion.com"; \
+        roles="developer"
+
 # We include setups for
 #	OSGi-Test Support - gecko-osgitest
 #	DIMC Github-Configuration - gecko-dimc
@@ -11,7 +40,8 @@
 	fennecPersistence,\
 	geckoEMFUtil,\
 	geckoMessaging,\
-	geckoEMFRepository
+	geckoEMFRepository,\
+	jakartaREST
 
 # Needed because we enabled library 'gecko-dimc'
 # Activate baselining
@@ -55,6 +85,7 @@ javac.target: 21
 -workingset:  \
   handler;member=${filter;${p};.*\.handler*}, \
   model;member=${filter;${p};.*\.model*}, \
+  modelatlas;member=${filter;${p};.*\.mdo.\*}, \
   glt;member=${filter;${p};.*\.glt\.*},\
   meter;member=${filter;${p};.*\.meter\.*},\
   test;member=${filter;${p};.*\.*test*},\
