@@ -3,7 +3,9 @@
 	org.osgi.annotation.bundle,\
 	org.apache.felix.cm.json,\
 	org.gecko.emf.osgi.component,\
-	org.apache.felix.configadmin
+	org.apache.felix.configadmin,\
+	org.eclipse.fennec.qvt.api,\
+	org.eclipse.fennec.qvt.component
 	
 Bundle-Version: 1.0.0.SNAPSHOT
 
