@@ -102,7 +102,6 @@
 		"entityManager.target": "(osgi.unit.name=manualReading)"
 	},
 	"fennec.jpa.EORMMappingService~glt": {
-		"fennec.jpa.eorm.customizer.target": "(name=glt)",
 		"fennec.jpa.eorm.mappingName": "glt",
 		"fennec.jpa.eorm.eClasses": [
 			"Building",

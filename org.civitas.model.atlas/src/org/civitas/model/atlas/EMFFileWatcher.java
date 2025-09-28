@@ -29,6 +29,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.UUID;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
@@ -41,11 +42,16 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.fennec.codec.configurator.ObjectMapperConfigurator;
+import org.eclipse.fennec.codec.options.CodecModelInfoOptions;
+import org.eclipse.fennec.codec.options.CodecModuleOptions;
+import org.eclipse.fennec.codec.options.CodecResourceOptions;
 import org.gecko.emf.osgi.configurator.EPackageConfigurator;
 import org.gecko.emf.osgi.constants.EMFNamespaces;
 import org.osgi.framework.BundleContext;
@@ -60,6 +66,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferenceScope;
 import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
@@ -104,7 +111,9 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
 
     @SuppressWarnings("unchecked")
     @Activate
-    public EMFFileWatcher(@Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED) ResourceSet resourceSet,
+    public EMFFileWatcher(
+//	    @Reference(cardinality = ReferenceCardinality.MANDATORY, target = "(serializers.target=(component.name=JsonSchemaCodecEMFSerializers))") ObjectMapperConfigurator objMapperConfigurator,
+	    @Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED, target = "("+EMFNamespaces.EMF_CONFIGURATOR_NAME + "=CodecJson)") ResourceSet resourceSet,
 	    @Reference ConfigurationAdmin configAdmin, BundleContext bundleContext) {
 	this.resourceSet = resourceSet;
 	this.configAdmin = configAdmin;
@@ -206,19 +215,61 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
 	}
     }
 
+    
     private void createResource(List<String> uris, List<Resource> toHandle) {
 	for (String uri : uris) {
 	    int index = uri.lastIndexOf('.');
 	    if (index != -1) {
 		String fileExtension = uri.substring(index + 1);
-		if (resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().containsKey(fileExtension)) {
+		if("jsonschema".equals(fileExtension)) {
+		    loadJsonschema(uri);
+		} else if (resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().containsKey(fileExtension)) {
 		    Resource resource = resourceSet.createResource(URI.createURI(uri));
 		    toHandle.add(resource);
+		} else {
+		    
 		}
 	    }
 	}
     }
 
+    public void loadJsonschema(String pathToJsonschemaFile) {
+//	Resource res = resourceSet.createResource(URI.createURI(pathToJsonschemaFile), "application/json");
+//	Map<String, Object> options = new HashMap<>();
+//	options.put(CodecResourceOptions.CODEC_ROOT_OBJECT, EcorePackage.Literals.EPACKAGE);
+//	options.put(CodecModuleOptions.CODEC_MODULE_SERIALIZE_TYPE, false);
+//	options.put(CodecModuleOptions.CODEC_MODULE_SERIALIZE_EMPTY_VALUE, true);
+//	options.put(CodecModuleOptions.CODEC_MODULE_SERIALIZE_NULL_VALUE, true);
+//	Map<String, Object> classOptions = new HashMap<>();
+//	classOptions.put(CodecModelInfoOptions.CODEC_EXTRAS, Map.of("jsonschema", "true", "jsonschema.feature.key", "definitions"));
+//	options.put(CodecResourceOptions.CODEC_OPTIONS, Map.of(EcorePackage.Literals.EPACKAGE, classOptions));
+//	
+//	try {
+//	    res.load(options);
+//	} catch (IOException e) {
+//	    // TODO Auto-generated catch block
+//	    e.printStackTrace();
+//	}		
+//	if(res.getContents().isEmpty()) {
+//		LOG.log(Level.INFO, String.format("No content loaded for %s", pathToJsonschemaFile));
+//		return;
+//	}
+//	EObject obj = res.getContents().get(0);
+//	if(obj == null) {
+//	    	LOG.log(Level.INFO,String.format("Null content loaded for %s", pathToJsonschemaFile));
+//		return;
+//	}
+//	if(obj instanceof EPackage ePackage) {
+//		res = resourceSet.createResource(URI.createURI(UUID.randomUUID().toString()+".ecore"));
+//		res.getContents().add(ePackage);
+//	} else {
+//	    	LOG.log(Level.INFO,String.format("Content loaded from %s is not of type EPackage", pathToJsonschemaFile));
+//		return;
+//	}
+//	
+//	
+    }
+    
     private void loadResource(List<Resource> toHandle) {
 	for (Iterator<Resource> iterator = toHandle.iterator(); iterator.hasNext();) {
 	    Resource resource = iterator.next();

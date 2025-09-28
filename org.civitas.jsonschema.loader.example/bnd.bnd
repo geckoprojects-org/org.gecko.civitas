@@ -1,6 +1,8 @@
 -library: enable-emf
 -buildpath: \
 	org.eclipse.fennec.codec.constants,\
-	org.eclipse.fennec.codec
+	org.eclipse.fennec.codec,\
+	org.eclipse.fennec.codec.json,\
+	org.eclipse.fennec.codec.jsonschema
 	
 -workingset: atlas

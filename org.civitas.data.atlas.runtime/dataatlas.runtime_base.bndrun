@@ -39,7 +39,9 @@ slf4j.runpath:  \
 	bnd.identity;id='org.civitas.data.atlas.runtime.config',\
 	bnd.identity;id='org.eclipse.fennec.data.atlas.pipline.configurator',\
 	bnd.identity;id='org.gecko.emf.repository.file',\
-	bnd.identity;id='org.civitas.atlas.common.configuration'
+	bnd.identity;id='org.civitas.atlas.common.configuration',\
+	bnd.identity;id='org.eclipse.fennec.codec.json',\
+	bnd.identity;id='org.eclipse.fennec.codec.jsonschema'
 	
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 -runee: JavaSE-21
@@ -159,4 +161,5 @@ slf4j.runpath:  \
 	com.fasterxml.jackson.datatype.jackson-datatype-jsr310;version='[2.18.0,2.18.1)',\
 	org.civitas.atlas.common.configuration;version=snapshot,\
 	org.eclipse.sensinact.gateway.core.geo-json.model;version='[1.0.0,1.0.1)',\
-	org.yaml.snakeyaml;version='[2.2.0,2.2.1)'
+	org.yaml.snakeyaml;version='[2.2.0,2.2.1)',\
+	org.eclipse.fennec.codec.jsonschema;version='[1.0.0,1.0.1)'

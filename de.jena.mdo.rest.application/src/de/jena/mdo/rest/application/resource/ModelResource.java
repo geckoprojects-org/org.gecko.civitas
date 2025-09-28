@@ -79,7 +79,7 @@ public class ModelResource {
 
 	@Activate
 	public ModelResource(
-			@Reference(name = ModelResource.REPO_REFERENCE_NAME, scope = ReferenceScope.PROTOTYPE_REQUIRED) EMFRepository repo,
+			@Reference(name = ModelResource.REPO_REFERENCE_NAME) EMFRepository repo,
 			@Reference SupportedMediatype types) {
 		this.repo = repo;
 		supportedMediaType = types.getSupportedMediaTypes();
