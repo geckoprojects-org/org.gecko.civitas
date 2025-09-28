@@ -10,7 +10,7 @@
   <genPackages prefix="Qvthandler" basePackage="org.civitas" resource="XML" disposableProviderFactory="true"
       ecorePackage="qvt-handler.ecore#/">
     <genClasses ecoreClass="qvt-handler.ecore#//QVTHandlerConfig">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute qvt-handler.ecore#//QVTHandlerConfig/trafoTarget"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute qvt-handler.ecore#//QVTHandlerConfig/trafo"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference qvt-handler.ecore#//QVTHandlerConfig/eclassuri"/>
     </genClasses>
   </genPackages>
