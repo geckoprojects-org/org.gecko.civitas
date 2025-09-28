@@ -23,8 +23,10 @@ import java.util.UUID;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.gecko.emf.osgi.annotation.require.RequireEMF;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -77,6 +79,7 @@ public class ExampleTest {
 	}
 	
 	// Database connection must be defined
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@WithFactoryConfiguration(factoryPid = "daanse.jdbc.datasource.postgresql.DataSource", location = "?", name = "plant", properties = {
 			@Property(key = "name", value = "plantTarget"),
 			@Property(key = "user", value = "postgres"),
@@ -119,6 +122,11 @@ public class ExampleTest {
 		assertFalse(handlerAware.isEmpty());
 		assertNotNull(plant);
 		handlerAware.getService().notify("test_topic", plant);
+		EObject plantCopy = EcoreUtil.copy(plant);
+		EStructuralFeature cityFeature = plantCopy.eClass().getEStructuralFeature("city");
+		plantCopy.eSet(cityFeature, "Schlumpfhausen");
+		handlerAware.getService().notify("test_topic", plantCopy);
+		
 		
 	}
 
