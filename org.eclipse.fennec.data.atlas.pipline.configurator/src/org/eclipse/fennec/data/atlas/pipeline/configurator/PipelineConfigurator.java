@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osgi.service.cm.ConfigurationAdmin;
 import org.osgi.service.cm.annotations.RequireConfigurationAdmin;
@@ -248,10 +247,7 @@ public class PipelineConfigurator {
 			Dictionary<String, Object> properties, Configuration configuration) {
 		EClass targetType = reference.getEReferenceType();
 
-		if (targetType.equals(org.eclipse.emf.ecore.EcorePackage.Literals.ECLASS)) {
-			// EClass reference -> URI string
-			transformEClassReference(reference, value, key, properties);
-		} else if (targetType.equals(org.eclipse.emf.ecore.EcorePackage.Literals.EPACKAGE)) {
+		if (targetType.equals(org.eclipse.emf.ecore.EcorePackage.Literals.EPACKAGE)) {
 			// EPackage reference -> filter
 			transformEPackageReference(reference, (EPackage) value, key, properties);
 		} else if (targetType.getEAllSuperTypes().contains(PipelinePackage.Literals.PIPELINE_STEP)) {
@@ -261,20 +257,17 @@ public class PipelineConfigurator {
 			// Configuration reference -> target filter
 			transformConfigurationReference(reference, value, key, properties);
 		} else {
-			// Unknown reference type, treat as simple string
-			properties.put(key, value.toString());
-			logger.fine("Added unknown reference: " + key + " = " + value);
+			transformEObjectReference(reference, value, key, properties);
 		}
 	}
 
 	/**
 	 * Transforms EClass reference to URI string.
 	 */
-	private void transformEClassReference(EReference reference, Object value, String key,
+	private void transformEObjectReference(EReference reference, Object value, String key,
 			Dictionary<String, Object> properties) {
-		if (value instanceof EClass) {
-			EClass eClass = (EClass) value;
-			String uri = EcoreUtil.getURI(eClass).toString();
+		if (value instanceof EObject eObject) {
+			String uri = EcoreUtil.getURI(eObject).toString();
 			properties.put(key, uri);
 			logger.fine("Added EClass reference: " + key + " = " + uri);
 		}
@@ -283,9 +276,8 @@ public class PipelineConfigurator {
 	/**
 	 * Transforms EPackage reference to OSGi filter.
 	 */
-	private void transformEPackageReference(EReference reference, EPackage value, String key,
+	private void transformEPackageReference(EReference reference, EPackage ePackage, String key,
 			Dictionary<String, Object> properties) {
-		EPackage ePackage = (EPackage) value;
 		String targetKey = key.endsWith(".target") ? key : key + ".target";
 		String filter = "(emf.nsUri=" + ePackage.getNsURI() + ")";
 		properties.put(targetKey, filter);

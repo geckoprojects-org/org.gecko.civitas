@@ -20,14 +20,13 @@
 			"OperatingData",
 			"MeteringPoint",
 			"MeterReading",
-			"MeterHistory",
 			"Meter"
 		],
 		"fennec.jpa.eorm.model.target": "(emf.name=target)"
 	},
 	"fennec.jpa.EMPersistenceUnit~plantTarget": {
 		"fennec.jpa.ext.eclipselink.target-database": "PostgreSQL",
-		"fennec.jpa.ext.eclipselink.ddl-generation": "none",
+		"fennec.jpa.ext.eclipselink.ddl-generation": "create-or-extend-tables",
 		"fennec.jpa.dataSource.target": "(name=plantTarget)",
 		"fennec.jpa.mapping.target": "(fennec.jpa.eorm.mapping=plant)",
 		"fennec.jpa.persistenceUnitName": "plantTarget"

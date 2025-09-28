@@ -370,7 +370,7 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	int INTERMEDIATE_PLANT = 5;
 
 	/**
-	 * The feature id for the '<em><b>Operating Data</b></em>' reference list.
+	 * The feature id for the '<em><b>Operating Data</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -379,7 +379,7 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	int INTERMEDIATE_PLANT__OPERATING_DATA = 0;
 
 	/**
-	 * The feature id for the '<em><b>Basic Data</b></em>' reference.
+	 * The feature id for the '<em><b>Basic Data</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -771,10 +771,10 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getIntermediatePlant();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getOperatingData <em>Operating Data</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getOperatingData <em>Operating Data</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Operating Data</em>'.
+	 * @return the meta object for the containment reference list '<em>Operating Data</em>'.
 	 * @see org.civitas.meter.source.model.metersource.IntermediatePlant#getOperatingData()
 	 * @see #getIntermediatePlant()
 	 * @generated
@@ -782,10 +782,10 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 	EReference getIntermediatePlant_OperatingData();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getBasicData <em>Basic Data</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.civitas.meter.source.model.metersource.IntermediatePlant#getBasicData <em>Basic Data</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Basic Data</em>'.
+	 * @return the meta object for the containment reference '<em>Basic Data</em>'.
 	 * @see org.civitas.meter.source.model.metersource.IntermediatePlant#getBasicData()
 	 * @see #getIntermediatePlant()
 	 * @generated
@@ -1112,7 +1112,7 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 		EClass INTERMEDIATE_PLANT = eINSTANCE.getIntermediatePlant();
 
 		/**
-		 * The meta object literal for the '<em><b>Operating Data</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Operating Data</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1120,7 +1120,7 @@ public interface MeterSourcePackage extends org.eclipse.emf.ecore.EPackage {
 		EReference INTERMEDIATE_PLANT__OPERATING_DATA = eINSTANCE.getIntermediatePlant_OperatingData();
 
 		/**
-		 * The meta object literal for the '<em><b>Basic Data</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Basic Data</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

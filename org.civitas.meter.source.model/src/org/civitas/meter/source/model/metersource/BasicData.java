@@ -140,7 +140,7 @@ public interface BasicData extends EObject {
 	 * @return the value of the '<em>Zip</em>' attribute.
 	 * @see #setZip(String)
 	 * @see org.civitas.meter.source.model.metersource.MeterSourcePackage#getBasicData_Zip()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getZip();

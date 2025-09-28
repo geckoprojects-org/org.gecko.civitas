@@ -26,7 +26,6 @@ main() {
 mapping SOURCE::IntermediateMeteringPoint::toTargetMeteringPoint(): TARGET::MeteringPoint {
 	id := self.meterId;
 	meterReadings += self.readings->map toTargetMeterReading();
-	currentMeter := self.map toTargetMeter();
 	plant := self.map toPlant();
 }
 

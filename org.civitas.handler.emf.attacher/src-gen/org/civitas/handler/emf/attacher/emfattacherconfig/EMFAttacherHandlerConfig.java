@@ -85,7 +85,7 @@ public interface EMFAttacherHandlerConfig extends Configuration, Handler {
 	 * @return the value of the '<em>Target EClass Uri</em>' reference.
 	 * @see #setTargetEClassUri(EClass)
 	 * @see org.civitas.handler.emf.attacher.emfattacherconfig.EmfattacherconfigPackage#getEMFAttacherHandlerConfig_TargetEClassUri()
-	 * @model
+	 * @model extendedMetaData="name='target.eclassuri'"
 	 * @generated
 	 */
 	EClass getTargetEClassUri();
@@ -110,7 +110,7 @@ public interface EMFAttacherHandlerConfig extends Configuration, Handler {
 	 * @return the value of the '<em>Incoming EClass Uri</em>' reference.
 	 * @see #setIncomingEClassUri(EClass)
 	 * @see org.civitas.handler.emf.attacher.emfattacherconfig.EmfattacherconfigPackage#getEMFAttacherHandlerConfig_IncomingEClassUri()
-	 * @model
+	 * @model extendedMetaData="name='incoming.eclassuri'"
 	 * @generated
 	 */
 	EClass getIncomingEClassUri();
@@ -135,7 +135,7 @@ public interface EMFAttacherHandlerConfig extends Configuration, Handler {
 	 * @return the value of the '<em>Target Reference Uri</em>' reference.
 	 * @see #setTargetReferenceUri(EReference)
 	 * @see org.civitas.handler.emf.attacher.emfattacherconfig.EmfattacherconfigPackage#getEMFAttacherHandlerConfig_TargetReferenceUri()
-	 * @model
+	 * @model extendedMetaData="name='target.reference.uri'"
 	 * @generated
 	 */
 	EReference getTargetReferenceUri();
@@ -160,7 +160,7 @@ public interface EMFAttacherHandlerConfig extends Configuration, Handler {
 	 * @return the value of the '<em>Foreign Key Feature Uri</em>' reference.
 	 * @see #setForeignKeyFeatureUri(EStructuralFeature)
 	 * @see org.civitas.handler.emf.attacher.emfattacherconfig.EmfattacherconfigPackage#getEMFAttacherHandlerConfig_ForeignKeyFeatureUri()
-	 * @model
+	 * @model extendedMetaData="name='foreignKeyFeature.uri'"
 	 * @generated
 	 */
 	EStructuralFeature getForeignKeyFeatureUri();

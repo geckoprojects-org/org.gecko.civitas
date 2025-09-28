@@ -7,4 +7,6 @@
 	org.civitas.osgi.component.configuration.model;version=snapshot,\
 	org.civitas.minio;version=snapshot,\
 	org.civitas.handler.emf.attacher;version=snapshot,\
-	org.civitas.db.loader;version=snapshot
+	org.civitas.db.loader;version=snapshot,\
+	org.civitas.handler.qvt,\
+	org.civitas.handler.emf.repository.datasink
