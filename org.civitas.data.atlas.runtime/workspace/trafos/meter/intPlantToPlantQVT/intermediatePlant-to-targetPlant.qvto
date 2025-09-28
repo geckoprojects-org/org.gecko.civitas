@@ -27,13 +27,7 @@ mapping SOURCE::IntermediatePlant::toTargetPlant(): TARGET::Plant {
 	city := self.basicData.city;
 	postalcode := self.basicData.zip;
 	street := self.basicData.street;
-	net := self.map toTargetNet();
 	operatingData += self.operatingData->map toTargetOperatingData();
-}
-
-mapping SOURCE::IntermediatePlant::toTargetNet(): TARGET::Net {
-	id := self.basicData.net.toString();
-	number := self.basicData.net.toString();
 }
 
 mapping SOURCE::OperatingData::toTargetOperatingData(): TARGET::OperatingData {

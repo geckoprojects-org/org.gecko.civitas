@@ -26,10 +26,12 @@ import java.util.concurrent.TimeUnit;
 
 import org.civitas.csv.reader.api.CSVReaderService;
 import org.civitas.minio.MinIOClient;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.gecko.emf.osgi.constants.EMFNamespaces;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -160,6 +162,7 @@ public class MinIOCSVDownloadService {
 
             // Parse CSV using the referenced CSVReader
             List<EObject> parsedObjects = reader.loadEObjects(inputStream, targetEClass);
+            parsedObjects = parsedObjects.stream().filter(o -> Diagnostician.INSTANCE.validate(o).getSeverity() == Diagnostic.OK).toList();
 
             // Print out the parsed EObjects (as specified in the requirement)
             sendAhead(fileName, parsedObjects);

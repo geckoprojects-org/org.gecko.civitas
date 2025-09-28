@@ -20,7 +20,7 @@
     "bucketname": "dummy-data",
     "cron": "0 */5 * * * *",
     "client.target": "(id=minio)",
-    "eClassUri": "https://civitas.org/meter/source/1.0.0#//BasicaData",
+    "eClassUri": "https://civitas.org/meter/source/1.0.0#//BasicData",
     "eventTopic" : "meterusecase/basicdata_source"
   },
 	"GenericScheduledLoader~manual-meters": {
