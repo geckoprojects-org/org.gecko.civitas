@@ -6,19 +6,19 @@
   <steps xsi:type="minioconfig:MinIOCSVDownloadServiceConfig" pid="basic_data_source" id="basic_data_source" outputs="basicDataQVT" bucketname="dummy-data" cron="0 */5 * * * *" clientTarget="//@components.0">
     <eClass href="https://civitas.org/meter/source/1.0.0#//BasicData"/>
   </steps>
-  <steps xsi:type="scheduledloaderconfig:ScheduledLoaderConfig" pid="manual-meter" id="manual-meter" scheduleInterval="600" repoTarget="(repo_id=manualMeter)" loaderName="manual-meter">
+  <steps xsi:type="scheduledloaderconfig:ScheduledLoaderConfig" pid="manual-meter" id="manual-meter" repoTarget="(repo_id=manualMeter)" loaderName="manual-meter">
     <package href="https://civitas.org/meter/source/1.0.0#/"/>
     <eclass href="https://civitas.org/meter/source/1.0.0#//Meter"/>
   </steps>
-  <steps xsi:type="scheduledloaderconfig:ScheduledLoaderConfig" pid="remote-meter" id="remote-meter" scheduleInterval="600" repoTarget="(repo_id=remoteMeter)" loaderName="remote-meter">
+  <steps xsi:type="scheduledloaderconfig:ScheduledLoaderConfig" pid="remote-meter" id="remote-meter" repoTarget="(repo_id=remoteMeter)" loaderName="remote-meter">
     <package href="https://civitas.org/meter/source/1.0.0#/"/>
     <eclass href="https://civitas.org/meter/source/1.0.0#//Meter"/>
   </steps>
-  <steps xsi:type="scheduledloaderconfig:ScheduledLoaderConfig" pid="manual-readings" id="manual-readings" repoTarget="(repo_id=manualReading)" loaderName="manual-readings">
+  <steps xsi:type="scheduledloaderconfig:ScheduledLoaderConfig" pid="manual-readings" id="manual-readings" outputs="reading_attacher" repoTarget="(repo_id=manualReading)" loaderName="manual-readings">
     <package href="https://civitas.org/meter/source/1.0.0#/"/>
     <eclass href="https://civitas.org/meter/source/1.0.0#//Reading"/>
   </steps>
-  <steps xsi:type="scheduledloaderconfig:ScheduledLoaderConfig" pid="remote-readings" id="remote-readings" repoTarget="(repo_id=remoteMeter)" loaderName="remote-readings">
+  <steps xsi:type="scheduledloaderconfig:ScheduledLoaderConfig" pid="remote-readings" id="remote-readings" outputs="reading_attacher" repoTarget="(repo_id=remoteMeter)" loaderName="remote-readings">
     <package href="https://civitas.org/meter/source/1.0.0#/"/>
     <eclass href="https://civitas.org/meter/source/1.0.0#//RemoteReading"/>
   </steps>
@@ -40,6 +40,15 @@
   <steps xsi:type="qvthandler:QVTHandlerConfig" pid="plantQVT" id="plantQVT" outputs="plantDataSink" inputs="basic_plant_id_attacher op_plant_id_attacher" trafo="(transformator.id=intPlantToPlantQVT)">
     <eclassuri href="https://civitas.org/meter/source/1.0.0#//IntermediatePlant"/>
   </steps>
-  <steps xsi:type="datasinkconfig:EMFRepositoryDataSinkConfig" pid="plantDataSink" id="plantDataSink" inputs="plantQVT" repoTarget="(repo_id=plantTarget)"/>
+  <steps xsi:type="emfattacherconfig:EMFAttacherHandlerConfig" pid="reading_attacher" id="reading_attacher" outputs="meteringPointQVT" inputs="manual-readings remote-readings" repoTarget="(repo_id=inmem)">
+    <targetEClassUri href="https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint"/>
+    <incomingEClassUri href="https://civitas.org/meter/source/1.0.0#//Reading"/>
+    <targetReferenceUri href="https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint/readings"/>
+    <foreignKeyFeatureUri xsi:type="ecore:EAttribute" href="https://civitas.org/meter/source/1.0.0#//Reading/meterId"/>
+  </steps>
+  <steps xsi:type="qvthandler:QVTHandlerConfig" pid="meteringPointQVT" id="meteringPointQVT" outputs="plantDataSink" inputs="reading_attacher" trafo="(transformator.id=intMeteringPointToTargetMeteringPointQVT)">
+    <eclassuri href="https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint"/>
+  </steps>
+  <steps xsi:type="datasinkconfig:EMFRepositoryDataSinkConfig" pid="plantDataSink" id="plantDataSink" inputs="plantQVT meteringPointQVT" repoTarget="(repo_id=plantTarget)"/>
   <components xsi:type="minioconfig:MinIOClientConfig" pid="minio" accessKey="minio" secretKey="minio123"/>
 </pipeline:Pipeline>

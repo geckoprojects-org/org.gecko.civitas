@@ -117,7 +117,7 @@ public class PipelineCreator {
 				(EClass) createProxy("https://civitas.org/meter/source/1.0.0#//Meter", EcorePackage.Literals.ECLASS));
 		manualMeter.setPackage((EPackage) createProxy("https://civitas.org/meter/source/1.0.0#/" ,EcorePackage.Literals.EPACKAGE));
 		manualMeter.setRepoTarget("(repo_id=manualMeter)");
-		manualMeter.setScheduleInterval(600);
+		manualMeter.setScheduleInterval(60);
 		manualMeter.setInitialQuerySkip(0);
 		manualMeter.setQueryLimit(1000);
 
@@ -131,7 +131,7 @@ public class PipelineCreator {
 				(EClass) createProxy("https://civitas.org/meter/source/1.0.0#//Meter", EcorePackage.Literals.ECLASS));
 		remoteMeter.setPackage((EPackage) createProxy("https://civitas.org/meter/source/1.0.0#/" ,EcorePackage.Literals.EPACKAGE));
 		remoteMeter.setRepoTarget("(repo_id=remoteMeter)");
-		remoteMeter.setScheduleInterval(600);
+		remoteMeter.setScheduleInterval(60);
 		remoteMeter.setInitialQuerySkip(0);
 		remoteMeter.setQueryLimit(1000);
 		
@@ -222,15 +222,73 @@ public class PipelineCreator {
 		plantQvt.getInputs().add(opDataAttacher);
 		pipeline.getSteps().add(plantQvt);
 
+		
+//		TODO: Attach meter to intermediateMeteringPoint 
+//		
+//		EMFAttacherHandlerConfig meterAttacher = EmfattacherconfigFactory.eINSTANCE.createEMFAttacherHandlerConfig();
+//		meterAttacher.setId("meter_attacher");
+//		meterAttacher.setPid("meter_attacher");
+//		meterAttacher.setRepoTarget("(repo_id=inmem)");
+//		meterAttacher.getInputs().add(manualMeter);
+//		meterAttacher.getInputs().add(remoteMeter);
+//		meterAttacher.setIncomingEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//Meter",
+//				EcorePackage.Literals.ECLASS));
+//		meterAttacher.setTargetEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
+//				EcorePackage.Literals.ECLASS));
+//		meterAttacher.setTargetReferenceUri(
+//				(EReference) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
+//						EcorePackage.Literals.EREFERENCE));
+//		meterAttacher.setForeignKeyFeatureUri((EAttribute) createProxy(
+//				"https://civitas.org/meter/source/1.0.0#//Meter/id", EcorePackage.Literals.EATTRIBUTE));
+//		
+//		pipeline.getSteps().add(meterAttacher);
+
+		EMFAttacherHandlerConfig readingAttacher = EmfattacherconfigFactory.eINSTANCE.createEMFAttacherHandlerConfig();
+		readingAttacher.setId("reading_attacher");
+		readingAttacher.setPid("reading_attacher");
+		readingAttacher.setRepoTarget("(repo_id=inmem)");
+		readingAttacher.getInputs().add(manualReading);
+		readingAttacher.getInputs().add(remoteReading);
+		readingAttacher.setIncomingEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//Reading",
+				EcorePackage.Literals.ECLASS));
+		readingAttacher.setTargetEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
+				EcorePackage.Literals.ECLASS));
+		readingAttacher.setTargetReferenceUri(
+				(EReference) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint/readings",
+						EcorePackage.Literals.EREFERENCE));
+		readingAttacher.setForeignKeyFeatureUri((EAttribute) createProxy(
+				"https://civitas.org/meter/source/1.0.0#//Reading/meterId", EcorePackage.Literals.EATTRIBUTE));
+		
+		pipeline.getSteps().add(readingAttacher);
+		
+		
+		QVTHandlerConfig meteringpointQvt = QvthandlerFactory.eINSTANCE.createQVTHandlerConfig();
+		meteringpointQvt.setId("meteringPointQVT");
+		meteringpointQvt.setPid("meteringPointQVT"); 
+		meteringpointQvt.setTrafo("(transformator.id=intMeteringPointToTargetMeteringPointQVT)");
+		meteringpointQvt.setEclassuri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
+				EcorePackage.Literals.ECLASS));
+		
+//		meteringpointQvt.getInputs().add(meterAttacher);
+		meteringpointQvt.getInputs().add(readingAttacher);
+		pipeline.getSteps().add(meteringpointQvt);
+		
+//		EMFRepositoryDataSinkConfig meteringPointDataSink = DatasinkconfigFactory.eINSTANCE.createEMFRepositoryDataSinkConfig();
+//		meteringPointDataSink.setRepoTarget("(repo_id=plantTarget)");
+//		meteringPointDataSink.setId("plantDataSink");
+//		meteringPointDataSink.setPid("plantDataSink");
+//		meteringPointDataSink.getInputs().add(meteringpointQvt);
+//		
+//		pipeline.getSteps().add(meteringPointDataSink);
+		
 		EMFRepositoryDataSinkConfig plantDataSink = DatasinkconfigFactory.eINSTANCE.createEMFRepositoryDataSinkConfig();
 		plantDataSink.setRepoTarget("(repo_id=plantTarget)");
 		plantDataSink.setId("plantDataSink");
 		plantDataSink.setPid("plantDataSink");
 		plantDataSink.getInputs().add(plantQvt);
+		plantDataSink.getInputs().add(meteringpointQvt);
 		
 		pipeline.getSteps().add(plantDataSink);
-		
-		
 		
 		resource = set.createResource(URI.createURI("workspace/pipelines/meter.pipeline"));
 
