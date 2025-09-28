@@ -5,8 +5,8 @@
 /build/
 /documents/build/
 /docker/build/
-/docker/glt/build/
-/docker/meter/build/
+/docker/dataatlas/build/
+/docker/modelatlas/build/
 /release/
 /build/
 /local/

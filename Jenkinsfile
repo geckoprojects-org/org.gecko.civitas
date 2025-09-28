@@ -46,10 +46,10 @@ pipeline  {
             steps  {
                 echo "I am exporting applications on branch: ${env.GIT_BRANCH}"
 
-                sh "./gradlew org.civitas.meter.runtime:resolve.meter.runtime_base --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-                sh "./gradlew org.civitas.meter.runtime:export.meter.runtime_docker --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-                sh "./gradlew org.civitas.glt.runtime:resolve.glt.runtime_base --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-                sh "./gradlew org.civitas.glt.runtime:export.glt.runtime_docker --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew org.civitas.data.atlas.runtime:resolve.meter.runtime_base --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew org.civitas.data.atlas.runtime:export.meter.runtime_docker --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew org.civitas.model.atlas.runtime:resolve.glt.runtime_base --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew org.civitas.model.atlas.runtime:export.glt.runtime_docker --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
             }
         }
 
@@ -65,16 +65,16 @@ pipeline  {
                 echo "I am building and publishing a docker image on branch: ${env.GIT_BRANCH}"
                 
                 step([$class: 'DockerBuilderPublisher',
-                      dockerFileDirectory: 'docker/meter',
+                      dockerFileDirectory: 'docker/modelatlas',
                             cloud: 'docker',
-                            tagsString: 'devel.data-in-motion.biz:6000/civitas/meter:latest',
+                            tagsString: 'devel.data-in-motion.biz:6000/civitas/modelatlas:latest',
                             pushOnSuccess: true,
                             pushCredentialsId: 'dim-nexus'])
 
                 step([$class: 'DockerBuilderPublisher',
-                      dockerFileDirectory: 'docker/glt',
+                      dockerFileDirectory: 'docker/dataatlas',
                             cloud: 'docker',
-                            tagsString: 'devel.data-in-motion.biz:6000/civitas/glt:latest',
+                            tagsString: 'devel.data-in-motion.biz:6000/civitas/dataatlas:latest',
                             pushOnSuccess: true,
                             pushCredentialsId: 'dim-nexus'])
 

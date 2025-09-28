@@ -1,8 +1,8 @@
 FROM eclipse-temurin:21-jre-alpine
 
-ENV USERNAME=ma \
-	HOME_DIR=/ma \
-	OPT_DIR=/opt/ma \
+ENV USERNAME=dataatlas \
+	HOME_DIR=/dataatlas \
+	OPT_DIR=/opt/dataatlas \
 	GECKO_VERSION=2.0.0
 
 RUN mkdir -p ${OPT_DIR} && \
@@ -29,4 +29,4 @@ EXPOSE 8080 8081 8082 8083 8084 8085 8090
 WORKDIR ${OPT_DIR}
 USER ${USERNAME}
 
-CMD ["java", "-Dgosh.args=--nointeractive", "-Dgecko.data.dir=/opt/meter/runtime/data", "-Dgecko.conf.dir=/opt/meter/runtime/etc", "-Dgecko.base.dir=/opt/ma", "-Dgecko.log.dir=/opt/meter/runtime/log", "-Dlogback.configurationFile=file:/opt/meter/runtime/etc/logback.xml",  "-jar", "org.civitas.meter.runtime.jar"]
+CMD ["java", "-Dgosh.args=--nointeractive", "-Dgecko.data.dir=/opt/dataatlas/runtime/data", "-Dgecko.conf.dir=/opt/dataatlas/runtime/etc", "-Dgecko.base.dir=/opt/dataatlas", "-Dgecko.log.dir=/opt/dataatlas/runtime/log", "-Dlogback.configurationFile=file:/opt/dataatlas/runtime/etc/logback.xml",  "-jar", "org.civitas.data.atlas.runtime.jar"]

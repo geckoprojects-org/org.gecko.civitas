@@ -14,12 +14,12 @@ task prepareDocker(){
 		stageDir.mkdirs()
 	     // copy all necessary files to  build/docker/ dir
     	copy {
-	        from new File("../../org.civitas.glt.runtime/generated/distributions/executable/glt.runtime_docker.jar")
+	        from new File("../../org.civitas.model.atlas.runtime/generated/distributions/executable/modelatlas.runtime_docker.jar")
 	        into stageDir
-	        rename("glt.runtime_docker.jar", "org.civitas.glt.runtime.jar")
+	        rename("modelatlas.runtime_docker.jar", "org.civitas.model.atlas.runtime.jar")
 	    }
 	    copy {
-	        from new File("../../org.civitas.glt.runtime/runtime/")
+	        from new File("../../org.civitas.model.atlas.runtime/runtime/")
 	        into new File(stageDir, "runtime")
 	    }
     }
