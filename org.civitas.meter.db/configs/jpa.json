@@ -75,7 +75,6 @@
 	},
 	"fennec.jpa.EORMMappingService~glt": {
 		"fennec.jpa.eorm.strict": true,
-		"fennec.jpa.eorm.customizer.target": "(name=glt)",
 		"fennec.jpa.eorm.mappingName": "glt",
 		"fennec.jpa.eorm.eClasses": [
 			"Building",
