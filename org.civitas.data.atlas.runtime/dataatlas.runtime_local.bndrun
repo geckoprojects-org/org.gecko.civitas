@@ -1,6 +1,7 @@
 -include: dataatlas.runtime_base.bndrun
 
--runbundles.local: org.civitas.data.atlas.runtime.config.local
+-runbundles.local: org.civitas.data.atlas.runtime.config.local,\
+	org.civitas.pipeline.creator
 
 -runproperties.local: \
 	base.path=${.},\
