@@ -50,7 +50,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="starts" eType="ecore:EDataType ../units.ecore#//EInstant"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Meter">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="plantId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="plantId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="This is a reference to the plantId of the BasicData but without the prefix &quot;p&quot;."/>
       </eAnnotations>

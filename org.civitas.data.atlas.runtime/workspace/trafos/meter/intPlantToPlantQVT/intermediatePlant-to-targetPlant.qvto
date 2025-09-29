@@ -23,7 +23,7 @@ main() {
 }
 
 mapping SOURCE::IntermediatePlant::toTargetPlant(): TARGET::Plant {
-	log("------------------ city " + self.basicData.city);
+	log("------------------ IntermediatePlantToTargetPlant " + self.id);
 	id := self.id;
 	city := self.basicData.city;
 	postalcode := self.basicData.zip;
