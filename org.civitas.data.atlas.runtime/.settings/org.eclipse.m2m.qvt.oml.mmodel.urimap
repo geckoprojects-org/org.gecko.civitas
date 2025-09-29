@@ -3,4 +3,8 @@
   <mapping sourceURI="https://civitas.org/meter/source/1.0.0" targetURI="platform:/resource/org.civitas.data.atlas.runtime/workspace/models/meter/meter-source.ecore"/>
   <mapping sourceURI="https://civitas.org/meter/target/1.0.0" targetURI="platform:/resource/org.civitas.data.atlas.runtime/workspace/models/meter/meter-target.ecore"/>
   <mapping sourceURI="https://civitas.org/meter/intermediate/1.0.0" targetURI="platform:/resource/org.civitas.data.atlas.runtime/workspace/models/meter/meter-intermediate.ecore"/>    
+  <mapping sourceURI="https://civitas.org/glt/1.0.0" targetURI="platform:/resource/org.civitas.data.atlas.runtime/workspace/models/glt/glt.ecore"/>
+  <mapping sourceURI="https://civitas.org/glt/intermediate/1.0.0" targetURI="platform:/resource/org.civitas.data.atlas.runtime/workspace/models/glt/glt-intermediate.ecore"/>
+  <mapping sourceURI="http://models.civitas.org/models/building/sensor/1.0" targetURI="platform:/resource/org.civitas.data.atlas.runtime/workspace/models/glt/building_sensor.ecore"/>
+  <mapping sourceURI="https://civitas.org/alarm-notification/1.0.0" targetURI="platform:/resource/org.civitas.data.atlas.runtime/workspace/models/glt/alarm.ecore"/>  
 </uriMap:MappingContainer>

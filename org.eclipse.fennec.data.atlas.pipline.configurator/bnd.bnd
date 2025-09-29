@@ -11,4 +11,5 @@
 	org.civitas.db.loader;version=snapshot,\
 	org.civitas.handler.qvt,\
 	org.civitas.handler.emf.repository.datasink,\
-	org.civitas.handler.mqtt
+	org.civitas.handler.mqtt,\
+	org.civitas.glt.sensor.validation

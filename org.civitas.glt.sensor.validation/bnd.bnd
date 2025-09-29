@@ -1,9 +1,21 @@
 -library: enable-emf
 
-
 -buildpath: \
-	org.civitas.glt.sensor.model;version=snapshot,\
-	org.civitas.prototype.model;version=snapshot,\
 	org.osgi.service.cm,\
 	org.osgi.service.metatype.annotations,\
-	org.osgi.service.typedevent
+	org.osgi.service.typedevent,\
+	org.civitas.osgi.component.configuration.model,\
+	org.civitas.pipeline.model
+
+-includeresource: \
+	model=model
+
+src=${^src},src-gen
+
+-generate:\
+    model/validation-handler.genmodel;\
+        generate=geckoEMF;\
+        genmodel=model/validation-handler.genmodel;\
+        output=src-gen
+        
+-workingset: handler

@@ -76,7 +76,7 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 
 	private static final Logger LOGGER = Logger.getLogger(EMFAttacherHandler.class.getName());
 
-	@Reference
+	@Reference(name = "repo", target = "(&(needs_configuration=true)(must_not_resolve=true)(must_not_resolve=false))")
 	EMFRepository repository;
 
 	@Reference
@@ -142,7 +142,7 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 		}
 
 		// create target object if null and attach eObject (copy) to it
-		EObject targetEObject = repository.getEObject((EClass) target, id, null);
+		EObject targetEObject = repository.getEObject((EClass) target, id);
 		if (targetEObject == null) {
 			targetEObject = EcoreUtil.create((EClass) target);
 			targetEObject.eSet(targetEObject.eClass().getEIDAttribute(), id);
@@ -165,13 +165,12 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 		if(incomingEReference != null) {
 //			TODO: we should check here if we really want to overwrite or if we want to addAll and replace the existing objects with the same ids
 			Object object = eObject.eGet(incomingEReference);
-			targetEObject.eSet(targetRef, object);
-//			if(targetRef.isMany()) {
-//				EList<EObject> eList = (EList<EObject>) targetEObject.eGet(targetRef);
-//				eList.addAll((Collection<? extends EObject>) object);
-//			} else {
-//				targetEObject.eSet(targetRef, object);
-//			}
+			if(targetRef.isMany()) {
+				EList<EObject> eList = (EList<EObject>) targetEObject.eGet(targetRef);
+				eList.addAll((Collection<? extends EObject>) object);
+			} else {
+				targetEObject.eSet(targetRef, object);
+			}
 			
 		} else if (targetRef.isMany()) {
 			EList<EObject> eList = (EList<EObject>) targetEObject.eGet(targetRef);

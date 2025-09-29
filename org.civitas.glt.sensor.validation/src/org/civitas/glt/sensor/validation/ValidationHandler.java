@@ -53,10 +53,10 @@ public class ValidationHandler implements TypedEventHandler<EObject> {
 	public @interface Config {
 
 		@AttributeDefinition(name = "Event Topic", description = "The topic this handler is listening to")
-		String event_topic();
+		String[] event_topics();
 
 		@AttributeDefinition(name = "Incoming EClass URI", description = "The URI of the incoming EObject EClass")
-		String incomming_eclassuri(); // http:,....#//Reading
+		String incoming_eclassuri(); // http:,....#//Reading
 
 		@AttributeDefinition(name = "Target Reference URI", description = "The URI of the EStructuralFeature to be validated")
 		String reference_uri_to_be_validated(); // Reading_value
@@ -77,7 +77,7 @@ public class ValidationHandler implements TypedEventHandler<EObject> {
 		double maxThreshold() default -9999.;
 
 		@AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the updated target EObject")
-		String[] forward_topic();
+		String[] forward_topics();
 	}
 
 	@Activate
@@ -97,7 +97,7 @@ public class ValidationHandler implements TypedEventHandler<EObject> {
 	@Override
 	public void notify(String topic, EObject eObject) {
 		// check if we can handle this EClass
-		if(!EcoreUtil.getURI(eObject.eClass()).toString().equals(config.incomming_eclassuri())) return;
+		if(!EcoreUtil.getURI(eObject.eClass()).toString().equals(config.incoming_eclassuri())) return;
 		
 //		Check if reference_uri_to_be_validated is null: if yes we just look in the attribute_uri_to_be_validated
 //		If not, we have to do treat it like a feature path
@@ -120,7 +120,7 @@ public class ValidationHandler implements TypedEventHandler<EObject> {
 		if(numberToBeValidated != null) {
 			if(!isValid(numberToBeValidated)) {
 				LOGGER.info(String.format("Validation failed. Passing object forward"));
-				Arrays.asList(config.forward_topic()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(eObject)));
+				Arrays.asList(config.forward_topics()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(eObject)));
 			}
 		}
 	}

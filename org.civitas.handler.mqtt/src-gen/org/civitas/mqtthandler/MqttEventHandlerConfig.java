@@ -34,7 +34,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.civitas.mqtthandler.MqttEventHandlerConfig#getMqttTopic <em>Mqtt Topic</em>}</li>
+ *   <li>{@link org.civitas.mqtthandler.MqttEventHandlerConfig#getMqttTopics <em>Mqtt Topics</em>}</li>
  *   <li>{@link org.civitas.mqtthandler.MqttEventHandlerConfig#getMqttServiceTarget <em>Mqtt Service Target</em>}</li>
  *   <li>{@link org.civitas.mqtthandler.MqttEventHandlerConfig#getContentType <em>Content Type</em>}</li>
  * </ul>
@@ -46,19 +46,19 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public interface MqttEventHandlerConfig extends Configuration, DataSink {
 	/**
-	 * Returns the value of the '<em><b>Mqtt Topic</b></em>' attribute list.
+	 * Returns the value of the '<em><b>Mqtt Topics</b></em>' attribute list.
 	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The MQTT topic list where to publish the result
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Mqtt Topic</em>' attribute list.
-	 * @see org.civitas.mqtthandler.MqtthandlerPackage#getMqttEventHandlerConfig_MqttTopic()
-	 * @model
+	 * @return the value of the '<em>Mqtt Topics</em>' attribute list.
+	 * @see org.civitas.mqtthandler.MqtthandlerPackage#getMqttEventHandlerConfig_MqttTopics()
+	 * @model extendedMetaData="name='mqtt.topics'"
 	 * @generated
 	 */
-	EList<String> getMqttTopic();
+	EList<String> getMqttTopics();
 
 	/**
 	 * Returns the value of the '<em><b>Mqtt Service Target</b></em>' attribute.

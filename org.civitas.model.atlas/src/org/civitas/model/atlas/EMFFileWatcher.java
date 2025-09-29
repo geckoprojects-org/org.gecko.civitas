@@ -218,23 +218,26 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
     
     private void createResource(List<String> uris, List<Resource> toHandle) {
 	for (String uri : uris) {
+	    System.out.println("Loading URI " + uri);
 	    int index = uri.lastIndexOf('.');
 	    if (index != -1) {
 		String fileExtension = uri.substring(index + 1);
 		if("jsonschema".equals(fileExtension)) {
-		    loadJsonschema(uri);
-		} else if (resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().containsKey(fileExtension)) {
-		    Resource resource = resourceSet.createResource(URI.createURI(uri));
+		    Resource resource = loadJsonschema(uri);
 		    toHandle.add(resource);
-		} else {
-		    
+		} else if (resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().containsKey(fileExtension)) {
+		    Resource resource = resourceSet.getResource(URI.createURI(uri), false);
+		    if(resource == null) {
+			resource = resourceSet.createResource(URI.createURI(uri));
+		    }
+		    toHandle.add(resource);
 		}
 	    }
 	}
     }
 
-    public void loadJsonschema(String pathToJsonschemaFile) {
-	Resource res = resourceSet.createResource(URI.createURI(pathToJsonschemaFile), "application/json");
+    public Resource loadJsonschema(String pathToJsonschemaFile) {
+	Resource resource = resourceSet.createResource(URI.createURI(pathToJsonschemaFile), "application/json");
 	Map<String, Object> options = new HashMap<>();
 	options.put(CodecResourceOptions.CODEC_ROOT_OBJECT, EcorePackage.Literals.EPACKAGE);
 	options.put(CodecModuleOptions.CODEC_MODULE_SERIALIZE_TYPE, false);
@@ -243,37 +246,12 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
 	Map<String, Object> classOptions = new HashMap<>();
 	classOptions.put(CodecModelInfoOptions.CODEC_EXTRAS, Map.of("jsonschema", "true", "jsonschema.feature.key", "definitions"));
 	options.put(CodecResourceOptions.CODEC_OPTIONS, Map.of(EcorePackage.Literals.EPACKAGE, classOptions));
-	
 	try {
-	    res.load(options);
+	    resource.load(options);
 	} catch (IOException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
-	}		
-	if(res.getContents().isEmpty()) {
-		LOG.log(Level.INFO, String.format("No content loaded for %s", pathToJsonschemaFile));
-		return;
-	}
-	EObject obj = res.getContents().get(0);
-	if(obj == null) {
-	    	LOG.log(Level.INFO,String.format("Null content loaded for %s", pathToJsonschemaFile));
-		return;
-	}
-	if(obj instanceof EPackage ePackage) {
-		res = resourceSet.createResource(URI.createURI(pathToJsonschemaFile.replace(".jsonscham", ".ecore")));
-		res.getContents().add(ePackage);
-		try {
-			res.save(System.out, options);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	} else {
-	    	LOG.log(Level.INFO,String.format("Content loaded from %s is not of type EPackage", pathToJsonschemaFile));
-		return;
-	}
-	
-	
+	    LOG.log(Level.ERROR, "Unable to load Resource for file " + resource.getURI().toString(), e);
+	}	
+	return resource;
     }
     
     private void loadResource(List<Resource> toHandle) {
@@ -290,7 +268,12 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
 	    } else {
 		resource.getContents().forEach(EcoreUtil::resolveAll);
 	    }
-
+	}
+	for (Iterator<Resource> iterator = resourceSet.getResources().iterator(); iterator.hasNext();) {
+	    Resource resource = iterator.next();
+	    if(resource.getContents().isEmpty()) {
+		iterator.remove();
+	    }
 	}
     }
 
@@ -298,8 +281,7 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
 	List<Metadata> metadataToHandle = new ArrayList<>();
 	for (Resource resource : toHandle) {
 	    EObject eObject = resource.getContents().get(0);
-	    if (eObject instanceof EPackage) {
-		EPackage ePackage = (EPackage) eObject;
+	    if (eObject instanceof EPackage ePackage) {
 		if (resourceSet.getPackageRegistry().containsKey(ePackage.getNsURI())) {
 		    resource.unload();
 		    resourceSet.getResources().remove(resource);
@@ -313,11 +295,16 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
 		Metadata metadata = new Metadata();
 		metadata.originalFileUri = resource.getURI().toString();
 		metadata.resource = resource;
-		resource.setURI(URI.createURI(ePackage.getNsURI()));
 		metadata.services.put(ePackage, new ArrayList<>());
 		addSubPackages(metadata, ePackage.getESubpackages());
 		originalToNsUri.put(metadata.originalFileUri, metadata);
 		metadataToHandle.add(metadata);
+	    }
+	}
+	for (Resource resource : toHandle) {
+	    EObject eObject = resource.getContents().get(0);
+	    if (eObject instanceof EPackage ePackage) {
+		resource.setURI(URI.createURI(ePackage.getNsURI()));
 	    }
 	}
 	metadataToHandle.forEach(this::registerConfigurators);
@@ -468,7 +455,7 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
      */
     @Override
     public void handleInitialPaths(List<Path> paths) {
-	List<String> toAdd = paths.stream().map(Path::toUri).map(Object::toString).collect(Collectors.toList());
+	List<String> toAdd = paths.stream().map(this::cleanUpPath).toList();
 	scheduleDelaied(toAdd);
     }
 
@@ -480,16 +467,21 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
      */
     @Override
     public void handlePathEvent(Path path, Kind<Path> kind) {
+	String pathString = cleanUpPath(path);
 	if (StandardWatchEventKinds.ENTRY_MODIFY.equals(kind)) {
-	    handleRemove(List.of(path.toUri().toString()));
-	    scheduleDelaied(path.toUri().toString());
+	    handleRemove(List.of(pathString));
+	    scheduleDelaied(pathString);
 	} else if (StandardWatchEventKinds.ENTRY_CREATE.equals(kind)) {
-	    scheduleDelaied(path.toUri().toString());
+	    scheduleDelaied(pathString);
 	} else if (StandardWatchEventKinds.ENTRY_DELETE.equals(kind)) {
-	    handleRemove(List.of(path.toUri().toString()));
+	    handleRemove(List.of(pathString));
 	}
     }
 
+    public String cleanUpPath(Path path) {
+	return path.toAbsolutePath().normalize().toUri().toString();
+    }
+    
     private List<String> uris = new ArrayList<>();
 
     Timer timer = new Timer();

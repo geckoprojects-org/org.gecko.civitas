@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.civitas.glt.sensor.validation/src" modelPluginID="org.civitas.glt.sensor.validation"
+    modelName="Validation-handler" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0" copyrightFields="false"
+    usedGenPackages="../../org.civitas.osgi.component.configuration.model/model/component.genmodel#//component ../../org.civitas.pipeline.model/model/pipeline.genmodel#//pipeline"
+    operationReflection="true" importOrganizing="true" oSGiCompatible="true">
+  <foreignModel>validation-handler.ecore</foreignModel>
+  <genPackages prefix="Validationhandler" disposableProviderFactory="true" ecorePackage="validation-handler.ecore#/">
+    <genClasses ecoreClass="validation-handler.ecore#//ValidationHandlerConfig">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference validation-handler.ecore#//ValidationHandlerConfig/incomingEClassUri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference validation-handler.ecore#//ValidationHandlerConfig/referenceUriToBeValidated"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference validation-handler.ecore#//ValidationHandlerConfig/attributeUriToBeValidated"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute validation-handler.ecore#//ValidationHandlerConfig/validationType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute validation-handler.ecore#//ValidationHandlerConfig/threshold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute validation-handler.ecore#//ValidationHandlerConfig/minThreshold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute validation-handler.ecore#//ValidationHandlerConfig/maxThreshold"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
