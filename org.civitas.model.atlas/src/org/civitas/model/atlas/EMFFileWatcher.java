@@ -13,6 +13,7 @@
  */
 package org.civitas.model.atlas;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
@@ -48,6 +49,7 @@ import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.fennec.codec.configurator.CodecModuleConfigurator;
 import org.eclipse.fennec.codec.options.CodecModelInfoOptions;
 import org.eclipse.fennec.codec.options.CodecModuleOptions;
@@ -248,6 +250,11 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
 	options.put(CodecResourceOptions.CODEC_OPTIONS, Map.of(EcorePackage.Literals.EPACKAGE, classOptions));
 	try {
 	    resource.load(options);
+	    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	    Resource temp = resourceSet.createResource(URI.createURI("test.ecore"));
+	    temp.getContents().add(EcoreUtil.copy(resource.getContents().get(0)));
+	    temp.save(baos, null);
+	    System.err.println(new String(baos.toByteArray()));
 	} catch (IOException e) {
 	    LOG.log(Level.ERROR, "Unable to load Resource for file " + resource.getURI().toString(), e);
 	}	

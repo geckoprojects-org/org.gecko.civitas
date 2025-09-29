@@ -4,7 +4,10 @@
 	"DefaultObjectMapperConfigurator~csv": 
   	{
 	    "type": "csv",
-		"codecFactoryConfigurator.target" : "(type=csv)"
+		"codecFactoryConfigurator.target" : "(type=csv)",
+		"disableFeature": [
+            "JsonWriteFeature.ESCAPE_FORWARD_SLASHES"
+        ]
 	},
 	"DefaultCodecModuleConfigurator~csv":
 	{
