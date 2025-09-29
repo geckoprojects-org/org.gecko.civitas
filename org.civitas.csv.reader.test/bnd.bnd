@@ -7,7 +7,6 @@ Test-Cases: ${classes;HIERARCHY_INDIRECTLY_ANNOTATED;org.junit.platform.commons.
 # sets the usually required buildpath using the bnd library, you can extend it with the normal -buildpath to your liking
 -buildpath: \
 	org.osgi.framework;version=latest,\
-	org.civitas.meter.source.model;version=snapshot,\
 	org.civitas.csv.reader;version=snapshot,\
 	org.eclipse.fennec.codec.csv,\
 	org.osgi.test.junit5.cm,\

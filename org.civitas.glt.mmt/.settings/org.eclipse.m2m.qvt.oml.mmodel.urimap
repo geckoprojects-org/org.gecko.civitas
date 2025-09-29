@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<uriMap:MappingContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uriMap="http:///www.eclipse.org/m2m/qvt/oml/MModelUriMap/1.0.0">
-  <mapping sourceURI="https://civitas.org/glt/1.0.0" targetURI="platform:/resource/org.civitas.glt.model/model/glt.ecore"/>
-  <mapping sourceURI="https://civitas.org/glt/intermediate/1.0.0" targetURI="platform:/resource/org.civitas.glt.intermediate.model/model/glt-intermediate.ecore"/>
-  <mapping sourceURI="http://models.civitas.org/models/building/sensor/1.0" targetURI="platform:/resource/org.civitas.glt.sensor.model/model/building_sensor.ecore"/>
-  <mapping sourceURI="https://civitas.org/alarm-notification/1.0.0" targetURI="platform:/resource/org.civitas.prototype.model/model/civitas-alarm.ecore"/>  
-</uriMap:MappingContainer>
