@@ -15,6 +15,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference emf-attacher-config.ecore#//EMFAttacherHandlerConfig/incomingEClassUri"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference emf-attacher-config.ecore#//EMFAttacherHandlerConfig/targetReferenceUri"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference emf-attacher-config.ecore#//EMFAttacherHandlerConfig/foreignKeyFeatureUri"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference emf-attacher-config.ecore#//EMFAttacherHandlerConfig/incomingReferenceUri"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

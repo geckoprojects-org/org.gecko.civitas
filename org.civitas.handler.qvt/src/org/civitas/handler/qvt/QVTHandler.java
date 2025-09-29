@@ -79,7 +79,13 @@ public class QVTHandler implements TypedEventHandler<EObject> {
 			Diagnostic diagnostic = Diagnostician.INSTANCE.validate(event);
 			if (diagnostic.getSeverity() == Diagnostic.OK && trafo != null) {
 				EObject result = trafo.doTransformation(event);
-				Arrays.asList(config.forward_topics()).forEach(t -> bus.deliver(t, result));
+				if(result != null) {
+					LOGGER.info(String.format("QVTHandler on topic %s for incoming object %s with ID %s produced outgoing object %s with ID %s", topic, EcoreUtil.getURI(event.eClass()).toString(), EcoreUtil.getID(event), result.eClass().getName(), EcoreUtil.getID(result)));
+					Arrays.asList(config.forward_topics()).forEach(t -> bus.deliver(t, result));
+				} else {
+					LOGGER.info(String.format("QVTHandler on topic %s for incoming object %s with ID %s produced null", topic, EcoreUtil.getURI(event.eClass()).toString(), EcoreUtil.getID(event)));
+				}
+				
 			}
 		}
 	}

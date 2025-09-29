@@ -18,6 +18,7 @@ import org.civitas.datasinkconfig.*;
 import org.civitas.osgi.component.Configuration;
 
 import org.civitas.pipeline.DataSink;
+import org.civitas.pipeline.DataSource;
 import org.civitas.pipeline.PipelineStep;
 
 import org.eclipse.emf.ecore.EObject;
@@ -87,6 +88,7 @@ public class DatasinkconfigSwitch<T> extends Switch<T> {
 				T result = caseEMFRepositoryDataSinkConfig(emfRepositoryDataSinkConfig);
 				if (result == null) result = caseConfiguration(emfRepositoryDataSinkConfig);
 				if (result == null) result = caseDataSink(emfRepositoryDataSinkConfig);
+				if (result == null) result = caseDataSource(emfRepositoryDataSinkConfig);
 				if (result == null) result = casePipelineStep(emfRepositoryDataSinkConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -152,6 +154,21 @@ public class DatasinkconfigSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDataSink(DataSink object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Source</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Source</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataSource(DataSource object) {
 		return null;
 	}
 

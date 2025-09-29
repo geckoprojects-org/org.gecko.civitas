@@ -14,6 +14,7 @@
 package org.civitas.handler.emf.attacher;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.EList;
@@ -56,6 +57,9 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 
 		@AttributeDefinition(name = "Incoming EClass URI", description = "The URI of the incoming EObject EClass")
 		String incoming_eclassuri(); // http:,....#//Meter
+		
+		@AttributeDefinition(name = "Incoming Reference URI", description = "The URI of the incoming EReference, which has to be attached instead of the whole incoming EObject")
+		String incoming_referenceuri(); 
 
 		@AttributeDefinition(name = "Target EClass URI", description = "The URI of the targer EClass")
 		String target_eclassuri(); // http:,....#//Plant
@@ -93,14 +97,18 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 	 */
 	@Override
 	public void notify(String topic, EObject event) {
-		handleEvent(event);
+		handleEvent(event, topic);
 
 	}
 
-	void handleEvent(EObject eObject) {
+	@SuppressWarnings("unchecked")
+	void handleEvent(EObject eObject, String topic) {
+		
 		// check if we can handle this EClass
 		if (!EcoreUtil.getURI(eObject.eClass()).toString().equals(config.incoming_eclassuri()))
 			return;
+		
+		LOGGER.info(String.format("EMFAttacherHandler on topic %s for incoming object %s with ID %s and targetting object %s", topic, eObject.eClass().getName(), EcoreUtil.getID(eObject), config.target_eclassuri() ));
 
 		// look for target Eclass with foreign key in repository
 		EObject target = repository.getResourceSet().getEObject(URI.createURI(config.target_eclassuri()), false);
@@ -139,15 +147,36 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 			targetEObject = EcoreUtil.create((EClass) target);
 			targetEObject.eSet(targetEObject.eClass().getEIDAttribute(), id);
 		}
+		
+		EObject incomingRefObject = config.incoming_referenceuri() == null ? null : repository.getResourceSet().getEObject(URI.createURI(config.incoming_referenceuri()), false);
+		EReference incomingEReference = null;
+		if(incomingRefObject != null) {
+			if(!(incomingRefObject instanceof EReference)) {
+				LOGGER.severe(String.format("No EReference found in ResourceSet for incoming_referenceuri %s",
+						config.target_reference_uri()));
+				return;
+			}
+			incomingEReference = (EReference) incomingRefObject;
+		}
 
 //		We have to distinguish here between many ref and single ref. 
 //		If many ref we have to look in the existing list and replace the right element based on its ID feature
 		EReference targetRef = (EReference) targetRefObj;
-		if (targetRef.isMany()) {
-			@SuppressWarnings("unchecked")
+		if(incomingEReference != null) {
+//			TODO: we should check here if we really want to overwrite or if we want to addAll and replace the existing objects with the same ids
+			Object object = eObject.eGet(incomingEReference);
+			targetEObject.eSet(targetRef, object);
+//			if(targetRef.isMany()) {
+//				EList<EObject> eList = (EList<EObject>) targetEObject.eGet(targetRef);
+//				eList.addAll((Collection<? extends EObject>) object);
+//			} else {
+//				targetEObject.eSet(targetRef, object);
+//			}
+			
+		} else if (targetRef.isMany()) {
 			EList<EObject> eList = (EList<EObject>) targetEObject.eGet(targetRef);
 			if (eList.isEmpty()) {
-				eList.add(EcoreUtil.copy(eObject));
+				eList.add( EcoreUtil.copy(eObject));
 			} else {
 				addOrReplaceById(EcoreUtil.copy(eObject), eList, eObject.eClass().getEIDAttribute());
 			}

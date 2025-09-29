@@ -49,6 +49,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.civitas.datasinkconfig.impl.EMFRepositoryDataSinkConfigImpl#getPid <em>Pid</em>}</li>
  *   <li>{@link org.civitas.datasinkconfig.impl.EMFRepositoryDataSinkConfigImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.civitas.datasinkconfig.impl.EMFRepositoryDataSinkConfigImpl#getInputs <em>Inputs</em>}</li>
+ *   <li>{@link org.civitas.datasinkconfig.impl.EMFRepositoryDataSinkConfigImpl#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link org.civitas.datasinkconfig.impl.EMFRepositoryDataSinkConfigImpl#getRepoTarget <em>Repo Target</em>}</li>
  *   <li>{@link org.civitas.datasinkconfig.impl.EMFRepositoryDataSinkConfigImpl#getMergeStrategy <em>Merge Strategy</em>}</li>
  *   <li>{@link org.civitas.datasinkconfig.impl.EMFRepositoryDataSinkConfigImpl#isDetailedLogging <em>Detailed Logging</em>}</li>
@@ -106,6 +107,16 @@ public class EMFRepositoryDataSinkConfigImpl extends MinimalEObjectImpl.Containe
 	 * @ordered
 	 */
 	protected EList<DataSource> inputs;
+
+	/**
+	 * The cached value of the '{@link #getOutputs() <em>Outputs</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<DataSink> outputs;
 
 	/**
 	 * The default value of the '{@link #getRepoTarget() <em>Repo Target</em>}' attribute.
@@ -251,6 +262,19 @@ public class EMFRepositoryDataSinkConfigImpl extends MinimalEObjectImpl.Containe
 	 * @generated
 	 */
 	@Override
+	public EList<DataSink> getOutputs() {
+		if (outputs == null) {
+			outputs = new EObjectWithInverseResolvingEList.ManyInverse<DataSink>(DataSink.class, this, DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__OUTPUTS, PipelinePackage.DATA_SINK__INPUTS);
+		}
+		return outputs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String getRepoTarget() {
 		return repoTarget;
 	}
@@ -325,6 +349,8 @@ public class EMFRepositoryDataSinkConfigImpl extends MinimalEObjectImpl.Containe
 		switch (featureID) {
 			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__INPUTS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getInputs()).basicAdd(otherEnd, msgs);
+			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__OUTPUTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOutputs()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -339,6 +365,8 @@ public class EMFRepositoryDataSinkConfigImpl extends MinimalEObjectImpl.Containe
 		switch (featureID) {
 			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__INPUTS:
 				return ((InternalEList<?>)getInputs()).basicRemove(otherEnd, msgs);
+			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__OUTPUTS:
+				return ((InternalEList<?>)getOutputs()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -357,6 +385,8 @@ public class EMFRepositoryDataSinkConfigImpl extends MinimalEObjectImpl.Containe
 				return getId();
 			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__INPUTS:
 				return getInputs();
+			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__OUTPUTS:
+				return getOutputs();
 			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__REPO_TARGET:
 				return getRepoTarget();
 			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__MERGE_STRATEGY:
@@ -385,6 +415,10 @@ public class EMFRepositoryDataSinkConfigImpl extends MinimalEObjectImpl.Containe
 			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__INPUTS:
 				getInputs().clear();
 				getInputs().addAll((Collection<? extends DataSource>)newValue);
+				return;
+			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__OUTPUTS:
+				getOutputs().clear();
+				getOutputs().addAll((Collection<? extends DataSink>)newValue);
 				return;
 			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__REPO_TARGET:
 				setRepoTarget((String)newValue);
@@ -416,6 +450,9 @@ public class EMFRepositoryDataSinkConfigImpl extends MinimalEObjectImpl.Containe
 			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__INPUTS:
 				getInputs().clear();
 				return;
+			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__OUTPUTS:
+				getOutputs().clear();
+				return;
 			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__REPO_TARGET:
 				setRepoTarget(REPO_TARGET_EDEFAULT);
 				return;
@@ -443,6 +480,8 @@ public class EMFRepositoryDataSinkConfigImpl extends MinimalEObjectImpl.Containe
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__INPUTS:
 				return inputs != null && !inputs.isEmpty();
+			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__OUTPUTS:
+				return outputs != null && !outputs.isEmpty();
 			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__REPO_TARGET:
 				return REPO_TARGET_EDEFAULT == null ? repoTarget != null : !REPO_TARGET_EDEFAULT.equals(repoTarget);
 			case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__MERGE_STRATEGY:
@@ -472,6 +511,12 @@ public class EMFRepositoryDataSinkConfigImpl extends MinimalEObjectImpl.Containe
 				default: return -1;
 			}
 		}
+		if (baseClass == DataSource.class) {
+			switch (derivedFeatureID) {
+				case DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__OUTPUTS: return PipelinePackage.DATA_SOURCE__OUTPUTS;
+				default: return -1;
+			}
+		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
@@ -491,6 +536,12 @@ public class EMFRepositoryDataSinkConfigImpl extends MinimalEObjectImpl.Containe
 		if (baseClass == DataSink.class) {
 			switch (baseFeatureID) {
 				case PipelinePackage.DATA_SINK__INPUTS: return DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__INPUTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == DataSource.class) {
+			switch (baseFeatureID) {
+				case PipelinePackage.DATA_SOURCE__OUTPUTS: return DatasinkconfigPackage.EMF_REPOSITORY_DATA_SINK_CONFIG__OUTPUTS;
 				default: return -1;
 			}
 		}

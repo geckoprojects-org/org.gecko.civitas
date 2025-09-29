@@ -167,13 +167,22 @@ public interface EmfattacherconfigPackage extends org.eclipse.emf.ecore.EPackage
 	int EMF_ATTACHER_HANDLER_CONFIG__FOREIGN_KEY_FEATURE_URI = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Incoming Reference Uri</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMF_ATTACHER_HANDLER_CONFIG__INCOMING_REFERENCE_URI = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>EMF Attacher Handler Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EMF_ATTACHER_HANDLER_CONFIG_FEATURE_COUNT = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 8;
+	int EMF_ATTACHER_HANDLER_CONFIG_FEATURE_COUNT = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of operations of the '<em>EMF Attacher Handler Config</em>' class.
@@ -251,6 +260,17 @@ public interface EmfattacherconfigPackage extends org.eclipse.emf.ecore.EPackage
 	EReference getEMFAttacherHandlerConfig_ForeignKeyFeatureUri();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.civitas.handler.emf.attacher.emfattacherconfig.EMFAttacherHandlerConfig#getIncomingReferenceUri <em>Incoming Reference Uri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Incoming Reference Uri</em>'.
+	 * @see org.civitas.handler.emf.attacher.emfattacherconfig.EMFAttacherHandlerConfig#getIncomingReferenceUri()
+	 * @see #getEMFAttacherHandlerConfig()
+	 * @generated
+	 */
+	EReference getEMFAttacherHandlerConfig_IncomingReferenceUri();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -322,6 +342,14 @@ public interface EmfattacherconfigPackage extends org.eclipse.emf.ecore.EPackage
 		 * @generated
 		 */
 		EReference EMF_ATTACHER_HANDLER_CONFIG__FOREIGN_KEY_FEATURE_URI = eINSTANCE.getEMFAttacherHandlerConfig_ForeignKeyFeatureUri();
+
+		/**
+		 * The meta object literal for the '<em><b>Incoming Reference Uri</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EMF_ATTACHER_HANDLER_CONFIG__INCOMING_REFERENCE_URI = eINSTANCE.getEMFAttacherHandlerConfig_IncomingReferenceUri();
 
 	}
 

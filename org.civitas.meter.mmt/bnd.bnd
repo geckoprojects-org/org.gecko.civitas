@@ -8,5 +8,6 @@
 	org.eclipse.m2m.qvt.oml,\
 	org.eclipse.fennec.qvt.api,\
 	org.civitas.meter.source.model;version=snapshot,\
-	org.civitas.meter.target.model;version=snapshot
+	org.civitas.meter.target.model;version=snapshot,\
+	org.civitas.meter.intermediate.model;version=snapshot
 -library: enable-emf

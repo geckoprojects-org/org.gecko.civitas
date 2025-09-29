@@ -16,6 +16,7 @@ package org.civitas.datasinkconfig;
 import org.civitas.osgi.component.Configuration;
 
 import org.civitas.pipeline.DataSink;
+import org.civitas.pipeline.DataSource;
 
 import org.osgi.annotation.versioning.ProviderType;
 
@@ -42,7 +43,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-public interface EMFRepositoryDataSinkConfig extends Configuration, DataSink {
+public interface EMFRepositoryDataSinkConfig extends Configuration, DataSink, DataSource {
 	/**
 	 * Returns the value of the '<em><b>Repo Target</b></em>' attribute.
 	 * <!-- begin-user-doc -->

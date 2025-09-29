@@ -41,6 +41,7 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link org.civitas.handler.emf.attacher.emfattacherconfig.EMFAttacherHandlerConfig#getIncomingEClassUri <em>Incoming EClass Uri</em>}</li>
  *   <li>{@link org.civitas.handler.emf.attacher.emfattacherconfig.EMFAttacherHandlerConfig#getTargetReferenceUri <em>Target Reference Uri</em>}</li>
  *   <li>{@link org.civitas.handler.emf.attacher.emfattacherconfig.EMFAttacherHandlerConfig#getForeignKeyFeatureUri <em>Foreign Key Feature Uri</em>}</li>
+ *   <li>{@link org.civitas.handler.emf.attacher.emfattacherconfig.EMFAttacherHandlerConfig#getIncomingReferenceUri <em>Incoming Reference Uri</em>}</li>
  * </ul>
  *
  * @see org.civitas.handler.emf.attacher.emfattacherconfig.EmfattacherconfigPackage#getEMFAttacherHandlerConfig()
@@ -174,5 +175,30 @@ public interface EMFAttacherHandlerConfig extends Configuration, Handler {
 	 * @generated
 	 */
 	void setForeignKeyFeatureUri(EStructuralFeature value);
+
+	/**
+	 * Returns the value of the '<em><b>Incoming Reference Uri</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The URI of the incoming EReference, which has to be attached instead of the whole incoming EObject
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Incoming Reference Uri</em>' reference.
+	 * @see #setIncomingReferenceUri(EReference)
+	 * @see org.civitas.handler.emf.attacher.emfattacherconfig.EmfattacherconfigPackage#getEMFAttacherHandlerConfig_IncomingReferenceUri()
+	 * @model extendedMetaData="name='incoming.referenceuri'"
+	 * @generated
+	 */
+	EReference getIncomingReferenceUri();
+
+	/**
+	 * Sets the value of the '{@link org.civitas.handler.emf.attacher.emfattacherconfig.EMFAttacherHandlerConfig#getIncomingReferenceUri <em>Incoming Reference Uri</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Incoming Reference Uri</em>' reference.
+	 * @see #getIncomingReferenceUri()
+	 * @generated
+	 */
+	void setIncomingReferenceUri(EReference value);
 
 } // EMFAttacherHandlerConfig

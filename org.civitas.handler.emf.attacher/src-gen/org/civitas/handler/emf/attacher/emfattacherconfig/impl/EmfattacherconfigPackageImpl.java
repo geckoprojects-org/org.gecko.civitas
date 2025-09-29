@@ -172,6 +172,16 @@ public class EmfattacherconfigPackageImpl extends EPackageImpl implements Emfatt
 	 * @generated
 	 */
 	@Override
+	public EReference getEMFAttacherHandlerConfig_IncomingReferenceUri() {
+		return (EReference)emfAttacherHandlerConfigEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EmfattacherconfigFactory getEmfattacherconfigFactory() {
 		return (EmfattacherconfigFactory)getEFactoryInstance();
 	}
@@ -201,6 +211,7 @@ public class EmfattacherconfigPackageImpl extends EPackageImpl implements Emfatt
 		createEReference(emfAttacherHandlerConfigEClass, EMF_ATTACHER_HANDLER_CONFIG__INCOMING_ECLASS_URI);
 		createEReference(emfAttacherHandlerConfigEClass, EMF_ATTACHER_HANDLER_CONFIG__TARGET_REFERENCE_URI);
 		createEReference(emfAttacherHandlerConfigEClass, EMF_ATTACHER_HANDLER_CONFIG__FOREIGN_KEY_FEATURE_URI);
+		createEReference(emfAttacherHandlerConfigEClass, EMF_ATTACHER_HANDLER_CONFIG__INCOMING_REFERENCE_URI);
 	}
 
 	/**
@@ -245,6 +256,7 @@ public class EmfattacherconfigPackageImpl extends EPackageImpl implements Emfatt
 		initEReference(getEMFAttacherHandlerConfig_IncomingEClassUri(), ecorePackage.getEClass(), null, "incomingEClassUri", null, 0, 1, EMFAttacherHandlerConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEMFAttacherHandlerConfig_TargetReferenceUri(), ecorePackage.getEReference(), null, "targetReferenceUri", null, 0, 1, EMFAttacherHandlerConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEMFAttacherHandlerConfig_ForeignKeyFeatureUri(), ecorePackage.getEStructuralFeature(), null, "foreignKeyFeatureUri", null, 0, 1, EMFAttacherHandlerConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEMFAttacherHandlerConfig_IncomingReferenceUri(), ecorePackage.getEReference(), null, "incomingReferenceUri", null, 0, 1, EMFAttacherHandlerConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -291,6 +303,12 @@ public class EmfattacherconfigPackageImpl extends EPackageImpl implements Emfatt
 		   source,
 		   new String[] {
 			   "name", "foreignKeyFeature.uri"
+		   });
+		addAnnotation
+		  (getEMFAttacherHandlerConfig_IncomingReferenceUri(),
+		   source,
+		   new String[] {
+			   "name", "incoming.referenceuri"
 		   });
 	}
 

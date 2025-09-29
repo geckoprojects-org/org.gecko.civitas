@@ -18,6 +18,7 @@ import org.civitas.datasinkconfig.*;
 import org.civitas.osgi.component.Configuration;
 
 import org.civitas.pipeline.DataSink;
+import org.civitas.pipeline.DataSource;
 import org.civitas.pipeline.PipelineStep;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -100,6 +101,10 @@ public class DatasinkconfigAdapterFactory extends AdapterFactoryImpl {
 				return createDataSinkAdapter();
 			}
 			@Override
+			public Adapter caseDataSource(DataSource object) {
+				return createDataSourceAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -172,6 +177,20 @@ public class DatasinkconfigAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDataSinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.civitas.pipeline.DataSource <em>Data Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.civitas.pipeline.DataSource
+	 * @generated
+	 */
+	public Adapter createDataSourceAdapter() {
 		return null;
 	}
 

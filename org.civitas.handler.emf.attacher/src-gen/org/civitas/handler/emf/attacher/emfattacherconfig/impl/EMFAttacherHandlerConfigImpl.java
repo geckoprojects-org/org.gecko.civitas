@@ -57,6 +57,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.civitas.handler.emf.attacher.emfattacherconfig.impl.EMFAttacherHandlerConfigImpl#getIncomingEClassUri <em>Incoming EClass Uri</em>}</li>
  *   <li>{@link org.civitas.handler.emf.attacher.emfattacherconfig.impl.EMFAttacherHandlerConfigImpl#getTargetReferenceUri <em>Target Reference Uri</em>}</li>
  *   <li>{@link org.civitas.handler.emf.attacher.emfattacherconfig.impl.EMFAttacherHandlerConfigImpl#getForeignKeyFeatureUri <em>Foreign Key Feature Uri</em>}</li>
+ *   <li>{@link org.civitas.handler.emf.attacher.emfattacherconfig.impl.EMFAttacherHandlerConfigImpl#getIncomingReferenceUri <em>Incoming Reference Uri</em>}</li>
  * </ul>
  *
  * @generated
@@ -181,6 +182,16 @@ public class EMFAttacherHandlerConfigImpl extends MinimalEObjectImpl.Container i
 	 * @ordered
 	 */
 	protected EStructuralFeature foreignKeyFeatureUri;
+
+	/**
+	 * The cached value of the '{@link #getIncomingReferenceUri() <em>Incoming Reference Uri</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIncomingReferenceUri()
+	 * @generated
+	 * @ordered
+	 */
+	protected EReference incomingReferenceUri;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -461,6 +472,46 @@ public class EMFAttacherHandlerConfigImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EReference getIncomingReferenceUri() {
+		if (incomingReferenceUri != null && incomingReferenceUri.eIsProxy()) {
+			InternalEObject oldIncomingReferenceUri = (InternalEObject)incomingReferenceUri;
+			incomingReferenceUri = (EReference)eResolveProxy(oldIncomingReferenceUri);
+			if (incomingReferenceUri != oldIncomingReferenceUri) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EmfattacherconfigPackage.EMF_ATTACHER_HANDLER_CONFIG__INCOMING_REFERENCE_URI, oldIncomingReferenceUri, incomingReferenceUri));
+			}
+		}
+		return incomingReferenceUri;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference basicGetIncomingReferenceUri() {
+		return incomingReferenceUri;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setIncomingReferenceUri(EReference newIncomingReferenceUri) {
+		EReference oldIncomingReferenceUri = incomingReferenceUri;
+		incomingReferenceUri = newIncomingReferenceUri;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EmfattacherconfigPackage.EMF_ATTACHER_HANDLER_CONFIG__INCOMING_REFERENCE_URI, oldIncomingReferenceUri, incomingReferenceUri));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -519,6 +570,9 @@ public class EMFAttacherHandlerConfigImpl extends MinimalEObjectImpl.Container i
 			case EmfattacherconfigPackage.EMF_ATTACHER_HANDLER_CONFIG__FOREIGN_KEY_FEATURE_URI:
 				if (resolve) return getForeignKeyFeatureUri();
 				return basicGetForeignKeyFeatureUri();
+			case EmfattacherconfigPackage.EMF_ATTACHER_HANDLER_CONFIG__INCOMING_REFERENCE_URI:
+				if (resolve) return getIncomingReferenceUri();
+				return basicGetIncomingReferenceUri();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -561,6 +615,9 @@ public class EMFAttacherHandlerConfigImpl extends MinimalEObjectImpl.Container i
 			case EmfattacherconfigPackage.EMF_ATTACHER_HANDLER_CONFIG__FOREIGN_KEY_FEATURE_URI:
 				setForeignKeyFeatureUri((EStructuralFeature)newValue);
 				return;
+			case EmfattacherconfigPackage.EMF_ATTACHER_HANDLER_CONFIG__INCOMING_REFERENCE_URI:
+				setIncomingReferenceUri((EReference)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -600,6 +657,9 @@ public class EMFAttacherHandlerConfigImpl extends MinimalEObjectImpl.Container i
 			case EmfattacherconfigPackage.EMF_ATTACHER_HANDLER_CONFIG__FOREIGN_KEY_FEATURE_URI:
 				setForeignKeyFeatureUri((EStructuralFeature)null);
 				return;
+			case EmfattacherconfigPackage.EMF_ATTACHER_HANDLER_CONFIG__INCOMING_REFERENCE_URI:
+				setIncomingReferenceUri((EReference)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -630,6 +690,8 @@ public class EMFAttacherHandlerConfigImpl extends MinimalEObjectImpl.Container i
 				return targetReferenceUri != null;
 			case EmfattacherconfigPackage.EMF_ATTACHER_HANDLER_CONFIG__FOREIGN_KEY_FEATURE_URI:
 				return foreignKeyFeatureUri != null;
+			case EmfattacherconfigPackage.EMF_ATTACHER_HANDLER_CONFIG__INCOMING_REFERENCE_URI:
+				return incomingReferenceUri != null;
 		}
 		return super.eIsSet(featureID);
 	}

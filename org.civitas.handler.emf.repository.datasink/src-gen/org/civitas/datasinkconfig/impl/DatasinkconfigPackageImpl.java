@@ -236,6 +236,7 @@ public class DatasinkconfigPackageImpl extends EPackageImpl implements Datasinkc
 		// Add supertypes to classes
 		emfRepositoryDataSinkConfigEClass.getESuperTypes().add(theComponentConfigPackage.getConfiguration());
 		emfRepositoryDataSinkConfigEClass.getESuperTypes().add(thePipelinePackage.getDataSink());
+		emfRepositoryDataSinkConfigEClass.getESuperTypes().add(thePipelinePackage.getDataSource());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(emfRepositoryDataSinkConfigEClass, EMFRepositoryDataSinkConfig.class, "EMFRepositoryDataSinkConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

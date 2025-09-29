@@ -13,25 +13,20 @@
  */
 modeltype ECORE "strict" uses ecore('http://www.eclipse.org/emf/2002/Ecore');
 modeltype SOURCE uses "https://civitas.org/meter/source/1.0.0";
+modeltype INTERMEDIATE uses "https://civitas.org/meter/intermediate/1.0.0";
 modeltype TARGET uses "https://civitas.org/meter/target/1.0.0";
 
 
-transformation IntermediateMeteringPointToTargetMeteringPoint(in intermediateMeteringPoint : SOURCE, out targetMeteringPoit : TARGET);
+transformation SourceMeteringPointToIntermediateMeteringPoint(in sourceMeteringPoint : SOURCE, out intermediateMeteringPoint : INTERMEDIATE);
 
 main() {
-	intermediateMeteringPoint.rootObjects()[SOURCE::IntermediateMeteringPoint] -> map toTargetMeteringPoint(); 
+	intermediateMeteringPoint.rootObjects()[SOURCE::IntermediateMeteringPoint] -> map toIntermediateMeteringPoint(); 
 }
 
 
-mapping SOURCE::IntermediateMeteringPoint::toTargetMeteringPoint(): TARGET::MeteringPoint {
+mapping SOURCE::IntermediateMeteringPoint::toIntermediateMeteringPoint(): INTERMEDIATE::MeteringPoint {
 	id := self.meterId;
-	meterReadings += self.readings->map toTargetMeterReading();
-	currentMeter := self.map toTargetMeter();
-	plant := self.map toPlant();
-}
-
-mapping SOURCE::IntermediateMeteringPoint::toPlant(): TARGET:: Plant {
-	id := self.plantId;
+	readings += self.readings-> map toTargetMeterReading();
 }
 
 mapping SOURCE::Reading::toTargetMeterReading(): TARGET::MeterReading {
@@ -39,8 +34,3 @@ mapping SOURCE::Reading::toTargetMeterReading(): TARGET::MeterReading {
 	value := self.value;
 	timestamp := self.timestamp;
 }
-
-mapping SOURCE::IntermediateMeteringPoint::toTargetMeter(): TARGET::Meter {
-	id := self.meterId;
-}
-

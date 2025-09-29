@@ -113,13 +113,22 @@ public interface DatasinkconfigPackage extends org.eclipse.emf.ecore.EPackage {
 	int EMF_REPOSITORY_DATA_SINK_CONFIG__INPUTS = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMF_REPOSITORY_DATA_SINK_CONFIG__OUTPUTS = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Repo Target</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EMF_REPOSITORY_DATA_SINK_CONFIG__REPO_TARGET = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 2;
+	int EMF_REPOSITORY_DATA_SINK_CONFIG__REPO_TARGET = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Merge Strategy</b></em>' attribute.
@@ -128,7 +137,7 @@ public interface DatasinkconfigPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EMF_REPOSITORY_DATA_SINK_CONFIG__MERGE_STRATEGY = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 3;
+	int EMF_REPOSITORY_DATA_SINK_CONFIG__MERGE_STRATEGY = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Detailed Logging</b></em>' attribute.
@@ -137,7 +146,7 @@ public interface DatasinkconfigPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EMF_REPOSITORY_DATA_SINK_CONFIG__DETAILED_LOGGING = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 4;
+	int EMF_REPOSITORY_DATA_SINK_CONFIG__DETAILED_LOGGING = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>EMF Repository Data Sink Config</em>' class.
@@ -146,7 +155,7 @@ public interface DatasinkconfigPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EMF_REPOSITORY_DATA_SINK_CONFIG_FEATURE_COUNT = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 5;
+	int EMF_REPOSITORY_DATA_SINK_CONFIG_FEATURE_COUNT = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>EMF Repository Data Sink Config</em>' class.

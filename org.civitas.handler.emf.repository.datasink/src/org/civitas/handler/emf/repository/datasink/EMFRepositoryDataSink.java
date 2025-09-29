@@ -265,7 +265,7 @@ public class EMFRepositoryDataSink implements TypedEventHandler<EObject> {
                 LOGGER.info("Creating new object with ID: " + objectId);
                 toSave = incoming;
             }
-
+            
             repository.save(toSave);
 
             if (config.detailed_logging()) {
