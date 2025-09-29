@@ -91,6 +91,7 @@ public interface MqttEventHandlerConfig extends Configuration, DataSink {
 	 * @see #setContentType(String)
 	 * @see org.civitas.mqtthandler.MqtthandlerPackage#getMqttEventHandlerConfig_ContentType()
 	 * @model default="application/json"
+	 *        extendedMetaData="name='contentType'"
 	 * @generated
 	 */
 	String getContentType();

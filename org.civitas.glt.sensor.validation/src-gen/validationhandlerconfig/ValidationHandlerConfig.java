@@ -1,4 +1,15 @@
 /*
+ * Copyright (c) 2012 - 2025 Data In Motion and others.
+ * All rights reserved. 
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *     Data In Motion - initial API and implementation
  */
 package validationhandlerconfig;
 
@@ -154,6 +165,7 @@ public interface ValidationHandlerConfig extends Configuration, Handler {
 	 * @see #setThreshold(double)
 	 * @see validationhandlerconfig.ValidationhandlerPackage#getValidationHandlerConfig_Threshold()
 	 * @model default="-9999.0"
+	 *        extendedMetaData="name='threshold'"
 	 * @generated
 	 */
 	double getThreshold();
@@ -180,6 +192,7 @@ public interface ValidationHandlerConfig extends Configuration, Handler {
 	 * @see #setMinThreshold(double)
 	 * @see validationhandlerconfig.ValidationhandlerPackage#getValidationHandlerConfig_MinThreshold()
 	 * @model default="-9999.0"
+	 *        extendedMetaData="name='minThreshold'"
 	 * @generated
 	 */
 	double getMinThreshold();
@@ -206,6 +219,7 @@ public interface ValidationHandlerConfig extends Configuration, Handler {
 	 * @see #setMaxThreshold(double)
 	 * @see validationhandlerconfig.ValidationhandlerPackage#getValidationHandlerConfig_MaxThreshold()
 	 * @model default="-9999.0"
+	 *        extendedMetaData="name='maxThreshold'"
 	 * @generated
 	 */
 	double getMaxThreshold();
