@@ -28,7 +28,6 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.Designate;
@@ -37,17 +36,18 @@ import org.osgi.service.typedevent.TypedEventBus;
 import org.osgi.service.typedevent.TypedEventHandler;
 
 @Designate(ocd = ValidationHandler.Config.class)
-@Component(name = "ValidationHandler", configurationPid = "ValidationHandler", configurationPolicy = ConfigurationPolicy.REQUIRE, scope = ServiceScope.PROTOTYPE)
+@Component(name = "ValidationHandler", configurationPid = "ValidationHandlerConfig", configurationPolicy = ConfigurationPolicy.REQUIRE, scope = ServiceScope.PROTOTYPE)
 public class ValidationHandler implements TypedEventHandler<EObject> {
 
 	@Reference
 	TypedEventBus typedEventBus;
+	@Reference
+	private ResourceSet resourceSet;
 	
 	private static final Logger LOGGER = Logger.getLogger(ValidationHandler.class.getName());
 	
 	private Config config;
 	private ValidationType type;
-	private ResourceSet resourceSet;
 
 	@ObjectClassDefinition(name = "ValidationHandler Configuration")
 	public @interface Config {
@@ -81,11 +81,8 @@ public class ValidationHandler implements TypedEventHandler<EObject> {
 	}
 
 	@Activate
-	public ValidationHandler(Config config, 
-			@Reference(cardinality = ReferenceCardinality.MANDATORY) ResourceSet resourceSet
-			) throws ConfigurationException {
+	public void activate(Config config) throws ConfigurationException {
 		this.config = config;
-		this.resourceSet = resourceSet;
 		checkConfig(config);
 		this.type = ValidationType.valueOf(config.validation_type());
 	}

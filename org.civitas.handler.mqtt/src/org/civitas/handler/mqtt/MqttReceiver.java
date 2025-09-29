@@ -30,6 +30,7 @@ import org.osgi.service.component.ComponentServiceObjects;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
@@ -56,8 +57,12 @@ public class MqttReceiver {
 	private static final Logger LOGGER = Logger.getLogger(MqttReceiver.class.getName());
 	
 	private Config config;
+	@Reference(target = "("+EMFNamespaces.EMF_MODEL_FILE_EXT +"=json)") 
 	private ComponentServiceObjects<ResourceSet> rsFactory;
+	@Reference(name = "mqtt.service", target = "(id=full)") 
 	private MessagingService messagingService;
+
+	private PushStream<Message> subscription;
 	
 	@ObjectClassDefinition(name = "MqttReceiver Configuration")
 	@interface Config {
@@ -76,23 +81,21 @@ public class MqttReceiver {
 	}
 	
 	@Activate
-	public MqttReceiver(Config config, 
-			@Reference(target = "("+EMFNamespaces.EMF_MODEL_FILE_EXT +"=json)", cardinality = ReferenceCardinality.MANDATORY) ComponentServiceObjects<ResourceSet> rsFactory,
-			@Reference(name = "mqtt.service", target = "(id=full)", cardinality = ReferenceCardinality.MANDATORY) MessagingService messagingService) {
-		this.rsFactory = rsFactory;
-		this.messagingService = messagingService;
+	public void activate (Config config) {
 		this.config = config;
-		subscribe();
-	}
-	
-	private void subscribe() {
 		try {
-			PushStream<Message> subscription = messagingService.subscribe(config.mqtt_topic());
+			subscription = messagingService.subscribe(config.mqtt_topic());
 			subscription.forEach(this::handleMessage);			
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, String.format("Exception while subscribing to topic %s", config.mqtt_topic()), e);
 		}
 	}
+	
+	@Deactivate
+	public void deactivate() {
+		subscription.close();
+	}
+	
 	
 	private void handleMessage(Message msg) {
 		if(msg == null) {
@@ -107,6 +110,8 @@ public class MqttReceiver {
 
 	private EObject extractPayload(Message message) {		
 		byte[] content = message.payload().array();
+		LOGGER.log(Level.SEVERE, String.format("Extract payload %s", new String(content)));
+		
 		try {
 			return MqttReceiverHelper
 					.loadResource(rsFactory, URI.createFileURI(UUID.randomUUID().toString().concat(".json")), 

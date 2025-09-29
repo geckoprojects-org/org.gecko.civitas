@@ -26,7 +26,7 @@ main() {
 
 mapping INTERMEDIATE::BuildingSensorReading::toSimpleAlarm(): TARGET::SimpleAlarm {
 	
-	alarmId := self.buildingId.concat(self.sensorReading.timestamp.toString());
+	alarmId := self.buildingId.toString().concat(self.sensorReading.timestamp.toString());
 	alarmReceiver += self.building.contacts->map toContact();
 	alarmTriggerEvent := self.sensorReading.map toSensorReading();
 	alarmTriggeringBuilder := self.building.map toBuilding();

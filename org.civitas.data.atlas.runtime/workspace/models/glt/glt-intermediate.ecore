@@ -12,9 +12,11 @@
     <details key="resource" value="XMI"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="BuildingSensorReading">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="buildingId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="buildingId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
         iD="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="building" eType="ecore:EClass glt.ecore#//Building"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sensorReading" eType="ecore:EClass building_sensor.ecore#//SensorReading"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="building" eType="ecore:EClass glt.ecore#//Building"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sensorReading" eType="ecore:EClass building_sensor.ecore#//SensorReading"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

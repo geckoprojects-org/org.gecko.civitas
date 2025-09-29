@@ -423,7 +423,7 @@ public class PipelineCreator {
 		pipeline.setId("GLT_Pipeline");
 
 	    MqttReceiverConfig mqttSensorReadings = MqttreceiverFactory.eINSTANCE.createMqttReceiverConfig();
-	    mqttSensorReadings.setMqttTopic("#");
+	    mqttSensorReadings.setMqttTopic("buildings/#");
 	    mqttSensorReadings.setPayloadEclassuri((EClass) createProxy("http://models.civitas.org/models/building/sensor/1.0#//SensorReading", EcorePackage.Literals.ECLASS));
 	    mqttSensorReadings.setPid("SensorReadingReceiver");
 	    mqttSensorReadings.setId("SensorReadingReceiver");
@@ -445,25 +445,10 @@ public class PipelineCreator {
 	    
 	    pipeline.getSteps().add(sourceBuildings);
 	    
-//	    ScheduledLoaderConfig sourceContacts = ScheduledloaderconfigFactory.eINSTANCE.createScheduledLoaderConfig();
-//	    sourceContacts.setId("contacts-glt");
-//	    sourceContacts.setPid("contacts-glt");
-//	    sourceContacts.setLoaderName("contacts-glt");
-//	    sourceContacts.setEclass(
-//	    		(EClass) createProxy("https://civitas.org/glt/1.0.0#//Contact", EcorePackage.Literals.ECLASS));
-//	    sourceContacts.setPackage((EPackage) createProxy("https://civitas.org/glt/1.0.0#/" ,EcorePackage.Literals.EPACKAGE));
-//	    sourceContacts.setRepoTarget("(repo_id=assets)");
-//	    sourceContacts.setScheduleInterval(60);
-//	    sourceContacts.setInitialQuerySkip(0);
-//	    sourceContacts.setQueryLimit(1000);
-//	    
-//	    pipeline.getSteps().add(sourceContacts);
-
 	    EMFAttacherHandlerConfig buildingAttacher = EmfattacherconfigFactory.eINSTANCE.createEMFAttacherHandlerConfig();
 	    buildingAttacher.setId("reading_attacher");
 	    buildingAttacher.setPid("reading_attacher");
 	    buildingAttacher.setRepoTarget("(repo_id=inmem)");
-	    buildingAttacher.getInputs().add(sourceBuildings);
 	    buildingAttacher.setIncomingEClassUri((EClass) createProxy("https://civitas.org/glt/1.0.0#//Building",
 	    		EcorePackage.Literals.ECLASS));
 	    buildingAttacher.setTargetEClassUri((EClass) createProxy("https://civitas.org/glt/intermediate/1.0.0#//BuildingSensorReading",
@@ -473,6 +458,7 @@ public class PipelineCreator {
 	    				EcorePackage.Literals.EREFERENCE));
 	    buildingAttacher.setForeignKeyFeatureUri((EAttribute) createProxy(
 	    		"https://civitas.org/glt/1.0.0#//Building/id", EcorePackage.Literals.EATTRIBUTE));
+	    buildingAttacher.getInputs().add(sourceBuildings);
 	    
 	    pipeline.getSteps().add(buildingAttacher);
 	    
@@ -481,8 +467,7 @@ public class PipelineCreator {
 	    sensorReadingAttacher.setId("sensor_reading_attacher");
 	    sensorReadingAttacher.setPid("sensor_reading_attacher");
 	    sensorReadingAttacher.setRepoTarget("(repo_id=inmem)");
-	    sensorReadingAttacher.getInputs().add(mqttSensorReadings);
-	    sensorReadingAttacher.setIncomingEClassUri((EClass) createProxy("https://civitas.org/glt/sensor/1.0.0#//SensorReading",
+	    sensorReadingAttacher.setIncomingEClassUri((EClass) createProxy("http://models.civitas.org/models/building/sensor/1.0#//SensorReading",
 	    		EcorePackage.Literals.ECLASS));
 	    sensorReadingAttacher.setTargetEClassUri((EClass) createProxy("https://civitas.org/glt/intermediate/1.0.0#//BuildingSensorReading",
 	    		EcorePackage.Literals.ECLASS));
@@ -490,7 +475,8 @@ public class PipelineCreator {
 	    		(EReference) createProxy("https://civitas.org/glt/intermediate/1.0.0#//BuildingSensorReading/sensorReading",
 	    				EcorePackage.Literals.EREFERENCE));
 	    sensorReadingAttacher.setForeignKeyFeatureUri((EAttribute) createProxy(
-	    		"https://civitas.org/glt/1.0.0#//SensorReading/buildingId", EcorePackage.Literals.EATTRIBUTE));
+	    		"http://models.civitas.org/models/building/sensor/1.0#//SensorReading/buildingId", EcorePackage.Literals.EATTRIBUTE));
+	    sensorReadingAttacher.getInputs().add(mqttSensorReadings);
 	    
 	    pipeline.getSteps().add(sensorReadingAttacher);
 	    
@@ -501,7 +487,7 @@ public class PipelineCreator {
 	    		EcorePackage.Literals.ECLASS));
 	    validationSensorReadings.setReferenceUriToBeValidated((EReference) createProxy("https://civitas.org/glt/intermediate/1.0.0#//BuildingSensorReading/sensorReading",
 				EcorePackage.Literals.EREFERENCE));
-	    validationSensorReadings.setAttributeUriToBeValidated((EAttribute) createProxy("https://civitas.org/glt/sensor/1.0.0#//SensorReading/value",
+	    validationSensorReadings.setAttributeUriToBeValidated((EAttribute) createProxy("http://models.civitas.org/models/building/sensor/1.0#//SensorReading/value",
 	    		EcorePackage.Literals.EATTRIBUTE));
 	    validationSensorReadings.setThreshold(18.0);
 	    validationSensorReadings.setValidationType("BELOW_THRESHOLD");
