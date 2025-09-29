@@ -163,22 +163,22 @@ public class EMFRepositoryDataSink implements TypedEventHandler<EObject> {
 	 * copies or sets a single copy as appropriate for the multiplicity.
 	 * 
 	 * @param eReference  the feature to copy.
-	 * @param eObject     the object from which to copy.
-	 * @param copyEObject the object to copy to.
+	 * @param incomming     the object from which to copy.
+	 * @param copyIntoEObject the object to copy to.
 	 */
 	@SuppressWarnings("unchecked")
-	protected void copyContainment(EReference eReference, EObject eObject, EObject copyEObject) {
-	    if (eObject.eIsSet(eReference)) {
-		EStructuralFeature.Setting setting = getTarget(eReference, eObject, copyEObject);
+	protected void copyContainment(EReference eReference, EObject incomming, EObject copyIntoEObject) {
+	    if (incomming.eIsSet(eReference)) {
+		EStructuralFeature.Setting setting = getTarget(eReference, incomming, copyIntoEObject);
 		if (setting != null) {
-		    Object value = eObject.eGet(eReference);
+		    Object value = incomming.eGet(eReference);
 		    if (eReference.isMany()) {
-			List<EObject> target = (List<EObject>) value;
-			List<EObject> fullList =  new ArrayList<>((List<EObject>) copyEObject.eGet(eReference));
-			fullList.addAll(copyAll(target));
-			setting.set(fullList);
+				List<EObject> target = (List<EObject>) value;
+				List<EObject> fullList =  new ArrayList<>((List<EObject>) copyIntoEObject.eGet(eReference));
+				fullList.addAll(copyAll(target));
+				setting.set(fullList);
 		    } else {
-			setting.set(copy((EObject) value));
+		    	setting.set(copy((EObject) value));
 		    }
 		}
 	    }
