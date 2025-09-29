@@ -89,7 +89,7 @@ public class PipelineCreator {
 
 	@Activate
 	public void activate() throws IOException {
-		createMeterPipeline();
+//		createMeterPipeline();
 		createMQTTExample();
 	}
 
@@ -98,7 +98,7 @@ public class PipelineCreator {
 	    pipeline.setId("MQTT_Example_Pipeline");
 
 	    MqttReceiverConfig receiver = MqttreceiverFactory.eINSTANCE.createMqttReceiverConfig();
-	    receiver.setMqttTopic("#");
+	    receiver.setMqttTopic("buildings/#");
 	    receiver.setPayloadEclassuri((EClass) createProxy("http://models.civitas.org/models/building/sensor/1.0#//SensorReading", EcorePackage.Literals.ECLASS));
 	    receiver.setPid("SensorReadingReceiver");
 	    receiver.setId("SensorReadingReceiver");
@@ -109,7 +109,7 @@ public class PipelineCreator {
 	    MqttEventHandlerConfig mqttHandler = MqtthandlerFactory.eINSTANCE.createMqttEventHandlerConfig();
 	    mqttHandler.setId("MQTTHandler");
 	    mqttHandler.setPid("MQTTHandler");
-	    mqttHandler.getMqttTopic().add("buildings/new");
+	    mqttHandler.getMqttTopics().add("other/buildings/new");
 	    mqttHandler.setMqttServiceTarget("(id=local)");
 	    mqttHandler.setContentType("application/xmi");
 

@@ -113,13 +113,13 @@ public interface MqtthandlerPackage extends org.eclipse.emf.ecore.EPackage {
 	int MQTT_EVENT_HANDLER_CONFIG__INPUTS = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Mqtt Topic</b></em>' attribute list.
+	 * The feature id for the '<em><b>Mqtt Topics</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPIC = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 2;
+	int MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPICS = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Mqtt Service Target</b></em>' attribute.
@@ -169,15 +169,15 @@ public interface MqtthandlerPackage extends org.eclipse.emf.ecore.EPackage {
 	EClass getMqttEventHandlerConfig();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.civitas.mqtthandler.MqttEventHandlerConfig#getMqttTopic <em>Mqtt Topic</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.civitas.mqtthandler.MqttEventHandlerConfig#getMqttTopics <em>Mqtt Topics</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Mqtt Topic</em>'.
-	 * @see org.civitas.mqtthandler.MqttEventHandlerConfig#getMqttTopic()
+	 * @return the meta object for the attribute list '<em>Mqtt Topics</em>'.
+	 * @see org.civitas.mqtthandler.MqttEventHandlerConfig#getMqttTopics()
 	 * @see #getMqttEventHandlerConfig()
 	 * @generated
 	 */
-	EAttribute getMqttEventHandlerConfig_MqttTopic();
+	EAttribute getMqttEventHandlerConfig_MqttTopics();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.civitas.mqtthandler.MqttEventHandlerConfig#getMqttServiceTarget <em>Mqtt Service Target</em>}'.
@@ -235,12 +235,12 @@ public interface MqtthandlerPackage extends org.eclipse.emf.ecore.EPackage {
 		EClass MQTT_EVENT_HANDLER_CONFIG = eINSTANCE.getMqttEventHandlerConfig();
 
 		/**
-		 * The meta object literal for the '<em><b>Mqtt Topic</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Mqtt Topics</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPIC = eINSTANCE.getMqttEventHandlerConfig_MqttTopic();
+		EAttribute MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPICS = eINSTANCE.getMqttEventHandlerConfig_MqttTopics();
 
 		/**
 		 * The meta object literal for the '<em><b>Mqtt Service Target</b></em>' attribute feature.

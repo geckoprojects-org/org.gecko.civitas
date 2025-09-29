@@ -36,53 +36,55 @@ import org.osgi.service.typedevent.TypedEventHandler;
 
 @Designate(ocd = MqttEventHandler.Config.class)
 @Component(name = "MqttEventHandler", configurationPid = "MqttEventHandlerConfig", configurationPolicy = ConfigurationPolicy.REQUIRE, scope = ServiceScope.PROTOTYPE)
-public class MqttEventHandler implements TypedEventHandler<EObject>{
-	
-	@Reference(name = "mqtt.service", target = "(id=local)")
-	private MessagingService messaging;
-	
-	private static final Logger LOGGER = Logger.getLogger(MqttEventHandler.class.getName());
-	private Config config;
-	
-	@ObjectClassDefinition(name = "MqttEventHandler Configuration")
-	@interface Config {
+public class MqttEventHandler implements TypedEventHandler<EObject> {
 
-		@AttributeDefinition(name = "Event Topic", description = "The topic this handler is listening to")
-		String event_topics();
+    @Reference(name = "mqtt.service", target = "(id=local)")
+    private MessagingService messaging;
 
-		@AttributeDefinition(name = "MQTT Topic", description = "The MQTT topic list where to publish the result")
-		String[] mqtt_topic();
-	}
+    private static final Logger LOGGER = Logger.getLogger(MqttEventHandler.class.getName());
+    private Config config;
 
-	@Activate
-	public void activate(Config config) {
-		this.config = config;
-		
-	}
-	
-	/* 
-	 * (non-Javadoc)
-	 * @see org.osgi.service.typedevent.TypedEventHandler#notify(java.lang.String, java.lang.Object)
-	 */
-	@Override
-	public void notify(String topic, EObject event) {
+    @ObjectClassDefinition(name = "MqttEventHandler Configuration")
+    @interface Config {
+
+	@AttributeDefinition(name = "Event Topic", description = "The topic this handler is listening to")
+	String event_topics();
+
+	@AttributeDefinition(name = "MQTT Topic", description = "The MQTT topic list where to publish the result")
+	String[] mqtt_topics();
+    }
+
+    @Activate
+    public void activate(Config config) {
+	this.config = config;
+
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.osgi.service.typedevent.TypedEventHandler#notify(java.lang.String,
+     * java.lang.Object)
+     */
+    @Override
+    public void notify(String topic, EObject event) {
+	try {
+	    BinaryResourceImpl res = new BinaryResourceImpl();
+	    res.getContents().add(EcoreUtil.copy(event));
+	    ByteArrayOutputStream bao = new ByteArrayOutputStream();
+	    res.save(bao, null);
+	    LOGGER.log(Level.INFO, "Sending EObject via MQTT. {0}", new String(bao.toByteArray()));
+	    ByteBuffer buffer = ByteBuffer.wrap(bao.toByteArray());
+	    for (String t : config.mqtt_topics()) {
 		try {
-			BinaryResourceImpl res = new BinaryResourceImpl();
-			res.getContents().add(EcoreUtil.copy(event));
-			ByteArrayOutputStream bao = new ByteArrayOutputStream();
-			res.save(bao, null);
-			LOGGER.log(Level.INFO, "Sending EObject via MQTT. {0}", new String(bao.toByteArray()));
-			ByteBuffer buffer = ByteBuffer.wrap(bao.toByteArray());
-			Arrays.asList(config.mqtt_topic()).forEach(t -> {
-				try {
-					messaging.publish(t, buffer);
-				} catch (Exception e) {
-					LOGGER.log(Level.SEVERE, String.format("Error while sending EObject via MQTT for topic %s.", t), e);
-				}
-			});
-		} catch (IOException e) {
-			LOGGER.log(Level.SEVERE, "Error while saving meg content.", e);
+		    messaging.publish(t, buffer);
+		} catch (Exception e) {
+		    LOGGER.log(Level.SEVERE, String.format("Error while sending EObject via MQTT for topic %s.", t), e);
 		}
-		
+	    }
+	} catch (IOException e) {
+	    LOGGER.log(Level.SEVERE, "Error while saving meg content.", e);
 	}
+
+    }
 }

@@ -11,7 +11,7 @@
   <genPackages prefix="Mqtthandler" basePackage="org.civitas" resource="XMI" disposableProviderFactory="true"
       ecorePackage="mqtt-handler.ecore#/">
     <genClasses ecoreClass="mqtt-handler.ecore#//MqttEventHandlerConfig">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mqtt-handler.ecore#//MqttEventHandlerConfig/mqttTopic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mqtt-handler.ecore#//MqttEventHandlerConfig/mqttTopics"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mqtt-handler.ecore#//MqttEventHandlerConfig/mqttServiceTarget"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mqtt-handler.ecore#//MqttEventHandlerConfig/contentType"/>
     </genClasses>

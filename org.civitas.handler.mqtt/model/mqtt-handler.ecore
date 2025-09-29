@@ -15,10 +15,13 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Configuration for MQTT Event Handler"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mqttTopic" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mqttTopics" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The MQTT topic list where to publish the result"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="mqtt.topics"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mqttServiceTarget" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">

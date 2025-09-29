@@ -49,7 +49,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.civitas.mqtthandler.impl.MqttEventHandlerConfigImpl#getPid <em>Pid</em>}</li>
  *   <li>{@link org.civitas.mqtthandler.impl.MqttEventHandlerConfigImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.civitas.mqtthandler.impl.MqttEventHandlerConfigImpl#getInputs <em>Inputs</em>}</li>
- *   <li>{@link org.civitas.mqtthandler.impl.MqttEventHandlerConfigImpl#getMqttTopic <em>Mqtt Topic</em>}</li>
+ *   <li>{@link org.civitas.mqtthandler.impl.MqttEventHandlerConfigImpl#getMqttTopics <em>Mqtt Topics</em>}</li>
  *   <li>{@link org.civitas.mqtthandler.impl.MqttEventHandlerConfigImpl#getMqttServiceTarget <em>Mqtt Service Target</em>}</li>
  *   <li>{@link org.civitas.mqtthandler.impl.MqttEventHandlerConfigImpl#getContentType <em>Content Type</em>}</li>
  * </ul>
@@ -108,14 +108,14 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 	protected EList<DataSource> inputs;
 
 	/**
-	 * The cached value of the '{@link #getMqttTopic() <em>Mqtt Topic</em>}' attribute list.
+	 * The cached value of the '{@link #getMqttTopics() <em>Mqtt Topics</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMqttTopic()
+	 * @see #getMqttTopics()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> mqttTopic;
+	protected EList<String> mqttTopics;
 
 	/**
 	 * The default value of the '{@link #getMqttServiceTarget() <em>Mqtt Service Target</em>}' attribute.
@@ -241,11 +241,11 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
-	public EList<String> getMqttTopic() {
-		if (mqttTopic == null) {
-			mqttTopic = new EDataTypeUniqueEList<String>(String.class, this, MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPIC);
+	public EList<String> getMqttTopics() {
+		if (mqttTopics == null) {
+			mqttTopics = new EDataTypeUniqueEList<String>(String.class, this, MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPICS);
 		}
-		return mqttTopic;
+		return mqttTopics;
 	}
 
 	/**
@@ -337,8 +337,8 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 				return getId();
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__INPUTS:
 				return getInputs();
-			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPIC:
-				return getMqttTopic();
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPICS:
+				return getMqttTopics();
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_SERVICE_TARGET:
 				return getMqttServiceTarget();
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__CONTENT_TYPE:
@@ -366,9 +366,9 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 				getInputs().clear();
 				getInputs().addAll((Collection<? extends DataSource>)newValue);
 				return;
-			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPIC:
-				getMqttTopic().clear();
-				getMqttTopic().addAll((Collection<? extends String>)newValue);
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPICS:
+				getMqttTopics().clear();
+				getMqttTopics().addAll((Collection<? extends String>)newValue);
 				return;
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_SERVICE_TARGET:
 				setMqttServiceTarget((String)newValue);
@@ -397,8 +397,8 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__INPUTS:
 				getInputs().clear();
 				return;
-			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPIC:
-				getMqttTopic().clear();
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPICS:
+				getMqttTopics().clear();
 				return;
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_SERVICE_TARGET:
 				setMqttServiceTarget(MQTT_SERVICE_TARGET_EDEFAULT);
@@ -424,8 +424,8 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__INPUTS:
 				return inputs != null && !inputs.isEmpty();
-			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPIC:
-				return mqttTopic != null && !mqttTopic.isEmpty();
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPICS:
+				return mqttTopics != null && !mqttTopics.isEmpty();
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_SERVICE_TARGET:
 				return MQTT_SERVICE_TARGET_EDEFAULT == null ? mqttServiceTarget != null : !MQTT_SERVICE_TARGET_EDEFAULT.equals(mqttServiceTarget);
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__CONTENT_TYPE:
@@ -492,8 +492,8 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 		result.append(pid);
 		result.append(", id: ");
 		result.append(id);
-		result.append(", mqttTopic: ");
-		result.append(mqttTopic);
+		result.append(", mqttTopics: ");
+		result.append(mqttTopics);
 		result.append(", mqttServiceTarget: ");
 		result.append(mqttServiceTarget);
 		result.append(", contentType: ");
