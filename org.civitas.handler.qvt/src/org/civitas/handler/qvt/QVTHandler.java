@@ -26,6 +26,7 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
@@ -37,7 +38,7 @@ import org.osgi.service.typedevent.TypedEventHandler;
  * @author grune
  * @since Sep 24, 2025
  */
-@Component(name = "QVTHandler", configurationPid = "QVTHandlerConfig", configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(name = "QVTHandler", configurationPid = "QVTHandlerConfig", configurationPolicy = ConfigurationPolicy.REQUIRE, scope = ServiceScope.PROTOTYPE)
 @Designate(ocd = QVTHandler.Config.class)
 public class QVTHandler implements TypedEventHandler<EObject> {
 	private static final Logger LOGGER = Logger.getLogger(QVTHandler.class.getName());

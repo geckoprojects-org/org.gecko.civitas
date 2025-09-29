@@ -162,8 +162,6 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
 		});
 
 	ePackageTracker.open();
-	
-	loadJsonschema(System.getProperty("data")+"meter-reading.json");
     }
 
     @Deactivate
@@ -262,7 +260,7 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
 		return;
 	}
 	if(obj instanceof EPackage ePackage) {
-		res = resourceSet.createResource(URI.createURI(UUID.randomUUID().toString()+".ecore"));
+		res = resourceSet.createResource(URI.createURI(pathToJsonschemaFile.replace(".jsonscham", ".ecore")));
 		res.getContents().add(ePackage);
 		try {
 			res.save(System.out, options);
