@@ -1,0 +1,331 @@
+/**
+ * Copyright (c) 2012 - 2025 Data In Motion and others.
+ * All rights reserved. 
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ * 
+ * Contributors:
+ *     Data In Motion - initial API and implementation
+ */
+package de.jena.mdo.rest.application.resource;
+
+import java.io.OutputStream;
+import java.util.List;
+import java.util.Map;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.gecko.emf.util.documentation.generators.apis.EcoreToDocumentationOptions;
+import org.osgi.service.cm.ConfigurationException;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Modified;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ServiceScope;
+import org.osgi.service.jakartars.whiteboard.propertytypes.JakartarsResource;
+
+import de.jena.mdo.mimetypes.api.SupportedMediatype;
+import de.jena.mdo.model.documentation.provider.ModelDocumentationConstants;
+import de.jena.mdo.model.documentation.provider.ModelDocumentationProvider;
+import io.swagger.v3.oas.annotations.Operation;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
+
+/**
+ * <p>
+ * This is a Demo Resource for a Jaxrs Whiteboard
+ * </p>
+ *
+ * @since 1.0
+ */
+@JakartarsResource
+@Component(service = AllModelsResource.class, scope = ServiceScope.PROTOTYPE)
+@Path("/models")
+public class AllModelsResource {
+
+    private final List<String> supportedMediaType;
+
+    @Reference
+    private ResourceSet resoruceSet;
+
+    @Activate
+    public AllModelsResource(@Reference SupportedMediatype types) {
+	supportedMediaType = types.getSupportedMediaTypes();
+    }
+
+    @QueryParam("mediaType")
+    String mediaType = null;
+
+    @Context
+    HttpHeaders headers;
+
+    private void checkContentType() {
+	if (mediaType != null) {
+	    if (supportedMediaType.contains(mediaType)) {
+		return;
+	    }
+	} else {
+	    List<MediaType> acceptableMediaTypes = headers.getAcceptableMediaTypes();
+	    for (MediaType acceptedMediaType : acceptableMediaTypes) {
+		String accept = acceptedMediaType.getType() + "/" + acceptedMediaType.getSubtype();
+		if (supportedMediaType.contains(accept)) {
+		    mediaType = accept;
+		    return;
+		}
+	    }
+	}
+	throw new WebApplicationException(Status.UNSUPPORTED_MEDIA_TYPE);
+    }
+
+    @GET
+    @Path("/hello")
+    public String hello() {
+	StringBuilder builder = new StringBuilder("Supported MediaTypes are");
+	supportedMediaType.forEach(s -> {
+	    builder.append(s);
+	    builder.append("<br>");
+	});
+	return builder.toString();
+    }
+
+    private static String template = """
+    	<!DOCTYPE html>
+    		<html>
+    			<body>
+    			<h1>Available Models</h1>
+    			<table>
+    	                                           <tr>
+    	                                             <th>Model Name</th>
+    	                                             <th>Model URI</th>
+    	                                             <th>Documentation</th>
+    	                                           </tr>
+    	                                             %s
+    	                                           </table>
+    	                                         </body>
+    	                                         </html>
+    	""";
+    private static String modelHrefTemplate = "<a href=\"?nsUri=%s\">%s</a>";
+
+    @GET
+    @Path("/")
+    @Produces(MediaType.TEXT_HTML)
+    public Response root(@QueryParam("nsUri") String nsUri) {
+	if (nsUri != null) {
+	    return getEPackage(nsUri);
+	}
+	StringBuilder builder = new StringBuilder();
+	for (Object object : resoruceSet.getPackageRegistry().values()) {
+	    EPackage ePackage = (EPackage) object;
+	    builder.append("<tr><td>");
+	    builder.append(ePackage.getName());
+	    builder.append("</td><td>");
+	    builder.append(modelHrefTemplate.formatted(ePackage.getNsURI(), ePackage.getNsURI()));
+	    builder.append("</td><td>");
+	    builder.append(getDocumentation(ePackage));
+	    builder.append("</td></tr>");
+	}
+	return Response.ok(template.formatted(builder.toString()), MediaType.TEXT_HTML).build();
+    }
+
+    private static String documentationHrefTemplate = "<a href=\"models/html/mermaid?nsUri=%s\">%s</a>";
+    /**
+     * @param ePackage
+     * @return
+     */
+    private String getDocumentation(EPackage ePackage) {
+	return documentationHrefTemplate.formatted(ePackage.getNsURI(), "Mermaid");
+    }
+
+    @GET
+    @Path("/")
+    public Response getEPackage(@QueryParam("nsUri") String nsUri) {
+	checkContentType();
+	if (nsUri == null) {
+	    return Response.status(404).build();
+	}
+	EPackage ePackage = getEPackageObject(nsUri);
+	if (ePackage == null) {
+	    return Response.noContent().build();
+	}
+	return Response.ok(EcoreUtil.copy(ePackage), mediaType).build();
+    }
+
+    private EPackage getEPackageObject(String nsUri) {
+	EPackage ePackage = resoruceSet.getPackageRegistry().getEPackage(nsUri);
+	if (ePackage == null) {
+	    return null;
+	}
+	return ePackage;
+    }
+    
+    @Reference
+    ModelDocumentationProvider modelDocumentationProvider;
+
+    Map<String, Object> properties;
+
+    @Activate
+    @Modified
+    private void activate(Map<String, Object> properties) throws ConfigurationException {
+	this.properties = Map.copyOf(properties);
+    }
+
+    @GET
+    @Path("/html/{docType}")
+    @Produces({ "text/html" })
+    @Operation(description = "Returns the html model documentation for the whole package.")
+    public Response getHtmlModelDocumentation(@PathParam("docType") String docType, @QueryParam("nsUri") String nsUri) {
+	EPackage ePackage = getEPackageObject(nsUri);
+	if (ePackage == null) {
+	    return Response.noContent().build();
+	}
+	Map<String, String> packageDocFileMap = modelDocumentationProvider.generateAllPackageDocumentation(ePackage);
+	OutputStream os = null;
+	String filePath = null;
+	switch (docType) {
+	case "mermaid":
+	    filePath = (String) packageDocFileMap.get(ModelDocumentationConstants.PROPERTY_HTML_MERMAID_FILE);
+	    break;
+	case "onlyHtml":
+	default:
+	    filePath = (String) packageDocFileMap.get(ModelDocumentationConstants.PROPERTY_HTML_FILE);
+	    break;
+	}
+	os = modelDocumentationProvider.retrieveDocumentation(filePath, true, ePackage,
+		"mermaid".equals(docType) ? EcoreToDocumentationOptions.HTML_WITH_MERMAID_CLASS_DIAGRAM
+			: EcoreToDocumentationOptions.ONLY_HTML_CLASS_OVERVIEW);
+	if (os == null) {
+	    return Response.noContent().build();
+	}
+	return Response.ok(os.toString()).build();
+    }
+
+    @GET
+    @Path("/html/{eClass}/{docType}")
+    @Produces({ "text/html" })
+    @Operation(description = "Returns the html model documentation for the specific requested eClass.")
+    public Response getHtmlModelClassDocumentation(@PathParam("eClass") String eClassName,
+	    @PathParam("docType") String docType, @QueryParam("nsUri") String nsUri) {
+	EPackage ePackage = getEPackageObject(nsUri);
+	if (ePackage == null) {
+	    return Response.noContent().build();
+	}
+	Map<String, String> classDocFileMap = modelDocumentationProvider.generateAllClassesDocumentation(ePackage);
+	EClassifier eClassifier = ePackage.getEClassifier(eClassName);
+	if (eClassifier == null || !(eClassifier instanceof EClass)) {
+	    return Response.status(Status.BAD_REQUEST).entity("Unkwon Entity").type(MediaType.TEXT_PLAIN).build();
+	}
+	EClass eClass = (EClass) eClassifier;
+	OutputStream os = null;
+	String filePath = null;
+	switch (docType) {
+	case "mermaid":
+	    filePath = (String) classDocFileMap
+		    .get(ModelDocumentationConstants.PROPERTY_HTML_MERMAID_FILE + "." + eClassName);
+	    break;
+	case "onlyHtml":
+	default:
+	    filePath = (String) classDocFileMap.get(ModelDocumentationConstants.PROPERTY_HTML_FILE + "." + eClassName);
+	    break;
+	}
+	os = modelDocumentationProvider.retrieveDocumentation(filePath, true, eClass,
+		"mermaid".equals(docType) ? EcoreToDocumentationOptions.HTML_WITH_MERMAID_CLASS_DIAGRAM
+			: EcoreToDocumentationOptions.ONLY_HTML_CLASS_OVERVIEW);
+	if (os == null) {
+	    return Response.noContent().build();
+	}
+	return Response.ok(os.toString()).build();
+    }
+
+    @GET
+    @Path("/md/{docType}")
+    @Produces({ "text/markdown" })
+    @Operation(description = "Returns the markdown model documentation for the whole package.")
+    public Response getMarkdownModelDocumentation(@PathParam("docType") String docType,
+	    @QueryParam("nsUri") String nsUri) {
+	EPackage ePackage = getEPackageObject(nsUri);
+	if (ePackage == null) {
+	    return Response.noContent().build();
+	}
+	Map<String, String> packageDocFileMap = modelDocumentationProvider.generateAllPackageDocumentation(ePackage);
+	OutputStream os = null;
+	String filePath = null;
+	switch (docType) {
+	case "mermaid":
+	    filePath = (String) packageDocFileMap.get(ModelDocumentationConstants.PROPERTY_MD_MERMAID_FILE);
+	    break;
+	case "plantuml":
+	    filePath = (String) packageDocFileMap.get(ModelDocumentationConstants.PROPERTY_MD_PLANTUML_FILE);
+	    break;
+	case "onlyMd":
+	default:
+	    filePath = (String) properties.get(ModelDocumentationConstants.PROPERTY_MD_FILE);
+	    break;
+	}
+	os = modelDocumentationProvider.retrieveDocumentation(filePath, true, ePackage,
+		"mermaid".equals(docType) ? EcoreToDocumentationOptions.MARKDOWN_WITH_MERMAID_CLASS_DIAGRAM
+			: "plantuml".equals(docType) ? EcoreToDocumentationOptions.MARKDOWN_WITH_PLANTUML_CLASS_DIAGRAM
+				: EcoreToDocumentationOptions.ONLY_MARKDOWN_CLASS_OVERVIEW);
+	if (os == null) {
+	    return Response.noContent().build();
+	}
+	return Response.ok(os.toString()).build();
+    }
+
+    @GET
+    @Path("/md/{eClass}/{docType}")
+    @Produces({ "text/markdown" })
+    @Operation(description = "Returns the markdown model documentation for the requested class.")
+    public Response getMarkdownModelClassDocumentation(@PathParam("eClass") String eClassName,
+	    @PathParam("docType") String docType, @QueryParam("nsUri") String nsUri) {
+	EPackage ePackage = getEPackageObject(nsUri);
+	if (ePackage == null) {
+	    return Response.noContent().build();
+	}
+	Map<String, String> classDocFileMap = modelDocumentationProvider.generateAllClassesDocumentation(ePackage);
+	EClassifier eClassifier = ePackage.getEClassifier(eClassName);
+	if (eClassifier == null || !(eClassifier instanceof EClass)) {
+	    return Response.status(Status.BAD_REQUEST).entity("Unkwon Entity").type(MediaType.TEXT_PLAIN).build();
+	}
+	EClass eClass = (EClass) eClassifier;
+	OutputStream os = null;
+	String filePath = null;
+	switch (docType) {
+	case "mermaid":
+	    filePath = (String) classDocFileMap.get(ModelDocumentationConstants.PROPERTY_MD_MERMAID_FILE + "." + eClassName);
+	    break;
+	case "plantuml":
+	    filePath = (String) classDocFileMap
+		    .get(ModelDocumentationConstants.PROPERTY_MD_PLANTUML_FILE + "." + eClassName);
+	    break;
+	case "onlyMd":
+	default:
+	    filePath = (String) classDocFileMap.get(ModelDocumentationConstants.PROPERTY_MD_FILE + "." + eClassName);
+	    break;
+	}
+	os = modelDocumentationProvider.retrieveDocumentation(filePath, true, eClass,
+		"mermaid".equals(docType) ? EcoreToDocumentationOptions.MARKDOWN_WITH_MERMAID_CLASS_DIAGRAM
+			: "plantuml".equals(docType) ? EcoreToDocumentationOptions.MARKDOWN_WITH_PLANTUML_CLASS_DIAGRAM
+				: EcoreToDocumentationOptions.ONLY_MARKDOWN_CLASS_OVERVIEW);
+	if (os == null) {
+	    return Response.noContent().build();
+	}
+	return Response.ok(os.toString()).build();
+    }
+
+}
