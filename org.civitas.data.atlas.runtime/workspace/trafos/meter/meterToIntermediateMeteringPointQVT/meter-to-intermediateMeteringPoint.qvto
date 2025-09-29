@@ -24,6 +24,6 @@ main() {
 
 mapping SOURCE::Meter::toIntermediateMeteringPoint(): TARGET::IntermediateMeteringPoint {
 	meterId := self.id.toString();
-	plantId := self.plantId.toString();
+	plantId := self.plantId;
 }
 
