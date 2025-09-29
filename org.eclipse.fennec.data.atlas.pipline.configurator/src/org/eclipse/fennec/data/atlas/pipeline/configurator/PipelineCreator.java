@@ -275,6 +275,13 @@ public class PipelineCreator {
 	    plantQvt.getInputs().add(basicDataAttacher);
 	    plantQvt.getInputs().add(opDataAttacher);
 	    pipeline.getSteps().add(plantQvt);
+	    
+	    QVTHandlerConfig meterToIntermediateMeteringPointConfig = QvthandlerFactory.eINSTANCE.createQVTHandlerConfig();
+	    meterToIntermediateMeteringPointConfig.setId("meterToIntermediateMeteringPointQVT");
+	    meterToIntermediateMeteringPointConfig.setPid("meterToIntermediateMeteringPointQVT"); 
+	    meterToIntermediateMeteringPointConfig.setTrafo("(transformator.id=meterToIntermediateMeteringPointQVT)");
+	    meterToIntermediateMeteringPointConfig.setEclassuri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
+	    		EcorePackage.Literals.ECLASS));
 
 	    
 //		TODO: Attach meter to intermediateMeteringPoint 
