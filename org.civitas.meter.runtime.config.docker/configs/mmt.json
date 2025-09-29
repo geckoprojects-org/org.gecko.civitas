@@ -18,5 +18,11 @@
 		"qvt.template.path": "org.civitas.meter.mmt/transformations/intermediateMeteringPoint-to-targetMeteringPoint.qvto",
 		"qvt.model.target": "(&(emf.name=metersource)(emf.name=metertarget))"
 		
+	},
+	"QVTModelTransformator~meterToIntermediateMeteringPoint": {
+		"transformator.id": "meterToIntermediateMeteringPointQVT",
+		"qvt.template.path": "org.civitas.meter.mmt/transformations/meter-to-intermediateMeteringPoint.qvto",
+		"qvt.model.target": "(emf.name=metersource)"
+		
 	}
 }

@@ -3,7 +3,9 @@
   
 	"EMFAttacherHandler~BasicData": 
   	{
-  	 	"event.topic" : "meterusecase/basicdata_wo_prefix_source",
+  	 	"event.topics" : [
+  	 		"meterusecase/basicdata_wo_prefix_source"
+  	 		],
 	    "repository.target": "(repo_id=inmem)",
 		"incomming.eclassuri" : "https://civitas.org/meter/source/1.0.0#//BasicData",
 		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
@@ -15,7 +17,9 @@
 	},
 	"EMFAttacherHandler~OperatingData":
 	{
-		"event.topic" : "meterusecase/operating_source",
+		"event.topics" : [
+			"meterusecase/operating_source"
+			],
 		"repository.target": "(repo_id=inmem)",
 		"incomming.eclassuri" : "https://civitas.org/meter/source/1.0.0#//OperatingData",
 		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
@@ -27,7 +31,9 @@
 	},
 	"EMFAttacherHandler~MeterReading":
 	{
-		"event.topic" : "meterusecase/meterReading_source",
+		"event.topics" : [
+			"meterusecase/meterReading_source"
+			],
 		"repository.target": "(repo_id=inmem)",
 		"incomming.eclassuri" : "https://civitas.org/meter/source/1.0.0#//Reading",
 		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
@@ -37,21 +43,11 @@
 			"meterusecase/IntermediateMeteringPoint_target"
 		]
 	},
-	"EMFAttacherHandler~Meter":
-	{
-		"event.topic" : "meterusecase/meter_source",
-		"repository.target": "(repo_id=inmem)",
-		"incomming.eclassuri" : "https://civitas.org/meter/source/1.0.0#//Meter",
-		"target.eclassuri": "https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
-		"foreignKeyFeature.uri": "https://civitas.org/meter/source/1.0.0#//Meter_id",
-		"target.reference.uri": "https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint_plantId",
-		"forward.topic": [
-			"meterusecase/IntermediateMeteringPoint_target"
-		]
-	},
 	"EMFAttacherHandler~TargetMeteringPoint":
 	{
-		"event.topic" : "meterusecase/meter_source",
+		"event.topics" : [
+			"meterusecase/meter_source"
+			],
 		"repository.target": "(repo_id=inmem)",
 		"incomming.eclassuri" : "https://civitas.org/meter/target/1.0.0#//MeteringPoint",
 		"target.eclassuri": "https://civitas.org/meter/target/1.0.0#//Plant",
