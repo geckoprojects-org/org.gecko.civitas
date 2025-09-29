@@ -94,7 +94,7 @@ public class PipelineCreator {
 	public void activate() throws IOException {
 //		createMeterPipeline();
 		createGLTPipeline();
-		createMQTTExample();
+//		createMQTTExample();
 	}
 
 	private void createMQTTExample() throws IOException {

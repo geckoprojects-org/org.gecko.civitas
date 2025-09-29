@@ -28,6 +28,6 @@
     <eclassuri href="https://civitas.org/glt/intermediate/1.0.0#//BuildingSensorReading"/>
   </steps>
   <steps xsi:type="mqtthandler:MqttEventHandlerConfig" pid="AlarmMQTTHandler" id="AlarmMQTTHandler" inputs="simple_alarm_QVT" mqttServiceTarget="(id=local)" contentType="application/xmi">
-    <mqttTopic>glt/alarm</mqttTopic>
+    <mqttTopics>glt/alarm</mqttTopics>
   </steps>
 </pipeline:Pipeline>

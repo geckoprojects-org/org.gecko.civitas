@@ -42,12 +42,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="alarmId" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="alarmReceiver" upperBound="-1"
-        eType="ecore:EClass ../../org.civitas.glt.model/model/glt.ecore#//Contact"
+        eType="ecore:EClass glt.ecore#//Contact"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="alarmTriggerEvent" eType="ecore:EClass ../../org.civitas.glt.sensor.model/model/building_sensor.ecore#//SensorReading"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alarmTriggerEvent" eType="ecore:EClass building_sensor.ecore#//SensorReading"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="alarmTriggeringBuilder"
-        eType="ecore:EClass ../../org.civitas.glt.model/model/glt.ecore#//Building"
+        eType="ecore:EClass glt.ecore#//Building"
         containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
