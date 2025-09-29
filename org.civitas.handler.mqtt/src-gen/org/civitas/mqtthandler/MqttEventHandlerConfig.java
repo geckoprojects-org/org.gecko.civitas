@@ -15,7 +15,7 @@ package org.civitas.mqtthandler;
 
 import org.civitas.osgi.component.Configuration;
 
-import org.civitas.pipeline.DataSource;
+import org.civitas.pipeline.DataSink;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -35,6 +35,8 @@ import org.osgi.annotation.versioning.ProviderType;
  * </p>
  * <ul>
  *   <li>{@link org.civitas.mqtthandler.MqttEventHandlerConfig#getMqttTopic <em>Mqtt Topic</em>}</li>
+ *   <li>{@link org.civitas.mqtthandler.MqttEventHandlerConfig#getMqttServiceTarget <em>Mqtt Service Target</em>}</li>
+ *   <li>{@link org.civitas.mqtthandler.MqttEventHandlerConfig#getContentType <em>Content Type</em>}</li>
  * </ul>
  *
  * @see org.civitas.mqtthandler.MqtthandlerPackage#getMqttEventHandlerConfig()
@@ -42,7 +44,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-public interface MqttEventHandlerConfig extends Configuration, DataSource {
+public interface MqttEventHandlerConfig extends Configuration, DataSink {
 	/**
 	 * Returns the value of the '<em><b>Mqtt Topic</b></em>' attribute list.
 	 * The list contents are of type {@link java.lang.String}.
@@ -57,5 +59,50 @@ public interface MqttEventHandlerConfig extends Configuration, DataSource {
 	 * @generated
 	 */
 	EList<String> getMqttTopic();
+
+	/**
+	 * Returns the value of the '<em><b>Mqtt Service Target</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mqtt Service Target</em>' attribute.
+	 * @see #setMqttServiceTarget(String)
+	 * @see org.civitas.mqtthandler.MqtthandlerPackage#getMqttEventHandlerConfig_MqttServiceTarget()
+	 * @model extendedMetaData="name='mqtt.service.target'"
+	 * @generated
+	 */
+	String getMqttServiceTarget();
+
+	/**
+	 * Sets the value of the '{@link org.civitas.mqtthandler.MqttEventHandlerConfig#getMqttServiceTarget <em>Mqtt Service Target</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Mqtt Service Target</em>' attribute.
+	 * @see #getMqttServiceTarget()
+	 * @generated
+	 */
+	void setMqttServiceTarget(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Content Type</b></em>' attribute.
+	 * The default value is <code>"application/json"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Content Type</em>' attribute.
+	 * @see #setContentType(String)
+	 * @see org.civitas.mqtthandler.MqtthandlerPackage#getMqttEventHandlerConfig_ContentType()
+	 * @model default="application/json"
+	 * @generated
+	 */
+	String getContentType();
+
+	/**
+	 * Sets the value of the '{@link org.civitas.mqtthandler.MqttEventHandlerConfig#getContentType <em>Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Content Type</em>' attribute.
+	 * @see #getContentType()
+	 * @generated
+	 */
+	void setContentType(String value);
 
 } // MqttEventHandlerConfig

@@ -15,6 +15,11 @@ package org.civitas.mqttreceiver.util;
 
 import org.civitas.mqttreceiver.*;
 
+import org.civitas.osgi.component.Configuration;
+
+import org.civitas.pipeline.DataSource;
+import org.civitas.pipeline.PipelineStep;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -83,6 +88,18 @@ public class MqttreceiverAdapterFactory extends AdapterFactoryImpl {
 				return createMqttReceiverConfigAdapter();
 			}
 			@Override
+			public Adapter caseConfiguration(Configuration object) {
+				return createConfigurationAdapter();
+			}
+			@Override
+			public Adapter casePipelineStep(PipelineStep object) {
+				return createPipelineStepAdapter();
+			}
+			@Override
+			public Adapter caseDataSource(DataSource object) {
+				return createDataSourceAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -113,6 +130,48 @@ public class MqttreceiverAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMqttReceiverConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.civitas.osgi.component.Configuration <em>Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.civitas.osgi.component.Configuration
+	 * @generated
+	 */
+	public Adapter createConfigurationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.civitas.pipeline.PipelineStep <em>Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.civitas.pipeline.PipelineStep
+	 * @generated
+	 */
+	public Adapter createPipelineStepAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.civitas.pipeline.DataSource <em>Data Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.civitas.pipeline.DataSource
+	 * @generated
+	 */
+	public Adapter createDataSourceAdapter() {
 		return null;
 	}
 

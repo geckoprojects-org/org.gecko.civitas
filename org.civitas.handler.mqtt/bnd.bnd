@@ -7,8 +7,11 @@
 	org.osgi.util.pushstream,\
 	org.osgi.util.promise,\
 	org.gecko.emf.json,\
-    org.civitas.pipeline.model;version=snapshot,\
-    org.civitas.osgi.component.configuration.model;version=snapshot
+	org.civitas.pipeline.model;version=snapshot,\
+	org.civitas.osgi.component.configuration.model;version=snapshot,\
+	org.eclipse.paho.mqttv5.client,\
+	org.gecko.adapter.mqtt.v5,\
+	org.eclipse.fennec.codec.constants
 src: src, src-gen
     
 -workingset: handler

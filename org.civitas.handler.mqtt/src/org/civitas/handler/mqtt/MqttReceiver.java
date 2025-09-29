@@ -78,7 +78,7 @@ public class MqttReceiver {
 	@Activate
 	public MqttReceiver(Config config, 
 			@Reference(target = "("+EMFNamespaces.EMF_MODEL_FILE_EXT +"=json)", cardinality = ReferenceCardinality.MANDATORY) ComponentServiceObjects<ResourceSet> rsFactory,
-			@Reference(target = "(id=full)", cardinality = ReferenceCardinality.MANDATORY) MessagingService messagingService) {
+			@Reference(name = "mqtt.service", target = "(id=full)", cardinality = ReferenceCardinality.MANDATORY) MessagingService messagingService) {
 		this.rsFactory = rsFactory;
 		this.messagingService = messagingService;
 		this.config = config;
@@ -88,13 +88,13 @@ public class MqttReceiver {
 	private void subscribe() {
 		try {
 			PushStream<Message> subscription = messagingService.subscribe(config.mqtt_topic());
-			subscription.forEach(this::hanldeMessage);			
+			subscription.forEach(this::handleMessage);			
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, String.format("Exception while subscribing to topic %s", config.mqtt_topic()), e);
 		}
 	}
 	
-	private void hanldeMessage(Message msg) {
+	private void handleMessage(Message msg) {
 		if(msg == null) {
 			LOGGER.warning(String.format("Message is null! Cannot extract anything!"));
 			return;

@@ -15,6 +15,11 @@ package org.civitas.mqttreceiver.util;
 
 import org.civitas.mqttreceiver.*;
 
+import org.civitas.osgi.component.Configuration;
+
+import org.civitas.pipeline.DataSource;
+import org.civitas.pipeline.PipelineStep;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -80,6 +85,9 @@ public class MqttreceiverSwitch<T> extends Switch<T> {
 			case MqttreceiverPackage.MQTT_RECEIVER_CONFIG: {
 				MqttReceiverConfig mqttReceiverConfig = (MqttReceiverConfig)theEObject;
 				T result = caseMqttReceiverConfig(mqttReceiverConfig);
+				if (result == null) result = caseConfiguration(mqttReceiverConfig);
+				if (result == null) result = caseDataSource(mqttReceiverConfig);
+				if (result == null) result = casePipelineStep(mqttReceiverConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -99,6 +107,51 @@ public class MqttreceiverSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMqttReceiverConfig(MqttReceiverConfig object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConfiguration(Configuration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePipelineStep(PipelineStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Source</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Source</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataSource(DataSource object) {
 		return null;
 	}
 

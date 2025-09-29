@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.gecko.emf.json.constants.EMFJs;
 import org.osgi.service.component.ComponentServiceObjects;
+import org.eclipse.fennec.codec.options.CodecResourceOptions;
 
 /**
  * 
@@ -54,7 +55,7 @@ public class MqttReceiverHelper {
 		try {
 			Resource res = set.createResource(uri, mediaType);
 			String received = new String(content).replaceAll("^\\x00*", "");
-			Map<String, Object> options = Collections.singletonMap(EMFJs.OPTION_ROOT_ELEMENT, set.getEObject(URI.createURI(rootEClassURI), false));
+			Map<String, Object> options = Collections.singletonMap(CodecResourceOptions.CODEC_ROOT_OBJECT, set.getEObject(URI.createURI(rootEClassURI), false));
 			res.load(new BufferedInputStream(new ByteArrayInputStream(received.getBytes())), options);
 			if(res.getContents() != null & !res.getContents().isEmpty()) {
 				return res.getContents().get(0);

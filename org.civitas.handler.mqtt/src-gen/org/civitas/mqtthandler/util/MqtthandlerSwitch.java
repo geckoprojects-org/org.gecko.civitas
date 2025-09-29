@@ -17,7 +17,7 @@ import org.civitas.mqtthandler.*;
 
 import org.civitas.osgi.component.Configuration;
 
-import org.civitas.pipeline.DataSource;
+import org.civitas.pipeline.DataSink;
 import org.civitas.pipeline.PipelineStep;
 
 import org.eclipse.emf.ecore.EObject;
@@ -86,7 +86,7 @@ public class MqtthandlerSwitch<T> extends Switch<T> {
 				MqttEventHandlerConfig mqttEventHandlerConfig = (MqttEventHandlerConfig)theEObject;
 				T result = caseMqttEventHandlerConfig(mqttEventHandlerConfig);
 				if (result == null) result = caseConfiguration(mqttEventHandlerConfig);
-				if (result == null) result = caseDataSource(mqttEventHandlerConfig);
+				if (result == null) result = caseDataSink(mqttEventHandlerConfig);
 				if (result == null) result = casePipelineStep(mqttEventHandlerConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -141,17 +141,17 @@ public class MqtthandlerSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Source</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Data Sink</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Source</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Data Sink</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDataSource(DataSource object) {
+	public T caseDataSink(DataSink object) {
 		return null;
 	}
 

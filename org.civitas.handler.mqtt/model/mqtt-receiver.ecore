@@ -7,7 +7,7 @@
     <details key="basePackage" value="org.civitas"/>
     <details key="copyrightText" value="Copyright (c) 2012 - 2025 Data In Motion and others.&#xA;All rights reserved. &#xA;&#xA;This program and the accompanying materials are made&#xA;available under the terms of the Eclipse Public License 2.0&#xA;which is available at https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;&#xA;Contributors:&#xA;    Data In Motion - initial API and implementation"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="MqttReceiverConfig">
+  <eClassifiers xsi:type="ecore:EClass" name="MqttReceiverConfig" eSuperTypes="../../org.civitas.osgi.component.configuration.model/model/component.ecore#//Configuration ../../org.civitas.pipeline.model/model/pipeline.ecore#//DataSource">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Configuration for MQTT Receiver"/>
     </eAnnotations>
@@ -34,6 +34,11 @@
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The EClass URI of the object we expect in the MQTT message payload"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mqttServiceTarget" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="mqtt.service.target"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

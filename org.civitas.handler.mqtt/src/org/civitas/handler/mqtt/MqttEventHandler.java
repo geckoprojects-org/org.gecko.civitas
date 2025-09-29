@@ -37,7 +37,7 @@ import org.osgi.service.typedevent.TypedEventHandler;
 @Component(name = "MqttEventHandler", configurationPid = "MqttEventHandlerConfig", configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class MqttEventHandler implements TypedEventHandler<EObject>{
 	
-	@Reference
+	@Reference(name = "mqtt.service", target = "(id=local)")
 	private MessagingService messaging;
 	
 	private static final Logger LOGGER = Logger.getLogger(MqttEventHandler.class.getName());

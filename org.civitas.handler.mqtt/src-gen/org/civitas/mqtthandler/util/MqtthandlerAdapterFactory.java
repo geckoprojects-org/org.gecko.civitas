@@ -17,7 +17,7 @@ import org.civitas.mqtthandler.*;
 
 import org.civitas.osgi.component.Configuration;
 
-import org.civitas.pipeline.DataSource;
+import org.civitas.pipeline.DataSink;
 import org.civitas.pipeline.PipelineStep;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -96,8 +96,8 @@ public class MqtthandlerAdapterFactory extends AdapterFactoryImpl {
 				return createPipelineStepAdapter();
 			}
 			@Override
-			public Adapter caseDataSource(DataSource object) {
-				return createDataSourceAdapter();
+			public Adapter caseDataSink(DataSink object) {
+				return createDataSinkAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -162,16 +162,16 @@ public class MqtthandlerAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.civitas.pipeline.DataSource <em>Data Source</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.civitas.pipeline.DataSink <em>Data Sink</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.civitas.pipeline.DataSource
+	 * @see org.civitas.pipeline.DataSink
 	 * @generated
 	 */
-	public Adapter createDataSourceAdapter() {
+	public Adapter createDataSinkAdapter() {
 		return null;
 	}
 

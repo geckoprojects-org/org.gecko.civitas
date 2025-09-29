@@ -14,6 +14,8 @@
 package org.civitas.mqttreceiver;
 
 
+import org.civitas.osgi.component.ComponentConfigPackage;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
@@ -84,13 +86,40 @@ public interface MqttreceiverPackage extends org.eclipse.emf.ecore.EPackage {
 	int MQTT_RECEIVER_CONFIG = 0;
 
 	/**
+	 * The feature id for the '<em><b>Pid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MQTT_RECEIVER_CONFIG__PID = ComponentConfigPackage.CONFIGURATION__PID;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MQTT_RECEIVER_CONFIG__ID = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MQTT_RECEIVER_CONFIG__OUTPUTS = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Mqtt Topic</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MQTT_RECEIVER_CONFIG__MQTT_TOPIC = 0;
+	int MQTT_RECEIVER_CONFIG__MQTT_TOPIC = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Print Payload</b></em>' attribute.
@@ -99,7 +128,7 @@ public interface MqttreceiverPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MQTT_RECEIVER_CONFIG__PRINT_PAYLOAD = 1;
+	int MQTT_RECEIVER_CONFIG__PRINT_PAYLOAD = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Payload Eclassuri</b></em>' reference.
@@ -108,7 +137,16 @@ public interface MqttreceiverPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MQTT_RECEIVER_CONFIG__PAYLOAD_ECLASSURI = 2;
+	int MQTT_RECEIVER_CONFIG__PAYLOAD_ECLASSURI = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Mqtt Service Target</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MQTT_RECEIVER_CONFIG__MQTT_SERVICE_TARGET = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Mqtt Receiver Config</em>' class.
@@ -117,7 +155,7 @@ public interface MqttreceiverPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MQTT_RECEIVER_CONFIG_FEATURE_COUNT = 3;
+	int MQTT_RECEIVER_CONFIG_FEATURE_COUNT = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Mqtt Receiver Config</em>' class.
@@ -126,7 +164,7 @@ public interface MqttreceiverPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MQTT_RECEIVER_CONFIG_OPERATION_COUNT = 0;
+	int MQTT_RECEIVER_CONFIG_OPERATION_COUNT = ComponentConfigPackage.CONFIGURATION_OPERATION_COUNT + 0;
 
 
 	/**
@@ -171,6 +209,17 @@ public interface MqttreceiverPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EReference getMqttReceiverConfig_PayloadEclassuri();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.mqttreceiver.MqttReceiverConfig#getMqttServiceTarget <em>Mqtt Service Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Mqtt Service Target</em>'.
+	 * @see org.civitas.mqttreceiver.MqttReceiverConfig#getMqttServiceTarget()
+	 * @see #getMqttReceiverConfig()
+	 * @generated
+	 */
+	EAttribute getMqttReceiverConfig_MqttServiceTarget();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -228,6 +277,14 @@ public interface MqttreceiverPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EReference MQTT_RECEIVER_CONFIG__PAYLOAD_ECLASSURI = eINSTANCE.getMqttReceiverConfig_PayloadEclassuri();
+
+		/**
+		 * The meta object literal for the '<em><b>Mqtt Service Target</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MQTT_RECEIVER_CONFIG__MQTT_SERVICE_TARGET = eINSTANCE.getMqttReceiverConfig_MqttServiceTarget();
 
 	}
 

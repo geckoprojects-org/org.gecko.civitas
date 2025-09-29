@@ -162,6 +162,16 @@ public class MqttreceiverPackageImpl extends EPackageImpl implements Mqttreceive
 	 * @generated
 	 */
 	@Override
+	public EAttribute getMqttReceiverConfig_MqttServiceTarget() {
+		return (EAttribute)mqttReceiverConfigEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public MqttreceiverFactory getMqttreceiverFactory() {
 		return (MqttreceiverFactory)getEFactoryInstance();
 	}
@@ -189,6 +199,7 @@ public class MqttreceiverPackageImpl extends EPackageImpl implements Mqttreceive
 		createEAttribute(mqttReceiverConfigEClass, MQTT_RECEIVER_CONFIG__MQTT_TOPIC);
 		createEAttribute(mqttReceiverConfigEClass, MQTT_RECEIVER_CONFIG__PRINT_PAYLOAD);
 		createEReference(mqttReceiverConfigEClass, MQTT_RECEIVER_CONFIG__PAYLOAD_ECLASSURI);
+		createEAttribute(mqttReceiverConfigEClass, MQTT_RECEIVER_CONFIG__MQTT_SERVICE_TARGET);
 	}
 
 	/**
@@ -214,17 +225,24 @@ public class MqttreceiverPackageImpl extends EPackageImpl implements Mqttreceive
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		ComponentConfigPackage theComponentConfigPackage = (ComponentConfigPackage)EPackage.Registry.INSTANCE.getEPackage(ComponentConfigPackage.eNS_URI);
+		PipelinePackage thePipelinePackage = (PipelinePackage)EPackage.Registry.INSTANCE.getEPackage(PipelinePackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		mqttReceiverConfigEClass.getESuperTypes().add(theComponentConfigPackage.getConfiguration());
+		mqttReceiverConfigEClass.getESuperTypes().add(thePipelinePackage.getDataSource());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(mqttReceiverConfigEClass, MqttReceiverConfig.class, "MqttReceiverConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMqttReceiverConfig_MqttTopic(), ecorePackage.getEString(), "mqttTopic", null, 0, 1, MqttReceiverConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMqttReceiverConfig_PrintPayload(), ecorePackage.getEBoolean(), "printPayload", "false", 0, 1, MqttReceiverConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMqttReceiverConfig_PayloadEclassuri(), ecorePackage.getEClass(), null, "payloadEclassuri", null, 0, 1, MqttReceiverConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMqttReceiverConfig_MqttServiceTarget(), ecorePackage.getEString(), "mqttServiceTarget", null, 0, 1, MqttReceiverConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -259,6 +277,12 @@ public class MqttreceiverPackageImpl extends EPackageImpl implements Mqttreceive
 		   source,
 		   new String[] {
 			   "name", "payload.eclassuri"
+		   });
+		addAnnotation
+		  (getMqttReceiverConfig_MqttServiceTarget(),
+		   source,
+		   new String[] {
+			   "name", "mqtt.service.target"
 		   });
 	}
 

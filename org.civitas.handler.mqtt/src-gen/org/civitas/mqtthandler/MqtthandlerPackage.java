@@ -104,13 +104,13 @@ public interface MqtthandlerPackage extends org.eclipse.emf.ecore.EPackage {
 	int MQTT_EVENT_HANDLER_CONFIG__ID = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Outputs</b></em>' reference list.
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MQTT_EVENT_HANDLER_CONFIG__OUTPUTS = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 1;
+	int MQTT_EVENT_HANDLER_CONFIG__INPUTS = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Mqtt Topic</b></em>' attribute list.
@@ -122,13 +122,31 @@ public interface MqtthandlerPackage extends org.eclipse.emf.ecore.EPackage {
 	int MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPIC = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Mqtt Service Target</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MQTT_EVENT_HANDLER_CONFIG__MQTT_SERVICE_TARGET = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Content Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MQTT_EVENT_HANDLER_CONFIG__CONTENT_TYPE = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Mqtt Event Handler Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MQTT_EVENT_HANDLER_CONFIG_FEATURE_COUNT = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 3;
+	int MQTT_EVENT_HANDLER_CONFIG_FEATURE_COUNT = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Mqtt Event Handler Config</em>' class.
@@ -160,6 +178,28 @@ public interface MqtthandlerPackage extends org.eclipse.emf.ecore.EPackage {
 	 * @generated
 	 */
 	EAttribute getMqttEventHandlerConfig_MqttTopic();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.mqtthandler.MqttEventHandlerConfig#getMqttServiceTarget <em>Mqtt Service Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Mqtt Service Target</em>'.
+	 * @see org.civitas.mqtthandler.MqttEventHandlerConfig#getMqttServiceTarget()
+	 * @see #getMqttEventHandlerConfig()
+	 * @generated
+	 */
+	EAttribute getMqttEventHandlerConfig_MqttServiceTarget();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.mqtthandler.MqttEventHandlerConfig#getContentType <em>Content Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Content Type</em>'.
+	 * @see org.civitas.mqtthandler.MqttEventHandlerConfig#getContentType()
+	 * @see #getMqttEventHandlerConfig()
+	 * @generated
+	 */
+	EAttribute getMqttEventHandlerConfig_ContentType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -201,6 +241,22 @@ public interface MqtthandlerPackage extends org.eclipse.emf.ecore.EPackage {
 		 * @generated
 		 */
 		EAttribute MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPIC = eINSTANCE.getMqttEventHandlerConfig_MqttTopic();
+
+		/**
+		 * The meta object literal for the '<em><b>Mqtt Service Target</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MQTT_EVENT_HANDLER_CONFIG__MQTT_SERVICE_TARGET = eINSTANCE.getMqttEventHandlerConfig_MqttServiceTarget();
+
+		/**
+		 * The meta object literal for the '<em><b>Content Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MQTT_EVENT_HANDLER_CONFIG__CONTENT_TYPE = eINSTANCE.getMqttEventHandlerConfig_ContentType();
 
 	}
 

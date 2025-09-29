@@ -48,8 +48,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link org.civitas.mqtthandler.impl.MqttEventHandlerConfigImpl#getPid <em>Pid</em>}</li>
  *   <li>{@link org.civitas.mqtthandler.impl.MqttEventHandlerConfigImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.civitas.mqtthandler.impl.MqttEventHandlerConfigImpl#getOutputs <em>Outputs</em>}</li>
+ *   <li>{@link org.civitas.mqtthandler.impl.MqttEventHandlerConfigImpl#getInputs <em>Inputs</em>}</li>
  *   <li>{@link org.civitas.mqtthandler.impl.MqttEventHandlerConfigImpl#getMqttTopic <em>Mqtt Topic</em>}</li>
+ *   <li>{@link org.civitas.mqtthandler.impl.MqttEventHandlerConfigImpl#getMqttServiceTarget <em>Mqtt Service Target</em>}</li>
+ *   <li>{@link org.civitas.mqtthandler.impl.MqttEventHandlerConfigImpl#getContentType <em>Content Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -96,14 +98,14 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getOutputs() <em>Outputs</em>}' reference list.
+	 * The cached value of the '{@link #getInputs() <em>Inputs</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOutputs()
+	 * @see #getInputs()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DataSink> outputs;
+	protected EList<DataSource> inputs;
 
 	/**
 	 * The cached value of the '{@link #getMqttTopic() <em>Mqtt Topic</em>}' attribute list.
@@ -114,6 +116,46 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 	 * @ordered
 	 */
 	protected EList<String> mqttTopic;
+
+	/**
+	 * The default value of the '{@link #getMqttServiceTarget() <em>Mqtt Service Target</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMqttServiceTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String MQTT_SERVICE_TARGET_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getMqttServiceTarget() <em>Mqtt Service Target</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMqttServiceTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected String mqttServiceTarget = MQTT_SERVICE_TARGET_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getContentType() <em>Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContentType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CONTENT_TYPE_EDEFAULT = "application/json";
+
+	/**
+	 * The cached value of the '{@link #getContentType() <em>Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContentType()
+	 * @generated
+	 * @ordered
+	 */
+	protected String contentType = CONTENT_TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -186,11 +228,11 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
-	public EList<DataSink> getOutputs() {
-		if (outputs == null) {
-			outputs = new EObjectWithInverseResolvingEList.ManyInverse<DataSink>(DataSink.class, this, MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__OUTPUTS, PipelinePackage.DATA_SINK__INPUTS);
+	public EList<DataSource> getInputs() {
+		if (inputs == null) {
+			inputs = new EObjectWithInverseResolvingEList.ManyInverse<DataSource>(DataSource.class, this, MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__INPUTS, PipelinePackage.DATA_SOURCE__OUTPUTS);
 		}
-		return outputs;
+		return inputs;
 	}
 
 	/**
@@ -211,12 +253,58 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public String getMqttServiceTarget() {
+		return mqttServiceTarget;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setMqttServiceTarget(String newMqttServiceTarget) {
+		String oldMqttServiceTarget = mqttServiceTarget;
+		mqttServiceTarget = newMqttServiceTarget;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_SERVICE_TARGET, oldMqttServiceTarget, mqttServiceTarget));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getContentType() {
+		return contentType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setContentType(String newContentType) {
+		String oldContentType = contentType;
+		contentType = newContentType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__CONTENT_TYPE, oldContentType, contentType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__OUTPUTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOutputs()).basicAdd(otherEnd, msgs);
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__INPUTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getInputs()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -229,8 +317,8 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__OUTPUTS:
-				return ((InternalEList<?>)getOutputs()).basicRemove(otherEnd, msgs);
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__INPUTS:
+				return ((InternalEList<?>)getInputs()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -247,10 +335,14 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 				return getPid();
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__ID:
 				return getId();
-			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__OUTPUTS:
-				return getOutputs();
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__INPUTS:
+				return getInputs();
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPIC:
 				return getMqttTopic();
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_SERVICE_TARGET:
+				return getMqttServiceTarget();
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__CONTENT_TYPE:
+				return getContentType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -270,13 +362,19 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__ID:
 				setId((String)newValue);
 				return;
-			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__OUTPUTS:
-				getOutputs().clear();
-				getOutputs().addAll((Collection<? extends DataSink>)newValue);
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__INPUTS:
+				getInputs().clear();
+				getInputs().addAll((Collection<? extends DataSource>)newValue);
 				return;
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPIC:
 				getMqttTopic().clear();
 				getMqttTopic().addAll((Collection<? extends String>)newValue);
+				return;
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_SERVICE_TARGET:
+				setMqttServiceTarget((String)newValue);
+				return;
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__CONTENT_TYPE:
+				setContentType((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -296,11 +394,17 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__ID:
 				setId(ID_EDEFAULT);
 				return;
-			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__OUTPUTS:
-				getOutputs().clear();
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__INPUTS:
+				getInputs().clear();
 				return;
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPIC:
 				getMqttTopic().clear();
+				return;
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_SERVICE_TARGET:
+				setMqttServiceTarget(MQTT_SERVICE_TARGET_EDEFAULT);
+				return;
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__CONTENT_TYPE:
+				setContentType(CONTENT_TYPE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -318,10 +422,14 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 				return PID_EDEFAULT == null ? pid != null : !PID_EDEFAULT.equals(pid);
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__OUTPUTS:
-				return outputs != null && !outputs.isEmpty();
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__INPUTS:
+				return inputs != null && !inputs.isEmpty();
 			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPIC:
 				return mqttTopic != null && !mqttTopic.isEmpty();
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__MQTT_SERVICE_TARGET:
+				return MQTT_SERVICE_TARGET_EDEFAULT == null ? mqttServiceTarget != null : !MQTT_SERVICE_TARGET_EDEFAULT.equals(mqttServiceTarget);
+			case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__CONTENT_TYPE:
+				return CONTENT_TYPE_EDEFAULT == null ? contentType != null : !CONTENT_TYPE_EDEFAULT.equals(contentType);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -339,9 +447,9 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 				default: return -1;
 			}
 		}
-		if (baseClass == DataSource.class) {
+		if (baseClass == DataSink.class) {
 			switch (derivedFeatureID) {
-				case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__OUTPUTS: return PipelinePackage.DATA_SOURCE__OUTPUTS;
+				case MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__INPUTS: return PipelinePackage.DATA_SINK__INPUTS;
 				default: return -1;
 			}
 		}
@@ -361,9 +469,9 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 				default: return -1;
 			}
 		}
-		if (baseClass == DataSource.class) {
+		if (baseClass == DataSink.class) {
 			switch (baseFeatureID) {
-				case PipelinePackage.DATA_SOURCE__OUTPUTS: return MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__OUTPUTS;
+				case PipelinePackage.DATA_SINK__INPUTS: return MqtthandlerPackage.MQTT_EVENT_HANDLER_CONFIG__INPUTS;
 				default: return -1;
 			}
 		}
@@ -386,6 +494,10 @@ public class MqttEventHandlerConfigImpl extends MinimalEObjectImpl.Container imp
 		result.append(id);
 		result.append(", mqttTopic: ");
 		result.append(mqttTopic);
+		result.append(", mqttServiceTarget: ");
+		result.append(mqttServiceTarget);
+		result.append(", contentType: ");
+		result.append(contentType);
 		result.append(')');
 		return result.toString();
 	}

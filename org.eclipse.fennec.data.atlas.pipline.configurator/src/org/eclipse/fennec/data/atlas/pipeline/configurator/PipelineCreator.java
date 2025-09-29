@@ -46,6 +46,12 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.civitas.datasinkconfig.DatasinkconfigFactory;
 import org.civitas.datasinkconfig.EMFRepositoryDataSinkConfig;
+import org.civitas.mqtthandler.MqttEventHandlerConfig;
+import org.civitas.mqtthandler.MqtthandlerFactory;
+import org.civitas.mqtthandler.MqtthandlerPackage;
+import org.civitas.mqttreceiver.MqttReceiverConfig;
+import org.civitas.mqttreceiver.MqttreceiverFactory;
+import org.civitas.mqttreceiver.MqttreceiverPackage;
 
 /**
  * Pipeline creator
@@ -66,8 +72,15 @@ public class PipelineCreator {
 	MinioconfigPackage minioPackage;
 	@Reference
 	ScheduledloaderconfigPackage loaderPackage;
+	
 	@Reference
 	QvthandlerPackage qvtPackage;
+
+	@Reference
+	MqtthandlerPackage mqttSenderPackage;
+
+	@Reference
+	MqttreceiverPackage mqttReceiverPackage;
 
 	@Reference
 	ResourceSet set;
@@ -76,153 +89,194 @@ public class PipelineCreator {
 
 	@Activate
 	public void activate() throws IOException {
-		Pipeline pipeline = pPackage.getPipelineFactory().createPipeline();
-		pipeline.setId("Meter_Pipeline");
+		createMeterPipeline();
+		createMQTTExample();
+	}
 
-		MinIOClientConfig minio = MinioconfigFactory.eINSTANCE.createMinIOClientConfig();
-		minio.setPid("minio");
-		minio.setAccessKey("minio");
-		minio.setSecretKey("minio123");
-		minio.setEndpoint("http://localhost:9000");
+	private void createMQTTExample() throws IOException {
+	    Pipeline pipeline = pPackage.getPipelineFactory().createPipeline();
+	    pipeline.setId("MQTT_Example_Pipeline");
 
-		pipeline.getComponents().add(minio);
+	    MqttReceiverConfig receiver = MqttreceiverFactory.eINSTANCE.createMqttReceiverConfig();
+	    receiver.setMqttTopic("#");
+	    receiver.setPayloadEclassuri((EClass) createProxy("http://models.civitas.org/models/building/sensor/1.0#//SensorReading", EcorePackage.Literals.ECLASS));
+	    receiver.setPid("SensorReadingReceiver");
+	    receiver.setId("SensorReadingReceiver");
+	    receiver.setMqttServiceTarget("(id=local)");
+	    
+	    pipeline.getSteps().add(receiver);
+	    
+	    MqttEventHandlerConfig mqttHandler = MqtthandlerFactory.eINSTANCE.createMqttEventHandlerConfig();
+	    mqttHandler.setId("MQTTHandler");
+	    mqttHandler.setPid("MQTTHandler");
+	    mqttHandler.getMqttTopic().add("buildings/new");
+	    mqttHandler.setMqttServiceTarget("(id=local)");
+	    mqttHandler.setContentType("application/xmi");
 
-		MinIOCSVDownloadServiceConfig minIoOperatingData = MinioconfigFactory.eINSTANCE.createMinIOCSVDownloadServiceConfig();
-		minIoOperatingData.setBucketname("dummy-data");
-		minIoOperatingData.setId("operating_data_source");
-		minIoOperatingData.setPid("operating_data_source");
-		minIoOperatingData.setClientTarget(minio);
-		minIoOperatingData.setCron("0 */5 * * * *");
-		minIoOperatingData.setEClass((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//OperatingData",
-				EcorePackage.Literals.ECLASS));
+	    mqttHandler.getInputs().add(receiver);
+	    pipeline.getSteps().add(mqttHandler);
+	    
+	    resource = set.createResource(URI.createURI("workspace/pipelines/mqttexample.pipeline"));
 
-		pipeline.getSteps().add(minIoOperatingData);
+	    resource.getContents().add(pipeline);
+	    try {
+		resource.save(null);
+	    } catch (Exception e) {
+		System.err.println("Something went wrong");
+	    }
+	}
 
-		MinIOCSVDownloadServiceConfig minIoBasicData = MinioconfigFactory.eINSTANCE.createMinIOCSVDownloadServiceConfig();
-		minIoBasicData.setBucketname("dummy-data");
-		minIoBasicData.setId("basic_data_source");
-		minIoBasicData.setPid("basic_data_source");
-		minIoBasicData.setClientTarget(minio);
-		minIoBasicData.setCron("0 */5 * * * *");
-		minIoBasicData.setEClass((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//BasicData",
-				EcorePackage.Literals.ECLASS));
-		
-		pipeline.getSteps().add(minIoBasicData);
-		
-		ScheduledLoaderConfig manualMeter = ScheduledloaderconfigFactory.eINSTANCE.createScheduledLoaderConfig();
-		manualMeter.setId("manual-meter");
-		manualMeter.setPid("manual-meter");
-		manualMeter.setLoaderName("manual-meter");
-		manualMeter.setEclass(
-				(EClass) createProxy("https://civitas.org/meter/source/1.0.0#//Meter", EcorePackage.Literals.ECLASS));
-		manualMeter.setPackage((EPackage) createProxy("https://civitas.org/meter/source/1.0.0#/" ,EcorePackage.Literals.EPACKAGE));
-		manualMeter.setRepoTarget("(repo_id=manualMeter)");
-		manualMeter.setScheduleInterval(60);
-		manualMeter.setInitialQuerySkip(0);
-		manualMeter.setQueryLimit(1000);
+	/**
+	 * @throws IOException
+	 */
+	private void createMeterPipeline() throws IOException {
+	    Pipeline pipeline = pPackage.getPipelineFactory().createPipeline();
+	    pipeline.setId("Meter_Pipeline");
 
-		pipeline.getSteps().add(manualMeter);
+	    MinIOClientConfig minio = MinioconfigFactory.eINSTANCE.createMinIOClientConfig();
+	    minio.setPid("minio");
+	    minio.setAccessKey("minio");
+	    minio.setSecretKey("minio123");
+	    minio.setEndpoint("http://localhost:9000");
 
-		ScheduledLoaderConfig remoteMeter = ScheduledloaderconfigFactory.eINSTANCE.createScheduledLoaderConfig();
-		remoteMeter.setId("remote-meter");
-		remoteMeter.setPid("remote-meter");
-		remoteMeter.setLoaderName("remote-meter");
-		remoteMeter.setEclass(
-				(EClass) createProxy("https://civitas.org/meter/source/1.0.0#//Meter", EcorePackage.Literals.ECLASS));
-		remoteMeter.setPackage((EPackage) createProxy("https://civitas.org/meter/source/1.0.0#/" ,EcorePackage.Literals.EPACKAGE));
-		remoteMeter.setRepoTarget("(repo_id=remoteMeter)");
-		remoteMeter.setScheduleInterval(60);
-		remoteMeter.setInitialQuerySkip(0);
-		remoteMeter.setQueryLimit(1000);
-		
-		pipeline.getSteps().add(remoteMeter);
+	    pipeline.getComponents().add(minio);
 
-		ScheduledLoaderConfig manualReading = ScheduledloaderconfigFactory.eINSTANCE.createScheduledLoaderConfig();
-		manualReading.setId("manual-readings");
-		manualReading.setPid("manual-readings");
-		manualReading.setLoaderName("manual-readings");
-		manualReading.setEclass(
-				(EClass) createProxy("https://civitas.org/meter/source/1.0.0#//Reading", EcorePackage.Literals.ECLASS));
-		manualReading.setPackage((EPackage) createProxy("https://civitas.org/meter/source/1.0.0#/" ,EcorePackage.Literals.EPACKAGE));
-		manualReading.setRepoTarget("(repo_id=manualReading)");
-		manualReading.setScheduleInterval(60);
-		manualReading.setInitialQuerySkip(0);
-		manualReading.setQueryLimit(1000);
-		
-		pipeline.getSteps().add(manualReading);
-		
-		ScheduledLoaderConfig remoteReading = ScheduledloaderconfigFactory.eINSTANCE.createScheduledLoaderConfig();
-		remoteReading.setId("remote-readings");
-		remoteReading.setPid("remote-readings");
-		remoteReading.setLoaderName("remote-readings");
-		remoteReading.setEclass(
-				(EClass) createProxy("https://civitas.org/meter/source/1.0.0#//RemoteReading", EcorePackage.Literals.ECLASS));
-		remoteReading.setPackage((EPackage) createProxy("https://civitas.org/meter/source/1.0.0#/" ,EcorePackage.Literals.EPACKAGE));
-		remoteReading.setRepoTarget("(repo_id=remoteMeter)");
-		remoteReading.setScheduleInterval(60);
-		remoteReading.setInitialQuerySkip(0);
-		remoteReading.setQueryLimit(1000);
-		
-		pipeline.getSteps().add(remoteReading);
-		
-		QVTHandlerConfig basicDataQVT = QvthandlerFactory.eINSTANCE.createQVTHandlerConfig();
-		basicDataQVT.setId("basicDataQVT");
-		basicDataQVT.setPid("basicDataQVT");
-		basicDataQVT.setTrafo("(transformator.id=basicDataQVT)");
-		basicDataQVT.setEclassuri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//BasicData",
-				EcorePackage.Literals.ECLASS));
+	    MinIOCSVDownloadServiceConfig minIoOperatingData = MinioconfigFactory.eINSTANCE.createMinIOCSVDownloadServiceConfig();
+	    minIoOperatingData.setBucketname("dummy-data");
+	    minIoOperatingData.setId("operating_data_source");
+	    minIoOperatingData.setPid("operating_data_source");
+	    minIoOperatingData.setClientTarget(minio);
+	    minIoOperatingData.setCron("0 */5 * * * *");
+	    minIoOperatingData.setEClass((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//OperatingData",
+	    		EcorePackage.Literals.ECLASS));
 
-		basicDataQVT.getInputs().add(minIoBasicData);
-		pipeline.getSteps().add(basicDataQVT);
-		
-		EMFAttacherHandlerConfig opDataAttacher = EmfattacherconfigFactory.eINSTANCE.createEMFAttacherHandlerConfig();
-		opDataAttacher.setId("op_plant_id_attacher");
-		opDataAttacher.setPid("op_plant_id_attacher");
-		opDataAttacher.setRepoTarget("(repo_id=inmem)");
-		opDataAttacher.getInputs().add(minIoOperatingData);
-		opDataAttacher.setIncomingEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//OperatingData",
-				EcorePackage.Literals.ECLASS));
-		opDataAttacher.setTargetEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
-				EcorePackage.Literals.ECLASS));
-		opDataAttacher.setTargetReferenceUri(
-				(EReference) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediatePlant/operatingData",
-						EcorePackage.Literals.EREFERENCE));
-		opDataAttacher.setForeignKeyFeatureUri((EAttribute) createProxy(
-				"https://civitas.org/meter/source/1.0.0#//OperatingData/plantId", EcorePackage.Literals.EATTRIBUTE));
+	    pipeline.getSteps().add(minIoOperatingData);
 
-		pipeline.getSteps().add(opDataAttacher);
-		
-		
-		EMFAttacherHandlerConfig basicDataAttacher = EmfattacherconfigFactory.eINSTANCE.createEMFAttacherHandlerConfig();
-		basicDataAttacher.setId("basic_plant_id_attacher");
-		basicDataAttacher.setPid("basic_plant_id_attacher");
-		basicDataAttacher.setRepoTarget("(repo_id=inmem)");
-		basicDataAttacher.getInputs().add(basicDataQVT);
-		basicDataAttacher.setIncomingEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//BasicData",
-				EcorePackage.Literals.ECLASS));
-		basicDataAttacher.setTargetEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
-				EcorePackage.Literals.ECLASS));
-		basicDataAttacher.setTargetReferenceUri(
-				(EReference) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediatePlant/basicData",
-						EcorePackage.Literals.EREFERENCE));
-		basicDataAttacher.setForeignKeyFeatureUri((EAttribute) createProxy(
-				"https://civitas.org/meter/source/1.0.0#//BasicData/plantId", EcorePackage.Literals.EATTRIBUTE));
-		
-		pipeline.getSteps().add(basicDataAttacher);
+	    MinIOCSVDownloadServiceConfig minIoBasicData = MinioconfigFactory.eINSTANCE.createMinIOCSVDownloadServiceConfig();
+	    minIoBasicData.setBucketname("dummy-data");
+	    minIoBasicData.setId("basic_data_source");
+	    minIoBasicData.setPid("basic_data_source");
+	    minIoBasicData.setClientTarget(minio);
+	    minIoBasicData.setCron("0 */5 * * * *");
+	    minIoBasicData.setEClass((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//BasicData",
+	    		EcorePackage.Literals.ECLASS));
+	    
+	    pipeline.getSteps().add(minIoBasicData);
+	    
+	    ScheduledLoaderConfig manualMeter = ScheduledloaderconfigFactory.eINSTANCE.createScheduledLoaderConfig();
+	    manualMeter.setId("manual-meter");
+	    manualMeter.setPid("manual-meter");
+	    manualMeter.setLoaderName("manual-meter");
+	    manualMeter.setEclass(
+	    		(EClass) createProxy("https://civitas.org/meter/source/1.0.0#//Meter", EcorePackage.Literals.ECLASS));
+	    manualMeter.setPackage((EPackage) createProxy("https://civitas.org/meter/source/1.0.0#/" ,EcorePackage.Literals.EPACKAGE));
+	    manualMeter.setRepoTarget("(repo_id=manualMeter)");
+	    manualMeter.setScheduleInterval(60);
+	    manualMeter.setInitialQuerySkip(0);
+	    manualMeter.setQueryLimit(1000);
 
-		
-		QVTHandlerConfig plantQvt = QvthandlerFactory.eINSTANCE.createQVTHandlerConfig();
-		plantQvt.setId("plantQVT");
-		plantQvt.setPid("plantQVT"); 
-		plantQvt.setTrafo("(transformator.id=intPlantToPlantQVT)");
-		plantQvt.setEclassuri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
-				EcorePackage.Literals.ECLASS));
+	    pipeline.getSteps().add(manualMeter);
 
-		plantQvt.getInputs().add(basicDataAttacher);
-		plantQvt.getInputs().add(opDataAttacher);
-		pipeline.getSteps().add(plantQvt);
+	    ScheduledLoaderConfig remoteMeter = ScheduledloaderconfigFactory.eINSTANCE.createScheduledLoaderConfig();
+	    remoteMeter.setId("remote-meter");
+	    remoteMeter.setPid("remote-meter");
+	    remoteMeter.setLoaderName("remote-meter");
+	    remoteMeter.setEclass(
+	    		(EClass) createProxy("https://civitas.org/meter/source/1.0.0#//Meter", EcorePackage.Literals.ECLASS));
+	    remoteMeter.setPackage((EPackage) createProxy("https://civitas.org/meter/source/1.0.0#/" ,EcorePackage.Literals.EPACKAGE));
+	    remoteMeter.setRepoTarget("(repo_id=remoteMeter)");
+	    remoteMeter.setScheduleInterval(60);
+	    remoteMeter.setInitialQuerySkip(0);
+	    remoteMeter.setQueryLimit(1000);
+	    
+	    pipeline.getSteps().add(remoteMeter);
 
-		
+	    ScheduledLoaderConfig manualReading = ScheduledloaderconfigFactory.eINSTANCE.createScheduledLoaderConfig();
+	    manualReading.setId("manual-readings");
+	    manualReading.setPid("manual-readings");
+	    manualReading.setLoaderName("manual-readings");
+	    manualReading.setEclass(
+	    		(EClass) createProxy("https://civitas.org/meter/source/1.0.0#//Reading", EcorePackage.Literals.ECLASS));
+	    manualReading.setPackage((EPackage) createProxy("https://civitas.org/meter/source/1.0.0#/" ,EcorePackage.Literals.EPACKAGE));
+	    manualReading.setRepoTarget("(repo_id=manualReading)");
+	    manualReading.setScheduleInterval(60);
+	    manualReading.setInitialQuerySkip(0);
+	    manualReading.setQueryLimit(1000);
+	    
+	    pipeline.getSteps().add(manualReading);
+	    
+	    ScheduledLoaderConfig remoteReading = ScheduledloaderconfigFactory.eINSTANCE.createScheduledLoaderConfig();
+	    remoteReading.setId("remote-readings");
+	    remoteReading.setPid("remote-readings");
+	    remoteReading.setLoaderName("remote-readings");
+	    remoteReading.setEclass(
+	    		(EClass) createProxy("https://civitas.org/meter/source/1.0.0#//RemoteReading", EcorePackage.Literals.ECLASS));
+	    remoteReading.setPackage((EPackage) createProxy("https://civitas.org/meter/source/1.0.0#/" ,EcorePackage.Literals.EPACKAGE));
+	    remoteReading.setRepoTarget("(repo_id=remoteMeter)");
+	    remoteReading.setScheduleInterval(60);
+	    remoteReading.setInitialQuerySkip(0);
+	    remoteReading.setQueryLimit(1000);
+	    
+	    pipeline.getSteps().add(remoteReading);
+	    
+	    QVTHandlerConfig basicDataQVT = QvthandlerFactory.eINSTANCE.createQVTHandlerConfig();
+	    basicDataQVT.setId("basicDataQVT");
+	    basicDataQVT.setPid("basicDataQVT");
+	    basicDataQVT.setTrafo("(transformator.id=basicDataQVT)");
+	    basicDataQVT.setEclassuri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//BasicData",
+	    		EcorePackage.Literals.ECLASS));
+
+	    basicDataQVT.getInputs().add(minIoBasicData);
+	    pipeline.getSteps().add(basicDataQVT);
+	    
+	    EMFAttacherHandlerConfig opDataAttacher = EmfattacherconfigFactory.eINSTANCE.createEMFAttacherHandlerConfig();
+	    opDataAttacher.setId("op_plant_id_attacher");
+	    opDataAttacher.setPid("op_plant_id_attacher");
+	    opDataAttacher.setRepoTarget("(repo_id=inmem)");
+	    opDataAttacher.getInputs().add(minIoOperatingData);
+	    opDataAttacher.setIncomingEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//OperatingData",
+	    		EcorePackage.Literals.ECLASS));
+	    opDataAttacher.setTargetEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
+	    		EcorePackage.Literals.ECLASS));
+	    opDataAttacher.setTargetReferenceUri(
+	    		(EReference) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediatePlant/operatingData",
+	    				EcorePackage.Literals.EREFERENCE));
+	    opDataAttacher.setForeignKeyFeatureUri((EAttribute) createProxy(
+	    		"https://civitas.org/meter/source/1.0.0#//OperatingData/plantId", EcorePackage.Literals.EATTRIBUTE));
+
+	    pipeline.getSteps().add(opDataAttacher);
+	    
+	    
+	    EMFAttacherHandlerConfig basicDataAttacher = EmfattacherconfigFactory.eINSTANCE.createEMFAttacherHandlerConfig();
+	    basicDataAttacher.setId("basic_plant_id_attacher");
+	    basicDataAttacher.setPid("basic_plant_id_attacher");
+	    basicDataAttacher.setRepoTarget("(repo_id=inmem)");
+	    basicDataAttacher.getInputs().add(basicDataQVT);
+	    basicDataAttacher.setIncomingEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//BasicData",
+	    		EcorePackage.Literals.ECLASS));
+	    basicDataAttacher.setTargetEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
+	    		EcorePackage.Literals.ECLASS));
+	    basicDataAttacher.setTargetReferenceUri(
+	    		(EReference) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediatePlant/basicData",
+	    				EcorePackage.Literals.EREFERENCE));
+	    basicDataAttacher.setForeignKeyFeatureUri((EAttribute) createProxy(
+	    		"https://civitas.org/meter/source/1.0.0#//BasicData/plantId", EcorePackage.Literals.EATTRIBUTE));
+	    
+	    pipeline.getSteps().add(basicDataAttacher);
+
+	    
+	    QVTHandlerConfig plantQvt = QvthandlerFactory.eINSTANCE.createQVTHandlerConfig();
+	    plantQvt.setId("plantQVT");
+	    plantQvt.setPid("plantQVT"); 
+	    plantQvt.setTrafo("(transformator.id=intPlantToPlantQVT)");
+	    plantQvt.setEclassuri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediatePlant",
+	    		EcorePackage.Literals.ECLASS));
+
+	    plantQvt.getInputs().add(basicDataAttacher);
+	    plantQvt.getInputs().add(opDataAttacher);
+	    pipeline.getSteps().add(plantQvt);
+
+	    
 //		TODO: Attach meter to intermediateMeteringPoint 
 //		
 //		EMFAttacherHandlerConfig meterAttacher = EmfattacherconfigFactory.eINSTANCE.createEMFAttacherHandlerConfig();
@@ -243,36 +297,36 @@ public class PipelineCreator {
 //		
 //		pipeline.getSteps().add(meterAttacher);
 
-		EMFAttacherHandlerConfig readingAttacher = EmfattacherconfigFactory.eINSTANCE.createEMFAttacherHandlerConfig();
-		readingAttacher.setId("reading_attacher");
-		readingAttacher.setPid("reading_attacher");
-		readingAttacher.setRepoTarget("(repo_id=inmem)");
-		readingAttacher.getInputs().add(manualReading);
-		readingAttacher.getInputs().add(remoteReading);
-		readingAttacher.setIncomingEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//Reading",
-				EcorePackage.Literals.ECLASS));
-		readingAttacher.setTargetEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
-				EcorePackage.Literals.ECLASS));
-		readingAttacher.setTargetReferenceUri(
-				(EReference) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint/readings",
-						EcorePackage.Literals.EREFERENCE));
-		readingAttacher.setForeignKeyFeatureUri((EAttribute) createProxy(
-				"https://civitas.org/meter/source/1.0.0#//Reading/meterId", EcorePackage.Literals.EATTRIBUTE));
-		
-		pipeline.getSteps().add(readingAttacher);
-		
-		
-		QVTHandlerConfig meteringpointQvt = QvthandlerFactory.eINSTANCE.createQVTHandlerConfig();
-		meteringpointQvt.setId("meteringPointQVT");
-		meteringpointQvt.setPid("meteringPointQVT"); 
-		meteringpointQvt.setTrafo("(transformator.id=intMeteringPointToTargetMeteringPointQVT)");
-		meteringpointQvt.setEclassuri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
-				EcorePackage.Literals.ECLASS));
-		
+	    EMFAttacherHandlerConfig readingAttacher = EmfattacherconfigFactory.eINSTANCE.createEMFAttacherHandlerConfig();
+	    readingAttacher.setId("reading_attacher");
+	    readingAttacher.setPid("reading_attacher");
+	    readingAttacher.setRepoTarget("(repo_id=inmem)");
+	    readingAttacher.getInputs().add(manualReading);
+	    readingAttacher.getInputs().add(remoteReading);
+	    readingAttacher.setIncomingEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//Reading",
+	    		EcorePackage.Literals.ECLASS));
+	    readingAttacher.setTargetEClassUri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
+	    		EcorePackage.Literals.ECLASS));
+	    readingAttacher.setTargetReferenceUri(
+	    		(EReference) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint/readings",
+	    				EcorePackage.Literals.EREFERENCE));
+	    readingAttacher.setForeignKeyFeatureUri((EAttribute) createProxy(
+	    		"https://civitas.org/meter/source/1.0.0#//Reading/meterId", EcorePackage.Literals.EATTRIBUTE));
+	    
+	    pipeline.getSteps().add(readingAttacher);
+	    
+	    
+	    QVTHandlerConfig meteringpointQvt = QvthandlerFactory.eINSTANCE.createQVTHandlerConfig();
+	    meteringpointQvt.setId("meteringPointQVT");
+	    meteringpointQvt.setPid("meteringPointQVT"); 
+	    meteringpointQvt.setTrafo("(transformator.id=intMeteringPointToTargetMeteringPointQVT)");
+	    meteringpointQvt.setEclassuri((EClass) createProxy("https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint",
+	    		EcorePackage.Literals.ECLASS));
+	    
 //		meteringpointQvt.getInputs().add(meterAttacher);
-		meteringpointQvt.getInputs().add(readingAttacher);
-		pipeline.getSteps().add(meteringpointQvt);
-		
+	    meteringpointQvt.getInputs().add(readingAttacher);
+	    pipeline.getSteps().add(meteringpointQvt);
+	    
 //		EMFRepositoryDataSinkConfig meteringPointDataSink = DatasinkconfigFactory.eINSTANCE.createEMFRepositoryDataSinkConfig();
 //		meteringPointDataSink.setRepoTarget("(repo_id=plantTarget)");
 //		meteringPointDataSink.setId("plantDataSink");
@@ -280,22 +334,25 @@ public class PipelineCreator {
 //		meteringPointDataSink.getInputs().add(meteringpointQvt);
 //		
 //		pipeline.getSteps().add(meteringPointDataSink);
-		
-		EMFRepositoryDataSinkConfig plantDataSink = DatasinkconfigFactory.eINSTANCE.createEMFRepositoryDataSinkConfig();
-		plantDataSink.setRepoTarget("(repo_id=plantTarget)");
-		plantDataSink.setId("plantDataSink");
-		plantDataSink.setPid("plantDataSink");
-		plantDataSink.getInputs().add(plantQvt);
-		plantDataSink.getInputs().add(meteringpointQvt);
-		
-		pipeline.getSteps().add(plantDataSink);
-		
-		resource = set.createResource(URI.createURI("workspace/pipelines/meter.pipeline"));
+	    
+	    EMFRepositoryDataSinkConfig plantDataSink = DatasinkconfigFactory.eINSTANCE.createEMFRepositoryDataSinkConfig();
+	    plantDataSink.setRepoTarget("(repo_id=plantTarget)");
+	    plantDataSink.setId("plantDataSink");
+	    plantDataSink.setPid("plantDataSink");
+	    plantDataSink.getInputs().add(plantQvt);
+	    plantDataSink.getInputs().add(meteringpointQvt);
+	    
+	    pipeline.getSteps().add(plantDataSink);
+	    
+	    resource = set.createResource(URI.createURI("workspace/pipelines/meter.pipeline"));
 
-		resource.getContents().add(pipeline);
+	    resource.getContents().add(pipeline);
 
+	    try {
 		resource.save(null);
-
+	    } catch (Exception e) {
+		// TODO: handle exception
+	    }
 	}
 
 	private EObject createProxy(String uri, EClass eClass) {

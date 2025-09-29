@@ -12,6 +12,8 @@
       ecorePackage="mqtt-handler.ecore#/">
     <genClasses ecoreClass="mqtt-handler.ecore#//MqttEventHandlerConfig">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mqtt-handler.ecore#//MqttEventHandlerConfig/mqttTopic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mqtt-handler.ecore#//MqttEventHandlerConfig/mqttServiceTarget"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mqtt-handler.ecore#//MqttEventHandlerConfig/contentType"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Mqttreceiver" basePackage="org.civitas" resource="XML" disposableProviderFactory="true"
@@ -20,6 +22,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mqtt-receiver.ecore#//MqttReceiverConfig/mqttTopic"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mqtt-receiver.ecore#//MqttReceiverConfig/printPayload"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mqtt-receiver.ecore#//MqttReceiverConfig/payloadEclassuri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mqtt-receiver.ecore#//MqttReceiverConfig/mqttServiceTarget"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

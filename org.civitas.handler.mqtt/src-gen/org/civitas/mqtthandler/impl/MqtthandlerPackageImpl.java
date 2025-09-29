@@ -141,6 +141,26 @@ public class MqtthandlerPackageImpl extends EPackageImpl implements MqtthandlerP
 	 * @generated
 	 */
 	@Override
+	public EAttribute getMqttEventHandlerConfig_MqttServiceTarget() {
+		return (EAttribute)mqttEventHandlerConfigEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMqttEventHandlerConfig_ContentType() {
+		return (EAttribute)mqttEventHandlerConfigEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public MqtthandlerFactory getMqtthandlerFactory() {
 		return (MqtthandlerFactory)getEFactoryInstance();
 	}
@@ -166,6 +186,8 @@ public class MqtthandlerPackageImpl extends EPackageImpl implements MqtthandlerP
 		// Create classes and their features
 		mqttEventHandlerConfigEClass = createEClass(MQTT_EVENT_HANDLER_CONFIG);
 		createEAttribute(mqttEventHandlerConfigEClass, MQTT_EVENT_HANDLER_CONFIG__MQTT_TOPIC);
+		createEAttribute(mqttEventHandlerConfigEClass, MQTT_EVENT_HANDLER_CONFIG__MQTT_SERVICE_TARGET);
+		createEAttribute(mqttEventHandlerConfigEClass, MQTT_EVENT_HANDLER_CONFIG__CONTENT_TYPE);
 	}
 
 	/**
@@ -201,11 +223,13 @@ public class MqtthandlerPackageImpl extends EPackageImpl implements MqtthandlerP
 
 		// Add supertypes to classes
 		mqttEventHandlerConfigEClass.getESuperTypes().add(theComponentConfigPackage.getConfiguration());
-		mqttEventHandlerConfigEClass.getESuperTypes().add(thePipelinePackage.getDataSource());
+		mqttEventHandlerConfigEClass.getESuperTypes().add(thePipelinePackage.getDataSink());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(mqttEventHandlerConfigEClass, MqttEventHandlerConfig.class, "MqttEventHandlerConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMqttEventHandlerConfig_MqttTopic(), ecorePackage.getEString(), "mqttTopic", null, 0, -1, MqttEventHandlerConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMqttEventHandlerConfig_MqttServiceTarget(), ecorePackage.getEString(), "mqttServiceTarget", null, 0, 1, MqttEventHandlerConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMqttEventHandlerConfig_ContentType(), ecorePackage.getEString(), "contentType", "application/json", 0, 1, MqttEventHandlerConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -213,6 +237,8 @@ public class MqtthandlerPackageImpl extends EPackageImpl implements MqtthandlerP
 		// Create annotations
 		// Version
 		createVersionAnnotations();
+		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
+		createExtendedMetaDataAnnotations();
 	}
 
 	/**
@@ -228,6 +254,22 @@ public class MqtthandlerPackageImpl extends EPackageImpl implements MqtthandlerP
 		   source,
 		   new String[] {
 			   "value", "1.0"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createExtendedMetaDataAnnotations() {
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
+		addAnnotation
+		  (getMqttEventHandlerConfig_MqttServiceTarget(),
+		   source,
+		   new String[] {
+			   "name", "mqtt.service.target"
 		   });
 	}
 

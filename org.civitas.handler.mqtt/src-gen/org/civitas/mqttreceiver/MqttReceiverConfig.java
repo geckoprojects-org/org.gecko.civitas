@@ -13,8 +13,11 @@
  */
 package org.civitas.mqttreceiver;
 
+import org.civitas.osgi.component.Configuration;
+
+import org.civitas.pipeline.DataSource;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 
 import org.osgi.annotation.versioning.ProviderType;
 
@@ -34,6 +37,7 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link org.civitas.mqttreceiver.MqttReceiverConfig#getMqttTopic <em>Mqtt Topic</em>}</li>
  *   <li>{@link org.civitas.mqttreceiver.MqttReceiverConfig#isPrintPayload <em>Print Payload</em>}</li>
  *   <li>{@link org.civitas.mqttreceiver.MqttReceiverConfig#getPayloadEclassuri <em>Payload Eclassuri</em>}</li>
+ *   <li>{@link org.civitas.mqttreceiver.MqttReceiverConfig#getMqttServiceTarget <em>Mqtt Service Target</em>}</li>
  * </ul>
  *
  * @see org.civitas.mqttreceiver.MqttreceiverPackage#getMqttReceiverConfig()
@@ -41,7 +45,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * @generated
  */
 @ProviderType
-public interface MqttReceiverConfig extends EObject {
+public interface MqttReceiverConfig extends Configuration, DataSource {
 	/**
 	 * Returns the value of the '<em><b>Mqtt Topic</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -118,5 +122,27 @@ public interface MqttReceiverConfig extends EObject {
 	 * @generated
 	 */
 	void setPayloadEclassuri(EClass value);
+
+	/**
+	 * Returns the value of the '<em><b>Mqtt Service Target</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mqtt Service Target</em>' attribute.
+	 * @see #setMqttServiceTarget(String)
+	 * @see org.civitas.mqttreceiver.MqttreceiverPackage#getMqttReceiverConfig_MqttServiceTarget()
+	 * @model extendedMetaData="name='mqtt.service.target'"
+	 * @generated
+	 */
+	String getMqttServiceTarget();
+
+	/**
+	 * Sets the value of the '{@link org.civitas.mqttreceiver.MqttReceiverConfig#getMqttServiceTarget <em>Mqtt Service Target</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Mqtt Service Target</em>' attribute.
+	 * @see #getMqttServiceTarget()
+	 * @generated
+	 */
+	void setMqttServiceTarget(String value);
 
 } // MqttReceiverConfig
