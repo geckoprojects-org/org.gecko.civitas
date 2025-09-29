@@ -29,6 +29,7 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
@@ -41,7 +42,7 @@ import org.osgi.service.typedevent.TypedEventHandler;
  * @since Sep 24, 2025
  */
 @Designate(ocd = EMFAttacherHandler.Config.class)
-@Component(name = "EMFAttacherHandler", configurationPid = "EMFAttacherHandlerConfig", configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(name = "EMFAttacherHandler", configurationPid = "EMFAttacherHandlerConfig", configurationPolicy = ConfigurationPolicy.REQUIRE, scope = ServiceScope.PROTOTYPE)
 public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 
 	@ObjectClassDefinition(name = "EMFAttacherHandler Configuration")

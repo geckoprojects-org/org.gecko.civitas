@@ -31,6 +31,7 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
@@ -85,7 +86,7 @@ import org.osgi.service.typedevent.TypedEventHandler;
  * @since Sep 24, 2025
  */
 @Designate(ocd = EMFRepositoryDataSink.Config.class)
-@Component(name = "EMFRepositoryDataSink", configurationPid = "EMFRepositoryDataSinkConfig", configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(name = "EMFRepositoryDataSink", configurationPid = "EMFRepositoryDataSinkConfig", configurationPolicy = ConfigurationPolicy.REQUIRE, scope = ServiceScope.PROTOTYPE)
 public class EMFRepositoryDataSink implements TypedEventHandler<EObject> {
 
     /**

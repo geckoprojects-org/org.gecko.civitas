@@ -29,6 +29,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
@@ -36,7 +37,7 @@ import org.osgi.service.typedevent.TypedEventBus;
 import org.osgi.service.typedevent.TypedEventHandler;
 
 @Designate(ocd = ValidationHandler.Config.class)
-@Component(name = "ValidationHandler", configurationPid = "ValidationHandler", configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(name = "ValidationHandler", configurationPid = "ValidationHandler", configurationPolicy = ConfigurationPolicy.REQUIRE, scope = ServiceScope.PROTOTYPE)
 public class ValidationHandler implements TypedEventHandler<EObject> {
 
 	@Reference
