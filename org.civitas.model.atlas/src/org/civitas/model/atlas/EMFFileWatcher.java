@@ -222,19 +222,18 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
 	    if (index != -1) {
 		String fileExtension = uri.substring(index + 1);
 		if("jsonschema".equals(fileExtension)) {
-		    loadJsonschema(uri);
+		    Resource resource = loadJsonschema(uri);
+		    toHandle.add(resource);
 		} else if (resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().containsKey(fileExtension)) {
 		    Resource resource = resourceSet.createResource(URI.createURI(uri));
 		    toHandle.add(resource);
-		} else {
-		    
 		}
 	    }
 	}
     }
 
-    public void loadJsonschema(String pathToJsonschemaFile) {
-	Resource res = resourceSet.createResource(URI.createURI(pathToJsonschemaFile), "application/json");
+    public Resource loadJsonschema(String pathToJsonschemaFile) {
+	Resource resource = resourceSet.createResource(URI.createURI(pathToJsonschemaFile), "application/json");
 	Map<String, Object> options = new HashMap<>();
 	options.put(CodecResourceOptions.CODEC_ROOT_OBJECT, EcorePackage.Literals.EPACKAGE);
 	options.put(CodecModuleOptions.CODEC_MODULE_SERIALIZE_TYPE, false);
@@ -243,37 +242,12 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
 	Map<String, Object> classOptions = new HashMap<>();
 	classOptions.put(CodecModelInfoOptions.CODEC_EXTRAS, Map.of("jsonschema", "true", "jsonschema.feature.key", "definitions"));
 	options.put(CodecResourceOptions.CODEC_OPTIONS, Map.of(EcorePackage.Literals.EPACKAGE, classOptions));
-	
 	try {
-	    res.load(options);
+	    resource.load(options);
 	} catch (IOException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
-	}		
-	if(res.getContents().isEmpty()) {
-		LOG.log(Level.INFO, String.format("No content loaded for %s", pathToJsonschemaFile));
-		return;
-	}
-	EObject obj = res.getContents().get(0);
-	if(obj == null) {
-	    	LOG.log(Level.INFO,String.format("Null content loaded for %s", pathToJsonschemaFile));
-		return;
-	}
-	if(obj instanceof EPackage ePackage) {
-		res = resourceSet.createResource(URI.createURI(pathToJsonschemaFile.replace(".jsonscham", ".ecore")));
-		res.getContents().add(ePackage);
-		try {
-			res.save(System.out, options);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	} else {
-	    	LOG.log(Level.INFO,String.format("Content loaded from %s is not of type EPackage", pathToJsonschemaFile));
-		return;
-	}
-	
-	
+	    LOG.log(Level.ERROR, "Unable to load Resource for file " + resource.getURI().toString(), e);
+	}	
+	return resource;
     }
     
     private void loadResource(List<Resource> toHandle) {

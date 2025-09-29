@@ -1,16 +1,12 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://example.com/schemas/root.json",
-  "title": "Root Schema",
+  "$id": "http://models.civitas.org/models/building/sensor/1.0",
+  "title": "sensor",
   "definitions": {
-    "MeterReading": {
+    "SensorReading": {
       "type": "object",
       "properties": {
-        "id": {
-          "description": "The unique identifier for the meter reading.",
-          "type": "integer"
-        },
-        "meter_id": {
+        "buildingId": {
           "description": "The identifier of the meter that the reading came from.",
           "type": "string"
         },
@@ -25,8 +21,7 @@
         }
       },
       "required": [
-        "id",
-        "meter_id",
+        "buildingId",
         "value",
         "timestamp"
       ]
