@@ -38,6 +38,9 @@ public @interface ScheduledLoaderConfig {
 	@AttributeDefinition(name = "Initial Database Query Skip Offset", description = "Initial number of records to skip (starting point for pagination)")
 	long initial_query_skip() default 0;
 
+	@AttributeDefinition(name = "Loads only new entries", description = "")
+	boolean enablePaging() default true;
+
 	@AttributeDefinition(name = "Repository ID", description = "The repository ID to target for loading data (e.g., 'manualMeter', 'remoteMeter', 'manualReading')")
 	String repo_target();
 

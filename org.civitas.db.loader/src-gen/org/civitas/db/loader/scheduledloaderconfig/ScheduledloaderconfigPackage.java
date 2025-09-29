@@ -140,13 +140,22 @@ public interface ScheduledloaderconfigPackage extends org.eclipse.emf.ecore.EPac
 	int SCHEDULED_LOADER_CONFIG__INITIAL_QUERY_SKIP = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Enable Paging</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULED_LOADER_CONFIG__ENABLE_PAGING = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>Repo Target</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULED_LOADER_CONFIG__REPO_TARGET = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 5;
+	int SCHEDULED_LOADER_CONFIG__REPO_TARGET = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Loader Name</b></em>' attribute.
@@ -155,7 +164,7 @@ public interface ScheduledloaderconfigPackage extends org.eclipse.emf.ecore.EPac
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULED_LOADER_CONFIG__LOADER_NAME = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 6;
+	int SCHEDULED_LOADER_CONFIG__LOADER_NAME = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Package</b></em>' reference.
@@ -164,7 +173,7 @@ public interface ScheduledloaderconfigPackage extends org.eclipse.emf.ecore.EPac
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULED_LOADER_CONFIG__PACKAGE = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 7;
+	int SCHEDULED_LOADER_CONFIG__PACKAGE = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Eclass</b></em>' reference.
@@ -173,7 +182,7 @@ public interface ScheduledloaderconfigPackage extends org.eclipse.emf.ecore.EPac
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULED_LOADER_CONFIG__ECLASS = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 8;
+	int SCHEDULED_LOADER_CONFIG__ECLASS = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Scheduled Loader Config</em>' class.
@@ -182,7 +191,7 @@ public interface ScheduledloaderconfigPackage extends org.eclipse.emf.ecore.EPac
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULED_LOADER_CONFIG_FEATURE_COUNT = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 9;
+	int SCHEDULED_LOADER_CONFIG_FEATURE_COUNT = ComponentConfigPackage.CONFIGURATION_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of operations of the '<em>Scheduled Loader Config</em>' class.
@@ -236,6 +245,17 @@ public interface ScheduledloaderconfigPackage extends org.eclipse.emf.ecore.EPac
 	 * @generated
 	 */
 	EAttribute getScheduledLoaderConfig_InitialQuerySkip();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.civitas.db.loader.scheduledloaderconfig.ScheduledLoaderConfig#isEnablePaging <em>Enable Paging</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Enable Paging</em>'.
+	 * @see org.civitas.db.loader.scheduledloaderconfig.ScheduledLoaderConfig#isEnablePaging()
+	 * @see #getScheduledLoaderConfig()
+	 * @generated
+	 */
+	EAttribute getScheduledLoaderConfig_EnablePaging();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.civitas.db.loader.scheduledloaderconfig.ScheduledLoaderConfig#getRepoTarget <em>Repo Target</em>}'.
@@ -337,6 +357,14 @@ public interface ScheduledloaderconfigPackage extends org.eclipse.emf.ecore.EPac
 		 * @generated
 		 */
 		EAttribute SCHEDULED_LOADER_CONFIG__INITIAL_QUERY_SKIP = eINSTANCE.getScheduledLoaderConfig_InitialQuerySkip();
+
+		/**
+		 * The meta object literal for the '<em><b>Enable Paging</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCHEDULED_LOADER_CONFIG__ENABLE_PAGING = eINSTANCE.getScheduledLoaderConfig_EnablePaging();
 
 		/**
 		 * The meta object literal for the '<em><b>Repo Target</b></em>' attribute feature.

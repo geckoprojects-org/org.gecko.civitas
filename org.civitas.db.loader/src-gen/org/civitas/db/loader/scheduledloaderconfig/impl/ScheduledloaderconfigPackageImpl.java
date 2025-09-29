@@ -152,7 +152,7 @@ public class ScheduledloaderconfigPackageImpl extends EPackageImpl implements Sc
 	 * @generated
 	 */
 	@Override
-	public EAttribute getScheduledLoaderConfig_RepoTarget() {
+	public EAttribute getScheduledLoaderConfig_EnablePaging() {
 		return (EAttribute)scheduledLoaderConfigEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -162,7 +162,7 @@ public class ScheduledloaderconfigPackageImpl extends EPackageImpl implements Sc
 	 * @generated
 	 */
 	@Override
-	public EAttribute getScheduledLoaderConfig_LoaderName() {
+	public EAttribute getScheduledLoaderConfig_RepoTarget() {
 		return (EAttribute)scheduledLoaderConfigEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -172,8 +172,18 @@ public class ScheduledloaderconfigPackageImpl extends EPackageImpl implements Sc
 	 * @generated
 	 */
 	@Override
+	public EAttribute getScheduledLoaderConfig_LoaderName() {
+		return (EAttribute)scheduledLoaderConfigEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getScheduledLoaderConfig_Package() {
-		return (EReference)scheduledLoaderConfigEClass.getEStructuralFeatures().get(5);
+		return (EReference)scheduledLoaderConfigEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -183,7 +193,7 @@ public class ScheduledloaderconfigPackageImpl extends EPackageImpl implements Sc
 	 */
 	@Override
 	public EReference getScheduledLoaderConfig_Eclass() {
-		return (EReference)scheduledLoaderConfigEClass.getEStructuralFeatures().get(6);
+		return (EReference)scheduledLoaderConfigEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -219,6 +229,7 @@ public class ScheduledloaderconfigPackageImpl extends EPackageImpl implements Sc
 		createEAttribute(scheduledLoaderConfigEClass, SCHEDULED_LOADER_CONFIG__SCHEDULE_INTERVAL);
 		createEAttribute(scheduledLoaderConfigEClass, SCHEDULED_LOADER_CONFIG__QUERY_LIMIT);
 		createEAttribute(scheduledLoaderConfigEClass, SCHEDULED_LOADER_CONFIG__INITIAL_QUERY_SKIP);
+		createEAttribute(scheduledLoaderConfigEClass, SCHEDULED_LOADER_CONFIG__ENABLE_PAGING);
 		createEAttribute(scheduledLoaderConfigEClass, SCHEDULED_LOADER_CONFIG__REPO_TARGET);
 		createEAttribute(scheduledLoaderConfigEClass, SCHEDULED_LOADER_CONFIG__LOADER_NAME);
 		createEReference(scheduledLoaderConfigEClass, SCHEDULED_LOADER_CONFIG__PACKAGE);
@@ -265,6 +276,7 @@ public class ScheduledloaderconfigPackageImpl extends EPackageImpl implements Sc
 		initEAttribute(getScheduledLoaderConfig_ScheduleInterval(), ecorePackage.getELong(), "scheduleInterval", "60", 1, 1, ScheduledLoaderConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScheduledLoaderConfig_QueryLimit(), ecorePackage.getELong(), "queryLimit", "1000", 1, 1, ScheduledLoaderConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScheduledLoaderConfig_InitialQuerySkip(), ecorePackage.getELong(), "initialQuerySkip", "0", 1, 1, ScheduledLoaderConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScheduledLoaderConfig_EnablePaging(), ecorePackage.getEBoolean(), "enablePaging", null, 0, 1, ScheduledLoaderConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScheduledLoaderConfig_RepoTarget(), ecorePackage.getEString(), "repoTarget", null, 1, 1, ScheduledLoaderConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScheduledLoaderConfig_LoaderName(), ecorePackage.getEString(), "loaderName", null, 1, 1, ScheduledLoaderConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScheduledLoaderConfig_Package(), ecorePackage.getEPackage(), null, "package", null, 0, 1, ScheduledLoaderConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -303,6 +315,12 @@ public class ScheduledloaderconfigPackageImpl extends EPackageImpl implements Sc
 		   source,
 		   new String[] {
 			   "name", "initial.query.skip"
+		   });
+		addAnnotation
+		  (getScheduledLoaderConfig_EnablePaging(),
+		   source,
+		   new String[] {
+			   "name", "enable.paging"
 		   });
 		addAnnotation
 		  (getScheduledLoaderConfig_RepoTarget(),
