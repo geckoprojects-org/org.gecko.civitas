@@ -50,10 +50,10 @@
 	"daanse.jdbc.datasource.postgresql.DataSource~manualMeter": {
 		"name": "manualMeter",
 		"dbname": "usecase206_manual_meters",
-		".password": "postgres",
-		"user": "postgres",
-		"ports": 5432,
-		"host": "localhost"
+        ".password": "$[env:DB_PASSWORD;default=postgres]",
+        "user": "$[env:DB_USER;default=postgres]",
+        "ports": "$[env:DB_PORT;default=5432]",
+        "host": "$[env:DB_HOST;default=localhost]"
 	},
 	"fennec.jpa.EMPersistenceUnit~manualMeter": {
 		"fennec.jpa.dataSource.target": "(name=manualMeter)",
