@@ -43,7 +43,8 @@ slf4j.runpath:  \
 	bnd.identity;id='org.eclipse.fennec.codec.json',\
 	bnd.identity;id='org.eclipse.fennec.codec.jsonschema',\
 	bnd.identity;id='org.gecko.adapter.mqtt.v5',\
-	bnd.identity;id='org.civitas.handler.mqtt'
+	bnd.identity;id='org.civitas.handler.mqtt',\
+	bnd.identity;id='org.civitas.glt.sensor.validation'
 	
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 -runee: JavaSE-21
@@ -132,7 +133,6 @@ slf4j.runpath:  \
 	org.gecko.emf.repository.api;version='[9.3.1,9.3.2)',\
 	de.jena.mdo.emf.common;version=snapshot,\
 	de.siegmar.fastcsv;version='[3.4.0,3.4.1)',\
-	org.civitas.model.atlas;version=snapshot,\
 	org.eclipse.daanse.io.fs.watcher.api;version='[0.0.1,0.0.2)',\
 	org.eclipse.daanse.io.fs.watcher.watchservice;version='[0.0.1,0.0.2)',\
 	org.eclipse.daanse.jdbc.datasource.common;version='[0.0.1,0.0.2)',\
@@ -173,4 +173,5 @@ slf4j.runpath:  \
 	org.gecko.util.common;version='[1.2.0,1.2.1)',\
 	org.gecko.util.pushstream;version='[1.2.0,1.2.1)',\
 	org.civitas.handler.mqtt;version=snapshot,\
-	org.civitas.glt.sensor.validation;version=snapshot
+	org.civitas.glt.sensor.validation;version=snapshot,\
+	org.civitas.model.atlas;version=snapshot
