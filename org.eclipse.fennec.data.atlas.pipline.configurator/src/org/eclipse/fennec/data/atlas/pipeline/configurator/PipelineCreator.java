@@ -401,8 +401,8 @@ public class PipelineCreator {
 	    plantDataSink.setRepoTarget("(repo_id=plantTarget)");
 	    plantDataSink.setId("plantDataSink");
 	    plantDataSink.setPid("plantDataSink");
+	    plantDataSink.setDetailedLogging(true);
 	    plantDataSink.getInputs().add(plantQvt);	  
-	    plantDataSink.getInputs().add(meteringPointAttacher);	  
 	    pipeline.getSteps().add(plantDataSink);
 	    
 	    

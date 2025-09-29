@@ -211,6 +211,8 @@ public class EMFRepositoryDataSink implements TypedEventHandler<EObject> {
      */
     @Override
     public void notify(String topic, EObject event) {
+    	System.out.println("Received event on topic '" + topic + "' for EObject type: " +
+                       event.eClass().getName() + " with ID: " + EcoreUtil.getID(event));
         if (config.detailed_logging()) {
             LOGGER.info("Received event on topic '" + topic + "' for EObject type: " +
                        event.eClass().getName() + " with ID: " + EcoreUtil.getID(event));

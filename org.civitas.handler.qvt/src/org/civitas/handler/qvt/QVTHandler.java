@@ -80,8 +80,10 @@ public class QVTHandler implements TypedEventHandler<EObject> {
 			if (diagnostic.getSeverity() == Diagnostic.OK && trafo != null) {
 				EObject result = trafo.doTransformation(event);
 				if(result != null) {
-					LOGGER.info(String.format("QVTHandler on topic %s for incoming object %s with ID %s produced outgoing object %s with ID %s", topic, EcoreUtil.getURI(event.eClass()).toString(), EcoreUtil.getID(event), result.eClass().getName(), EcoreUtil.getID(result)));
-					Arrays.asList(config.forward_topics()).forEach(t -> bus.deliver(t, result));
+					Arrays.asList(config.forward_topics()).forEach(t -> {
+						bus.deliver(t, result);
+						LOGGER.info(String.format("Delivered %s to topic %s", EcoreUtil.getURI(result.eClass()).toString(), t));
+					});
 				} else {
 					LOGGER.info(String.format("QVTHandler on topic %s for incoming object %s with ID %s produced null", topic, EcoreUtil.getURI(event.eClass()).toString(), EcoreUtil.getID(event)));
 				}
