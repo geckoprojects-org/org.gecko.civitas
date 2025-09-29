@@ -16,7 +16,7 @@ task prepareDocker(){
     	copy {
 	        from new File("../../org.civitas.data.atlas.runtime/generated/distributions/executable/dataatlas.runtime_docker.jar")
 	        into stageDir
-	        rename("data.atlas.runtime_docker.jar", "org.civitas.data.atlas.runtime.jar")
+	        rename("dataatlas.runtime_docker.jar", "org.civitas.data.atlas.runtime.jar")
 	    }
 	    copy {
 	        from new File("../../org.civitas.data.atlas.runtime/runtime/")
