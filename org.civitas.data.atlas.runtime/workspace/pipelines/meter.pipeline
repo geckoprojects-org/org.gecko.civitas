@@ -53,13 +53,13 @@
   <steps xsi:type="qvthandler:QVTHandlerConfig" pid="sourceMeteringPointToTargetPlantQVT" id="sourceMeteringPointToTargetPlantQVT" outputs="meteringPointAttacher" inputs="reading_attacher intMeteringPointDataSink" trafo="(transformator.id=sourceMeteringPointToTargetPlantQVT)">
     <eclassuri href="https://civitas.org/meter/source/1.0.0#//IntermediateMeteringPoint"/>
   </steps>
-  <steps xsi:type="emfattacherconfig:EMFAttacherHandlerConfig" pid="meteringPointAttacher" id="meteringPointAttacher" outputs="plantDataSink" inputs="sourceMeteringPointToTargetPlantQVT" repoTarget="(repo_id=plantTarget)">
+  <steps xsi:type="emfattacherconfig:EMFAttacherHandlerConfig" pid="meteringPointAttacher" id="meteringPointAttacher" inputs="sourceMeteringPointToTargetPlantQVT" repoTarget="(repo_id=plantTarget)">
     <targetEClassUri href="https://civitas.org/meter/target/1.0.0#//Plant"/>
     <incomingEClassUri href="https://civitas.org/meter/target/1.0.0#//Plant"/>
     <targetReferenceUri href="https://civitas.org/meter/target/1.0.0#//Plant/meteringPoints"/>
     <foreignKeyFeatureUri xsi:type="ecore:EAttribute" href="https://civitas.org/meter/target/1.0.0#//Plant/id"/>
     <incomingReferenceUri href="https://civitas.org/meter/target/1.0.0#//Plant/meteringPoints"/>
   </steps>
-  <steps xsi:type="datasinkconfig:EMFRepositoryDataSinkConfig" pid="plantDataSink" id="plantDataSink" inputs="plantQVT meteringPointAttacher" repoTarget="(repo_id=plantTarget)"/>
+  <steps xsi:type="datasinkconfig:EMFRepositoryDataSinkConfig" pid="plantDataSink" id="plantDataSink" inputs="plantQVT" repoTarget="(repo_id=plantTarget)" detailedLogging="true"/>
   <components xsi:type="minioconfig:MinIOClientConfig" pid="minio" accessKey="minio" secretKey="minio123"/>
 </pipeline:Pipeline>
