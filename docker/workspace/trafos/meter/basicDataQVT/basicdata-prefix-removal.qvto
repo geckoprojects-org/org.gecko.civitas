@@ -23,16 +23,19 @@ main() {
 
 mapping SOURCE::BasicData::toBasicDataWOPrefix(): SOURCE::BasicData {
 	
-	var id : String = self.plantId;
-	if(id.startsWith("p_00")) {
-		plantId := id.replaceFirst("p_00", "");
-	} else if(id.startsWith("p_0")) {
-		plantId := id.replaceFirst("p_0", "");
-	} else {
-		plantId := self.plantId.replaceFirst("p_", "");
-	};
-	
-	
+//	var id : String = self.plantId;
+//	if(id.startsWith("p_00")) {
+//		log("AAAAAAAAAAAAAAAA " + " p_00 " + id);
+//		id := id.replaceFirst("p_00", "");
+//	} else if(id.startsWith("p_0")) {
+//		log("BBBBBBBBBBBBBBBB " + " p_0 " + id);
+//		id := id.replaceFirst("p_0", "");
+//	} else {
+//		log("CCCCCCCCCCCCCCC " + " p_0 " + id);
+//		id := self.plantId.replaceFirst("p_", "");
+//	};
+	plantId := self.plantId.replaceFirst("p_", "");
+	log("DDDDDDDDDDDDDDDDD " + plantId);
 	net := self.net;
 	type := self.type;
 	city := self.city;
