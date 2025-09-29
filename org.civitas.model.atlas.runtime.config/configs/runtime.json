@@ -30,7 +30,5 @@
 		"output.html.folder" : "html",
 		"output.html.mermaid.folder" : "html_mermaid",
 		"output.package.hash.code.folder": "epackage_hash_code"
-	},
-	"EMFFileWatcher~workspaceFiles": {
-        "io.fs.watcher.path": "$[env:org.civitas.model.atlas.workspace;default=$[prop:org.civitas.model.atlas.workspace;default=./workspace]]"
-    }}
+	}
+}

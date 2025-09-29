@@ -4,11 +4,11 @@
 	":configurator:version": "0.0.0",
 	"daanse.jdbc.datasource.postgresql.DataSource~plantTarget": {
 		"name": "plantTarget",
-		".password": "postgres",
-		"user": "postgres",
 		"dbname": "plant_readings",
-		"ports": 5432,
-		"host": "localhost"
+		".password": "$[env:DB_PASSWORD;default=postgres]",
+		"user": "$[env:DB_USER;default=postgres]",
+		"ports": "$[env:DB_PORT;default=5432]",
+		"host": "$[env:DB_HOST;default=localhost]"
 	},
 	"fennec.jpa.EORMMappingService~plantTarget": {
 		"fennec.jpa.eorm.mappingName": "plant",
@@ -85,11 +85,11 @@
 	},
 	"daanse.jdbc.datasource.postgresql.DataSource~manualReading": {
 		"name": "manualReading",
-		".password": "postgres",
-		"user": "postgres",
 		"dbname": "usecase206_manual_readings",
-		"ports": 5432,
-		"host": "localhost"
+		".password": "$[env:DB_PASSWORD;default=postgres]",
+        "user": "$[env:DB_USER;default=postgres]",
+        "ports": "$[env:DB_PORT;default=5432]",
+        "host": "$[env:DB_HOST;default=localhost]"
 	},
 	"fennec.jpa.EMPersistenceUnit~manualReading": {
 		"fennec.jpa.dataSource.target": "(name=manualReading)",
@@ -111,11 +111,11 @@
 	},
 	"daanse.jdbc.datasource.postgresql.DataSource~assets": {
 		"name": "assets",
-		".password": "postgres",
-		"user": "postgres",
 		"dbname": "usecase212_assets",
-		"ports": 5432,
-		"host": "localhost"
+		".password": "$[env:DB_PASSWORD;default=postgres]",
+        "user": "$[env:DB_USER;default=postgres]",
+        "ports": "$[env:DB_PORT;default=5432]",
+        "host": "$[env:DB_HOST;default=localhost]"
 	},
 	"fennec.jpa.EMPersistenceUnit~assets": {
 		"fennec.jpa.dataSource.target": "(name=assets)",

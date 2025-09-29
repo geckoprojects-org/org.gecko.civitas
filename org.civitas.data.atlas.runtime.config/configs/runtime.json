@@ -1,9 +1,6 @@
 {
 	":configurator:resource-version": 1,
 	":configurator:symbolicname": "org.civitas.meter.runtime",
-	":configurator:version": "0.0.0",
+	":configurator:version": "0.0.0"
 
-	"EMFFileWatcher~workspaceFiles": {
-    "io.fs.watcher.path": "$[env:org.civitas.model.atlas.workspace;default=$[prop:org.civitas.model.atlas.workspace;default=./workspace]]"
-  }
 }
