@@ -49,11 +49,11 @@
 	},
 	"daanse.jdbc.datasource.postgresql.DataSource~manualMeter": {
 		"name": "manualMeter",
-		".password": "postgres",
-		"user": "postgres",
 		"dbname": "usecase206_manual_meters",
-		"ports": 5432,
-		"host": "localhost"
+        ".password": "$[env:DB_PASSWORD;default=postgres]",
+        "user": "$[env:DB_USER;default=postgres]",
+        "ports": "$[env:DB_PORT;default=5432]",
+        "host": "$[env:DB_HOST;default=localhost]"
 	},
 	"fennec.jpa.EMPersistenceUnit~manualMeter": {
 		"fennec.jpa.dataSource.target": "(name=manualMeter)",
@@ -67,11 +67,10 @@
 	},
 	"daanse.jdbc.datasource.postgresql.DataSource~remoteMeter": {
 		"name": "remoteMeter",
-		".password": "postgres",
-		"user": "postgres",
-		"dbname": "usecase206_remote_meters",
-		"ports": 5432,
-		"host": "localhost"
+		".password": "$[env:DB_PASSWORD;default=postgres]",
+        "user": "$[env:DB_USER;default=postgres]",
+        "ports": "$[env:DB_PORT;default=5432]",
+        "host": "$[env:DB_HOST;default=localhost]"
 	},
 	"fennec.jpa.EMPersistenceUnit~remoteMeter": {
 		"fennec.jpa.dataSource.target": "(name=remoteMeter)",

@@ -68,6 +68,9 @@ public class MqttEventHandler implements TypedEventHandler<EObject> {
 
 		@AttributeDefinition(name = "MQTT Topic", description = "The MQTT topic list where to publish the result")
 		String[] mqtt_topics();
+
+		@AttributeDefinition(name = "Content type", description = "Content type of the published message (default = application/json)")
+		String contentType() default "application/json";
 	}
 
 	@Activate
@@ -81,7 +84,7 @@ public class MqttEventHandler implements TypedEventHandler<EObject> {
 	public void notify(String topic, EObject event) {
 		ResourceSet resourceSet = serviceObjects.getService();
 		try {
-			Resource res = resourceSet.createResource(URI.createFileURI(UUID.randomUUID().toString() + ".json"));
+			Resource res = resourceSet.createResource(URI.createFileURI(UUID.randomUUID().toString()), config.contentType());
 
 			res.getContents().add(EcoreUtil.copy(event));
 			ByteArrayOutputStream bao = new ByteArrayOutputStream();

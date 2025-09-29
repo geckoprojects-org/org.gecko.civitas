@@ -44,18 +44,10 @@
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="name" value="first_name"/>
       </eAnnotations>
-      <eAnnotations source="http://civitas-connect.org/gdpr/1.0.0">
-        <details key="article" value="4.1"/>
-        <details key="link" value="https://www.privacy-regulation.eu/en/article-4-definitions-GDPR.htm"/>
-      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="name" value="last_name"/>
-      </eAnnotations>
-      <eAnnotations source="http://civitas-connect.org/gdpr/1.0.0">
-        <details key="article" value="4.1"/>
-        <details key="link" value="https://www.privacy-regulation.eu/en/article-4-definitions-GDPR.htm"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="role" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -64,13 +56,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="phoneNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="name" value="phonenumber"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="religion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        transient="true">
-      <eAnnotations source="http://civitas-connect.org/gdpr/1.0.0">
-        <details key="article" value="9"/>
-        <details key="link" value="https://www.privacy-regulation.eu/en/article-9-processing-of-special-categories-of-personal-data-GDPR.htm"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

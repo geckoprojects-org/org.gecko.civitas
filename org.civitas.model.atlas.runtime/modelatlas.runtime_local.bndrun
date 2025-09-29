@@ -1,7 +1,8 @@
 -include: modelatlas.runtime_base.bndrun
 
 -runbundles.local: org.civitas.data.atlas.runtime.config.local,\
-	org.civitas.pipeline.creator
+	org.civitas.glt.sensor.validation;version=snapshot,\
+	org.civitas.pipeline.creator;version=snapshot
 
 
 -runproperties.local: \
@@ -12,3 +13,5 @@
 	data=${.}/data/
 	
 -runtrace: true
+-runvm: -Dorg.civitas.model.atlas.workspace=../org.civitas.data.atlas.runtime/workspace
+-resolve: never
