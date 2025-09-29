@@ -48,7 +48,7 @@ import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.fennec.codec.configurator.ObjectMapperConfigurator;
+import org.eclipse.fennec.codec.configurator.CodecModuleConfigurator;
 import org.eclipse.fennec.codec.options.CodecModelInfoOptions;
 import org.eclipse.fennec.codec.options.CodecModuleOptions;
 import org.eclipse.fennec.codec.options.CodecResourceOptions;
@@ -112,10 +112,10 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
     @SuppressWarnings("unchecked")
     @Activate
     public EMFFileWatcher(
-//	    @Reference(cardinality = ReferenceCardinality.MANDATORY, target = "(serializers.target=(component.name=JsonSchemaCodecEMFSerializers))") ObjectMapperConfigurator objMapperConfigurator,
+	    @Reference(cardinality = ReferenceCardinality.MANDATORY, target = "(test=test)") CodecModuleConfigurator codecModuleConfigurator,
 	    @Reference(scope = ReferenceScope.PROTOTYPE_REQUIRED, target = "("+EMFNamespaces.EMF_CONFIGURATOR_NAME + "=CodecJson)") ResourceSet resourceSet,
 	    @Reference ConfigurationAdmin configAdmin, BundleContext bundleContext) {
-	this.resourceSet = resourceSet;
+	this.resourceSet = resourceSet;	
 	this.configAdmin = configAdmin;
 	this.bundleContext = bundleContext;
 	eObjectTracker = new ServiceTracker(bundleContext, EObject.class,
@@ -162,6 +162,8 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
 		});
 
 	ePackageTracker.open();
+	
+	loadJsonschema(System.getProperty("data")+"meter-reading.json");
     }
 
     @Deactivate
@@ -234,40 +236,46 @@ public class EMFFileWatcher implements FileSystemWatcherListener {
     }
 
     public void loadJsonschema(String pathToJsonschemaFile) {
-//	Resource res = resourceSet.createResource(URI.createURI(pathToJsonschemaFile), "application/json");
-//	Map<String, Object> options = new HashMap<>();
-//	options.put(CodecResourceOptions.CODEC_ROOT_OBJECT, EcorePackage.Literals.EPACKAGE);
-//	options.put(CodecModuleOptions.CODEC_MODULE_SERIALIZE_TYPE, false);
-//	options.put(CodecModuleOptions.CODEC_MODULE_SERIALIZE_EMPTY_VALUE, true);
-//	options.put(CodecModuleOptions.CODEC_MODULE_SERIALIZE_NULL_VALUE, true);
-//	Map<String, Object> classOptions = new HashMap<>();
-//	classOptions.put(CodecModelInfoOptions.CODEC_EXTRAS, Map.of("jsonschema", "true", "jsonschema.feature.key", "definitions"));
-//	options.put(CodecResourceOptions.CODEC_OPTIONS, Map.of(EcorePackage.Literals.EPACKAGE, classOptions));
-//	
-//	try {
-//	    res.load(options);
-//	} catch (IOException e) {
-//	    // TODO Auto-generated catch block
-//	    e.printStackTrace();
-//	}		
-//	if(res.getContents().isEmpty()) {
-//		LOG.log(Level.INFO, String.format("No content loaded for %s", pathToJsonschemaFile));
-//		return;
-//	}
-//	EObject obj = res.getContents().get(0);
-//	if(obj == null) {
-//	    	LOG.log(Level.INFO,String.format("Null content loaded for %s", pathToJsonschemaFile));
-//		return;
-//	}
-//	if(obj instanceof EPackage ePackage) {
-//		res = resourceSet.createResource(URI.createURI(UUID.randomUUID().toString()+".ecore"));
-//		res.getContents().add(ePackage);
-//	} else {
-//	    	LOG.log(Level.INFO,String.format("Content loaded from %s is not of type EPackage", pathToJsonschemaFile));
-//		return;
-//	}
-//	
-//	
+	Resource res = resourceSet.createResource(URI.createURI(pathToJsonschemaFile), "application/json");
+	Map<String, Object> options = new HashMap<>();
+	options.put(CodecResourceOptions.CODEC_ROOT_OBJECT, EcorePackage.Literals.EPACKAGE);
+	options.put(CodecModuleOptions.CODEC_MODULE_SERIALIZE_TYPE, false);
+	options.put(CodecModuleOptions.CODEC_MODULE_SERIALIZE_EMPTY_VALUE, true);
+	options.put(CodecModuleOptions.CODEC_MODULE_SERIALIZE_NULL_VALUE, true);
+	Map<String, Object> classOptions = new HashMap<>();
+	classOptions.put(CodecModelInfoOptions.CODEC_EXTRAS, Map.of("jsonschema", "true", "jsonschema.feature.key", "definitions"));
+	options.put(CodecResourceOptions.CODEC_OPTIONS, Map.of(EcorePackage.Literals.EPACKAGE, classOptions));
+	
+	try {
+	    res.load(options);
+	} catch (IOException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}		
+	if(res.getContents().isEmpty()) {
+		LOG.log(Level.INFO, String.format("No content loaded for %s", pathToJsonschemaFile));
+		return;
+	}
+	EObject obj = res.getContents().get(0);
+	if(obj == null) {
+	    	LOG.log(Level.INFO,String.format("Null content loaded for %s", pathToJsonschemaFile));
+		return;
+	}
+	if(obj instanceof EPackage ePackage) {
+		res = resourceSet.createResource(URI.createURI(UUID.randomUUID().toString()+".ecore"));
+		res.getContents().add(ePackage);
+		try {
+			res.save(System.out, options);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} else {
+	    	LOG.log(Level.INFO,String.format("Content loaded from %s is not of type EPackage", pathToJsonschemaFile));
+		return;
+	}
+	
+	
     }
     
     private void loadResource(List<Resource> toHandle) {

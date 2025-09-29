@@ -39,7 +39,8 @@ slf4j.runpath:  \
 	bnd.identity;id='org.eclipse.fennec.persistence.eclipselink',\
 	bnd.identity;id='org.eclipse.daanse.jdbc.datasource.postgresql',\
 	bnd.identity;id='org.eclipse.fennec.codec.json',\
-	bnd.identity;id='org.eclipse.fennec.codec.jsonschema'
+	bnd.identity;id='org.eclipse.fennec.codec.jsonschema',\
+	bnd.identity;id='org.eclipse.fennec.codec.csv'
 	
 -runfw: org.apache.felix.framework;version='[7.0.5,7.0.5]'
 -runee: JavaSE-21
@@ -76,6 +77,8 @@ slf4j.runpath:  \
 	org.apache.felix.configurator;version='[1.0.18,1.0.19)',\
 	org.eclipse.parsson.jakarta.json;version='[1.1.7,1.1.8)',\
 	org.apache.felix.configadmin.plugin.interpolation;version='[1.2.8,1.2.9)',\
+	org.eclipse.fennec.codec.json;version='[1.0.0,1.0.1)',\
+	org.eclipse.fennec.codec.jsonschema;version='[1.0.0,1.0.1)',\
 	org.gecko.emf.osgi.component;version='[6.3.0,6.3.1)',\
 	de.jena.mdo.emf.common;version=snapshot,\
 	de.siegmar.fastcsv;version='[3.4.0,3.4.1)',\
@@ -176,5 +179,6 @@ slf4j.runpath:  \
 	org.gecko.emf.util.model;version='[2.2.2,2.2.3)',\
 	tools.jackson.core.jackson-core;version='[3.0.0,3.0.1)',\
 	tools.jackson.core.jackson-databind;version='[3.0.0,3.0.1)',\
-	org.eclipse.fennec.codec.json;version='[1.0.0,1.0.1)',\
-	org.eclipse.fennec.codec.jsonschema;version='[1.0.0,1.0.1)'
+	com.google.guava;version='[33.5.0,33.5.1)',\
+	org.eclipse.fennec.codec.csv;version='[1.0.0,1.0.1)',\
+	org.osgi.service.http.whiteboard;version='[1.1.0,1.1.1)'

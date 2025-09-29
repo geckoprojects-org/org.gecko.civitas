@@ -1,7 +1,7 @@
 {
   ":configurator:resource-version": 1,
   
-	"DefaultObjectMapperConfigurator~json": 
+	"DefaultObjectMapperConfigurator~jsonschema": 
   	{
 	    "type": "json",
 		"codecFactoryConfigurator.target" : "(type=json)",
@@ -12,13 +12,14 @@
 			"SerializationFeature.INDENT_OUTPUT"
 		]
 	},
-	"DefaultCodecModuleConfigurator~json":
+	"DefaultCodecModuleConfigurator~jsonschema":
 	{
 		 "type": "json",
 		 "serializers.target": "(component.name=JsonSchemaCodecEMFSerializers)",
-		 "deserializers.target": "(component.name=JsonSchemaCodecEMFDeserializers)"
+		 "deserializers.target": "(component.name=JsonSchemaCodecEMFDeserializers)",
+		 "test": "test"
 	},
-	"DefaultCodecFactoryConfigurator~json": {
+	"DefaultCodecFactoryConfigurator~jsonschema": {
 		"type": "json"
 	}
 }
