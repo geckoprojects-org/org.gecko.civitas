@@ -147,7 +147,7 @@ public class GenericScheduledLoader {
 		if (!objects.isEmpty()) {
 			publishEObjects(objects);
 			// Advance offset by the number of records actually loaded
-			currentOffset += objects.size();
+			if(config.enablePaging()) currentOffset += objects.size();
 			LOGGER.fine("Advanced " + config.loader_name() + " offset to: " + currentOffset);
 		} else {
 			LOGGER.fine("No new " + config.loader_name() + " found at offset: " + currentOffset);

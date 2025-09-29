@@ -52,6 +52,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.civitas.db.loader.scheduledloaderconfig.impl.ScheduledLoaderConfigImpl#getScheduleInterval <em>Schedule Interval</em>}</li>
  *   <li>{@link org.civitas.db.loader.scheduledloaderconfig.impl.ScheduledLoaderConfigImpl#getQueryLimit <em>Query Limit</em>}</li>
  *   <li>{@link org.civitas.db.loader.scheduledloaderconfig.impl.ScheduledLoaderConfigImpl#getInitialQuerySkip <em>Initial Query Skip</em>}</li>
+ *   <li>{@link org.civitas.db.loader.scheduledloaderconfig.impl.ScheduledLoaderConfigImpl#isEnablePaging <em>Enable Paging</em>}</li>
  *   <li>{@link org.civitas.db.loader.scheduledloaderconfig.impl.ScheduledLoaderConfigImpl#getRepoTarget <em>Repo Target</em>}</li>
  *   <li>{@link org.civitas.db.loader.scheduledloaderconfig.impl.ScheduledLoaderConfigImpl#getLoaderName <em>Loader Name</em>}</li>
  *   <li>{@link org.civitas.db.loader.scheduledloaderconfig.impl.ScheduledLoaderConfigImpl#getPackage <em>Package</em>}</li>
@@ -170,6 +171,26 @@ public class ScheduledLoaderConfigImpl extends MinimalEObjectImpl.Container impl
 	 * @ordered
 	 */
 	protected long initialQuerySkip = INITIAL_QUERY_SKIP_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isEnablePaging() <em>Enable Paging</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnablePaging()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLE_PAGING_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isEnablePaging() <em>Enable Paging</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnablePaging()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean enablePaging = ENABLE_PAGING_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getRepoTarget() <em>Repo Target</em>}' attribute.
@@ -384,6 +405,29 @@ public class ScheduledLoaderConfigImpl extends MinimalEObjectImpl.Container impl
 	 * @generated
 	 */
 	@Override
+	public boolean isEnablePaging() {
+		return enablePaging;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setEnablePaging(boolean newEnablePaging) {
+		boolean oldEnablePaging = enablePaging;
+		enablePaging = newEnablePaging;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ScheduledloaderconfigPackage.SCHEDULED_LOADER_CONFIG__ENABLE_PAGING, oldEnablePaging, enablePaging));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String getRepoTarget() {
 		return repoTarget;
 	}
@@ -553,6 +597,8 @@ public class ScheduledLoaderConfigImpl extends MinimalEObjectImpl.Container impl
 				return getQueryLimit();
 			case ScheduledloaderconfigPackage.SCHEDULED_LOADER_CONFIG__INITIAL_QUERY_SKIP:
 				return getInitialQuerySkip();
+			case ScheduledloaderconfigPackage.SCHEDULED_LOADER_CONFIG__ENABLE_PAGING:
+				return isEnablePaging();
 			case ScheduledloaderconfigPackage.SCHEDULED_LOADER_CONFIG__REPO_TARGET:
 				return getRepoTarget();
 			case ScheduledloaderconfigPackage.SCHEDULED_LOADER_CONFIG__LOADER_NAME:
@@ -594,6 +640,9 @@ public class ScheduledLoaderConfigImpl extends MinimalEObjectImpl.Container impl
 				return;
 			case ScheduledloaderconfigPackage.SCHEDULED_LOADER_CONFIG__INITIAL_QUERY_SKIP:
 				setInitialQuerySkip((Long)newValue);
+				return;
+			case ScheduledloaderconfigPackage.SCHEDULED_LOADER_CONFIG__ENABLE_PAGING:
+				setEnablePaging((Boolean)newValue);
 				return;
 			case ScheduledloaderconfigPackage.SCHEDULED_LOADER_CONFIG__REPO_TARGET:
 				setRepoTarget((String)newValue);
@@ -637,6 +686,9 @@ public class ScheduledLoaderConfigImpl extends MinimalEObjectImpl.Container impl
 			case ScheduledloaderconfigPackage.SCHEDULED_LOADER_CONFIG__INITIAL_QUERY_SKIP:
 				setInitialQuerySkip(INITIAL_QUERY_SKIP_EDEFAULT);
 				return;
+			case ScheduledloaderconfigPackage.SCHEDULED_LOADER_CONFIG__ENABLE_PAGING:
+				setEnablePaging(ENABLE_PAGING_EDEFAULT);
+				return;
 			case ScheduledloaderconfigPackage.SCHEDULED_LOADER_CONFIG__REPO_TARGET:
 				setRepoTarget(REPO_TARGET_EDEFAULT);
 				return;
@@ -673,6 +725,8 @@ public class ScheduledLoaderConfigImpl extends MinimalEObjectImpl.Container impl
 				return queryLimit != QUERY_LIMIT_EDEFAULT;
 			case ScheduledloaderconfigPackage.SCHEDULED_LOADER_CONFIG__INITIAL_QUERY_SKIP:
 				return initialQuerySkip != INITIAL_QUERY_SKIP_EDEFAULT;
+			case ScheduledloaderconfigPackage.SCHEDULED_LOADER_CONFIG__ENABLE_PAGING:
+				return enablePaging != ENABLE_PAGING_EDEFAULT;
 			case ScheduledloaderconfigPackage.SCHEDULED_LOADER_CONFIG__REPO_TARGET:
 				return REPO_TARGET_EDEFAULT == null ? repoTarget != null : !REPO_TARGET_EDEFAULT.equals(repoTarget);
 			case ScheduledloaderconfigPackage.SCHEDULED_LOADER_CONFIG__LOADER_NAME:
@@ -749,6 +803,8 @@ public class ScheduledLoaderConfigImpl extends MinimalEObjectImpl.Container impl
 		result.append(queryLimit);
 		result.append(", initialQuerySkip: ");
 		result.append(initialQuerySkip);
+		result.append(", enablePaging: ");
+		result.append(enablePaging);
 		result.append(", repoTarget: ");
 		result.append(repoTarget);
 		result.append(", loaderName: ");

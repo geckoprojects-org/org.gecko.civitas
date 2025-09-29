@@ -13,6 +13,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scheduled-loader.ecore#//ScheduledLoaderConfig/scheduleInterval"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scheduled-loader.ecore#//ScheduledLoaderConfig/queryLimit"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scheduled-loader.ecore#//ScheduledLoaderConfig/initialQuerySkip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scheduled-loader.ecore#//ScheduledLoaderConfig/enablePaging"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scheduled-loader.ecore#//ScheduledLoaderConfig/repoTarget"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute scheduled-loader.ecore#//ScheduledLoaderConfig/loaderName"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference scheduled-loader.ecore#//ScheduledLoaderConfig/package"/>

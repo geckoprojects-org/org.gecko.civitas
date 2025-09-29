@@ -38,6 +38,7 @@ import org.osgi.annotation.versioning.ProviderType;
  *   <li>{@link org.civitas.db.loader.scheduledloaderconfig.ScheduledLoaderConfig#getScheduleInterval <em>Schedule Interval</em>}</li>
  *   <li>{@link org.civitas.db.loader.scheduledloaderconfig.ScheduledLoaderConfig#getQueryLimit <em>Query Limit</em>}</li>
  *   <li>{@link org.civitas.db.loader.scheduledloaderconfig.ScheduledLoaderConfig#getInitialQuerySkip <em>Initial Query Skip</em>}</li>
+ *   <li>{@link org.civitas.db.loader.scheduledloaderconfig.ScheduledLoaderConfig#isEnablePaging <em>Enable Paging</em>}</li>
  *   <li>{@link org.civitas.db.loader.scheduledloaderconfig.ScheduledLoaderConfig#getRepoTarget <em>Repo Target</em>}</li>
  *   <li>{@link org.civitas.db.loader.scheduledloaderconfig.ScheduledLoaderConfig#getLoaderName <em>Loader Name</em>}</li>
  *   <li>{@link org.civitas.db.loader.scheduledloaderconfig.ScheduledLoaderConfig#getPackage <em>Package</em>}</li>
@@ -130,6 +131,28 @@ public interface ScheduledLoaderConfig extends Configuration, DataSource {
 	 * @generated
 	 */
 	void setInitialQuerySkip(long value);
+
+	/**
+	 * Returns the value of the '<em><b>Enable Paging</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Enable Paging</em>' attribute.
+	 * @see #setEnablePaging(boolean)
+	 * @see org.civitas.db.loader.scheduledloaderconfig.ScheduledloaderconfigPackage#getScheduledLoaderConfig_EnablePaging()
+	 * @model extendedMetaData="name='enable.paging'"
+	 * @generated
+	 */
+	boolean isEnablePaging();
+
+	/**
+	 * Sets the value of the '{@link org.civitas.db.loader.scheduledloaderconfig.ScheduledLoaderConfig#isEnablePaging <em>Enable Paging</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Enable Paging</em>' attribute.
+	 * @see #isEnablePaging()
+	 * @generated
+	 */
+	void setEnablePaging(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Repo Target</b></em>' attribute.
