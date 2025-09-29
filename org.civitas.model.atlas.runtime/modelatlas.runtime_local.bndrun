@@ -13,3 +13,5 @@
 	data=${.}/data/
 	
 -runtrace: true
+-runvm: -Dorg.civitas.model.atlas.workspace=../org.civitas.data.atlas.runtime/workspace
+-resolve: never
