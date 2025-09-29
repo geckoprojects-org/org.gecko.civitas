@@ -277,6 +277,12 @@ public class MqtthandlerPackageImpl extends EPackageImpl implements MqtthandlerP
 		   new String[] {
 			   "name", "mqtt.service.target"
 		   });
+		addAnnotation
+		  (getMqttEventHandlerConfig_ContentType(),
+		   source,
+		   new String[] {
+			   "name", "contentType"
+		   });
 	}
 
 } //MqtthandlerPackageImpl
