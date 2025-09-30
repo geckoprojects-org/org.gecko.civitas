@@ -15,6 +15,7 @@ package org.civitas.handler.emf.repository.datasink;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -211,23 +212,25 @@ public class EMFRepositoryDataSink implements TypedEventHandler<EObject> {
      */
     @Override
     public void notify(String topic, EObject event) {
-    	System.out.println("Received event on topic '" + topic + "' for EObject type: " +
-                       event.eClass().getName() + " with ID: " + EcoreUtil.getID(event));
-        if (config.detailed_logging()) {
-            LOGGER.info("Received event on topic '" + topic + "' for EObject type: " +
-                       event.eClass().getName() + " with ID: " + EcoreUtil.getID(event));
-        }
+    	CompletableFuture.runAsync(() -> {
+	    	System.out.println("Received event on topic '" + topic + "' for EObject type: " +
+	                       event.eClass().getName() + " with ID: " + EcoreUtil.getID(event));
+	        if (config.detailed_logging()) {
+	            LOGGER.info("Received event on topic '" + topic + "' for EObject type: " +
+	                       event.eClass().getName() + " with ID: " + EcoreUtil.getID(event));
+	        }
 
-        try {
-            handleEvent(event);
+	        try {
+	            handleEvent(event);
 
-            if (config.detailed_logging()) {
-                LOGGER.fine("Successfully processed event for EObject ID: " + EcoreUtil.getID(event));
-            }
-        } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, "Failed to process event for EObject type: " + event.eClass().getName() +
-                      " with ID: " + EcoreUtil.getID(event), e);
-        }
+	            if (config.detailed_logging()) {
+	                LOGGER.fine("Successfully processed event for EObject ID: " + EcoreUtil.getID(event));
+	            }
+	        } catch (Exception e) {
+	            LOGGER.log(Level.SEVERE, "Failed to process event for EObject type: " + event.eClass().getName() +
+	                      " with ID: " + EcoreUtil.getID(event), e);
+	        }
+    	});
     }
 
     /**
@@ -251,30 +254,31 @@ public class EMFRepositoryDataSink implements TypedEventHandler<EObject> {
         }
 
         try {
-            EObject existingObject = repository.getEObject(incoming.eClass(), objectId);
+            synchronized (repository) {
+                EObject existingObject = repository.getEObject(incoming.eClass(), objectId);
 
-            EObject toSave;
-            if (existingObject != null) {
-                if (config.merger_strategy() == MergeStrategy.MERGE_INTO_IGNORE_UNSET) {
-                    LOGGER.info("Merging incoming data into existing object with ID: " + objectId);
-                    new MergeCopier().copyInto(incoming, existingObject);
-                    toSave = existingObject;
+                EObject toSave;
+                if (existingObject != null) {
+                    if (config.merger_strategy() == MergeStrategy.MERGE_INTO_IGNORE_UNSET) {
+                        LOGGER.info("Merging incoming data into existing object with ID: " + objectId);
+                        new MergeCopier().copyInto(incoming, existingObject);
+                        toSave = existingObject;
+                    } else {
+                        LOGGER.info("Overwriting existing object with ID: " + objectId);
+                        toSave = incoming;
+                    }
                 } else {
-                    LOGGER.info("Overwriting existing object with ID: " + objectId);
+                    LOGGER.info("Creating new object with ID: " + objectId);
                     toSave = incoming;
                 }
-            } else {
-                LOGGER.info("Creating new object with ID: " + objectId);
-                toSave = incoming;
-            }
-            
-            repository.save(toSave);
 
-            if (config.detailed_logging()) {
-                LOGGER.info("Successfully saved EObject - Type: " + toSave.eClass().getName() +
-                           ", ID: " + EcoreUtil.getID(toSave) + ", Strategy: " + config.merger_strategy());
-            }
+                repository.save(toSave);
 
+                if (config.detailed_logging()) {
+                    LOGGER.info("Successfully saved EObject - Type: " + toSave.eClass().getName() +
+                               ", ID: " + EcoreUtil.getID(toSave) + ", Strategy: " + config.merger_strategy());
+                }
+            }
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Repository operation failed for EObject ID: " + objectId +
                       ", Type: " + incoming.eClass().getName(), e);

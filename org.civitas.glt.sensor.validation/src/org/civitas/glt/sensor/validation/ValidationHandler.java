@@ -14,6 +14,7 @@
 package org.civitas.glt.sensor.validation;
 
 import java.util.Arrays;
+import java.util.concurrent.CompletableFuture;
 import java.util.logging.Logger;
 
 import org.civitas.glt.sensor.validation.api.ValidationType;
@@ -87,39 +88,42 @@ public class ValidationHandler implements TypedEventHandler<EObject> {
 		this.type = ValidationType.valueOf(config.validation_type());
 	}
 
-	/* 
+	/*
 	 * (non-Javadoc)
 	 * @see org.osgi.service.typedevent.TypedEventHandler#notify(java.lang.String, java.lang.Object)
 	 */
 	@Override
 	public void notify(String topic, EObject eObject) {
 		// check if we can handle this EClass
-		if(!EcoreUtil.getURI(eObject.eClass()).toString().equals(config.incoming_eclassuri())) return;
-		
-//		Check if reference_uri_to_be_validated is null: if yes we just look in the attribute_uri_to_be_validated
-//		If not, we have to do treat it like a feature path
-		Number numberToBeValidated = null;
-		if(config.reference_uri_to_be_validated() == null) {
-			 EObject attObj = resourceSet.getEObject(URI.createURI(config.attribute_uri_to_be_validated()), false);
-			 if(attObj instanceof EAttribute att) {
-				 numberToBeValidated = (Number) eObject.eGet(att);
-			 }
-		} else {
-			EObject attObj = resourceSet.getEObject(URI.createURI(config.attribute_uri_to_be_validated()), false);
-			EObject refObj = resourceSet.getEObject(URI.createURI(config.reference_uri_to_be_validated()), false);
-			if(refObj instanceof EReference ref && attObj instanceof EAttribute att) {
-				EObject refValue = (EObject) eObject.eGet(ref);
-				if(refValue != null) {
-					numberToBeValidated = (Number) refValue.eGet(att);
-				}				
-			}
+		if(!EcoreUtil.getURI(eObject.eClass()).toString().equals(config.incoming_eclassuri())) {
+			return;
 		}
-		if(numberToBeValidated != null) {
-			if(!isValid(numberToBeValidated)) {
-				LOGGER.info(String.format("Validation failed. Passing object forward"));
-				Arrays.asList(config.forward_topics()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(eObject)));
+		CompletableFuture.runAsync(() -> {
+	//		Check if reference_uri_to_be_validated is null: if yes we just look in the attribute_uri_to_be_validated
+	//		If not, we have to do treat it like a feature path
+			Number numberToBeValidated = null;
+			if(config.reference_uri_to_be_validated() == null) {
+				 EObject attObj = resourceSet.getEObject(URI.createURI(config.attribute_uri_to_be_validated()), false);
+				 if(attObj instanceof EAttribute att) {
+					 numberToBeValidated = (Number) eObject.eGet(att);
+				 }
+			} else {
+				EObject attObj = resourceSet.getEObject(URI.createURI(config.attribute_uri_to_be_validated()), false);
+				EObject refObj = resourceSet.getEObject(URI.createURI(config.reference_uri_to_be_validated()), false);
+				if(refObj instanceof EReference ref && attObj instanceof EAttribute att) {
+					EObject refValue = (EObject) eObject.eGet(ref);
+					if(refValue != null) {
+						numberToBeValidated = (Number) refValue.eGet(att);
+					}
+				}
 			}
-		}
+			if(numberToBeValidated != null) {
+				if(!isValid(numberToBeValidated)) {
+					LOGGER.info(String.format("Validation failed. Passing object forward to %s", Arrays.toString(config.forward_topics())));
+					Arrays.asList(config.forward_topics()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(eObject)));
+				}
+			}
+		});
 	}
 
 	private boolean isValid(Number number) {

@@ -19,6 +19,7 @@ import java.nio.ByteBuffer;
 import java.util.Collections;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -82,22 +83,23 @@ public class MqttEventHandler implements TypedEventHandler<EObject> {
 
 	@Override
 	public void notify(String topic, EObject event) {
-		ResourceSet resourceSet = serviceObjects.getService();
-		try {
-			Resource res = resourceSet.createResource(URI.createFileURI(UUID.randomUUID().toString()), config.contentType());
+		CompletableFuture.runAsync(() -> {
+			ResourceSet resourceSet = serviceObjects.getService();
+			try {
+				Resource res = resourceSet.createResource(URI.createFileURI(UUID.randomUUID().toString()), config.contentType());
 
-			res.getContents().add(EcoreUtil.copy(event));
-			ByteArrayOutputStream bao = new ByteArrayOutputStream();
-			res.save(bao, EMF_CONFIG);
-			LOGGER.log(Level.INFO, "Sending EObject via MQTT. {0}", new String(bao.toByteArray()));
-			ByteBuffer buffer = ByteBuffer.wrap(bao.toByteArray());
-			send(buffer);
-		} catch (IOException e) {
-			LOGGER.log(Level.SEVERE, "Error while saving meg content.", e);
-		} finally {
-			serviceObjects.ungetService(resourceSet);
-		}
-
+				res.getContents().add(EcoreUtil.copy(event));
+				ByteArrayOutputStream bao = new ByteArrayOutputStream();
+				res.save(bao, EMF_CONFIG);
+				LOGGER.log(Level.INFO, "Sending EObject via MQTT. {0}", new String(bao.toByteArray()));
+				ByteBuffer buffer = ByteBuffer.wrap(bao.toByteArray());
+				send(buffer);
+			} catch (IOException e) {
+				LOGGER.log(Level.SEVERE, "Error while saving meg content.", e);
+			} finally {
+				serviceObjects.ungetService(resourceSet);
+			}
+		});
 	}
 
 	private void send(ByteBuffer buffer) {

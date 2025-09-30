@@ -14,6 +14,7 @@
 package org.civitas.handler.qvt;
 
 import java.util.Arrays;
+import java.util.concurrent.CompletableFuture;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.Diagnostic;
@@ -74,22 +75,24 @@ public class QVTHandler implements TypedEventHandler<EObject> {
 
 	@Override
 	public void notify(String topic, EObject event) {
-		String eclassuri = config.eclassuri();
-		if (eclassuri.equals(EcoreUtil.getURI(event.eClass()).toString())) {
-			Diagnostic diagnostic = Diagnostician.INSTANCE.validate(event);
-			if (diagnostic.getSeverity() == Diagnostic.OK && trafo != null) {
-				EObject result = trafo.doTransformation(event);
-				if(result != null) {
-					Arrays.asList(config.forward_topics()).forEach(t -> {
-						bus.deliver(t, result);
-						LOGGER.info(String.format("Delivered %s to topic %s", EcoreUtil.getURI(result.eClass()).toString(), t));
-					});
-				} else {
-					LOGGER.info(String.format("QVTHandler on topic %s for incoming object %s with ID %s produced null", topic, EcoreUtil.getURI(event.eClass()).toString(), EcoreUtil.getID(event)));
+		CompletableFuture.runAsync(() -> {
+			String eclassuri = config.eclassuri();
+			if (eclassuri.equals(EcoreUtil.getURI(event.eClass()).toString())) {
+				Diagnostic diagnostic = Diagnostician.INSTANCE.validate(event);
+				if (diagnostic.getSeverity() == Diagnostic.OK && trafo != null) {
+					EObject result = trafo.doTransformation(event);
+					if(result != null) {
+						Arrays.asList(config.forward_topics()).forEach(t -> {
+							bus.deliver(t, result);
+							LOGGER.info(String.format("Delivered %s to topic %s", EcoreUtil.getURI(result.eClass()).toString(), t));
+						});
+					} else {
+						LOGGER.info(String.format("QVTHandler on topic %s for incoming object %s with ID %s produced null", topic, EcoreUtil.getURI(event.eClass()).toString(), EcoreUtil.getID(event)));
+					}
+
 				}
-				
 			}
-		}
+		});
 	}
 
 }

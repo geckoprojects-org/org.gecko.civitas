@@ -15,6 +15,7 @@ package org.civitas.handler.emf.attacher;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.EList;
@@ -97,8 +98,9 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 	 */
 	@Override
 	public void notify(String topic, EObject event) {
-		handleEvent(event, topic);
-
+		CompletableFuture.runAsync(() -> {
+			handleEvent(event, topic);
+		});
 	}
 
 	@SuppressWarnings("unchecked")
@@ -142,52 +144,54 @@ public class EMFAttacherHandler implements TypedEventHandler<EObject> {
 		}
 
 		// create target object if null and attach eObject (copy) to it
-		EObject targetEObject = repository.getEObject((EClass) target, id);
-		if (targetEObject == null) {
-			targetEObject = EcoreUtil.create((EClass) target);
-			targetEObject.eSet(targetEObject.eClass().getEIDAttribute(), id);
-		}
-		
-		EObject incomingRefObject = config.incoming_referenceuri() == null ? null : repository.getResourceSet().getEObject(URI.createURI(config.incoming_referenceuri()), false);
-		EReference incomingEReference = null;
-		if(incomingRefObject != null) {
-			if(!(incomingRefObject instanceof EReference)) {
-				LOGGER.severe(String.format("No EReference found in ResourceSet for incoming_referenceuri %s",
-						config.target_reference_uri()));
-				return;
+		synchronized (repository) {
+			EObject targetEObject = repository.getEObject((EClass) target, id);
+			if (targetEObject == null) {
+				targetEObject = EcoreUtil.create((EClass) target);
+				targetEObject.eSet(targetEObject.eClass().getEIDAttribute(), id);
 			}
-			incomingEReference = (EReference) incomingRefObject;
-		}
 
-//		We have to distinguish here between many ref and single ref. 
-//		If many ref we have to look in the existing list and replace the right element based on its ID feature
-		EReference targetRef = (EReference) targetRefObj;
-		if(incomingEReference != null) {
-//			TODO: we should check here if we really want to overwrite or if we want to addAll and replace the existing objects with the same ids
-			Object object = eObject.eGet(incomingEReference);
-			if(targetRef.isMany()) {
+			EObject incomingRefObject = config.incoming_referenceuri() == null ? null : repository.getResourceSet().getEObject(URI.createURI(config.incoming_referenceuri()), false);
+			EReference incomingEReference = null;
+			if(incomingRefObject != null) {
+				if(!(incomingRefObject instanceof EReference)) {
+					LOGGER.severe(String.format("No EReference found in ResourceSet for incoming_referenceuri %s",
+							config.target_reference_uri()));
+					return;
+				}
+				incomingEReference = (EReference) incomingRefObject;
+			}
+
+	//		We have to distinguish here between many ref and single ref.
+	//		If many ref we have to look in the existing list and replace the right element based on its ID feature
+			EReference targetRef = (EReference) targetRefObj;
+			if(incomingEReference != null) {
+	//			TODO: we should check here if we really want to overwrite or if we want to addAll and replace the existing objects with the same ids
+				Object object = eObject.eGet(incomingEReference);
+				if(targetRef.isMany()) {
+					EList<EObject> eList = (EList<EObject>) targetEObject.eGet(targetRef);
+					eList.addAll((Collection<? extends EObject>) object);
+				} else {
+					targetEObject.eSet(targetRef, object);
+				}
+
+			} else if (targetRef.isMany()) {
 				EList<EObject> eList = (EList<EObject>) targetEObject.eGet(targetRef);
-				eList.addAll((Collection<? extends EObject>) object);
+				if (eList.isEmpty()) {
+					eList.add( EcoreUtil.copy(eObject));
+				} else {
+					addOrReplaceById(EcoreUtil.copy(eObject), eList, eObject.eClass().getEIDAttribute());
+				}
 			} else {
-				targetEObject.eSet(targetRef, object);
+				targetEObject.eSet(targetRef, EcoreUtil.copy(eObject));
 			}
-			
-		} else if (targetRef.isMany()) {
-			EList<EObject> eList = (EList<EObject>) targetEObject.eGet(targetRef);
-			if (eList.isEmpty()) {
-				eList.add( EcoreUtil.copy(eObject));
-			} else {
-				addOrReplaceById(EcoreUtil.copy(eObject), eList, eObject.eClass().getEIDAttribute());
-			}
-		} else {
-			targetEObject.eSet(targetRef, EcoreUtil.copy(eObject));
-		}
 
-		// save in repo
-		repository.save(targetEObject);
-		final EObject forwadObject = targetEObject;
-		// create Copy of target EObject and send via Typed Eventadmin
-		Arrays.asList(config.forward_topics()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(forwadObject)));
+			// save in repo
+			repository.save(targetEObject);
+			final EObject forwadObject = targetEObject;
+			// create Copy of target EObject and send via Typed Eventadmin
+			Arrays.asList(config.forward_topics()).forEach(t -> typedEventBus.deliver(t, EcoreUtil.copy(forwadObject)));
+		}
 	}
 
 	private void addOrReplaceById(EObject eObjectToAdd, EList<EObject> eList, EStructuralFeature idFeature) {
