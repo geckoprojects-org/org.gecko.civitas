@@ -17,6 +17,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
@@ -114,13 +116,17 @@ public class AllModelsResource {
     	                                             <th>Model Name</th>
     	                                             <th>Model URI</th>
     	                                             <th>Documentation</th>
+    	                                             <th>Data</th>
+    	                                             <th>GDPR</th>
     	                                           </tr>
     	                                             %s
     	                                           </table>
     	                                         </body>
     	                                         </html>
     	""";
+    private static String hrefTemplate = "<a href=\"%s\">%s</a>";
     private static String modelHrefTemplate = "<a href=\"?nsUri=%s\">%s</a>";
+    private static String gdprHrefTemplate = "<a href=\"models/gdpr?nsUri=%s\">%s</a>";
 
     @GET
     @Path("/")
@@ -138,9 +144,97 @@ public class AllModelsResource {
 	    builder.append(modelHrefTemplate.formatted(ePackage.getNsURI(), ePackage.getNsURI()));
 	    builder.append("</td><td>");
 	    builder.append(getDocumentation(ePackage));
+	    builder.append("</td><td>");
+	    builder.append(getDataLinks(ePackage));
+	    builder.append("</td><td>");
+	    builder.append(gdprHrefTemplate.formatted(ePackage.getNsURI(), "Report for " + ePackage.getNsURI()));
 	    builder.append("</td></tr>");
 	}
 	return Response.ok(template.formatted(builder.toString()), MediaType.TEXT_HTML).build();
+    }
+    
+    private static String gdpr = """
+	    	<!DOCTYPE html>
+	    		<html>
+	    			<body>
+	    			<h1>Report for %s</h1>
+	    			<table>
+	    	                                           <tr>
+	    	                                             <th>Class Name</th>
+	    	                                             <th>Attribute</th>
+	    	                                             <th>Type</th>
+	    	                                             <th>GDPR Relevant Article</th>
+	    	                                           </tr>
+	    	                                             %s
+	    	                                           </table>
+	    	                                         </body>
+	    	                                         </html>
+	    	""";
+    
+    @GET
+    @Path("/gdpr")
+    @Produces(MediaType.TEXT_HTML)
+    public Response gdpr(@QueryParam("nsUri") String nsUri) {
+	EPackage ePackage = getEPackageObject(nsUri);
+	StringBuilder builder = new StringBuilder();
+	for (EClassifier eClassifier : ePackage.getEClassifiers()) {
+	    if(eClassifier instanceof EClass eClass) {
+		for (EAttribute eAttribute : eClass.getEAllAttributes()) {
+		    builder.append("<tr><td>");
+		    builder.append(eClass.getName());
+		    builder.append("</td><td>");
+		    builder.append(eAttribute.getName());
+		    builder.append("</td><td>");
+		    builder.append(eAttribute.getEType().getName());
+		    builder.append("</td><td>");
+		    builder.append(getGdprArticle(eAttribute));
+		    builder.append("</td></tr>");
+		}
+		
+	    }
+	}
+	return Response.ok(gdpr.formatted(ePackage.getNsURI(), builder.toString()), MediaType.TEXT_HTML).build();
+    }
+
+    /**
+     * @param eAttribute
+     * @return
+     */
+    private Object getGdprArticle(EAttribute eAttribute) {
+	EAnnotation gdpr = eAttribute.getEAnnotation("http://civitas-connect.org/gdpr/1.0.0");
+	if(gdpr == null) {
+	    return "Not Relevant";
+	}
+	return hrefTemplate.formatted(gdpr.getDetails().get("link"), "Article " + gdpr.getDetails().get("article"));
+    }
+
+    private static String dataHrefTemplate = "<a href=\"%s/%s?mediaType=application/json\">%s</a>";
+    /**
+     * @param ePackage
+     * @return
+     */
+    private Object getDataLinks(EPackage ePackage) {
+	if(!isRest(ePackage)) {
+	    return "No Data Avilable";
+	}
+	StringBuffer buffer = new StringBuffer();
+	ePackage.getEClassifiers().stream().filter(EClass.class::isInstance).forEach(eClass -> {
+	    buffer.append(dataHrefTemplate.formatted(ePackage.getName(), eClass.getName(), ePackage.getNsURI() + "#//" + eClass.getName()));
+	    buffer.append("<br>");
+	});
+	return buffer.toString();
+    }
+
+    /**
+     * @param ePackage
+     * @return
+     */
+    private boolean isRest(EPackage ePackage) {
+	EAnnotation eAnnotation = ePackage.getEAnnotation("properties");
+	if(eAnnotation != null) {
+	    return "true".equals(eAnnotation.getDetails().get("Rest"));
+	}
+	return false;
     }
 
     private static String documentationHrefTemplate = "<a href=\"models/html/mermaid?nsUri=%s\">%s</a>";
