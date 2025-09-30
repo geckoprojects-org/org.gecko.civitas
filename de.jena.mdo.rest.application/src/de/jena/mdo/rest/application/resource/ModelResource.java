@@ -152,7 +152,8 @@ public class ModelResource {
 	@Path("/{eClass}")
 	@Operation(description = "Returns a model instance list")
 	public Response get(@PathParam("eClass") String eClassName, @QueryParam("user") String user,
-			@QueryParam("limit") Long limit) throws IOException {
+			@QueryParam("limit") Long limit,
+			@QueryParam("skip") Long skip) throws IOException {
 		checkContentType();
 		EClassifier eClassifier = ePackage.getEClassifier(eClassName);
 		if (eClassifier == null || !(eClassifier instanceof EClass)) {
@@ -165,6 +166,11 @@ public class ModelResource {
 		props.put(Options.OPTION_READ_DETACHED, true);
 		if(limit != null) {
 			props.put("limit", limit);
+		} else {
+		    props.put("limit", 100);
+		}
+		if(skip != null) {
+		    props.put("skip", skip);
 		}
 		List<EObject> list = repo.getAllEObjects(eClass, Map.of(Options.OPTION_READ_DETACHED, true));
 		if (list.isEmpty()) {

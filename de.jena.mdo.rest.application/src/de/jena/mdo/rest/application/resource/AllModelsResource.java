@@ -208,7 +208,7 @@ public class AllModelsResource {
 	return hrefTemplate.formatted(gdpr.getDetails().get("link"), "Article " + gdpr.getDetails().get("article"));
     }
 
-    private static String dataHrefTemplate = "<a href=\"%s/%s?mediaType=application/json\">%s</a>";
+    private static String dataHrefTemplate = "<a href=\"%s/%s?mediaType=application/json&limit=100&skip=0\">%s</a>";
     /**
      * @param ePackage
      * @return
