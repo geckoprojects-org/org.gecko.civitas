@@ -142,7 +142,7 @@ public class ModelResource {
 
 	private EObject filter(String user, EObject eObject) {
 		if (user == null) {
-			eObject.eClass().getEStructuralFeatures().stream().filter(f -> f.getEAnnotation("secret") != null)
+			eObject.eClass().getEStructuralFeatures().stream().filter(f -> f.getEAnnotation("http://civitas-connect.org/gdpr/1.0.0") != null)
 					.forEach(eObject::eUnset);
 		}
 		return eObject;

@@ -118,6 +118,8 @@ public class AllModelsResource {
     	                                             <th>Documentation</th>
     	                                             <th>Data</th>
     	                                             <th>GDPR</th>
+    	                                             <th>OpenApi</th>
+    	                                             <th>GraphQL</th>
     	                                           </tr>
     	                                             %s
     	                                           </table>
@@ -127,6 +129,9 @@ public class AllModelsResource {
     private static String hrefTemplate = "<a href=\"%s\">%s</a>";
     private static String modelHrefTemplate = "<a href=\"?nsUri=%s\">%s</a>";
     private static String gdprHrefTemplate = "<a href=\"models/gdpr?nsUri=%s\">%s</a>";
+    private static String dataHrefTemplate = "<a href=\"%s/%s?mediaType=application/json&limit=100&skip=0\">%s</a>";
+    private static String openApiHrefTemplate = "<a href=\"%s/openapi.json\">%s</a>";
+    private static String documentationHrefTemplate = "<a href=\"models/html/mermaid?nsUri=%s\">%s</a>";
 
     @GET
     @Path("/")
@@ -147,7 +152,19 @@ public class AllModelsResource {
 	    builder.append("</td><td>");
 	    builder.append(getDataLinks(ePackage));
 	    builder.append("</td><td>");
-	    builder.append(gdprHrefTemplate.formatted(ePackage.getNsURI(), "Report for " + ePackage.getNsURI()));
+	    builder.append(gdprHrefTemplate.formatted(ePackage.getName(), "Report for " + ePackage.getNsURI()));
+	    builder.append("</td><td>");
+	    if(isRest(ePackage)) {
+		builder.append(openApiHrefTemplate.formatted(ePackage.getName(), "OpenApi.json"));
+	    } else {
+		builder.append("N/A");
+	    }
+	    builder.append("</td><td>");
+	    if(isGraphQL(ePackage)) {
+		builder.append(hrefTemplate.formatted("/graphql", "GraphQL Endpoint"));
+	    } else {
+		builder.append("N/A");
+	    }
 	    builder.append("</td></tr>");
 	}
 	return Response.ok(template.formatted(builder.toString()), MediaType.TEXT_HTML).build();
@@ -208,7 +225,6 @@ public class AllModelsResource {
 	return hrefTemplate.formatted(gdpr.getDetails().get("link"), "Article " + gdpr.getDetails().get("article"));
     }
 
-    private static String dataHrefTemplate = "<a href=\"%s/%s?mediaType=application/json&limit=100&skip=0\">%s</a>";
     /**
      * @param ePackage
      * @return
@@ -237,7 +253,18 @@ public class AllModelsResource {
 	return false;
     }
 
-    private static String documentationHrefTemplate = "<a href=\"models/html/mermaid?nsUri=%s\">%s</a>";
+    /**
+     * @param ePackage
+     * @return
+     */
+    private boolean isGraphQL(EPackage ePackage) {
+	EAnnotation eAnnotation = ePackage.getEAnnotation("properties");
+	if(eAnnotation != null) {
+	    return "true".equals(eAnnotation.getDetails().get("GraphQL"));
+	}
+	return false;
+    }
+
     /**
      * @param ePackage
      * @return
