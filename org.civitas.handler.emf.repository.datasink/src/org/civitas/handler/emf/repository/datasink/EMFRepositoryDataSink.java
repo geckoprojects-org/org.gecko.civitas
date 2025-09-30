@@ -14,6 +14,7 @@
 package org.civitas.handler.emf.repository.datasink;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +36,7 @@ import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
+import org.osgi.service.typedevent.TypedEventBus;
 import org.osgi.service.typedevent.TypedEventHandler;
 
 /**
@@ -88,6 +90,9 @@ import org.osgi.service.typedevent.TypedEventHandler;
 @Designate(ocd = EMFRepositoryDataSink.Config.class)
 @Component(name = "EMFRepositoryDataSink", configurationPid = "EMFRepositoryDataSinkConfig", configurationPolicy = ConfigurationPolicy.REQUIRE, scope = ServiceScope.PROTOTYPE)
 public class EMFRepositoryDataSink implements TypedEventHandler<EObject> {
+	
+	@Reference
+	TypedEventBus typedEventBus;
 
     /**
      * Configuration interface for EMFRepositoryDataSink component.
@@ -124,6 +129,9 @@ public class EMFRepositoryDataSink implements TypedEventHandler<EObject> {
                            description = "Enable detailed logging for debugging and monitoring purposes",
                            defaultValue = "false")
         boolean detailed_logging() default false;
+        
+        @AttributeDefinition(name = "Forward Topic", description = "The topic where to publish the updated target EObject")
+		String[] forward_topics();
     }
 
     private static class MergeCopier extends Copier {
@@ -274,6 +282,11 @@ public class EMFRepositoryDataSink implements TypedEventHandler<EObject> {
                 LOGGER.info("Successfully saved EObject - Type: " + toSave.eClass().getName() +
                            ", ID: " + EcoreUtil.getID(toSave) + ", Strategy: " + config.merger_strategy());
             }
+            
+            Arrays.asList(config.forward_topics()).forEach(t -> {
+    			typedEventBus.deliver(t, EcoreUtil.copy(toSave));
+    			LOGGER.info(String.format("EMFRepositoryDataSync forwarded EObject of type %s with ID %s to topic %s", toSave.eClass().getName(), EcoreUtil.getID(toSave), t));
+    		});
 
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Repository operation failed for EObject ID: " + objectId +
