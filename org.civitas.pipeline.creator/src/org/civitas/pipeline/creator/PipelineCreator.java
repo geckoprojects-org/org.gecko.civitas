@@ -306,8 +306,8 @@ public class PipelineCreator {
 		pipeline.getSteps().add(intMeteringPointDataSink);
 
 		EMFAttacherHandlerConfig readingAttacher = EmfattacherconfigFactory.eINSTANCE.createEMFAttacherHandlerConfig();
-		readingAttacher.setId("reading_attacher");
-		readingAttacher.setPid("reading_attacher");
+		readingAttacher.setId("meter_reading_attacher");
+		readingAttacher.setPid("meter_reading_attacher");
 		readingAttacher.setRepoTarget("(repo_id=inmem)");
 		readingAttacher.getInputs().add(manualReading);
 		readingAttacher.getInputs().add(remoteReading);
